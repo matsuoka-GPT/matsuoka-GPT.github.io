@@ -168,16 +168,20 @@
     }
 
     /* ヒーローに斜めの光 */
-    .hero:after{
-      content:"";
-      position:absolute;
-      inset:-30% -20%;
-      background:
-        radial-gradient(800px 420px at 70% 40%, rgba(43,100,255,.12), transparent 62%),
-        linear-gradient(120deg, transparent 35%, rgba(255,255,255,.60) 50%, transparent 62%);
-      transform: rotate(-6deg);
-      opacity:.55;
-      pointer-events:none;
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:-35% -25%;
+  background:
+    /* 中心のやわらかい主光 */
+    radial-gradient(900px 480px at 68% 38%, rgba(43,100,255,.22), transparent 62%),
+    /* 斜めに入る白いハイライト */
+    linear-gradient(120deg, transparent 32%, rgba(255,255,255,.70) 50%, transparent 64%);
+  transform: rotate(-6deg);
+  opacity:.7;
+  pointer-events:none;
+}
+
     }
 
     h1{
