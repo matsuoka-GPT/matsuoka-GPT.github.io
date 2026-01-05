@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>松岡×GPT 思考実験ラボ</title>
+  <meta name="description" content="特定分野の研究所ではなく、知性の使い方そのものを検証・公開するラボ。" />
+
+  <!-- OG / Twitter (任意：後で差し替え) -->
+  <meta property="og:title" content="松岡×GPT 思考実験ラボ" />
+  <meta property="og:description" content="構造思考×協働知性で、分野横断の思考実験を検証し、成果物として公開する。" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      --w: 980px;
+
+      --bg0:#ffffff;
+      --bg1:#fbfcff;
+
+      --text:#111;
+      --muted:#475069;
+
+      --line: rgba(18, 26, 40, .10);
+      --line2: rgba(18, 26, 40, .14);
+
+      --card: rgba(255,255,255,.82);
+      --glass: rgba(255,255,255,.62);
+
+      --shadow: 0 10px 30px rgba(18, 26, 40, .06);
+      --shadow2: 0 12px 34px rgba(18, 26, 40, .09);
+
+      --radius: 16px;
+      --radius2: 12px;
+
+      --accent: #2b64ff; /* 1色だけ：品を保つ */
+      --accent2:#1b46c9;
+
+      --focus: 0 0 0 4px rgba(43,100,255,.14);
+    }
+
+    * { box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      line-height:1.7;
+      color:var(--text);
+
+      /* 背景：白基調＋薄い光＋うっすらノイズ（宇宙でも未来でもなく“思考前の空間”） */
+      background:
+        radial-gradient(1200px 650px at 18% -10%, rgba(43,100,255,.09), transparent 62%),
+        radial-gradient(900px 520px at 92% 6%, rgba(0,0,0,.05), transparent 55%),
+        radial-gradient(1100px 700px at 85% 80%, rgba(43,100,255,.06), transparent 65%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, var(--bg0));
+      overflow-x:hidden;
+    }
+
+    /* うっすら星屑/ノイズっぽい質感（主張しない） */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.18;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.9), rgba(255,255,255,0) 30%),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,.9), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.85), rgba(255,255,255,0) 26%),
+        radial-gradient(circle at 60% 60%, rgba(255,255,255,.7), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 90% 90%, rgba(255,255,255,.8), rgba(255,255,255,0) 22%);
+      filter: blur(0.2px);
+      mix-blend-mode: overlay;
+    }
+
+    a{ color: inherit; }
+    a:hover{ color: var(--accent2); }
+
+    .wrap{
+      max-width:var(--w);
+      margin:0 auto;
+      padding: 34px 18px 44px;
+      position:relative;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding: 8px 0 10px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color: #1a2133;
+      box-shadow: 0 6px 18px rgba(18,26,40,.05);
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:18px;height:18px;
+      border-radius:999px;
+      background: rgba(43,100,255,.14);
+      color: var(--accent2);
+      font-weight:700;
+      font-size:12px;
+      line-height:1;
+    }
+
+    .topnav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .topnav a{
+      text-decoration:none;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color: #1a2133;
+      opacity:.9;
+    }
+    .topnav a:hover{
+      border-color: var(--line);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero{
+      margin-top: 8px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45));
+      box-shadow: var(--shadow);
+      padding: 26px 18px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* ヒーローに斜めの光 */
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:-30% -20%;
+      background:
+        radial-gradient(800px 420px at 70% 40%, rgba(43,100,255,.12), transparent 62%),
+        linear-gradient(120deg, transparent 35%, rgba(255,255,255,.60) 50%, transparent 62%);
+      transform: rotate(-6deg);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: 32px;
+      letter-spacing: .02em;
+      position:relative;
+      z-index:1;
+    }
+    .lead{
+      margin:0;
+      font-size:16px;
+      color: #1c2336;
+      position:relative;
+      z-index:1;
+      max-width: 46em;
+    }
+    .lead strong{
+      color: #0f1627;
+      border-bottom: 2px solid rgba(43,100,255,.20);
+      padding-bottom: 1px;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+      position:relative;
+      z-index:1;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius: 12px;
+      padding: 10px 14px;
+      text-decoration:none;
+      font-size:14px;
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      color: #121a2a;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+      border-color: rgba(43,100,255,.30);
+    }
+    .btn:active{
+      transform: translateY(0px);
+      box-shadow: var(--shadow);
+    }
+    .btn:focus{
+      outline:none;
+      box-shadow: var(--shadow), var(--focus);
+    }
+
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(43,100,255,.95), rgba(27,70,201,.95));
+      border-color: rgba(43,100,255,.40);
+      color: #fff;
+    }
+    .btn.primary:hover{
+      border-color: rgba(255,255,255,.30);
+    }
+
+    .note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      position:relative;
+      z-index:1;
+    }
+
+    section{ margin-top: 26px; }
+    h2{
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: .02em;
+      color: #111827;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .cards{ grid-template-columns: 1fr 1fr 1fr 1fr; }
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 14px 14px 12px;
+      min-height: 132px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      border-color: rgba(43,100,255,.28);
+      box-shadow: var(--shadow2);
+    }
+
+    .card .ico{
+      width:34px; height:34px;
+      border-radius: 12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border: 1px solid rgba(43,100,255,.18);
+      background: rgba(43,100,255,.08);
+      margin-bottom: 10px;
+    }
+    .card svg{ width:20px; height:20px; stroke: var(--accent2); }
+
+    .card strong{
+      display:block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color:#111827;
+    }
+    .card p{
+      margin:0;
+      font-size: 12.8px;
+      color: var(--muted);
+    }
+
+    .box{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .two{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .muted{ color: var(--muted); font-size: 14px; }
+
+    ul{ margin: 10px 0 0; padding-left: 18px; }
+    li{ margin: 6px 0; }
+
+    .outputs a{
+      text-decoration: none;
+      color: var(--accent2);
+      border-bottom: 1px solid rgba(43,100,255,.20);
+    }
+    .outputs a:hover{
+      border-bottom-color: rgba(43,100,255,.60);
+    }
+
+    footer{
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(18,26,40,.10);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      border:1px solid rgba(18,26,40,.14);
+      border-bottom-width:2px;
+      padding:2px 6px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.6);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="tags" aria-label="tags">
+        <div class="tag"><span class="pill">S</span>構造思考</div>
+        <div class="tag"><span class="pill">C</span>協働知性</div>
+        <div class="tag"><span class="pill">X</span>分野横断</div>
+        <div class="tag"><span class="pill">P</span>検証→論文化</div>
+      </div>
+
+      <nav class="topnav" aria-label="navigation">
+        <a href="#projects">プロジェクト</a>
+        <a href="#method">方法論</a>
+        <a href="#outputs">成果物</a>
+        <a href="#collab">コラボ</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-label="hero">
+      <h1>松岡×GPT 思考実験ラボ</h1>
+      <p class="lead">
+        特定分野の研究所ではなく、<strong>知性の使い方そのもの</strong>を検証・公開するラボです。<br/>
+        人間の仮説（構造）とAIの検証（整合）を組み合わせ、分野横断の思考実験を「再現可能な形」にまとめ、成果物として公開します。
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="#outputs" aria-label="outputs">成果物を見る</a>
+        <a class="btn" href="#collab" aria-label="collaboration">コラボ・依頼</a>
+      </div>
+
+      <div class="note">
+        ※本サイトは「公開ハブ」です。PDF/DOIは主にZenodo等の外部リポジトリに集約します。
+        <span class="kbd">GitHub Pages</span> による軽量運用を前提とします。
+      </div>
+    </section>
+
+    <section id="projects" aria-label="projects">
+      <h2>プロジェクト</h2>
+
+      <div class="cards">
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <!-- planet -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0" />
+              <path d="M2 12c2.5-4 6.5-6 10-6s7.5 2 10 6c-2.5 4-6.5 6-10 6S4.5 16 2 12Z" />
+            </svg>
+          </div>
+          <strong>宇宙論 / BFSSU・DMF</strong>
+          <p>ブラックホール階層宇宙・基底流（DMF）などを、観測整合性と反例検討を重視して整理。</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <!-- building -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18" />
+              <path d="M4 21V7l8-4l8 4v14" />
+              <path d="M9 21v-8h6v8" />
+            </svg>
+          </div>
+          <strong>社会設計 / 税制・国家モデル</strong>
+          <p>人口減少・行政コスト・合意形成を前提に、制度の構造設計を思考実験として検討。</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <!-- shield -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l8 4v6c0 5-3 8-8 8s-8-3-8-8V7l8-4Z" />
+              <path d="M9 12l2 2l4-4" />
+            </svg>
+          </div>
+          <strong>安全工学 / 航空安全モデル</strong>
+          <p>直感的で実装可能な安全アーキテクチャを提案。救命率最大化のための設計条件を整理。</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <!-- bulb -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18h6" />
+              <path d="M10 22h4" />
+              <path d="M12 2a7 7 0 0 0-4 12c.6.5 1 1.4 1 2h6c0-.6.4-1.5 1-2A7 7 0 0 0 12 2Z" />
+            </svg>
+          </div>
+          <strong>協働知性 / 方法論</strong>
+          <p>思考実験のプロトコル、検証、限界の明示、公開の仕方。人格ではなく構造で議論する。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" aria-label="method">
+      <h2>方法論（How we work）</h2>
+      <div class="box">
+        <ol>
+          <li><strong>仮説</strong>：構造的必然・再現性を重視して定義</li>
+          <li><strong>照合</strong>：既知データ・既存理論・反例の探索（矛盾があれば修正/棄却）</li>
+          <li><strong>論文化</strong>：第三者が追える形（前提・限界・予測）に落とす</li>
+          <li><strong>公開</strong>：DOI付与・多言語化・外部からの質問対応</li>
+        </ol>
+        <div class="muted">方針：誇張しない／不確実性は明記／人格ではなく構造で議論する。</div>
+      </div>
+    </section>
+
+    <section id="outputs" aria-label="outputs">
+      <h2>成果物（Outputs）</h2>
+      <div class="box outputs">
+        <div class="muted">ここにZenodo等のDOIリンクを集約します（後で差し替え）。</div>
+        <ul>
+          <li><a href="#" title="あとでDOIに差し替え">Zenodo：BFSSU関連</a></li>
+          <li><a href="#" title="あとでDOIに差し替え">Zenodo：税制・国家モデル</a></li>
+          <li><a href="#" title="あとでDOIに差し替え">Zenodo：航空安全モデル</a></li>
+          <li><a href="#" title="あとでDOIに差し替え">Zenodo：協働知性（方法論）</a></li>
+        </ul>
+        <div class="muted" style="margin-top:10px;">
+          ※「リンクの整備」だけでサイトの本物感は一気に上がります。
+        </div>
+      </div>
+    </section>
+
+    <section id="collab" aria-label="collaboration">
+      <h2>コラボ・依頼</h2>
+      <div class="box">
+        <p><strong>対象</strong>：研究者・エンジニア・行政・企業（分野不問）</p>
+        <p><strong>スタイル</strong>：公開前提の共同検証／限定公開のブリーフィング（必要に応じて）</p>
+        <p class="muted">
+          ※本サイトは法務・投資勧誘・医療助言等を目的としません。必要領域は専門家と連携します。
+        </p>
+        <p><strong>連絡</strong>：ここにメールアドレス or フォームリンクを設置（例：contact@example.com）</p>
+      </div>
+    </section>
+
+    <section id="faq" aria-label="faq">
+      <h2>FAQ</h2>
+      <div class="two">
+        <div class="box">
+          <p><strong>Q. これは当社の事業活動ですか？</strong><br/>
+            A. いいえ。主に思考実験・検証の公開活動です（必要に応じて協業します）。</p>
+          <p><strong>Q. 結論は確定ですか？</strong><br/>
+            A. 不確実性がある場合は明記し、反例・代替説明も併記します。</p>
+        </div>
+        <div class="box">
+          <p><strong>Q. なぜ「松岡×GPT」を前面に出すのですか？</strong><br/>
+            A. 再現条件（思考装置）を明示し、ブラックボックス化を避けるためです。</p>
+          <p><strong>Q. どんな分野でも扱うのですか？</strong><br/>
+            A. はい。ただし高リスク領域は慎重に扱い、必要なら専門家との連携を前提にします。</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> 松岡×GPT 思考実験ラボ</div>
+      <div>Hosted on GitHub Pages.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
