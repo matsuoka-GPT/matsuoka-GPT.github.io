@@ -13,6 +13,58 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <style>
+    /* 成果物：横4並び */
+.outputs-grid{
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* 各リンクをカード風に */
+.outputs-grid li{
+  border: 1px solid var(--line);
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.75);
+  box-shadow: var(--shadow);
+  padding: 14px 12px;
+  text-align: center;
+}
+
+/* リンクの見た目 */
+.outputs-grid a{
+  text-decoration: none;
+  color: var(--accent2);
+  font-size: 14px;
+  line-height: 1.4;
+  display: inline-block;
+}
+
+/* hover時：少しだけ反応 */
+.outputs-grid li:hover{
+  box-shadow: var(--shadow2);
+  border-color: rgba(43,100,255,.30);
+  transform: translateY(-2px);
+  transition: all .12s ease;
+}
+
+/* タブレット以下は2列 */
+@media (max-width: 900px){
+  .outputs-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* スマホは1列 */
+@media (max-width: 520px){
+  .outputs-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
     :root{
       --w: 980px;
 
@@ -492,9 +544,8 @@
       <h2>成果物（Outputs）</h2>
       <div class="box outputs">
         <div class="muted"></div>
-        <ul>
         
-
+  <ul class="outputs-grid">
   <li>
     <a href="https://doi.org/10.5281/zenodo.17720251" target="_blank" rel="noopener">
       Zenodo：BFSSUダイジェスト版
