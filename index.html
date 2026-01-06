@@ -14,150 +14,150 @@
 
   <style>
     /* 成果物：横4並び */
-.outputs-grid{
-  list-style: none;
-  padding: 0;
-  margin: 14px 0 0;
+    .outputs-grid{
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
 
-   /* Hero を2カラム化（左：説明 / 右：プロフィール） */
-.hero-inner{
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 14px;
-  position: relative;
-  z-index: 1; /* hero:after の上に出す */
-}
+    /* Hero を2カラム化（左：説明 / 右：プロフィール） */
+    .hero-inner{
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 14px;
+      position: relative;
+      z-index: 1; /* hero:after の上に出す */
+    }
 
-@media (max-width: 900px){
-  .hero-inner{
-    grid-template-columns: 1fr;
-  }
-}
+    @media (max-width: 900px){
+      .hero-inner{
+        grid-template-columns: 1fr;
+      }
+    }
 
-/* プロフィールカード */
-.profile-card{
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: rgba(255,255,255,.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
-  padding: 14px;
-  align-self: start;
-}
+    /* プロフィールカード */
+    .profile-card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      align-self: start;
+    }
 
-.profile-head{
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 10px;
-}
+    .profile-head{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
 
-.avatar{
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  border: 1px solid rgba(43,100,255,.22);
-  background: rgba(43,100,255,.08);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color: var(--accent2);
-  font-weight: 800;
-}
+    .avatar{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(43,100,255,.22);
+      background: rgba(43,100,255,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--accent2);
+      font-weight: 800;
+    }
 
-.profile-name{
-  font-weight: 800;
-  line-height: 1.2;
-}
+    .profile-name{
+      font-weight: 800;
+      line-height: 1.2;
+    }
 
-.profile-role{
-  font-size: 12.5px;
-  color: var(--muted);
-  margin-top: 2px;
-}
+    .profile-role{
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
 
-.profile-body{
-  font-size: 13.5px;
-  color: #1a2133;
-}
+    .profile-body{
+      font-size: 13.5px;
+      color: #1a2133;
+    }
 
-.profile-body ul{
-  margin: 10px 0 0;
-  padding-left: 18px;
-}
+    .profile-body ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
 
-.profile-body li{
-  margin: 6px 0;
-}
+    .profile-body li{
+      margin: 6px 0;
+    }
 
-.profile-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
+    .profile-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
 
-.profile-links a{
-  text-decoration:none;
-  font-size: 13px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 7px 10px;
-  background: rgba(255,255,255,.75);
-  box-shadow: 0 8px 20px rgba(18,26,40,.05);
-}
+    .profile-links a{
+      text-decoration:none;
+      font-size: 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 8px 20px rgba(18,26,40,.05);
+    }
 
-.profile-links a:hover{
-  border-color: rgba(43,100,255,.30);
-  box-shadow: var(--shadow2);
-}
- 
-/* 各リンクをカード風に */
-.outputs-grid li{
-  border: 1px solid var(--line);
-  border-radius: var(--radius2);
-  background: rgba(255,255,255,.75);
-  box-shadow: var(--shadow);
-  padding: 14px 12px;
-  text-align: center;
-}
+    .profile-links a:hover{
+      border-color: rgba(43,100,255,.30);
+      box-shadow: var(--shadow2);
+    }
 
-/* リンクの見た目 */
-.outputs-grid a{
-  text-decoration: none;
-  color: var(--accent2);
-  font-size: 14px;
-  line-height: 1.4;
-  display: inline-block;
-}
+    /* 各リンクをカード風に */
+    .outputs-grid li{
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.75);
+      box-shadow: var(--shadow);
+      padding: 14px 12px;
+      text-align: center;
+    }
 
-/* hover時：少しだけ反応 */
-.outputs-grid li:hover{
-  box-shadow: var(--shadow2);
-  border-color: rgba(43,100,255,.30);
-  transform: translateY(-2px);
-  transition: all .12s ease;
-}
+    /* リンクの見た目 */
+    .outputs-grid a{
+      text-decoration: none;
+      color: var(--accent2);
+      font-size: 14px;
+      line-height: 1.4;
+      display: inline-block;
+    }
 
-/* タブレット以下は2列 */
-@media (max-width: 900px){
-  .outputs-grid{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    /* hover時：少しだけ反応 */
+    .outputs-grid li:hover{
+      box-shadow: var(--shadow2);
+      border-color: rgba(43,100,255,.30);
+      transform: translateY(-2px);
+      transition: all .12s ease;
+    }
 
-/* スマホは1列 */
-@media (max-width: 520px){
-  .outputs-grid{
-    grid-template-columns: 1fr;
-  }
-}
+    /* タブレット以下は2列 */
+    @media (max-width: 900px){
+      .outputs-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* スマホは1列 */
+    @media (max-width: 520px){
+      .outputs-grid{
+        grid-template-columns: 1fr;
+      }
+    }
 
     :root{
       --w: 980px;
@@ -196,17 +196,17 @@
 
       /* 背景：白基調＋薄い光＋うっすらノイズ（宇宙でも未来でもなく“思考前の空間”） */
       background:
-  /* 主光源（左上） */
-  radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%),
+        /* 主光源（左上） */
+        radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%),
 
-  /* 補助光（右上） */
-  radial-gradient(900px 520px at 90% 8%, rgba(255,255,255,.45), transparent 55%),
+        /* 補助光（右上） */
+        radial-gradient(900px 520px at 90% 8%, rgba(255,255,255,.45), transparent 55%),
 
-  /* 深度用の低彩度光（右下） */
-  radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%),
+        /* 深度用の低彩度光（右下） */
+        radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%),
 
-  /* ベース */
-  linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff);
+        /* ベース */
+        linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff);
 
       overflow-x:hidden;
     }
@@ -314,20 +314,18 @@
     }
 
     /* ヒーローに斜めの光 */
-.hero:after{
-  content:"";
-  position:absolute;
-  inset:-35% -25%;
-  background:
-    /* 中心のやわらかい主光 */
-    radial-gradient(900px 480px at 68% 38%, rgba(43,100,255,.22), transparent 62%),
-    /* 斜めに入る白いハイライト */
-    linear-gradient(120deg, transparent 32%, rgba(255,255,255,.70) 50%, transparent 64%);
-  transform: rotate(-6deg);
-  opacity:.7;
-  pointer-events:none;
-}
-
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:-35% -25%;
+      background:
+        /* 中心のやわらかい主光 */
+        radial-gradient(900px 480px at 68% 38%, rgba(43,100,255,.22), transparent 62%),
+        /* 斜めに入る白いハイライト */
+        linear-gradient(120deg, transparent 32%, rgba(255,255,255,.70) 50%, transparent 64%);
+      transform: rotate(-6deg);
+      opacity:.7;
+      pointer-events:none;
     }
 
     h1{
@@ -491,6 +489,7 @@
     }
 
     .muted{ color: var(--muted); font-size: 14px; }
+    .small{ font-size: 12px; }
 
     ul{ margin: 10px 0 0; padding-left: 18px; }
     li{ margin: 6px 0; }
@@ -543,59 +542,60 @@
         <a href="#method">方法論</a>
         <a href="#outputs">成果物</a>
         <a href="#collab">コラボ</a>
+        <a href="#essays">徒然</a>
         <a href="#faq">FAQ</a>
       </nav>
     </header>
 
-   <section class="hero" aria-label="hero">
-  <div class="hero-inner">
-    <!-- 左：タイトル＆説明 -->
-    <div>
-      <h1>松岡×GPT 思考実験ラボ</h1>
-      <p class="lead">
-        特定分野の研究所ではなく、<strong>知性の使い方そのもの</strong>を検証・公開するラボです。<br/>
-        人間の仮説（構造）とAIの検証（整合）を組み合わせ、分野横断の思考実験を「再現可能な形」にまとめ、成果物として公開します。
-      </p>
-
-      <div class="cta">
-        <a class="btn primary" href="#outputs" aria-label="outputs">成果物を見る</a>
-        <a class="btn" href="#collab" aria-label="collaboration">コラボ・依頼</a>
-      </div>
-
-      <div class="note">
-        ※本サイトは「公開ハブ」です。<br>PDF/DOIは主にZenodo等の外部リポジトリに集約しています。<br>
-        <span class="kbd">GitHub Pages</span> による軽量運用を前提とします。
-      </div>
-    </div>
-
-    <!-- 右：プロフィール -->
-    <aside class="profile-card" aria-label="profile">
-      <div class="profile-head">
-        <div class="avatar" aria-hidden="true">M</div>
+    <section class="hero" aria-label="hero">
+      <div class="hero-inner">
+        <!-- 左：タイトル＆説明 -->
         <div>
-          <div class="profile-name">松岡孝文</div>
-          <div class="profile-role">コンセプトアーキテクト</div>
+          <h1>松岡×GPT 思考実験ラボ</h1>
+          <p class="lead">
+            特定分野の研究所ではなく、<strong>知性の使い方そのもの</strong>を検証・公開するラボです。<br/>
+            人間の仮説（構造）とAIの検証（整合）を組み合わせ、分野横断の思考実験を「再現可能な形」にまとめ、成果物として公開します。
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="#outputs" aria-label="outputs">成果物を見る</a>
+            <a class="btn" href="#collab" aria-label="collaboration">コラボ・依頼</a>
+          </div>
+
+          <div class="note">
+            ※本サイトは「公開ハブ」です。<br>
+            PDF/DOIは主にZenodo等の外部リポジトリに集約しています。<br>
+            <span class="kbd">GitHub Pages</span> による軽量運用を前提とします。
+          </div>
         </div>
+
+        <!-- 右：プロフィール -->
+        <aside class="profile-card" aria-label="profile">
+          <div class="profile-head">
+            <div class="avatar" aria-hidden="true">M</div>
+            <div>
+              <div class="profile-name">松岡孝文</div>
+              <div class="profile-role">コンセプトアーキテクト</div>
+            </div>
+          </div>
+
+          <div class="profile-body">
+            <div class="muted" style="margin-bottom:6px;">Focus</div>
+            <ul>
+              <li>構造思考による分野横断の思考実験</li>
+              <li>協働知性（Co-Intelligence）による検証と論文化</li>
+              <li>成果物の公開（DOI）と対外的な議論の促進</li>
+            </ul>
+
+            <div class="profile-links">
+              <a href="#outputs">成果物</a>
+              <a href="#method">方法論</a>
+              <a href="#collab">連絡</a>
+            </div>
+          </div>
+        </aside>
       </div>
-
-      <div class="profile-body">
-        <div class="muted" style="margin-bottom:6px;">Focus</div>
-        <ul>
-          <li>構造思考による分野横断の思考実験</li>
-          <li>協働知性（Co-Intelligence）による検証と論文化</li>
-          <li>成果物の公開（DOI）と対外的な議論の促進</li>
-        </ul>
-
-        <div class="profile-links">
-          <a href="#outputs">成果物</a>
-          <a href="#method">方法論</a>
-          <a href="#collab">連絡</a>
-        </div>
-      </div>
-    </aside>
-  </div>
-</section>
-
+    </section>
 
     <section id="projects" aria-label="projects">
       <h2>プロジェクト</h2>
@@ -670,26 +670,30 @@
       <h2>成果物（Outputs）</h2>
       <div class="box outputs">
         <div class="muted"></div>
-        
-  <ul class="outputs-grid">
-  <li>
-    <a href="https://doi.org/10.5281/zenodo.17720251" target="_blank" rel="noopener">
-      Zenodo：BFSSUダイジェスト版
-    </a>
-  </li>
-           <li>
-    <a href="https://doi.org/10.5281/zenodo.17948058" target="_blank" rel="noopener">
-      Zenodo：BFSSU詳細版
-    </a>
-  </li>
-           <li>
-    <a href="https://doi.org/10.5281/zenodo.18150465" target="_blank" rel="noopener">
-      Zenodo：BFSSU統一場理論
-    </a>
-  </li>
-          <li><a href="#" title="あとでDOIに差し替え">Zenodo：協働知性（方法論）</a></li>
+
+        <ul class="outputs-grid">
+          <li>
+            <a href="https://doi.org/10.5281/zenodo.17720251" target="_blank" rel="noopener">
+              Zenodo：BFSSUダイジェスト版
+            </a>
+          </li>
+          <li>
+            <a href="https://doi.org/10.5281/zenodo.17948058" target="_blank" rel="noopener">
+              Zenodo：BFSSU詳細版
+            </a>
+          </li>
+          <li>
+            <a href="https://doi.org/10.5281/zenodo.18150465" target="_blank" rel="noopener">
+              Zenodo：BFSSU統一場理論
+            </a>
+          </li>
+          <li>
+            <a href="#" title="あとでDOIに差し替え">
+              Zenodo：協働知性（方法論）
+            </a>
+          </li>
         </ul>
-        
+      </div>
     </section>
 
     <section id="collab" aria-label="collaboration">
@@ -701,6 +705,46 @@
           ※本サイトは法務・投資勧誘・医療助言等を目的としません。必要領域は専門家と連携します。
         </p>
         <p><strong>連絡</strong>：<a href="mailto:matsuoka-gpt@technocratnet.jp">matsuoka-gpt@technocratnet.jp</a></p>
+      </div>
+    </section>
+
+    <section id="essays" aria-label="essays">
+      <h2>徒然小論文</h2>
+
+      <div class="box">
+        <div class="muted" style="margin-bottom:10px;">
+          論文化前の思考実験・構造的違和感・仮説の断片。結論を急がず、知性の途中経過を記録します。
+        </div>
+
+        <ul class="outputs-grid">
+          <li>
+            <a href="essays/value-structure.html">
+              <strong>極端な価値はどこから生まれるのか</strong><br>
+              <span class="muted small">価値評価・ナラティブ・所有欲</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="essays/judgement-and-outcome.html">
+              <strong>判断と結果を分離する評価構造</strong><br>
+              <span class="muted small">意思決定・限定合理性・時間軸</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="essays/co-intelligence.html">
+              <strong>協働知性はなぜ個人で成立しうるのか</strong><br>
+              <span class="muted small">Human × AI・構造条件</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="essays/misunderstood-intelligence.html">
+              <strong>「理解されない知性」は失敗か</strong><br>
+              <span class="muted small">抽象思考・社会適応・誤解</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
