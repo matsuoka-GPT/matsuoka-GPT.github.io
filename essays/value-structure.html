@@ -3,99 +3,327 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>効率的な洗濯論｜松岡×GPT 思考実験ラボ</title>
+  <title>洗濯という小さな構造最適化｜松岡×GPT 思考実験ラボ</title>
+  <meta name="description" content="タイパ・コスパ・衣類寿命を同時に最大化する洗濯の構造最適化。日本語・英語の並列表記。" />
+
+  <style>
+    :root{
+      --max: 980px;
+      --gap: 18px;
+      --border: rgba(0,0,0,.12);
+      --muted: rgba(0,0,0,.62);
+      --bg: rgba(0,0,0,.03);
+    }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.9;
+      color: #111;
+      background: #fff;
+    }
+    header, main, footer{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    header{
+      padding-top: 28px;
+      padding-bottom: 18px;
+    }
+    .nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .nav a{
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .nav a:hover{ border-bottom-color: currentColor; }
+    h1{
+      font-size: 28px;
+      line-height: 1.3;
+      margin: 10px 0 6px;
+      letter-spacing: .01em;
+    }
+    .subtitle{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .meta{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    main{ padding-bottom: 26px; }
+    .note{
+      margin: 18px 0 22px;
+      padding: 12px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Bilingual layout */
+    .pair{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      padding: 18px 0;
+      border-top: 1px solid var(--border);
+    }
+    .pair:first-of-type{ border-top: 0; }
+    .col{
+      min-width: 0;
+    }
+    .lang{
+      display:inline-block;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+    p{
+      margin: 0 0 10px;
+    }
+    p:last-child{ margin-bottom: 0; }
+
+    @media (max-width: 860px){
+      .pair{ grid-template-columns: 1fr; }
+    }
+
+    footer{
+      padding: 22px 16px 40px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
 </head>
+
 <body>
-  <main style="max-width: 880px; margin: 40px auto; padding: 0 16px; line-height: 1.9;">
-    <p><a href="/">← トップに戻る</a></p>
+  <header>
+    <div class="nav">
+      <a href="/">← トップに戻る</a>
+      <span aria-hidden="true">•</span>
+      <a href="/#essays">徒然小論文</a>
+    </div>
 
     <h1>洗濯という小さな構造最適化</h1>
-    <p>― タイパ・コスパ・衣類寿命を同時に最大化する方法 ―</p>
-<p>洗濯という小さな構造最適化<p>
+    <p class="subtitle">― タイパ・コスパ・衣類寿命を同時に最大化する方法 ―</p>
+    <p class="meta">日本語 / English（並列表記）</p>
 
-<p>1. はじめに<p>
+    <div class="note">
+      ※ 本文は「内容そのまま」で英語を併記しています。スマホでは上下（JP→EN）に自動で並びます。
+    </div>
+  </header>
 
-洗濯は家事ではなく、構造設計の問題である。<br>
-洗濯は、なぜこれほど面倒に感じられるのだろうか。<br>
-洗う、干す、畳む。工程そのものは単純なはずなのに、多くの人が洗濯にストレスを感じている。<br>
-その理由は、洗濯が「頑張る家事」だからではない。<br>
-最初の設計が非合理なまま放置されているからである。<br>
-洗濯は努力量の問題ではなく、構造の問題である。<br>
+  <main>
+    <!-- 1 -->
+    <section class="pair" id="sec-1">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>1. はじめに｜洗濯は家事ではなく、構造設計の問題である</h2>
+        <p>洗濯は、なぜこれほど面倒に感じられるのだろうか。</p>
+        <p>洗う、干す、畳む。工程そのものは単純なはずなのに、多くの人が洗濯にストレスを感じている。</p>
+        <p>その理由は、洗濯が「頑張る家事」だからではない。<br>最初の設計が非合理なまま放置されているからである。</p>
+        <p>洗濯は努力量の問題ではなく、構造の問題である。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>1. Introduction｜Laundry is not “chores,” but an operations design problem</h2>
+        <p>Why does laundry feel so burdensome?</p>
+        <p>Wash, dry, fold—the steps themselves should be simple, yet many people experience stress around laundry.</p>
+        <p>The reason is not that laundry is a “chore you must work hard at.”<br>It’s that an irrational design has been left in place from the start.</p>
+        <p>Laundry is not a matter of effort; it is a matter of structure.</p>
+      </div>
+    </section>
 
-<p>2. 洗濯の目的を再定義する<p>
+    <!-- 2 -->
+    <section class="pair" id="sec-2">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>2. 洗濯の目的を再定義する｜清潔とは何か、洗うとは何か</h2>
+        <p>洗濯と聞くと、「着たら洗う」「毎回洗う」という発想が当たり前のように存在している。</p>
+        <p>しかし本当にそうだろうか。</p>
+        <p>肌着のように直接皮膚に触れ、汗や皮脂を吸収する衣類と、外気に触れるだけの上着やズボンは、同じ条件ではない。</p>
+        <p>洗濯の目的は「回数」ではなく、不快を除去し、衣類の機能を維持することである。</p>
+        <p>汚れていない、臭っていない、機能を損ねていない衣類を洗う合理性は、必ずしも高くない。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>2. Redefining the purpose｜What are “cleanliness” and “washing”?</h2>
+        <p>When people hear “laundry,” the default assumption often becomes: “If you wore it, wash it,” “Wash it every time.”</p>
+        <p>But is that truly necessary?</p>
+        <p>Underwear touches the skin directly and absorbs sweat and oils; outer layers like jackets and trousers often only contact the air. They are not the same conditions.</p>
+        <p>The purpose of laundry is not “frequency,” but removing discomfort and maintaining the function of clothing.</p>
+        <p>If an item isn’t dirty, doesn’t smell, and hasn’t lost function, the rationale for washing it is not necessarily strong.</p>
+      </div>
+    </section>
 
-清潔とは何か、洗うとは何か<br>
-洗濯と聞くと、「着たら洗う」「毎回洗う」という発想が当たり前のように存在している。<br>
-しかし本当にそうだろうか？<br>
-肌着のように直接皮膚に触れ、汗や皮脂を吸収する衣類と、外気に触れるだけの上着やズボンは、同じ条件ではない。<br>
-洗濯の目的は「回数」ではなく、不快を除去し、衣類の機能を維持することである。<br>
-汚れていない、臭っていない、機能を損ねていない衣類を洗う合理性は、必ずしも高くない。<br>
+    <!-- 3 -->
+    <section class="pair" id="sec-3">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>3. 洗いすぎが衣類を壊す理由｜洗濯はメンテナンスではなく消耗行為である</h2>
+        <p>洗濯は清潔にする行為であると同時に、繊維を摩耗させ、形状を崩し、寿命を縮める行為でもある。</p>
+        <p>洗うたびに衣類は少しずつ傷む。つまり洗濯は「維持」ではなく、消耗のトレードオフを伴う。</p>
+        <p>洗いすぎは清潔さを高めるどころか、衣類の劣化を早め、結果的にコストを増やしている可能性すらある。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>3. Why overwashing destroys clothes｜Laundry is not maintenance; it is wear</h2>
+        <p>Laundry cleans, but it also abrades fibers, distorts shape, and shortens the lifespan of garments.</p>
+        <p>With every wash, clothing is damaged little by little. Laundry is not pure “maintenance”; it inherently includes a trade-off of wear.</p>
+        <p>Overwashing may not increase cleanliness—it may accelerate deterioration and even raise total cost over time.</p>
+      </div>
+    </section>
 
-<p>3. 洗いすぎが衣類を壊す理由<p>
+    <!-- 4 -->
+    <section class="pair" id="sec-4">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>4. 洗う工程はすでに最適化されている｜洗濯機に任せるという判断</h2>
+        <p>現代の洗濯機は、洗浄力・水量・回転制御のいずれにおいても非常に高性能である。</p>
+        <p>人が細かく介入する余地は、ほとんど残っていない。</p>
+        <p>洗う工程において最も合理的な判断は、考えずに任せることである。</p>
+        <p>人が悩むほど、洗濯は複雑な作業ではない。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>4. The washing step is already optimized｜Delegate it to the machine</h2>
+        <p>Modern washing machines are highly capable in cleaning performance, water control, and spin control.</p>
+        <p>There is very little left for humans to “fine-tune.”</p>
+        <p>The most rational decision for the washing step is to delegate it without overthinking.</p>
+        <p>Laundry is not complex enough to justify continual human deliberation.</p>
+      </div>
+    </section>
 
-洗濯はメンテナンスではなく消耗行為である。<br>
-洗濯は清潔にする行為であると同時に、繊維を摩耗させ、形状を崩し、寿命を縮める行為でもある。<br>
-洗うたびに衣類は少しずつ傷む。<br>
-つまり洗濯は「維持」ではなく、消耗のトレードオフを伴う。<br>
-洗いすぎは清潔さを高めるどころか、衣類の劣化を早め、結果的にコストを増やしている可能性すらある。<br>
+    <!-- 5 -->
+    <section class="pair" id="sec-5">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>5. 本当の問題は乾燥工程にある｜乾かし方が洗濯の質を決める</h2>
+        <p>洗濯が面倒になる最大の要因は、乾燥工程にある。</p>
+        <p>回転式の乾燥機は確かに速いが、高温と摩擦によって衣類やタオルを確実に傷める。</p>
+        <p>外干しは一見自然で合理的に見えるが、花粉や汚れ、天候依存、突然の雨による再作業など、不確実性が多い。</p>
+        <p>効率化とは「速さ」ではなく、やり直しが発生しないことである。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>5. The real problem is drying｜How you dry determines the quality</h2>
+        <p>The biggest reason laundry feels burdensome lies in the drying step.</p>
+        <p>Tumble dryers are fast, but heat and friction reliably damage clothes and towels.</p>
+        <p>Outdoor drying looks “natural” and rational, yet it carries many uncertainties: pollen and dirt, weather dependence, and rework caused by sudden rain.</p>
+        <p>Efficiency is not “speed,” but the absence of rework.</p>
+      </div>
+    </section>
 
-<p>4. 洗う工程はすでに最適化されている<p>
+    <!-- 6 -->
+    <section class="pair" id="sec-6">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>6. 風呂場乾燥という最適解｜衣類を動かさず、環境だけを制御する</h2>
+        <p>最も合理的な乾燥方法は、風呂場乾燥である。</p>
+        <p>密閉された空間で、温度と湿度を安定させ、衣類を回転させず、摩擦も与えない。</p>
+        <p>天候に左右されず、再作業も発生しない。衣類にとって、これ以上優しい乾燥方法は少ない。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>6. Bathroom drying as the optimum｜Move the environment, not the clothes</h2>
+        <p>The most rational drying method is bathroom drying.</p>
+        <p>In a sealed space, temperature and humidity can be stabilized—without tumbling garments or adding friction.</p>
+        <p>It is weather-independent and produces no rework. Few methods are gentler on clothing than this.</p>
+      </div>
+    </section>
 
-洗濯機に任せるという判断<br>
-現代の洗濯機は、洗浄力・水量・回転制御のいずれにおいても非常に高性能である。<br>
-人が細かく介入する余地は、ほとんど残っていない。<br>
-洗う工程において最も合理的な判断は、考えずに任せることである。<br>
-人が悩むほど、洗濯は複雑な作業ではない。<br>
+    <!-- 7 -->
+    <section class="pair" id="sec-7">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>7. 畳まないという選択｜乾燥後の最大の無駄を排除する</h2>
+        <p>洗濯の最後に待っている「畳む」という工程は、衣類の機能にも寿命にも寄与しない。</p>
+        <p>畳むことは、作業であり儀式である。</p>
+        <p>乾燥後、そのままハンガーでクローゼットに収納すれば、畳む手間は不要になり、シワも防げ、選びやすくなる。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>7. Choosing not to fold｜Eliminate the biggest waste after drying</h2>
+        <p>The final “folding” step contributes neither to garment function nor to lifespan.</p>
+        <p>Folding is labor—and, in many ways, a ritual.</p>
+        <p>If you hang items as-is and store them on hangers, you remove folding effort, prevent wrinkles, and make selection easier.</p>
+      </div>
+    </section>
 
-<p>5. 本当の問題は乾燥工程にある<p>
+    <!-- 8 -->
+    <section class="pair" id="sec-8">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>8. 洗濯の完成点を再定義する｜次に着られる状態こそがゴール</h2>
+        <p>多くの人は「畳み終えた状態」を洗濯の完成と考えている。しかし本当の完成とは、次に着られる状態である。</p>
+        <p>ハンガー収納は、洗濯の終点と着用の起点を一致させる。判断も再作業も生まれない。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>8. Redefining “done”｜The goal is to be wearable next time</h2>
+        <p>Many consider laundry “done” when everything is folded. But true completion is a state in which items can be worn next.</p>
+        <p>Hanger storage aligns the endpoint of laundry with the starting point of wearing—creating neither decisions nor rework.</p>
+      </div>
+    </section>
 
-乾かし方が洗濯の質を決める。<br>
-洗濯が面倒になる最大の要因は、乾燥工程にある。<br>
-回転式の乾燥機は確かに速いが、高温と摩擦によって衣類やタオルを確実に傷める。<br>
-外干しは一見自然で合理的に見えるが、花粉や汚れ、天候依存、突然の雨による再作業など、不確実性が多い。<br>
-効率化とは「速さ」ではなく、やり直しが発生しないことである。<br>
+    <!-- 9 -->
+    <section class="pair" id="sec-9">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>9. タイパ・コスパ・衣類寿命の同時最適化｜三つを同時に満たす唯一の構造</h2>
+        <p>この洗濯設計は、時間を使わない／お金を使わない／衣類を傷めない、という三つを同時に満たす。</p>
+        <p>頑張らず、我慢せず、道具を増やさず、工程を削っただけで成立する。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>9. Optimizing time, cost, and garment life simultaneously｜One structure that satisfies all three</h2>
+        <p>This design satisfies three goals at once: use less time, spend less money, and damage clothes less.</p>
+        <p>It works without trying harder, without enduring inconvenience, and without adding gadgets—only by removing steps.</p>
+      </div>
+    </section>
 
-<p>6. 風呂場乾燥という最適解<p>
-
-衣類を動かさず、環境だけを制御する。<br>
-最も合理的な乾燥方法は、風呂場乾燥である。<br>
-密閉された空間で、温度と湿度を安定させ、衣類を回転させず、摩擦も与えない。<br>
-天候に左右されず、再作業も発生しない。<br>
-衣類にとって、これ以上優しい乾燥方法は少ない。<br>
-
-<p>7. 畳まないという選択<p>
-
-乾燥後の最大の無駄を排除する。<br>
-洗濯の最後に待っている「畳む」という工程は、衣類の機能にも寿命にも寄与しない。<br>
-畳むことは、作業であり儀式である。<br>
-乾燥後、そのままハンガーでクローゼットに収納すれば、畳む手間は不要になり、シワも防げ、選びやすくなる。<br>
-
-<p>8. 洗濯の完成点を再定義する<p>
-
-次に着られる状態こそがゴール。<br>
-多くの人は「畳み終えた状態」を洗濯の完成と考えている。<br>
-しかし本当の完成とは、次に着られる状態である。<br>
-ハンガー収納は、洗濯の終点と着用の起点を一致させる。<br>
-判断も再作業も生まれない。<br>
-
-<p>9. タイパ・コスパ・衣類寿命の同時最適化<p>
-
-三つを同時に満たす唯一の構造。<br>
-この洗濯設計は、時間を使わない。<br>
-お金を使わない、衣類を傷めない。<br>
-という三つを同時に満たす。<br>
-頑張らず、我慢せず、道具を増やさず、工程を削っただけで成立する。<br>
-
-<p>10. おわりに<p>
-
-頑張らないために、最初に構造を考える。<br>
-洗濯は、何も起きないほど良い。<br>
-トラブルがなく、迷いがなく、やり直しがない。<br>
-それは努力の成果ではなく、設計の成果である。<br>
-小さな構造最適化は、生活に静かな余白を生む。<br>
-洗濯は、その最も分かりやすい例にすぎない。<br>
-    <!-- ここに本文をコピペ（段落ごとに<p>で囲むと読みやすい） -->
+    <!-- 10 -->
+    <section class="pair" id="sec-10">
+      <div class="col">
+        <span class="lang">JP</span>
+        <h2>10. おわりに｜頑張らないために、最初に構造を考える</h2>
+        <p>洗濯は、何も起きないほど良い。</p>
+        <p>トラブルがなく、迷いがなく、やり直しがない。それは努力の成果ではなく、設計の成果である。</p>
+        <p>小さな構造最適化は、生活に静かな余白を生む。洗濯は、その最も分かりやすい例にすぎない。</p>
+      </div>
+      <div class="col">
+        <span class="lang">EN</span>
+        <h2>10. Closing｜Think about structure first, so you don’t have to “try harder”</h2>
+        <p>The best laundry is the kind where nothing happens.</p>
+        <p>No trouble, no hesitation, no rework. That is not the result of effort—it is the result of design.</p>
+        <p>Small structural optimizations create quiet slack in life. Laundry is simply one of the clearest examples.</p>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <p>© 松岡×GPT 思考実験ラボ</p>
+  </footer>
 </body>
 </html>
-
