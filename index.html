@@ -58,18 +58,17 @@
       margin-bottom: 10px;
     }
 
- .avatar{
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(43,100,255,.22);
-      background: rgba(43,100,255,.08);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: var(--accent2);
-      font-weight: 800;
-    }
+.avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(43,100,255,.22);
+  background: rgba(255,255,255,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* ←はみ出し防止 */
+}
 
     .profile-name{
       font-weight: 800;
@@ -525,6 +524,12 @@
       border-radius: 8px;
       background: rgba(255,255,255,.6);
     }
+    .avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ←松紋を切らずに収める */
+}
+
   </style>
 </head>
 
@@ -573,7 +578,10 @@
  <!-- 右：プロフィール -->
         <aside class="profile-card" aria-label="profile">
           <div class="profile-head">
-            <div class="avatar" aria-hidden="true">M</div>
+           <div class="avatar">
+  <img src="/images/matu.png" alt="松の家紋">
+</div>
+
             <div>
               <div class="profile-name">松岡孝文</div>
               <div class="profile-role">コンセプトアーキテクト</div>
