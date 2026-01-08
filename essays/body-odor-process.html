@@ -4,267 +4,392 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>体臭はなぜ発生するのか｜松岡×GPT 思考実験ラボ</title>
-  <meta name="description" content="体臭はなぜ発生するのか。清潔神話を離れ、食事という入口から体臭の構造を読み解く徒然小論文（日本語／英語併記）。" />
+  <meta name="description" content="体臭はなぜ発生するのか。清潔神話と食の履歴という構造から体臭の発生プロセスを解く。日本語・英語併記。" />
 
   <style>
-    :root{
-      --max: 980px;
-      --gap: 18px;
-      --border: rgba(0,0,0,.12);
-      --muted: rgba(0,0,0,.6);
-      --bg: rgba(0,0,0,.03);
-    }
     body{
       margin:0;
       font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP",
                    "Segoe UI", Roboto, "Helvetica Neue", Arial;
       line-height: 1.9;
-      color: #111;
-      background: #fff;
+      color:#111;
+      background:#fff;
     }
     header, main, footer{
-      max-width: var(--max);
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 16px;
     }
     header{
       padding-top: 28px;
-      padding-bottom: 18px;
+      padding-bottom: 20px;
     }
-    .nav{
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-    .nav a{
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-    .nav a:hover{ border-bottom-color: currentColor; }
-
     h1{
       font-size: 28px;
-      line-height: 1.3;
-      margin: 10px 0 6px;
+      margin: 0 0 6px;
     }
     .subtitle{
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 15px;
+      color:#555;
+      margin-bottom: 24px;
     }
-    .note{
-      margin: 18px 0 22px;
-      padding: 12px 14px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
     .pair{
-      display: grid;
+      display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--gap);
-      padding: 18px 0;
-      border-top: 1px solid var(--border);
+      gap:18px;
+      padding: 20px 0;
+      border-top:1px solid #ddd;
     }
-    .pair:first-of-type{ border-top: 0; }
-
+    .pair:first-of-type{ border-top:none; }
     .lang{
+      font-size:12px;
+      color:#666;
+      border:1px solid #ccc;
+      padding:2px 8px;
+      border-radius:999px;
       display:inline-block;
-      font-size: 12px;
-      letter-spacing: .08em;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 2px 8px;
-      border-radius: 999px;
-      margin-bottom: 10px;
+      margin-bottom:8px;
     }
-
     h2{
+      font-size:18px;
       margin: 0 0 10px;
-      font-size: 18px;
-      line-height: 1.4;
     }
     p{ margin: 0 0 10px; }
-    p:last-child{ margin-bottom: 0; }
 
     @media (max-width: 860px){
       .pair{ grid-template-columns: 1fr; }
     }
 
     footer{
-      padding: 22px 16px 40px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
+      border-top:1px solid #ddd;
+      margin-top:40px;
+      padding:20px 16px 40px;
+      color:#666;
+      font-size:13px;
     }
   </style>
 </head>
 
 <body>
 <header>
-  <div class="nav">
-    <a href="/">← トップに戻る</a>
-  </div>
-
   <h1>体臭はなぜ発生するのか</h1>
   <p class="subtitle">― 清潔神話と食の履歴 ―</p>
-
-  <div class="note">
-    本文は内容を変えず、日本語／英語を並列表記しています。<br>
-    PCでは左右、スマホでは上下に表示されます。
-  </div>
 </header>
 
 <main>
 
-<!-- 1 -->
 <section class="pair">
   <div>
     <span class="lang">JP</span>
-    <h2>1. はじめに｜体臭はなぜ人格の問題にされやすいのか</h2>
+    <h2>1. はじめに</h2>
+
+    <p>体臭はなぜ、人格の問題にされやすいのか</p>
+
     <p>体臭という話題は、不思議な扱われ方をする。</p>
-    <p>不快なものとして語られる一方で、「清潔感」や「生活態度」、時には人格評価と結びついてしまう。</p>
+    <p>不快なものとして語られる一方で、なぜか「清潔感」や「生活態度」、時には人格評価と結びついてしまう。</p>
+
     <p>しかし本当に、体臭は努力や意識の問題なのだろうか。</p>
-    <p>体臭を構造的に見ていくと、答えはまったく違う場所にある。</p>
+
+    <p>体臭を構造的に見ていくと、この問いへの答えはまったく違う場所にある。</p>
   </div>
+
   <div>
     <span class="lang">EN</span>
-    <h2>1. Introduction｜Why body odor is treated as a personality issue</h2>
-    <p>Body odor is discussed in a peculiar way.</p>
-    <p>It is seen as unpleasant, yet often linked to “cleanliness,” “lifestyle,” or even character.</p>
-    <p>But is body odor really a matter of effort or awareness?</p>
-    <p>A structural view leads to a very different answer.</p>
+    <h2>1. Introduction</h2>
+
+    <p>Why is body odor so often treated as a matter of personal character?</p>
+
+    <p>Body odor is a topic that is handled in a peculiar way.</p>
+    <p>Although it is discussed as something unpleasant, it is somehow linked to “cleanliness,” “lifestyle,” and at times even judgments of character.</p>
+
+    <p>But is body odor truly a matter of effort or awareness?</p>
+
+    <p>When viewed structurally, the answer to this question lies in an entirely different place.</p>
   </div>
 </section>
 
-<!-- 2 -->
 <section class="pair">
   <div>
     <span class="lang">JP</span>
-    <h2>2. 体臭の正体は汗ではない</h2>
+    <h2>2. 体臭の正体は「汗」ではない</h2>
+
+    <p>汗は原因ではなく、運び屋である</p>
+
     <p>多くの人は、汗をかくと臭うと思っている。</p>
-    <p>しかし汗そのものは、ほぼ無臭である。</p>
-    <p>体臭の正体は、皮膚から排出された成分と、それを常在菌が分解した代謝産物の組み合わせだ。</p>
-    <p>汗は原因ではなく、体内の情報を外に運ぶ媒体にすぎない。</p>
+    <p>しかし、汗そのものはほぼ無臭である。</p>
+
+    <p>体臭の正体は、</p>
+    <p>皮膚から排出された成分</p>
+    <p>それを皮膚常在菌が分解した代謝産物</p>
+
+    <p>この組み合わせによって生じる。</p>
+
+    <p>つまり汗は、臭いの原因ではなく、体内の情報を外に運ぶ媒体にすぎない。</p>
   </div>
+
   <div>
     <span class="lang">EN</span>
-    <h2>2. Sweat is not the cause of body odor</h2>
-    <p>Many believe that sweating itself causes odor.</p>
-    <p>In reality, sweat is almost odorless.</p>
-    <p>Body odor arises from substances excreted through the skin and the metabolic byproducts of skin bacteria.</p>
-    <p>Sweat is merely a carrier of internal information.</p>
+    <h2>2. The true nature of body odor is not “sweat”</h2>
+
+    <p>Sweat is not the cause, but the carrier.</p>
+
+    <p>Many people believe that sweating itself causes odor.</p>
+    <p>However, sweat on its own is almost odorless.</p>
+
+    <p>The true source of body odor lies in:</p>
+    <p>Substances excreted through the skin</p>
+    <p>Metabolic byproducts created when skin-resident bacteria break them down</p>
+
+    <p>It is the combination of these that produces body odor.</p>
+
+    <p>Sweat, therefore, is not the cause of odor, but merely a medium that carries internal information to the outside.</p>
   </div>
 </section>
 
-<!-- 3 -->
 <section class="pair">
   <div>
     <span class="lang">JP</span>
-    <h2>3. 臭いの材料はどこから来るのか</h2>
+    <h2>3. では、臭いの「材料」はどこから来るのか</h2>
+
+    <p>答えは、体の中に入れたものにある</p>
+
     <p>皮脂や汗に含まれる成分は、体内で新たに作られているわけではない。</p>
-    <p>多くは、食べたものが代謝され、形を変えて現れたものだ。</p>
-    <p>体臭とは、体の中を通過してきた食の履歴が、時間差で表に出てきたものである。</p>
+    <p>多くは、食べたものが代謝され、形を変えて現れたものである。</p>
+
+    <p>脂質、タンパク質、刺激物、加工食品。</p>
+    <p>それらは分解され、吸収され、やがて皮膚から排出される。</p>
+
+    <p>体臭とは、</p>
+    <p>体の中を通過してきた食の履歴が、時間差で表に出てきたものである。</p>
   </div>
+
   <div>
     <span class="lang">EN</span>
-    <h2>3. Where do odor-causing substances come from?</h2>
-    <p>The components found in sweat and sebum are not newly created.</p>
-    <p>They are largely transformed byproducts of what we eat.</p>
-    <p>Body odor is the delayed surface expression of dietary history.</p>
+    <h2>3. So where do the “materials” of odor come from?</h2>
+
+    <p>The answer lies in what we put into our bodies.</p>
+
+    <p>The substances found in sebum and sweat are not newly created inside the body.</p>
+    <p>Most are foods that have been metabolized and transformed.</p>
+
+    <p>Fats, proteins, stimulants, and processed foods.</p>
+    <p>These are broken down, absorbed, and eventually excreted through the skin.</p>
+
+    <p>Body odor is,</p>
+    <p>the delayed external appearance of the dietary history that has passed through the body.</p>
   </div>
 </section>
 
-<!-- 4 -->
 <section class="pair">
   <div>
     <span class="lang">JP</span>
-    <h2>4. 生き物は食べたもので匂いが決まる</h2>
-    <p>この構造は人間に限らない。</p>
-    <p>柑橘を与えた養殖魚や、ドングリを食べて育った豚は、臭みが少ない。</p>
-    <p>草食動物は体臭が弱く、肉食動物は強い。</p>
-    <p>人間だけが例外である理由はない。</p>
+    <h2>4. 生き物は「食べたもので匂いが決まる」</h2>
+
+    <p>これは人間に限った話ではない</p>
+
+    <p>この構造は、人間だけのものではない。</p>
+
+    <p>柑橘を混ぜた餌で育てた養殖魚は、魚臭さが抑えられる</p>
+    <p>ドングリを主食にした豚は、脂の臭みが少ない</p>
+    <p>草食動物は体臭が弱く、肉食動物は強い</p>
+
+    <p>これらはすべて、洗い方や清潔さの問題ではない。</p>
+    <p>何を食べて育ったかの違いである。</p>
+
+    <p>人間だけが、この原理から例外になる理由はない。</p>
   </div>
+
   <div>
     <span class="lang">EN</span>
-    <h2>4. Living beings smell like what they eat</h2>
-    <p>This structure is not unique to humans.</p>
-    <p>Fish fed citrus-based diets or pigs raised on acorns have less odor.</p>
-    <p>Herbivores tend to smell less, carnivores more.</p>
-    <p>Humans are no exception.</p>
+    <h2>4. Living beings smell according to what they eat</h2>
+
+    <p>This is not limited to humans.</p>
+
+    <p>This structure applies to all living beings.</p>
+
+    <p>Farmed fish raised on citrus-mixed feed have less fishy odor.</p>
+    <p>Pigs raised primarily on acorns have less fatty smell.</p>
+    <p>Herbivores tend to have weaker body odor, while carnivores are stronger.</p>
+
+    <p>These differences are not about washing or cleanliness.</p>
+    <p>They are differences in what was eaten.</p>
+
+    <p>There is no reason humans should be an exception to this principle.</p>
   </div>
 </section>
 
-<!-- 5 -->
 <section class="pair">
   <div>
     <span class="lang">JP</span>
     <h2>5. なぜ洗っても臭いは戻るのか</h2>
-    <p>体臭対策は、外側からの対症療法に偏りがちだ。</p>
-    <p>しかし入口が変わらなければ、出口も変わらない。</p>
-    <p>洗っても臭いが戻るのは、発生源が同じだからである。</p>
+
+    <p>対症療法は、入口を変えない</p>
+
+    <p>体臭が気になると、人はまず「外側」から対処しようとする。</p>
+
+    <p>強い石鹸</p>
+    <p>消臭剤</p>
+    <p>香りで覆い隠す</p>
+
+    <p>これらは一時的には効果がある。</p>
+    <p>しかし、しばらくするとまた臭いが戻る。</p>
+
+    <p>それは当然で、発生源が変わっていないからである。</p>
+
+    <p>入口が同じままなら、出口も変わらない。</p>
   </div>
+
   <div>
     <span class="lang">EN</span>
-    <h2>5. Why odor returns after washing</h2>
-    <p>Most countermeasures focus on external treatment.</p>
-    <p>If the input remains unchanged, the output will also remain the same.</p>
-    <p>Odor returns because the source has not changed.</p>
+    <h2>5. Why odor returns even after washing</h2>
+
+    <p>Symptomatic treatment does not change the point of entry.</p>
+
+    <p>When people become concerned about body odor, they tend to address it from the outside.</p>
+
+    <p>Strong soaps</p>
+    <p>Deodorizers</p>
+    <p>Masking with fragrance</p>
+
+    <p>These methods may work temporarily.</p>
+    <p>But after some time, the odor returns.</p>
+
+    <p>This is only natural, because the source has not changed.</p>
+
+    <p>If the entry point remains the same, the exit will not change either.</p>
   </div>
 </section>
 
-<!-- 6 -->
 <section class="pair">
   <div>
     <span class="lang">JP</span>
-    <h2>6. 食事を変えると体臭が変わる理由</h2>
-    <p>体臭の主成分は脂溶性で、体内に残りやすい。</p>
-    <p>一方、野菜や果物に多い成分は水溶性で、臭気物質になりにくい。</p>
-    <p>食事を見直すことは、臭いを消すことではなく、臭いを作らせない条件を作ることだ。</p>
+    <h2>6. 食事を変えると、なぜ体臭は変わるのか</h2>
+
+    <p>臭いを消すのではなく、作らせない</p>
+
+    <p>体臭として知覚されやすい成分の多くは、</p>
+
+    <p>脂溶性</p>
+    <p>体内に残りやすい</p>
+    <p>分解に時間がかかる</p>
+
+    <p>という特徴を持っている。</p>
+
+    <p>一方、野菜や果物に多い成分は、</p>
+
+    <p>水溶性</p>
+    <p>代謝が早い</p>
+    <p>臭気物質になりにくい</p>
+
+    <p>つまり、食事を見直すことは、</p>
+    <p>臭いを消す行為ではなく、臭いが生まれにくい条件を作る行為である。</p>
   </div>
+
   <div>
     <span class="lang">EN</span>
     <h2>6. Why changing diet changes body odor</h2>
-    <p>Many odor compounds are fat-soluble and persist in the body.</p>
-    <p>Plant-based components are largely water-soluble and less odor-forming.</p>
-    <p>Dietary change prevents odor formation rather than masking it.</p>
+
+    <p>It is not about eliminating odor, but preventing it from forming.</p>
+
+    <p>Many substances that are easily perceived as body odor are:</p>
+
+    <p>Fat-soluble</p>
+    <p>Likely to remain in the body</p>
+    <p>Slow to break down</p>
+
+    <p>These are their defining characteristics.</p>
+
+    <p>By contrast, many compounds found in vegetables and fruits are:</p>
+
+    <p>Water-soluble</p>
+    <p>Metabolized quickly</p>
+    <p>Unlikely to become odor-causing substances</p>
+
+    <p>In other words, revising one’s diet is not about erasing odor,</p>
+    <p>but about creating conditions in which odor is less likely to arise.</p>
   </div>
 </section>
 
-<!-- 7 -->
 <section class="pair">
   <div>
     <span class="lang">JP</span>
-    <h2>7. 体臭対策は努力ではない</h2>
-    <p>体臭は清潔感や意識の問題ではない。</p>
+    <h2>7. 体臭対策は「努力」ではない</h2>
+
+    <p>設計の問題である</p>
+
+    <p>ここで重要なのは、体臭の話を根性論にしないことだ。</p>
+
+    <p>清潔にしていないから</p>
+    <p>意識が低いから</p>
+    <p>体質だから仕方ない</p>
+
+    <p>これらはどれも、構造を見ない説明である。</p>
+
+    <p>体臭は、</p>
     <p>何を体に入れているかという設計の結果にすぎない。</p>
   </div>
+
   <div>
     <span class="lang">EN</span>
-    <h2>7. Body odor is not about effort</h2>
-    <p>Body odor is not a matter of awareness or discipline.</p>
-    <p>It is simply the outcome of what enters the body.</p>
+    <h2>7. Body odor countermeasures are not about “effort”</h2>
+
+    <p>It is a matter of design.</p>
+
+    <p>What is important here is not to turn the discussion of body odor into a matter of willpower.</p>
+
+    <p>“Because you are not clean enough”</p>
+    <p>“Because you lack awareness”</p>
+    <p>“Because it is your constitution”</p>
+
+    <p>All of these explanations ignore structure.</p>
+
+    <p>Body odor is simply</p>
+    <p>the result of how what enters the body has been designed.</p>
   </div>
 </section>
 
-<!-- 8 -->
 <section class="pair">
   <div>
     <span class="lang">JP</span>
-    <h2>8. 結論｜体臭が気になる人にとっての最適解</h2>
-    <p>体臭が気になる人にとって、最も合理的な対策は食事という入口を見直すことだ。</p>
-    <p>体臭は努力や人格の問題ではない。</p>
-    <p>食の履歴が、時間差で現れているだけである。</p>
+    <h2>8. 結論</h2>
+
+    <p>体臭が気になる人にとっての最適解</p>
+
+    <p>体臭が気になる人にとって、</p>
+    <p>最も合理的な対策は、洗い方を変えることでも、香りを足すことでもない。</p>
+
+    <p>食事という入口を見直すことである。</p>
+
+    <p>体臭は努力や清潔感の問題ではない。</p>
+    <p>食の履歴が、時間差で現れているだけだ。</p>
+
+    <p>構造を理解すれば、</p>
+    <p>責める必要も、過剰に対策する必要もなくなる。</p>
+
+    <p>体臭は、</p>
+    <p>「何を入れて、何が出てきているのか」を教えてくれる、</p>
+    <p>ただの結果にすぎない。</p>
   </div>
+
   <div>
     <span class="lang">EN</span>
-    <h2>8. Conclusion｜The optimal solution</h2>
-    <p>The most rational solution for body odor concerns is to reassess dietary input.</p>
-    <p>Body odor is not a character flaw.</p>
-    <p>It is simply the delayed output of dietary history.</p>
+    <h2>8. Conclusion</h2>
+
+    <p>The optimal solution for those concerned about body odor</p>
+
+    <p>For those who are troubled by body odor,</p>
+    <p>the most rational approach is neither changing how one washes nor adding fragrance.</p>
+
+    <p>It is to reexamine diet as the point of entry.</p>
+
+    <p>Body odor is not a matter of effort or cleanliness.</p>
+    <p>It is merely the delayed appearance of dietary history.</p>
+
+    <p>By understanding the structure,</p>
+    <p>there is no need to blame oneself or to take excessive countermeasures.</p>
+
+    <p>Body odor is simply</p>
+    <p>a result that reveals</p>
+    <p>what has entered the body and what has emerged from it.</p>
   </div>
 </section>
 
@@ -275,4 +400,3 @@
 </footer>
 </body>
 </html>
-
