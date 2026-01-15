@@ -4,224 +4,113 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>〜平均と言う雑過ぎる指標。 / Average: A Far-Too-Coarse Metric</title>
-  <style>
-    :root{
-      --bg:#ffffff;
-      --panel:#f8fafc;
-      --text:#0f172a;
-      --muted:#475569;
-      --line:#e2e8f0;
-      --accent:#2563eb;
-    }
-    html{
-      scroll-behavior:smooth;
-    }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.9;
-    }
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:28px 18px 64px;
-    }
-    header{
-      margin:6px 0 20px;
-      padding:20px 20px;
-      background:#f1f5f9;
-      border:1px solid var(--line);
-      border-radius:14px;
-    }
-    header h1{
-      margin:0 0 6px;
-      font-size:1.35rem;
-      letter-spacing:.02em;
-    }
-    header .sub{
-      color:var(--muted);
-      font-size:.95rem;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-    }
-    .col{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:20px 20px 10px;
-    }
-    .lang{
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:12px;
-      padding-bottom:10px;
-      border-bottom:1px solid var(--line);
-      margin-bottom:14px;
-    }
-    .lang h2{
-      margin:0;
-      font-size:1.05rem;
-    }
-    .lang .tag{
-      color:var(--muted);
-      font-size:.85rem;
-    }
-    p{
-      margin:0 0 14px;
-    }
-    a{
-      color:var(--accent);
-      text-decoration:none;
-    }
-    a:hover{
-      text-decoration:underline;
-    }
-    .nav{
-      margin-top:36px;
-      padding-top:20px;
-      border-top:1px solid var(--line);
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-    .nav a{
-      font-size:.95rem;
-      background:#f1f5f9;
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:8px 14px;
-    }
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
-      header h1{ font-size:1.2rem; }
-    }
-  </style>
 </head>
 
 <body id="top">
-  <div class="wrap">
-    <header>
-      <h1>〜平均と言う雑過ぎる指標。 <span style="color:var(--muted);font-weight:500;">/</span> Average: A Far-Too-Coarse Metric</h1>
-      <div class="sub">徒然小論文（Japanese / English）</div>
-    </header>
+  <p>
+    <a href="/">← トップに戻る</a> • <a href="/">徒然小論文</a>
+  </p>
 
-    <div class="grid">
-      <!-- Japanese -->
-      <article class="col" lang="ja">
-        <div class="lang">
-          <h2>日本語</h2>
-          <div class="tag">Original</div>
-        </div>
+  <h1>〜平均と言う雑過ぎる指標。</h1>
 
-        <p>平均ほど、安心感を与える数字はない。<br>
-        そして同時に、平均ほど雑な数字もない。</p>
+  <p>― Average: A Far-Too-Coarse Metric ―</p>
 
-        <p>平均年収、平均気温、平均寿命、平均的な社員。<br>
-        私たちは何かを判断するとき、とりあえず「平均」を置く。<br>
-        それは思考の出発点であるはずなのに、<br>
-        いつの間にか思考の終点になっている。</p>
+  <hr />
 
-        <p>平均は、分布を語らない。<br>
-        上と下、偏り、歪み、外れ値。<br>
-        本来そこにこそ意味があるものを、<br>
-        平均は一つの数字に押し潰してしまう。</p>
+  <p>Japanese</p>
 
-        <p>にもかかわらず、<br>
-        平均は「客観的」「合理的」「公平」に見える。<br>
-        だから便利だ。<br>
-        便利すぎるがゆえに、危険でもある。</p>
+  <p>平均ほど、安心感を与える数字はない。<br>
+  そして同時に、平均ほど雑な数字もない。</p>
 
-        <p>平均で見れば問題ない。<br>
-        平均的には順調だ。<br>
-        業界平均と比べれば健全だ。</p>
+  <p>平均年収、平均気温、平均寿命、平均的な社員。<br>
+  私たちは何かを判断するとき、とりあえず「平均」を置く。<br>
+  それは思考の出発点であるはずなのに、<br>
+  いつの間にか思考の終点になっている。</p>
 
-        <p>こうした言葉は、<br>
-        説明のようでいて、実は思考停止の宣言に近い。</p>
+  <p>平均は、分布を語らない。<br>
+  上と下、偏り、歪み、外れ値。<br>
+  本来そこにこそ意味があるものを、<br>
+  平均は一つの数字に押し潰してしまう。</p>
 
-        <p>現実の意思決定は、<br>
-        常に「どこが壊れやすいか」「どこが極端か」を<br>
-        見なければならない。<br>
-        しかし平均は、<br>
-        極端なものを最初から「ノイズ」として扱う。</p>
+  <p>にもかかわらず、<br>
+  平均は「客観的」「合理的」「公平」に見える。<br>
+  だから便利だ。<br>
+  便利すぎるがゆえに、危険でもある。</p>
 
-        <p>平均とは、<br>
-        世界を理解するための道具ではなく、<br>
-        世界を単純化しすぎるための道具になりやすい。</p>
+  <p>平均で見れば問題ない。<br>
+  平均的には順調だ。<br>
+  業界平均と比べれば健全だ。</p>
 
-        <p>平均で語られる社会は、<br>
-        平均から外れた瞬間に脆くなる。<br>
-        平均で設計された組織は、<br>
-        想定外に出会ったとき、何も判断できなくなる。</p>
+  <p>こうした言葉は、<br>
+  説明のようでいて、実は思考停止の宣言に近い。</p>
 
-        <p>平均は、嘘をついているわけではない。<br>
-        ただ、あまりに多くのことを黙っている。</p>
+  <p>現実の意思決定は、<br>
+  常に「どこが壊れやすいか」「どこが極端か」を<br>
+  見なければならない。<br>
+  しかし平均は、<br>
+  極端なものを最初から「ノイズ」として扱う。</p>
 
-        <p>その沈黙に安心したとき、<br>
-        私たちはもう考えることをやめているのかもしれない。</p>
-      </article>
+  <p>平均とは、<br>
+  世界を理解するための道具ではなく、<br>
+  世界を単純化しすぎるための道具になりやすい。</p>
 
-      <!-- English -->
-      <article class="col" lang="en">
-        <div class="lang">
-          <h2>English</h2>
-          <div class="tag">Translation</div>
-        </div>
+  <p>平均で語られる社会は、<br>
+  平均から外れた瞬間に脆くなる。<br>
+  平均で設計された組織は、<br>
+  想定外に出会ったとき、何も判断できなくなる。</p>
 
-        <p>No number offers comfort like an average does.<br>
-        And at the same time, no number is as coarse as an average.</p>
+  <p>平均は、嘘をついているわけではない。<br>
+  ただ、あまりに多くのことを黙っている。</p>
 
-        <p>Average income, average temperature, average lifespan, the “average” employee.<br>
-        When we judge something, we often start by placing an “average” on the table.<br>
-        It should be the beginning of thought—<br>
-        yet before we notice, it becomes the end of thought.</p>
+  <p>その沈黙に安心したとき、<br>
+  私たちはもう考えることをやめているのかもしれない。</p>
 
-        <p>An average does not speak of distributions.<br>
-        The highs and lows, skew, distortion, outliers.<br>
-        What truly carries meaning often lives there—<br>
-        and the average crushes it into a single figure.</p>
+  <p>English</p>
 
-        <p>And yet,<br>
-        the average looks “objective,” “rational,” and “fair.”<br>
-        That is why it is convenient.<br>
-        And precisely because it is too convenient, it is dangerous.</p>
+  <p>No number offers comfort like an average does.<br>
+  And at the same time, no number is as coarse as an average.</p>
 
-        <p>On average, there is no problem.<br>
-        On average, things are going well.<br>
-        Compared with the industry average, we are healthy.</p>
+  <p>Average income, average temperature, average lifespan, the “average” employee.<br>
+  When we judge something, we often start by placing an “average” on the table.<br>
+  It should be the beginning of thought—<br>
+  yet before we notice, it becomes the end of thought.</p>
 
-        <p>These phrases sound like explanations,<br>
-        but in truth they are close to declarations of stopped thinking.</p>
+  <p>An average does not speak of distributions.<br>
+  The highs and lows, skew, distortion, outliers.<br>
+  What truly carries meaning often lives there—<br>
+  and the average crushes it into a single figure.</p>
 
-        <p>Real-world decision-making requires us to keep asking:<br>
-        “Where is it fragile?” “Where is it extreme?”<br>
-        But the average treats extremes as “noise” from the start.</p>
+  <p>And yet,<br>
+  the average looks “objective,” “rational,” and “fair.”<br>
+  That is why it is convenient.<br>
+  And precisely because it is too convenient, it is dangerous.</p>
 
-        <p>An average is not merely a tool to understand the world.<br>
-        It too easily becomes a tool to oversimplify the world.</p>
+  <p>On average, there is no problem.<br>
+  On average, things are going well.<br>
+  Compared with the industry average, we are healthy.</p>
 
-        <p>A society spoken of in averages becomes brittle the moment it departs from the average.<br>
-        An organization designed around averages loses the ability to judge<br>
-        the moment it encounters the unforeseen.</p>
+  <p>These phrases sound like explanations,<br>
+  but in truth they are close to declarations of stopped thinking.</p>
 
-        <p>The average is not lying.<br>
-        It is simply silent about far too many things.</p>
+  <p>Real-world decision-making requires us to keep asking:<br>
+  “Where is it fragile?” “Where is it extreme?”<br>
+  But the average treats extremes as “noise” from the start.</p>
 
-        <p>And when that silence comforts us,<br>
-        we may already have stopped thinking.</p>
-      </article>
-    </div>
+  <p>An average is not merely a tool to understand the world.<br>
+  It too easily becomes a tool to oversimplify the world.</p>
 
-    <!-- Navigation -->
-    <nav class="nav">
-      <a href="#top">⬆ トップに戻る</a>
-      <a href="/tsurezure.html">📄 徒然小論文一覧へ</a>
-    </nav>
-  </div>
+  <p>A society spoken of in averages becomes brittle the moment it departs from the average.<br>
+  An organization designed around averages loses the ability to judge<br>
+  the moment it encounters the unforeseen.</p>
+
+  <p>The average is not lying.<br>
+  It is simply silent about far too many things.</p>
+
+  <p>And when that silence comforts us,<br>
+  we may already have stopped thinking.</p>
+
+  <p>
+    <a href="#top">↑ トップに戻る</a> • <a href="/">徒然小論文へ</a>
+  </p>
 </body>
 </html>
