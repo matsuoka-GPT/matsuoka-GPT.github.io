@@ -6,16 +6,19 @@
   <title>〜平均と言う雑過ぎる指標。 / Average: A Far-Too-Coarse Metric</title>
   <style>
     :root{
-      --bg:#0b0f14;
-      --panel:#0f1620;
-      --text:#e6edf3;
-      --muted:#9fb0c0;
-      --line:#223041;
-      --accent:#7aa2ff;
+      --bg:#ffffff;
+      --panel:#f8fafc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --accent:#2563eb;
+    }
+    html{
+      scroll-behavior:smooth;
     }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background:var(--bg);
       color:var(--text);
       line-height:1.9;
@@ -23,12 +26,12 @@
     .wrap{
       max-width:1100px;
       margin:0 auto;
-      padding:28px 18px 56px;
+      padding:28px 18px 64px;
     }
     header{
-      margin:6px 0 18px;
-      padding:18px 18px;
-      background:linear-gradient(180deg, rgba(122,162,255,0.16), rgba(15,22,32,0));
+      margin:6px 0 20px;
+      padding:20px 20px;
+      background:#f1f5f9;
       border:1px solid var(--line);
       border-radius:14px;
     }
@@ -44,13 +47,13 @@
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:16px;
+      gap:18px;
     }
     .col{
       background:var(--panel);
       border:1px solid var(--line);
       border-radius:14px;
-      padding:18px 18px 8px;
+      padding:20px 20px 10px;
     }
     .lang{
       display:flex;
@@ -59,7 +62,7 @@
       gap:12px;
       padding-bottom:10px;
       border-bottom:1px solid var(--line);
-      margin-bottom:12px;
+      margin-bottom:14px;
     }
     .lang h2{
       margin:0;
@@ -72,12 +75,28 @@
     p{
       margin:0 0 14px;
     }
-    .note{
-      margin-top:16px;
-      color:var(--muted);
-      font-size:.9rem;
+    a{
+      color:var(--accent);
+      text-decoration:none;
     }
-    a{ color:var(--accent); }
+    a:hover{
+      text-decoration:underline;
+    }
+    .nav{
+      margin-top:36px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+    .nav a{
+      font-size:.95rem;
+      background:#f1f5f9;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:8px 14px;
+    }
     @media (max-width: 860px){
       .grid{ grid-template-columns: 1fr; }
       header h1{ font-size:1.2rem; }
@@ -85,15 +104,15 @@
   </style>
 </head>
 
-<body>
+<body id="top">
   <div class="wrap">
     <header>
       <h1>〜平均と言う雑過ぎる指標。 <span style="color:var(--muted);font-weight:500;">/</span> Average: A Far-Too-Coarse Metric</h1>
-      <div class="sub">徒然小論文（JP/EN）</div>
+      <div class="sub">徒然小論文（Japanese / English）</div>
     </header>
 
     <div class="grid">
-      <!-- JP -->
+      <!-- Japanese -->
       <article class="col" lang="ja">
         <div class="lang">
           <h2>日本語</h2>
@@ -147,7 +166,7 @@
         私たちはもう考えることをやめているのかもしれない。</p>
       </article>
 
-      <!-- EN -->
+      <!-- English -->
       <article class="col" lang="en">
         <div class="lang">
           <h2>English</h2>
@@ -198,12 +217,11 @@
       </article>
     </div>
 
-    <div class="note">
-      <span style="color:var(--muted);">Tip:</span>
-      このHTMLはそのままGitHub Pagesに貼り付けてOKです（CSS内蔵、レスポンシブ対応）。
-      必要なら「タイトルだけ日本語/英語で別表示」「ダーク/ライト切替」版も即作れます。
-    </div>
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="#top">⬆ トップに戻る</a>
+      <a href="/tsurezure.html">📄 徒然小論文一覧へ</a>
+    </nav>
   </div>
 </body>
 </html>
-
