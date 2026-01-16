@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>平均と言う雑過ぎる指標。 / An Average Is an Overly Crude Metric</title>
-  <meta name="description" content="徒然小論文：平均という指標の危うさを論じる小論文（日本語・英語併記）。" />
+  <title>〜平均と言う雑過ぎる指標。 / An Average: An Excessively Crude Metric</title>
+  <meta name="description" content="徒然小論文：平均という指標の危うさを考える。日本語・英語併記。" />
+
   <style>
     :root{
       --bg:#f9fafb;
@@ -19,41 +20,71 @@
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-        "Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;
+                   "Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.9;
     }
     a{color:var(--accent); text-decoration:none}
     a:hover{text-decoration:underline}
+
     header{
       border-bottom:1px solid var(--line);
       background:#ffffffcc;
       backdrop-filter: blur(6px);
-      position:sticky; top:0; z-index:10;
+      position:sticky;
+      top:0;
+      z-index:10;
     }
-    .wrap{max-width:var(--max); margin:0 auto; padding:14px 18px;}
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+    }
     .nav{
-      display:flex; flex-wrap:wrap; gap:10px 14px;
-      align-items:center; justify-content:space-between;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
     }
-    .links{display:flex; flex-wrap:wrap; gap:10px 14px;}
-    main{padding:26px 0 60px}
+    .links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill{
+      padding:6px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      color:var(--text);
+      font-size:14px;
+    }
+    .pill:hover{
+      border-color:#93c5fd;
+      text-decoration:none;
+    }
+
+    main{padding:28px 0 64px}
+
     h1{
       font-size:clamp(22px,3vw,34px);
-      margin:12px 0 6px;
+      margin:6px 0;
       letter-spacing:.2px;
     }
     .subtitle{
-      font-size:15px;
       color:var(--muted);
-      margin-bottom:16px;
+      font-size:16px;
+      margin-bottom:18px;
     }
     .divider{
       height:1px;
-      background:linear-gradient(90deg,transparent,var(--line),transparent);
-      margin:18px 0;
+      background:var(--line);
+      margin:20px 0;
     }
+
     .grid{
       display:grid;
       grid-template-columns:1fr;
@@ -62,166 +93,187 @@
     @media(min-width:900px){
       .grid{grid-template-columns:1fr 1fr;}
     }
+
     .card{
       background:var(--card);
       border:1px solid var(--line);
       border-radius:16px;
-      padding:20px;
+      padding:22px;
     }
     .card h2{
-      margin:0 0 10px;
+      margin:0 0 14px;
       font-size:15px;
       color:var(--muted);
       font-weight:600;
       letter-spacing:.3px;
     }
-    .prose p{margin:0 0 14px}
+    .prose p{margin:0 0 16px}
+
     footer{
       border-top:1px solid var(--line);
-      padding:24px 0 40px;
+      padding:26px 0 40px;
       font-size:13px;
       color:var(--muted);
+      background:#fff;
+    }
+    .footlinks{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
     }
     .topbtn{
       position:fixed;
-      right:16px; bottom:16px;
+      right:16px;
+      bottom:16px;
       border:1px solid var(--line);
       background:#fff;
-      color:var(--text);
       padding:10px 12px;
       border-radius:999px;
+      color:var(--text);
+    }
+    .topbtn:hover{
+      border-color:#93c5fd;
+      text-decoration:none;
     }
   </style>
 </head>
 
 <body id="top">
-  <header>
-    <div class="wrap">
-      <div class="nav">
-        <div class="links">
-          <!-- パスは構成に合わせて調整してください -->
-          <a href="../index.html">トップに戻る</a>
-          <a href="./index.html">徒然小論文</a>
-        </div>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <div class="links">
+        <!-- パスはサイト構成に合わせて調整 -->
+        <a class="pill" href="../index.html">トップに戻る</a>
+        <a class="pill" href="./index.html">徒然小論文</a>
+      </div>
+      <div class="links">
+        <span class="pill">JP / EN</span>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <div class="wrap">
-      <section>
-        <h1>平均と言う雑過ぎる指標。</h1>
-        <div class="subtitle">An Average Is an Overly Crude Metric</div>
-        <div class="divider"></div>
-      </section>
+<main>
+  <div class="wrap">
+    <h1>〜平均と言う雑過ぎる指標。</h1>
+    <div class="subtitle">An Average: An Excessively Crude Metric</div>
 
-      <section class="grid">
-        <!-- 日本語 -->
-        <article class="card prose" lang="ja">
-          <h2>日本語</h2>
+    <div class="divider"></div>
 
-          <p>平均ほど、安心感を与える数字はない。<br>
-          そして同時に、平均ほど雑な数字もない。</p>
+    <section class="grid">
+      <!-- Japanese -->
+      <article class="card prose" lang="ja">
+        <h2>日本語</h2>
 
-          <p>平均年収、平均気温、平均寿命、平均的な社員。<br>
-          私たちは何かを判断するとき、とりあえず「平均」を置く。<br>
-          それは思考の出発点であるはずなのに、<br>
-          いつの間にか思考の終点になっている。</p>
+        <p>平均ほど、安心感を与える数字はない。<br>
+        そして同時に、平均ほど雑な数字もない。</p>
 
-          <p>平均は、分布を語らない。<br>
-          上と下、偏り、歪み、外れ値。<br>
-          本来そこにこそ意味があるものを、<br>
-          平均は一つの数字に押し潰してしまう。</p>
+        <p>平均年収、平均気温、平均寿命、平均的な社員。<br>
+        私たちは何かを判断するとき、とりあえず「平均」を置く。<br>
+        それは思考の出発点であるはずなのに、<br>
+        いつの間にか思考の終点になっている。</p>
 
-          <p>にもかかわらず、<br>
-          平均は「客観的」「合理的」「公平」に見える。<br>
-          だから便利だ。<br>
-          便利すぎるがゆえに、危険でもある。</p>
+        <p>平均は、分布を語らない。<br>
+        上と下、偏り、歪み、外れ値。<br>
+        本来そこにこそ意味があるものを、<br>
+        平均は一つの数字に押し潰してしまう。</p>
 
-          <p>平均で見れば問題ない。<br>
-          平均的には順調だ。<br>
-          業界平均と比べれば健全だ。</p>
+        <p>にもかかわらず、<br>
+        平均は「客観的」「合理的」「公平」に見える。<br>
+        だから便利だ。<br>
+        便利すぎるがゆえに、危険でもある。</p>
 
-          <p>こうした言葉は、<br>
-          説明のようでいて、実は思考停止の宣言に近い。</p>
+        <p>平均で見れば問題ない。<br>
+        平均的には順調だ。<br>
+        業界平均と比べれば健全だ。</p>
 
-          <p>現実の意思決定は、<br>
-          常に「どこが壊れやすいか」「どこが極端か」を<br>
-          見なければならない。<br>
-          しかし平均は、<br>
-          極端なものを最初から「ノイズ」として扱う。</p>
+        <p>こうした言葉は、<br>
+        説明のようでいて、実は思考停止の宣言に近い。</p>
 
-          <p>平均とは、<br>
-          世界を理解するための道具ではなく、<br>
-          世界を単純化しすぎるための道具になりやすい。</p>
+        <p>現実の意思決定は、<br>
+        常に「どこが壊れやすいか」「どこが極端か」を<br>
+        見なければならない。<br>
+        しかし平均は、<br>
+        極端なものを最初から「ノイズ」として扱う。</p>
 
-          <p>平均で語られる社会は、<br>
-          平均から外れた瞬間に脆くなる。<br>
-          平均で設計された組織は、<br>
-          想定外に出会ったとき、何も判断できなくなる。</p>
+        <p>平均とは、<br>
+        世界を理解するための道具ではなく、<br>
+        世界を単純化しすぎるための道具になりやすい。</p>
 
-          <p>平均は、嘘をついているわけではない。<br>
-          ただ、あまりに多くのことを黙っている。</p>
+        <p>平均で語られる社会は、<br>
+        平均から外れた瞬間に脆くなる。<br>
+        平均で設計された組織は、<br>
+        想定外に出会ったとき、何も判断できなくなる。</p>
 
-          <p>その沈黙に安心したとき、<br>
-          私たちはもう考えることをやめているのかもしれない。</p>
-        </article>
+        <p>平均は、嘘をついているわけではない。<br>
+        ただ、あまりに多くのことを黙っている。</p>
 
-        <!-- English -->
-        <article class="card prose" lang="en">
-          <h2>English</h2>
+        <p>その沈黙に安心したとき、<br>
+        私たちはもう考えることをやめているのかもしれない。</p>
+      </article>
 
-          <p>Few numbers feel as reassuring as an average.<br>
-          And few numbers are as crude as an average.</p>
+      <!-- English -->
+      <article class="card prose" lang="en">
+        <h2>English</h2>
 
-          <p>Average income, average temperature, average lifespan, the “average” employee.<br>
-          When we try to judge something, we often place an average on the table first.<br>
-          It should be a starting point for thinking—<br>
-          yet before we notice, it becomes the finish line.</p>
+        <p>Few numbers feel as reassuring as an average.<br>
+        And few numbers are as crude as an average.</p>
 
-          <p>An average does not speak about distributions.<br>
-          The upper and lower ends, skew, distortion, outliers—<br>
-          the very places where meaning often lives—<br>
-          are flattened into a single number.</p>
+        <p>Average income, average temperature, average lifespan, the “average” employee.<br>
+        When we try to judge something, we often place an average on the table first.<br>
+        It should be a starting point for thinking—<br>
+        yet before we notice, it becomes the finish line.</p>
 
-          <p>And still, an average looks “objective,” “rational,” and “fair.”<br>
-          That is why it is convenient.<br>
-          And because it is too convenient, it is also dangerous.</p>
+        <p>An average does not speak about distributions.<br>
+        The upper and lower ends, skew, distortion, outliers—<br>
+        the very places where meaning often lives—<br>
+        are flattened into a single number.</p>
 
-          <p>“On average, there’s no problem.”<br>
-          “On average, things are going well.”<br>
-          “Compared to the industry average, we’re healthy.”</p>
+        <p>And still, an average looks “objective,” “rational,” and “fair.”<br>
+        That is why it is convenient.<br>
+        And because it is too convenient, it is also dangerous.</p>
 
-          <p>These phrases sound like explanations,<br>
-          but they are often closer to declarations of suspended thought.</p>
+        <p>“On average, there’s no problem.”<br>
+        “On average, things are going well.”<br>
+        “Compared to the industry average, we’re healthy.”</p>
 
-          <p>Real decisions require us to see where things break,<br>
-          where the extremes are, where fragility hides.<br>
-          Yet the average treats the extreme from the start as “noise.”</p>
+        <p>These phrases sound like explanations,<br>
+        but they are often closer to declarations of suspended thought.</p>
 
-          <p>An average is not always a tool to understand the world.<br>
-          It easily becomes a tool to oversimplify it.</p>
+        <p>Real decisions require us to see where things break,<br>
+        where the extremes are, where fragility hides.<br>
+        Yet the average treats the extreme from the start as “noise.”</p>
 
-          <p>A society described by averages becomes brittle the moment it deviates from them.<br>
-          An organization designed around averages loses its ability to decide<br>
-          when it encounters the unexpected.</p>
+        <p>An average is not always a tool to understand the world.<br>
+        It easily becomes a tool to oversimplify it.</p>
 
-          <p>The average is not lying.<br>
-          It is simply silent about far too much.</p>
+        <p>A society described by averages becomes brittle the moment it deviates from them.<br>
+        An organization designed around averages loses its ability to decide<br>
+        when it encounters the unexpected.</p>
 
-          <p>And when that silence makes us feel safe,<br>
-          perhaps we have already stopped thinking.</p>
-        </article>
-      </section>
+        <p>The average is not lying.<br>
+        It is simply silent about far too much.</p>
+
+        <p>And when that silence makes us feel safe,<br>
+        perhaps we have already stopped thinking.</p>
+      </article>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footlinks">
+      <a class="pill" href="./index.html">徒然小論文</a>
+      <a class="pill" href="../index.html">トップに戻る</a>
+      <a class="pill" href="#top">トップへ</a>
     </div>
-  </main>
+    <p>© Matsuoka × GPT Thought Experiment Lab</p>
+  </div>
+</footer>
 
-  <footer>
-    <div class="wrap">
-      <a href="./index.html">← 徒然小論文に戻る</a>
-    </div>
-  </footer>
-
-  <a class="topbtn" href="#top">↑ Top</a>
+<a class="topbtn" href="#top">↑ Top</a>
 </body>
 </html>
