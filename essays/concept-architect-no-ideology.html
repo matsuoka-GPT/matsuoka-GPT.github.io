@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>コンセプトアーキテクトには主義も主張も無い / Concept Architects Have No Ideology</title>
+  <meta name="description" content="コンセプトアーキテクトには主義も主張も無い――ただ構造を見ているだけ――（徒然小論文 / Essay）" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --card: #f9fafb;
+      --link: #2563eb;
+      --codebg: #f3f4f6;
+    }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN",
+                   "Yu Gothic", "Meiryo", Arial, sans-serif;
+      line-height: 1.8;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 60px; }
+    .topbar {
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+      border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 20px;
+    }
+    .pill {
+      display: inline-block; padding: 8px 12px; border: 1px solid var(--line);
+      border-radius: 999px; background: #fff;
+      font-size: 14px;
+    }
+    h1 { font-size: 26px; line-height: 1.35; margin: 12px 0 6px; }
+    h2 { font-size: 18px; margin: 22px 0 10px; color: var(--text); }
+    .subtitle { color: var(--muted); margin: 0 0 18px; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 18px 16px;
+    }
+    .lang {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: #fff;
+      margin-bottom: 10px;
+    }
+    .card p { margin: 0 0 14px; }
+    .card p:last-child { margin-bottom: 0; }
+    .hr { height: 1px; background: var(--line); border: 0; margin: 18px 0; }
+    .footer {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+    }
+    .small { color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+
+<body>
+  <a id="top"></a>
+  <div class="wrap">
+
+    <div class="topbar">
+      <a class="pill" href="#top">トップに戻る</a>
+      <!-- 徒然小論文の一覧ページ（相対パスは当社の構成に合わせて変更してください） -->
+      <a class="pill" href="./tsurezure.html">徒然小論文</a>
+    </div>
+
+    <h1>コンセプトアーキテクトには主義も主張も無い<br><span class="small">— ただ構造を見ているだけ —</span></h1>
+    <p class="subtitle">Tsurezure Essay / 徒然小論文</p>
+
+    <div class="grid">
+      <!-- Japanese -->
+      <article class="card" lang="ja">
+        <div class="lang">JA</div>
+
+        <p>コンセプトアーキテクトという立場について話すと、<br>
+        ときどき「結局、何を主張したいの？」と聞かれることがある。</p>
+
+        <p>でも、その問い自体が少しズレている。</p>
+
+        <p>コンセプトアーキテクトには、<br>
+        特定の主義も、掲げたい主張も、基本的には存在しない。<br>
+        あるのはただ、「構造を見ている」という姿勢だけだ。</p>
+
+        <p>社会には無数の主張があり、<br>
+        政治的立場があり、<br>
+        正義と正義がぶつかり合う議論がある。</p>
+
+        <p>コンセプトアーキテクトは、<br>
+        そのどれかを選んで旗を振るのではなく、<br>
+        「なぜその主張が生まれたのか」<br>
+        「どんな前提条件が揃ったときに、それが合理的に見えるのか」<br>
+        「条件が変わったら、その正しさはどう崩れるのか」<br>
+        を眺めている。</p>
+
+        <p>価値判断を下さないというより、<br>
+        価値判断を“構造の一部”として扱っている、<br>
+        と言った方が近いかもしれない。</p>
+
+        <p>たとえばX線写真のようなものだ。<br>
+        そこには意見も感情もなく、<br>
+        ただ骨の配置と状態が写っているだけ。</p>
+
+        <p>「骨折していますよ」と言われて怒る人はいるが、<br>
+        それは指摘されたからではなく、<br>
+        見たくなかった現実が、<br>
+        否定できない形で可視化されたからだ。</p>
+
+        <p>構造を見せる行為は、<br>
+        攻撃でも主張でもない。<br>
+        ただ、逃げ場を減らしてしまう。</p>
+
+        <p>だからコンセプトアーキテクトは、<br>
+        ときに「冷たい」「思想的だ」「危険だ」と誤解される。<br>
+        しかし実際には、<br>
+        何かを変えようとしているわけでも、<br>
+        誰かを説得しようとしているわけでもない。</p>
+
+        <p>ただ、<br>
+        「今、こういう構造になっています」<br>
+        と示しているだけだ。</p>
+
+        <p>主義を持たないのではない。<br>
+        主義を固定しない、という選択をしている。</p>
+
+        <p>それは無思想ではなく、<br>
+        状況に応じて視点を切り替えるための、<br>
+        可動性を確保しているだけだ。</p>
+
+        <p>コンセプトアーキテクトとは、<br>
+        正しさを語る人ではなく、<br>
+        正しさが生まれてしまう仕組みを、<br>
+        少し離れた場所から眺めている人なのだと思う。</p>
+      </article>
+
+      <!-- English -->
+      <article class="card" lang="en">
+        <div class="lang">EN</div>
+
+        <p>When I talk about the stance of a concept architect,<br>
+        I sometimes get asked, “So what are you actually trying to argue?”</p>
+
+        <p>But that question is slightly off.</p>
+
+        <p>A concept architect, in principle, has no fixed ideology to champion<br>
+        and no slogan-like claim to promote.<br>
+        What exists is simply a posture: looking at structure.</p>
+
+        <p>Society contains countless assertions,<br>
+        political positions,<br>
+        and debates where one sense of justice collides with another.</p>
+
+        <p>A concept architect does not choose one flag and wave it.<br>
+        Instead, they look at:<br>
+        “Why did that claim emerge?”<br>
+        “Under what conditions does it appear rational?”<br>
+        “If the conditions change, how does that ‘rightness’ collapse?”</p>
+
+        <p>It may be closer to say that, rather than refusing value judgments,<br>
+        a concept architect treats value judgments as part of the structure.</p>
+
+        <p>Think of it like an X-ray image.<br>
+        There is no opinion or emotion there,<br>
+        only the arrangement and condition of the bones.</p>
+
+        <p>Some people get angry when told, “You have a fracture,”<br>
+        not because of the person who said it,<br>
+        but because an unwanted reality has been made visible<br>
+        in a form they can no longer deny.</p>
+
+        <p>Showing structure is neither attack nor advocacy.<br>
+        It simply reduces the available escape routes.</p>
+
+        <p>That is why concept architects are sometimes misread as “cold,”<br>
+        “ideological,” or even “dangerous.”<br>
+        Yet in truth, they are not trying to change anyone,<br>
+        nor to persuade anyone.</p>
+
+        <p>They are only saying:<br>
+        “This is how the structure currently looks.”</p>
+
+        <p>It is not that they have no ideology.<br>
+        They choose not to lock ideology in place.</p>
+
+        <p>That is not thoughtlessness.<br>
+        It is simply preserving mobility,<br>
+        so perspectives can be switched as conditions demand.</p>
+
+        <p>A concept architect is not someone who speaks “rightness,”<br>
+        but someone who observes, from a slight distance,<br>
+        the mechanism by which “rightness” inevitably comes into being.</p>
+      </article>
+    </div>
+
+    <div class="footer">
+      <div>© Matsuoka × GPT Thought Experiment Lab</div>
+      <div>
+        <a href="#top">Top</a> ·
+        <a href="./tsurezure.html">Tsurezure Essays</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
 
