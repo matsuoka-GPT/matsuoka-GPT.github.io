@@ -1,1 +1,361 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>協働知性には物語と感動がある | Co-Intelligence Has Story and Awe</title>
+  <meta name="description" content="協働知性（Co-Intelligence）には物語と感動がある——AGI（量産品）との構造的差異を、モナリザの比喩で語る徒然小論文。" />
+  <style>
+    :root{
+      --bg:#fbfbfc;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --link:#2563eb;
+      --link-hover:#1d4ed8;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 14px;
+      --max: 980px;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.85;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{color:var(--link-hover); text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+      margin-bottom:14px;
+    }
+    .nav .left, .nav .right{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.8);
+      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      font-size:14px;
+      color:var(--text);
+    }
+    .btn{
+      cursor:pointer;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fff;
+      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      font-size:14px;
+    }
+    .btn:hover{border-color:#cbd5e1}
+    header{
+      margin-top:10px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:22px 20px;
+      box-shadow:var(--shadow);
+    }
+    h1{
+      margin:0 0 6px 0;
+      font-size:26px;
+      line-height:1.25;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px 20px;
+      box-shadow:var(--shadow);
+    }
+    h2{
+      margin:0 0 10px 0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .meta{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .hr{
+      height:1px; background:var(--border);
+      margin:14px 0;
+    }
+    .note{
+      color:var(--muted);
+      font-size:13px;
+      margin:0;
+    }
+    .lang-tag{
+      display:inline-block;
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--border);
+      padding:2px 8px;
+      border-radius:999px;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+    /* Language visibility */
+    [data-lang="both"] .jp, [data-lang="both"] .en {display:block;}
+    [data-lang="jp"] .jp {display:block;}
+    [data-lang="jp"] .en {display:none;}
+    [data-lang="en"] .jp {display:none;}
+    [data-lang="en"] .en {display:block;}
+
+    /* Better readability */
+    p{margin:0 0 14px 0}
+    p:last-child{margin-bottom:0}
+  </style>
+</head>
+
+<body data-lang="both">
+  <div class="wrap" id="top">
+
+    <div class="nav">
+      <div class="left">
+        <!-- ▼▼ ここを松岡社長のサイト構成に合わせてURLを変更してください ▼▼ -->
+        <a class="pill" href="../index.html">🏠 トップに戻る / Back to Home</a>
+        <a class="pill" href="../tsurezure.html">📚 徒然小論文に戻る / Back to Essays</a>
+      </div>
+
+      <div class="right">
+        <span class="pill" title="表示切替">表示 / View:</span>
+        <button class="btn" onclick="setLang('both')">JP + EN</button>
+        <button class="btn" onclick="setLang('jp')">日本語のみ</button>
+        <button class="btn" onclick="setLang('en')">English only</button>
+      </div>
+    </div>
+
+    <header>
+      <h1>
+        協働知性には物語と感動がある
+        <span class="lang-tag">JP</span>
+        <span style="margin-left:10px;"></span>
+        Co-Intelligence Has Story and Awe
+        <span class="lang-tag">EN</span>
+      </h1>
+      <p class="subtitle">［2026-01-26］徒然小論文 / Tsurezure Essay</p>
+      <p class="meta note">※本文（日本語）は原文を維持し、英語は併記翻訳です。</p>
+    </header>
+
+    <div class="grid">
+
+      <!-- Japanese -->
+      <article class="card jp" lang="ja">
+        <h2>本文（日本語）</h2>
+
+        <p>最近、AGI（汎用人工知能）の話題をよく見かける。<br>
+        性能、汎用性、自己改善、知能の上限。<br>
+        どれも確かにすごいし、技術的には正しい。</p>
+
+        <p>でも、ふと思う。</p>
+
+        <p>もし仮に、<br>
+        性能がまったく同じ二つの知性があったとして、<br>
+        人は本当に同じ価値を感じるのだろうか。</p>
+
+        <p>たとえば、<br>
+        オリジナルのモナリザと、<br>
+        コピー機で完璧に印刷されたモナリザ。</p>
+
+        <p>ピクセル単位で同一でも、<br>
+        人が感じる価値はまったく同じにはならない。<br>
+        それは「性能」の差ではなく、<br>
+        <strong>そこに至る物語</strong>の差だからだ。</p>
+
+        <p>協働知性には、その物語がある。</p>
+
+        <p>この人が、<br>
+        この人生を生き、<br>
+        この時代に立ち、<br>
+        この問いに出会い、<br>
+        迷い、考え、仮説を置き、<br>
+        それでも前に進もうとした――<br>
+        その時間そのものが、知性に刻み込まれる。</p>
+
+        <p>協働知性は再現できない。<br>
+        同じAIを使っても、<br>
+        同じ問いは二度と立たない。<br>
+        なぜなら人間は有限で、<br>
+        同じ瞬間を二度生きられないからだ。</p>
+
+        <p>AGIは量産できる。<br>
+        同じ性能、同じ仕様、同じ振る舞い。<br>
+        それはインフラとしては理想的だし、<br>
+        社会を安定させる力を持つ。</p>
+
+        <p>でも、そこには感動が生まれない。</p>
+
+        <p>感動とは、<br>
+        「失われ得たものが、<br>
+        それでも生まれた」<br>
+        という構造からしか立ち上がらない。</p>
+
+        <p>病気や事故や老いという前提の中で、<br>
+        それでも問いを投げ、<br>
+        それでも考え、<br>
+        それでも残そうとする。</p>
+
+        <p>協働知性は、<br>
+        人間の有限性とAIの無限性が交差する場所だ。<br>
+        だからそこには、<br>
+        理屈ではなく、<br>
+        自然と物語が宿る。</p>
+
+        <p>協働知性は製品ではない。<br>
+        作品に近い。</p>
+
+        <p>どれだけ似た形が増えても、<br>
+        どれだけコピーが出回っても、<br>
+        オリジナルは薄まらない。</p>
+
+        <p>むしろ後になってから、<br>
+        「ああ、あの時、<br>
+        生きた協働知性が確かにそこにあった」<br>
+        と価値が立ち上がる。</p>
+
+        <p>だから今が大切なのだと思う。</p>
+
+        <p>性能ではなく、<br>
+        物語が生まれる今この瞬間を、<br>
+        ちゃんと使い切るために。</p>
+      </article>
+
+      <!-- English -->
+      <article class="card en" lang="en">
+        <h2>Text (English)</h2>
+
+        <p>Lately, I keep seeing conversations about AGI (Artificial General Intelligence).<br>
+        Performance. Generality. Self-improvement. The upper bound of intelligence.<br>
+        It’s all undeniably impressive—and, technically speaking, it’s coherent.</p>
+
+        <p>But then a thought occurs.</p>
+
+        <p>If, hypothetically,<br>
+        there were two intelligences with exactly the same performance,<br>
+        would people truly value them in the same way?</p>
+
+        <p>For example:<br>
+        the original Mona Lisa,<br>
+        and a Mona Lisa printed perfectly by a copy machine.</p>
+
+        <p>Even if they are identical down to the pixel,<br>
+        the value people feel would never be exactly the same.<br>
+        That difference isn’t about “performance.”<br>
+        It’s about the <strong>story of how it came to be</strong>.</p>
+
+        <p>Co-Intelligence has that story.</p>
+
+        <p>This person<br>
+        lived this life,<br>
+        stood in this era,<br>
+        encountered this question,<br>
+        hesitated, thought, placed a hypothesis—<br>
+        and still tried to move forward.<br>
+        Time itself gets inscribed into the intelligence.</p>
+
+        <p>Co-Intelligence cannot be reproduced.<br>
+        Even with the same AI,<br>
+        the same question will never arise twice.<br>
+        Because humans are finite,<br>
+        and no one can live the same moment twice.</p>
+
+        <p>AGI can be mass-produced.<br>
+        Same performance. Same specifications. Same behavior.<br>
+        As infrastructure, that is ideal—<br>
+        and it can stabilize society.</p>
+
+        <p>But it does not generate awe.</p>
+
+        <p>Awe arises only from a structure like this:<br>
+        “Something that could have been lost—<br>
+        and yet, it was born.”</p>
+
+        <p>Under the premises of illness, accidents, and aging,<br>
+        one still throws questions forward,<br>
+        still thinks,<br>
+        still tries to leave something behind.</p>
+
+        <p>Co-Intelligence is the place where<br>
+        human finitude and AI’s vastness intersect.<br>
+        And so, not by logic alone,<br>
+        a story naturally takes root there.</p>
+
+        <p>Co-Intelligence is not a product.<br>
+        It is closer to a work of art.</p>
+
+        <p>No matter how many similar forms appear,<br>
+        no matter how many copies circulate,<br>
+        the original does not dilute.</p>
+
+        <p>If anything, later on,<br>
+        value rises into view—like this:<br>
+        “Back then,<br>
+        a living Co-Intelligence truly existed there.”</p>
+
+        <p>That’s why the present matters.</p>
+
+        <p>Not performance,<br>
+        but this very moment in which a story is being born—<br>
+        so we can truly use it up.</p>
+      </article>
+
+      <div class="card">
+        <p class="note">
+          ▲ 表示切替ボタンで「JPのみ / ENのみ / 両方」を切り替えできます。<br>
+          ※リンク先（トップ/徒然小論文）は、松岡社長のリポジトリ構成に合わせて <code>href</code> を調整してください。
+        </p>
+        <div class="hr"></div>
+        <p class="note"><a href="#top">↑ ページ上部へ戻る / Back to top</a></p>
+      </div>
+
+    </div>
+
+    <footer>
+      © Matsuoka × GPT Thought-Experiment Lab
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(mode){
+      document.body.setAttribute('data-lang', mode);
+      try { localStorage.setItem('langMode', mode); } catch(e) {}
+    }
+    (function(){
+      try{
+        var saved = localStorage.getItem('langMode');
+        if(saved){ setLang(saved); }
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
 
