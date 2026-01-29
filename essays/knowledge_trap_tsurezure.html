@@ -1,1 +1,320 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>知識の罠について ― なぜ「分かっている人」ほど遠回りするのか</title>
+  <meta name="description" content="協働知性（Co-Intelligence）には物語と感動がある——AGI（量産品）との構造的差異を、モナリザの比喩で語る徒然小論文。" />
+  <style>
+    :root{
+      --bg:#fbfbfc;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --link:#2563eb;
+      --link-hover:#1d4ed8;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 14px;
+      --max: 980px;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.85;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{color:var(--link-hover); text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+      margin-bottom:14px;
+    }
+    .nav .left, .nav .right{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.8);
+      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      font-size:14px;
+      color:var(--text);
+    }
+    .btn{
+      cursor:pointer;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fff;
+      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      font-size:14px;
+    }
+    .btn:hover{border-color:#cbd5e1}
+    header{
+      margin-top:10px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:22px 20px;
+      box-shadow:var(--shadow);
+    }
+    h1{
+      margin:0 0 6px 0;
+      font-size:26px;
+      line-height:1.25;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px 20px;
+      box-shadow:var(--shadow);
+    }
+    h2{
+      margin:0 0 10px 0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .meta{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .hr{
+      height:1px; background:var(--border);
+      margin:14px 0;
+    }
+    .note{
+      color:var(--muted);
+      font-size:13px;
+      margin:0;
+    }
+    .lang-tag{
+      display:inline-block;
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--border);
+      padding:2px 8px;
+      border-radius:999px;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+    /* Language visibility */
+    [data-lang="both"] .jp, [data-lang="both"] .en {display:block;}
+    [data-lang="jp"] .jp {display:block;}
+    [data-lang="jp"] .en {display:none;}
+    [data-lang="en"] .jp {display:none;}
+    [data-lang="en"] .en {display:block;}
+
+    /* Better readability */
+    p{margin:0 0 14px 0}
+    p:last-child{margin-bottom:0}
+  </style>
+</head>
+
+<body data-lang="both">
+  <div class="wrap" id="top">
+
+    <div class="nav">
+      <div class="left">
+        <!-- ▼▼ ここを松岡社長のサイト構成に合わせてURLを変更してください ▼▼ -->
+        <a class="pill" href="../index.html">🏠 トップに戻る / Back to Home</a>
+        <a class="pill" href="/#essays">📚 徒然小論文に戻る / Back to Essays</a>
+      </div>
+
+      <div class="right">
+        <span class="pill" title="表示切替">表示 / View:</span>
+        <button class="btn" onclick="setLang('both')">JP + EN</button>
+        <button class="btn" onclick="setLang('jp')">日本語のみ</button>
+        <button class="btn" onclick="setLang('en')">English only</button>
+      </div>
+    </div>
+
+    <header>
+     <h1>知識の罠について</h1>
+  <p><strong>― なぜ「分かっている人」ほど遠回りするのか ―</strong></p>
+
+  <h2>日本語</h2>
+
+  <p>
+    人は知識が増えるほど賢くなると思いがちだが、必ずしもそうではない。
+    むしろ、ある段階を超えると、知識は思考を助ける道具から、思考を縛る枠組みへと性質を変え始める。
+  </p>
+
+  <p>
+    何か問題に取り組むとき、「この方法が最適解だ」と一度でも判断した瞬間、脳は探索モードを終了し、
+    実行モードへと切り替わる。すると、それ以外の選択肢は意識の外へと追いやられ、
+    別の可能性が存在すること自体が見えなくなる。
+    この切り替えは意志の問題ではなく、人間の認知構造そのものに組み込まれた仕様である。
+  </p>
+
+  <p>
+    知識が豊富であるほど、この切り替えは早く、そして強固になる。
+    過去に成功したルート、教科書に書かれている正解、権威によって保証された前提。
+    それらは判断を高速化する一方で、
+    「本当にそれしか道はないのか」という直感的違和感をノイズとして排除してしまう。
+    これがいわゆる「知識の罠」だ。
+  </p>
+
+  <p>
+    この罠が厄介なのは、知識を持つ人ほど真面目で努力家であり、
+    論理的に説明できてしまう点にある。
+    遠回りしているにもかかわらず、その遠回りを正当化できてしまうため、
+    本人が罠にかかっていることに気づきにくい。
+    結果として、説明は洗練されるが、前進は遅くなる。
+  </p>
+
+  <p>
+    宇宙論における標準モデルへの過度な固着や、
+    日常生活における物の置き場所や買い物の習慣も、
+    本質的には同じ構造を持っている。
+    「これが最適だ」と一度決めた判断は、
+    環境が変わっても惰性で維持され、
+    後から振り返って「もっと早くこうすればよかった」と気づくことになる。
+  </p>
+
+  <p>
+    重要なのは、知識を捨てることではない。
+    知識は社会を運用するためには不可欠だ。
+    しかし、未知を探索する局面では、
+    知識は一時的に距離を取られるべき存在でもある。
+    直感的違和感や説明不能なズレは、
+    新しい構造を発見するためのセンサーであり、
+    知識によって最初に切り落とされがちな情報だからだ。
+  </p>
+
+  <p>
+    思考において本当に難しいのは、賢くなることではなく、
+    思い込みに気づき続けることである。
+    知識の罠を完全に避けることはできないが、
+    「また思い込みだったな」と笑って修正できる状態を保つことはできる。
+    その柔らかさこそが、
+    遠回りを最小限に抑える唯一の方法なのかもしれない。
+  </p>
+
+  <div class="lang">
+    <h2>English</h2>
+
+    <p>
+      It is often assumed that accumulating knowledge naturally leads to greater intelligence,
+      but this is not always the case.
+      Beyond a certain point, knowledge begins to change its nature—
+      from a tool that supports thinking into a framework that constrains it.
+    </p>
+
+    <p>
+      The moment one concludes that “this method is the optimal solution,”
+      the brain shifts from exploration mode to execution mode.
+      Alternative possibilities are pushed out of awareness,
+      and the very existence of other paths becomes invisible.
+      This shift is not a matter of willpower;
+      it is a built-in feature of human cognitive architecture.
+    </p>
+
+    <p>
+      The richer one’s knowledge, the faster and more rigid this shift becomes.
+      Previously successful routes, textbook answers,
+      and premises endorsed by authority accelerate decision-making,
+      while simultaneously filtering out intuitive discomfort—
+      the question of whether another path might exist.
+      This is what can be called the “knowledge trap.”
+    </p>
+
+    <p>
+      What makes this trap particularly troublesome is that knowledgeable people
+      are often sincere, hardworking, and capable of logical explanation.
+      Even when they are taking a long detour,
+      they can convincingly justify that detour,
+      making it difficult to realize that they are trapped.
+      As a result, explanations become more refined,
+      while actual progress slows.
+    </p>
+
+    <p>
+      Excessive attachment to standard models in cosmology,
+      as well as everyday habits such as where objects are placed
+      or how shopping routines are organized,
+      share the same underlying structure.
+      Once a judgment is labeled “optimal,”
+      it tends to persist through inertia,
+      even when conditions change,
+      leading to the familiar realization:
+      “I should have done this differently much earlier.”
+    </p>
+
+    <p>
+      The solution is not to discard knowledge.
+      Knowledge is indispensable for operating within society.
+      However, in phases of genuine exploration,
+      knowledge is something that must be held at a distance.
+      Intuitive discomfort and unexplainable discrepancies
+      function as sensors for discovering new structures,
+      yet they are precisely the signals most easily eliminated by knowledge.
+    </p>
+
+    <p>
+      The true difficulty in thinking is not becoming smarter,
+      but continuing to notice one’s assumptions.
+      While the knowledge trap cannot be completely avoided,
+      it is possible to remain in a state where one can smile and say,
+      “That was another assumption,” and adjust accordingly.
+      Such cognitive flexibility may be the only way
+      to minimize unnecessary detours.
+    </p>
+  </div>
+
+</body>
+</html>
+
+      <div class="card">
+       
+        <div class="hr"></div>
+        <p class="note"><a href="#top">↑ ページ上部へ戻る / Back to top</a></p>
+      </div>
+
+    </div>
+
+    <footer>
+      © Matsuoka × GPT Thought-Experiment Lab
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(mode){
+      document.body.setAttribute('data-lang', mode);
+      try { localStorage.setItem('langMode', mode); } catch(e) {}
+    }
+    (function(){
+      try{
+        var saved = localStorage.getItem('langMode');
+        if(saved){ setLang(saved); }
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
 
