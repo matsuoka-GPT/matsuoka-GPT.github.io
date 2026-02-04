@@ -1,100 +1,177 @@
-<!--
-File: tsurezure_pyramid_design_freedom.html
-Title: ピラミッドのデザインに自由度はあったのか？ / Did the Pyramid’s Design Have Degrees of Freedom?
--->
-
 <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ピラミッドのデザインに自由度はあったのか？ / Did the Pyramid’s Design Have Degrees of Freedom?</title>
-  <meta name="description" content="徒然小論文：巨大構造における制約支配と形態必然性（日本語／英語併記）" />
+   <title>知識の罠について ― なぜ「分かっている人」ほど遠回りするのか</title>
+    <meta name="description" content="知識が思考を助ける道具から思考を縛る枠組みへと変わる瞬間を、直感と構造の視点から考察する徒然小論文。">
   <style>
     :root{
-      --bg:#fafafa;
-      --panel:#ffffff;
-      --text:#111;
-      --muted:#555;
-      --line:#e6e6e6;
-      --link:#0b57d0;
+      --bg:#fbfbfc;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --link:#2563eb;
+      --link-hover:#1d4ed8;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 14px;
+      --max: 980px;
     }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,Arial,sans-serif;line-height:1.9;}
-    .wrap{max-width:980px;margin:0 auto;padding:22px 18px 56px;}
-    .topbar{
-      position:sticky;top:0;z-index:10;
-      background:rgba(250,250,250,.92);
-      backdrop-filter:saturate(160%) blur(10px);
-      border-bottom:1px solid var(--line);
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.85;
     }
-    .topbar-inner{max-width:980px;margin:0 auto;padding:10px 18px;display:flex;gap:14px;align-items:center;justify-content:space-between;}
-    .nav a{color:var(--link);text-decoration:none;font-weight:600;}
-    .nav a:hover{text-decoration:underline;}
-    .brand{font-size:14px;color:var(--muted);}
-    header{padding:18px 0 10px;border-bottom:1px solid var(--line);margin-bottom:18px;}
-    h1{font-size:24px;margin:0 0 6px;}
-    .subtitle{color:var(--muted);margin:0;font-size:14px;}
-    .panel{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:18px 18px;
-      box-shadow:0 1px 0 rgba(0,0,0,.02);
+    a{color:var(--link); text-decoration:none}
+    a:hover{color:var(--link-hover); text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+      margin-bottom:14px;
     }
-    h2{font-size:18px;margin:18px 0 10px;}
-    p{margin:10px 0;}
-    .hr{height:1px;background:var(--line);margin:18px 0;}
-    .langtag{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);padding:2px 8px;border-radius:999px;margin-bottom:10px;}
-    .foot{
-      margin-top:22px;color:var(--muted);font-size:13px;
-      border-top:1px solid var(--line);padding-top:14px;
-    }
-    .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;}
-    .btnrow a{
-      display:inline-block;
-      border:1px solid var(--line);
-      background:#fff;
+    .nav .left, .nav .right{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
       padding:8px 12px;
-      border-radius:10px;
-      color:var(--link);
-      text-decoration:none;
-      font-weight:600;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.8);
+      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      font-size:14px;
+      color:var(--text);
     }
-    .btnrow a:hover{border-color:#cfcfcf;}
-    /* small screens */
-    @media (max-width:560px){
-      h1{font-size:20px;}
-      .topbar-inner{flex-direction:column;align-items:flex-start;gap:6px;}
+    .btn{
+      cursor:pointer;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fff;
+      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      font-size:14px;
     }
+    .btn:hover{border-color:#cbd5e1}
+    header{
+      margin-top:10px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:22px 20px;
+      box-shadow:var(--shadow);
+    }
+    h1{
+      margin:0 0 6px 0;
+      font-size:26px;
+      line-height:1.25;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px 20px;
+      box-shadow:var(--shadow);
+    }
+    h2{
+      margin:0 0 10px 0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .meta{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .hr{
+      height:1px; background:var(--border);
+      margin:14px 0;
+    }
+    .note{
+      color:var(--muted);
+      font-size:13px;
+      margin:0;
+    }
+    .lang-tag{
+      display:inline-block;
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--border);
+      padding:2px 8px;
+      border-radius:999px;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+    /* Language visibility */
+    [data-lang="both"] .jp, [data-lang="both"] .en {display:block;}
+    [data-lang="jp"] .jp {display:block;}
+    [data-lang="jp"] .en {display:none;}
+    [data-lang="en"] .jp {display:none;}
+    [data-lang="en"] .en {display:block;}
+
+    /* Better readability */
+    p{margin:0 0 14px 0}
+    p:last-child{margin-bottom:0}
   </style>
 </head>
 
-<body>
-  <!-- Top -->
-  <div id="top"></div>
+<body data-lang="both">
+  <div class="wrap" id="top">
 
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="nav">
-        <a href="#top">トップへ戻る</a>
-        <span style="color:var(--muted);margin:0 6px;">/</span>
-        <!-- 徒然小論文一覧ページへの相対パスは運用に合わせて変更してください -->
-        <a href="./tsurezure.html">徒然小論文</a>
+    <div class="nav">
+      <div class="left">
+        <!-- ▼▼ ここを松岡社長のサイト構成に合わせてURLを変更してください ▼▼ -->
+        <a class="pill" href="../index.html">🏠 トップに戻る / Back to Home</a>
+        <a class="pill" href="/#essays">📚 徒然小論文に戻る / Back to Essays</a>
       </div>
-      <div class="brand">松岡×GPT 思考実験ラボ｜徒然小論文</div>
-    </div>
-  </div>
 
-  <main class="wrap">
+      <div class="right">
+        <span class="pill" title="表示切替">表示 / View:</span>
+        <button class="btn" onclick="setLang('both')">JP + EN</button>
+        <button class="btn" onclick="setLang('jp')">日本語のみ</button>
+        <button class="btn" onclick="setLang('en')">English only</button>
+      </div>
+    </div>
+
     <header>
-      <h1>ピラミッドのデザインに自由度はあったのか？</h1>
-      <p class="subtitle">Did the Pyramid’s Design Have Degrees of Freedom?</p>
+     <h1>知識の罠について
+        <span style="margin-left:10px;"></span>
+        ― なぜ「分かっている人」ほど遠回りするのか ―
+     </h1>
+       <h1>
+        On the knowledge trap
+        <span style="margin-left:10px;"></span>
+        -Why do people who "know" things take the long way around?-
+      </h1>
+     <p class="subtitle">［2026-01-29］徒然小論文 / Tsurezure Essay</p>
     </header>
 
-    <section class="panel">
-      <span class="langtag">日本語</span>
+    <div class="grid">
+      
+  <article class="card jp" lang="ja">
+  <h2>日本語</h2>
 
-      <h2>ピラミッドのデザインに自由度はあったのか？</h2>
+  <h2>ピラミッドのデザインに自由度はあったのか？</h2>
 
       <p>
         エジプトの砂漠にそびえるピラミッドを前にすると、多くの人はまずこう考える。<br/>
@@ -181,108 +258,104 @@ Title: ピラミッドのデザインに自由度はあったのか？ / Did the
         そしてこの事実は、建築だけでなく、文明や社会、技術、さらには宇宙そのものにまで、同じ問いを投げかけているのかもしれない。
       </p>
 
-      <div class="hr"></div>
+  </article>
 
-      <span class="langtag">English</span>
+    <article class="card en" lang="en">
+    <h2>English</h2>
 
-      <h2>Did the Pyramid’s Design Have Degrees of Freedom?</h2>
+    <p>
+      It is often assumed that accumulating knowledge naturally leads to greater intelligence,
+      but this is not always the case.
+      Beyond a certain point, knowledge begins to change its nature—
+      from a tool that supports thinking into a framework that constrains it.
+    </p>
 
-      <p>
-        Standing before the pyramids rising from the Egyptian desert, many people instinctively think the same thing:<br/>
-        this is a monument of royal power, a crystallization of religious belief, and a colossal structure shaped by the aesthetics of its age.
-      </p>
+    <p>
+      The moment one concludes that “this method is the optimal solution,”
+      the brain shifts from exploration mode to execution mode.
+      Alternative possibilities are pushed out of awareness,
+      and the very existence of other paths becomes invisible.
+      This shift is not a matter of willpower;
+      it is a built-in feature of human cognitive architecture.
+    </p>
 
-      <p>
-        In other words, its form feels like something chosen by human <strong>intention</strong>.
-      </p>
+    <p>
+      The richer one’s knowledge, the faster and more rigid this shift becomes.
+      Previously successful routes, textbook answers,
+      and premises endorsed by authority accelerate decision-making,
+      while simultaneously filtering out intuitive discomfort—
+      the question of whether another path might exist.
+      This is what can be called the “knowledge trap.”
+    </p>
 
-      <p>
-        But let’s shift the viewpoint slightly.<br/>
-        If you had to build a massive stone structure—without steel or concrete—one that must endure for thousands of years without collapsing,<br/>
-        how much freedom of form would you truly have?
-      </p>
+    <p>
+      What makes this trap particularly troublesome is that knowledgeable people
+      are often sincere, hardworking, and capable of logical explanation.
+      Even when they are taking a long detour,
+      they can convincingly justify that detour,
+      making it difficult to realize that they are trapped.
+      As a result, explanations become more refined,
+      while actual progress slows.
+    </p>
 
-      <div class="hr"></div>
+    <p>
+      Excessive attachment to standard models in cosmology,
+      as well as everyday habits such as where objects are placed
+      or how shopping routines are organized,
+      share the same underlying structure.
+      Once a judgment is labeled “optimal,”
+      it tends to persist through inertia,
+      even when conditions change,
+      leading to the familiar realization:
+      “I should have done this differently much earlier.”
+    </p>
 
-      <p>
-        Stone is exceptionally strong in compression, yet extremely weak in tension.<br/>
-        Stack it too vertically and it fails under its own weight; span wide spaces and you need advanced arch technology.<br/>
-        Add to this the desert ground, construction precision, long-term weathering, and a labor-centered building environment.
-      </p>
+    <p>
+      The solution is not to discard knowledge.
+      Knowledge is indispensable for operating within society.
+      However, in phases of genuine exploration,
+      knowledge is something that must be held at a distance.
+      Intuitive discomfort and unexplainable discrepancies
+      function as sensors for discovering new structures,
+      yet they are precisely the signals most easily eliminated by knowledge.
+    </p>
 
-      <p>
-        As these constraints accumulate one by one, the set of feasible structures is quietly carved down.
-      </p>
+    <p>
+      The true difficulty in thinking is not becoming smarter,
+      but continuing to notice one’s assumptions.
+      While the knowledge trap cannot be completely avoided,
+      it is possible to remain in a state where one can smile and say,
+      “That was another assumption,” and adjust accordingly.
+      Such cognitive flexibility may be the only way
+      to minimize unnecessary detours.
+    </p>
+  </article>
 
-      <p>
-        Tall towers become unstable.<br/>
-        Domes become technologically infeasible.<br/>
-        Vertical walls struggle to survive for centuries, let alone millennia.
-      </p>
-
-      <p>
-        After possibilities are eliminated again and again,<br/>
-        only the form that is <strong>simplest, most stable, and most durable</strong> remains.
-      </p>
-
-      <p>
-        That remaining form is the pyramid.
-      </p>
-
-      <div class="hr"></div>
-
-      <p>
-        From this perspective, the pyramid’s shape is not an aesthetic preference, not merely symbolic intent, and not an accident.
-      </p>
-
-      <p>
-        It is closer to a near-unique solution:<br/>
-        <strong>the shape that survived after honestly passing through an extreme stack of constraints.</strong>
-      </p>
-
-      <p>
-        The larger something is, the more freedom it seems to have.<br/>
-        In reality, the opposite is often true:<br/>
-        <strong>the larger the scale, the fewer the degrees of freedom.</strong>
-      </p>
-
-      <p>
-        Because as scale grows, the conditions that must be satisfied multiply—and the shapes that can survive shrink rapidly.
-      </p>
-
-      <div class="hr"></div>
-
-      <p>
-        We only see the finished form.<br/>
-        But behind it lie countless “forms that could not exist.”
-      </p>
-
-      <p>
-        The fact that something exists does not mean it was chosen.<br/>
-        It may have simply <strong>survived</strong>.
-      </p>
-
-      <p>
-        If so, the pyramid is not a symbol of human freedom.<br/>
-        Rather, it is a quiet record of this principle:<br/>
-        <strong>when constraints accumulate to the limit, only certain forms can remain in the world.</strong>
-      </p>
-
-      <p>
-        And that same question may extend beyond architecture—toward civilizations, societies, technologies, and perhaps even the universe itself.
-      </p>
-
-      <div class="foot">
-        <div class="btnrow">
-          <a href="#top">トップへ戻る</a>
-          <a href="./tsurezure.html">徒然小論文</a>
-        </div>
-        <p>
-          © 松岡孝文 / Matsuoka Takafumi — Tsurezure Essay (JP/EN)
-        </p>
+      <div class="card">
+       
+        <div class="hr"></div>
+        <p class="note"><a href="#top">↑ ページ上部へ戻る / Back to top</a></p>
       </div>
-    </section>
-  </main>
+
+    </div>
+
+    <footer>
+      © Matsuoka × GPT Thought-Experiment Lab
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(mode){
+      document.body.setAttribute('data-lang', mode);
+      try { localStorage.setItem('langMode', mode); } catch(e) {}
+    }
+    (function(){
+      try{
+        var saved = localStorage.getItem('langMode');
+        if(saved){ setLang(saved); }
+      }catch(e){}
+    })();
+  </script>
 </body>
 </html>
-
