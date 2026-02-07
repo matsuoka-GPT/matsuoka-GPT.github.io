@@ -328,6 +328,13 @@
       transform: rotate(-6deg);
       opacity:.7;
       pointer-events:none;
+      z-index: 0;
+    .hero-inner{
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 14px;
+  position: relative;
+  z-index: 5;   /* ← ここを5に */
     }
 
     h1{
