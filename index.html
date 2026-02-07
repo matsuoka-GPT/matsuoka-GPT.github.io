@@ -596,75 +596,56 @@ details.fold[open] > summary::before{
   details.fold .fold-body{ margin-top: 10px; }
     
 /* ===== Focus Tooltip ===== */
-.focus {
+/* ===== Tag Tooltip (S/C/X/P) ===== */
+.tags .tag.tooltip{
   position: relative;
   cursor: help;
 }
 
-.focus .tooltip {
-  visibility: hidden;
-  opacity: 0;
+/* 本文（span.tip）を隠す */
+.tags .tag.tooltip .tip{
   position: absolute;
   left: 50%;
-  top: 120%;
-  transform: translateX(-50%);
+  top: calc(100% + 10px);
+  transform: translateX(-50%) translateY(0);
+  width: 320px;
+  max-width: min(80vw, 360px);
+
   background: #2b2b2b;
   color: #fff;
   padding: 10px 12px;
   border-radius: 10px;
-  font-size: 13px;
-  width: 260px;
-  line-height: 1.5;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
-  transition: opacity .25s ease, transform .25s ease;
-  z-index: 50;
-}
 
-.focus:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(4px);
-}
-
-/* 小さい三角 */
-.focus .tooltip::after {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: transparent transparent #2b2b2b transparent;
-}
-      width: 260px;
   font-size: 13px;
   line-height: 1.5;
   box-shadow: 0 10px 25px rgba(0,0,0,.25);
-  transition: opacity .18s ease, transform .18s ease;
-  z-index: 50;
+  z-index: 999;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
 }
 
-/* 出現条件（ホバー or タップ） */
-.focus:hover .tooltip,
-.focus:focus-within .tooltip{
-  visibility: visible;
+/* hover/focusで表示 */
+.tags .tag.tooltip:hover .tip,
+.tags .tag.tooltip:focus-within .tip{
   opacity: 1;
+  visibility: visible;
   transform: translateX(-50%) translateY(4px);
 }
 
-/* 吹き出しの三角 */
-.focus .tooltip::after{
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: 50%;
+/* 吹き出し三角 */
+.tags .tag.tooltip .tip::before{
+  content:"";
+  position:absolute;
+  top:-6px;
+  left:50%;
   transform: translateX(-50%);
   border-width: 6px;
   border-style: solid;
   border-color: transparent transparent #2b2b2b transparent;
 }
-
 
   </style>
 </head>
