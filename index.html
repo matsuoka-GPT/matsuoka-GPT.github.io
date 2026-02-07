@@ -637,6 +637,34 @@ details.fold[open] > summary::before{
   border-style: solid;
   border-color: transparent transparent #2b2b2b transparent;
 }
+      width: 260px;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  transition: opacity .18s ease, transform .18s ease;
+  z-index: 50;
+}
+
+/* 出現条件（ホバー or タップ） */
+.focus:hover .tooltip,
+.focus:focus-within .tooltip{
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(4px);
+}
+
+/* 吹き出しの三角 */
+.focus .tooltip::after{
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #2b2b2b transparent;
+}
+
 
   </style>
 </head>
