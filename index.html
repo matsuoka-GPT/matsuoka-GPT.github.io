@@ -555,13 +555,37 @@
   details.fold > summary::-webkit-details-marker{ display:none; }
 
   /* 三角（開閉で変化） */
-  details.fold > summary::after{
-    content: "▸";
-    opacity: .75;
-    font-size: 14px;
-    transform: translateY(-1px);
-  }
-  details.fold[open] > summary::after{ content: "▾"; }
+ /* summaryのレイアウト */
+details.fold > summary{
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color:#111827;
+  user-select: none;
+  font-size: 18px; /* ←タイトル少し大きく */
+}
+
+/* 標準マーカー消す */
+details.fold > summary::-webkit-details-marker{
+  display:none;
+}
+
+/* 左側の大きい三角 */
+details.fold > summary::before{
+  content: "▶";
+  font-size: 22px;   /* ←ここで大きさ調整（24でもOK） */
+  color: var(--accent2);
+  transition: transform .18s ease;
+}
+
+/* 開いた時は下向き */
+details.fold[open] > summary::before{
+  content: "▼";
+}
+
 
   /* 中身の余白 */
   details.fold .fold-body{ margin-top: 10px; }
