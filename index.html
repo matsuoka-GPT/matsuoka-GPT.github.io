@@ -646,6 +646,21 @@ details.fold[open] > summary::before{
   border-style: solid;
   border-color: transparent transparent #2b2b2b transparent;
 }
+    /* ===== Tooltipを最前面へ ===== */
+header{
+  position: relative;
+  z-index: 1000;
+}
+
+.hero{
+  position: relative;
+  z-index: 1;
+}
+
+.hero:after{
+  z-index: 0; /* 光を背景へ送る */
+}
+
 
   </style>
 </head>
