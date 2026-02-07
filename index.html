@@ -532,6 +532,40 @@
   object-fit: contain; /* ←松紋を切らずに収める */
 }
 
+  /* --- fold (details/summary) 共通スタイル --- */
+  details.fold{
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255,255,255,.72);
+    box-shadow: var(--shadow);
+    padding: 12px 14px;
+    margin-top: 12px;
+  }
+  details.fold > summary{
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-weight: 800;
+    color:#111827;
+    user-select: none;
+  }
+  details.fold > summary::-webkit-details-marker{ display:none; }
+
+  /* 三角（開閉で変化） */
+  details.fold > summary::after{
+    content: "▸";
+    opacity: .75;
+    font-size: 14px;
+    transform: translateY(-1px);
+  }
+  details.fold[open] > summary::after{ content: "▾"; }
+
+  /* 中身の余白 */
+  details.fold .fold-body{ margin-top: 10px; }
+
   </style>
 </head>
 
@@ -706,8 +740,14 @@
       </div>
     </section>
 
-    <section id="outputs" aria-label="outputs">
-      <h2>成果物（Zenodo Outputs）</h2>
+  <section id="outputs" aria-label="outputs">
+  <h2>成果物（Zenodo Outputs）</h2>
+
+  <!-- ここから折りたたみ -->
+  <details class="fold" open>
+    <summary>成果物一覧（クリックで開閉）</summary>
+
+    <div class="fold-body">
       <div class="box outputs">
         <div class="muted"></div>
 
@@ -806,8 +846,10 @@
     編集中／in editing
   </a>
 </li>          
-        </ul>
+       </ul>
       </div>
+    </div>
+  </details>
     </section>
 
     <section id="collab" aria-label="collaboration">
