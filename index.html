@@ -566,6 +566,11 @@ details.fold > summary{
   color:#111827;
   user-select: none;
   font-size: 18px; /* ←タイトル少し大きく */
+  display: inline-flex;   /* ← これが効く：横幅を中身分だけにする */
+  width: fit-content;     /* ← 念のため（効かないブラウザでもinline-flexでOK） */
+  margin: 0 auto;         /* ← セットごと中央へ */
+}
+
 }
 
 /* 標準マーカー消す */
