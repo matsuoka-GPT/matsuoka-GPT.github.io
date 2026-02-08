@@ -1161,8 +1161,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setMode();
-  window.addEventListener("resize", () => { setMode(); closeAll(); });
-  window.addEventListener("orientationchange", () => { setMode(); closeAll(); });
+  /* --- ここから書き換え --- */
+let lastMode = document.body.classList.contains("is-mobile");
+
+function handleResize() {
+  setMode();
+  const currentMode = document.body.classList.contains("is-mobile");
+  
+  // モード（PC/スマホ）が実際に切り替わった時だけ、開いている吹き出しをリセットする
+  if (currentMode !== lastMode) {
+    closeAll();
+    lastMode = currentMode;
+  }
+}
+
+window.addEventListener("resize", handleResize);
+window.addEventListener("orientationchange", () => {
+  // 回転時は少し時間をおいてから判定すると安定します
+  setTimeout(handleResize, 100);
+});
+/* --- ここまで --- */
+
 
   tags.forEach(tag => {
     tag.addEventListener("click", (e) => {
