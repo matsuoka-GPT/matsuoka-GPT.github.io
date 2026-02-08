@@ -1206,60 +1206,37 @@ The latest publications and citation information are maintained via ORCID and Ze
     </footer>
   </div>
 
- <script>
-document.querySelectorAll('.tag.tooltip').forEach(tag => {
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
 
-  tag.addEventListener('click', (e) => {
-    e.stopPropagation();
+function isMobile(){
+  return window.matchMedia("(max-width: 640px)").matches;
+}
 
-    // 他を閉じる
-    document.querySelectorAll('.tag.tooltip').forEach(t=>{
-      if(t !== tag) t.classList.remove('is-open');
+/* スマホだけ：タップで開閉 */
+function bindMobileTooltips(){
+  document.querySelectorAll('.tag.tooltip').forEach(tag=>{
+    tag.addEventListener('click', e=>{
+      if(!isMobile()) return;   // ★PCでは無効
+      e.stopPropagation();
+
+      document.querySelectorAll('.tag.tooltip').forEach(t=>{
+        if(t!==tag) t.classList.remove('active');
+      });
+
+      tag.classList.toggle('active');
     });
-
-    tag.classList.toggle('is-open');
-
-    const tip = tag.querySelector('.tip');
-    if(!tip) return;
-
-    // PCだけ：右カードの位置合わせ（スマホは下固定なので不要）
-    if(window.matchMedia('(min-width: 721px)').matches){
-      const rect = tag.getBoundingClientRect();
-
-      // 右に出す（画面外にはみ出すなら左に出す）
-      const margin = 12;
-      const preferredLeft = rect.right + margin;
-      const tipWidth = tip.offsetWidth || 340;
-      const maxLeft = window.innerWidth - tipWidth - margin;
-
-      const left = Math.min(preferredLeft, maxLeft);
-      const top  = rect.top + window.scrollY;
-
-      tip.style.left = left + "px";
-      tip.style.top  = top  + "px";
-    } else {
-      // スマホ：固定なので座標指定を消す
-      tip.style.left = "";
-      tip.style.top  = "";
-    }
   });
 
-});
-
-// 画面のどこかを押したら閉じる
-document.addEventListener('click', () => {
-  document.querySelectorAll('.tag.tooltip').forEach(t=>{
-    t.classList.remove('is-open');
+  document.addEventListener('click', ()=>{
+    if(!isMobile()) return;
+    document.querySelectorAll('.tag.tooltip').forEach(t=>{
+      t.classList.remove('active');
+    });
   });
-});
+}
 
-// スクロールしたら閉じる（スマホで“残り続ける”事故防止）
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.tag.tooltip').forEach(t=>{
-    t.classList.remove('is-open');
-  });
-}, {passive:true});
+bindMobileTooltips();
 </script>
-
 </body>
 </html>
