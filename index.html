@@ -597,19 +597,18 @@ details.fold[open] > summary::before{
 /* ===== Tag Tooltip (S/C/X/P) ===== */
 .tags .tag.tooltip{
   position: relative;
-  cursor: pointer;         /* スマホは help より pointer が自然 */
-  -webkit-tap-highlight-color: transparent;
+  cursor: help;
 }
 
-/* 吹き出し本体（初期は非表示） */
+/* デフォルト：PCは“タグの下に吹き出し” */
 .tags .tag.tooltip .tip{
   position: absolute;
   left: 50%;
-  bottom: calc(100% + 10px);           /* ← 上に出す（重要） */
-  transform: translateX(-50%) translateY(6px);
+  top: calc(100% + 10px);
+  transform: translateX(-50%) translateY(0);
 
   width: 320px;
-  max-width: min(86vw, 360px);
+  max-width: min(80vw, 360px);
 
   background: #2b2b2b;
   color: #fff;
@@ -619,7 +618,7 @@ details.fold[open] > summary::before{
   font-size: 13px;
   line-height: 1.5;
   box-shadow: 0 10px 25px rgba(0,0,0,.25);
-  z-index: 2000;
+  z-index: 999;
 
   opacity: 0;
   visibility: hidden;
@@ -627,26 +626,60 @@ details.fold[open] > summary::before{
   transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
 }
 
-/* スマホ tap（JSで付くクラス） */
-.tags .tag.tooltip.is-open .tip{
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
+/* PC：ホバーで表示 */
+@media (hover:hover) and (pointer:fine){
+  .tags .tag.tooltip:hover .tip{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(4px);
+  }
 }
 
-/* 上向きツールチップの三角 */
+/* 吹き出し三角（PC用） */
 .tags .tag.tooltip .tip::before{
   content:"";
   position:absolute;
-  bottom:-6px;                          /* ← 下側に三角 */
+  top:-6px;
   left:50%;
   transform: translateX(-50%);
   border-width: 6px;
   border-style: solid;
-  border-color: #2b2b2b transparent transparent transparent;
+  border-color: transparent transparent #2b2b2b transparent;
 }
 
+/* ===== Mobile：下から出る固定パネル ===== */
+@media (max-width: 640px){
+  .tags .tag.tooltip .tip{
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    top: auto;
+    transform: translateX(-50%) translateY(20px);
+
+    width: calc(100% - 28px);
+    max-width: 420px;
+
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.6;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, transform .25s ease;
+
+    z-index: 9999;
+  }
+
+  .tags .tag.tooltip.active .tip{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* スマホは三角いらない */
+  .tags .tag.tooltip .tip::before{ display:none; }
+}
     /* ===== Tooltipを最前面へ ===== */
 header{
   position: relative;
