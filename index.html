@@ -595,19 +595,17 @@ details.fold[open] > summary::before{
     
 /* ===== Focus Tooltip ===== */
 /* =========================
-   Tag Tooltip (Clean Unified)
-   PC: hover tooltip
-   Mobile: tap -> bottom sheet
-   縦積み防止（keep-all + min-width）
+   Tag Tooltip (Hard-Reset)
+   bodyに .is-mobile が付いたら “必ず” ボトムシート化
    ========================= */
 
 .tags .tag.tooltip{
   position: relative;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent; /* iOSの変なハイライト抑制 */
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* 共通：まず隠す */
+/* tip：共通（まず隠す） */
 .tags .tag.tooltip .tip{
   position: absolute;
   left: 50%;
@@ -615,8 +613,8 @@ details.fold[open] > summary::before{
   transform: translateX(-50%) translateY(0);
 
   width: 320px;
-  min-width: 260px;                 /* ★縦積み防止の最低幅 */
-  max-width: min(86vw, 380px);      /* ★スマホでも変に細くならない */
+  min-width: 260px;
+  max-width: min(86vw, 380px);
 
   background: rgba(30,30,30,.96);
   color: #fff;
@@ -626,7 +624,7 @@ details.fold[open] > summary::before{
   font-size: 13px;
   line-height: 1.55;
 
-  /* ★日本語が1文字ずつ改行されないように */
+  /* ★縦積み防止 */
   word-break: keep-all;
   overflow-wrap: break-word;
   white-space: normal;
@@ -641,7 +639,7 @@ details.fold[open] > summary::before{
   z-index: 9999;
 }
 
-/* PC：hover可能な環境だけ hover表示 */
+/* PC：hoverできる環境だけ hover表示 */
 @media (hover:hover) and (pointer:fine){
   .tags .tag.tooltip:hover .tip{
     opacity: 1;
@@ -649,57 +647,54 @@ details.fold[open] > summary::before{
     pointer-events: auto;
     transform: translateX(-50%) translateY(4px);
   }
-}
-
-/* PC：吹き出しの三角 */
-.tags .tag.tooltip .tip::before{
-  content:"";
-  position:absolute;
-  top:-6px;
-  left:50%;
-  transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: transparent transparent rgba(30,30,30,.96) transparent;
-}
-
-/* スマホ：ボトムシート */
-@media (max-width: 720px){
-  .tags .tag.tooltip{ position: static; }
-
-  .tags .tag.tooltip .tip{
-    position: fixed;
-    left: 12px;
-    right: 12px;
-
-    /* ★Safariの下バー/セーフエリアに吸われない */
-    bottom: calc(14px + env(safe-area-inset-bottom));
-    top: auto;
-
-    width: auto;
-    min-width: 0;
-    max-width: none;
-
-    padding: 14px 16px;
-    border-radius: 16px;
-    font-size: 14px;
-    line-height: 1.6;
-
-    transform: translateY(10px);
-  }
-
-  .tags .tag.tooltip .tip::before{ display:none; }
-
-  .tags .tag.tooltip.active .tip{
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
+  .tags .tag.tooltip .tip::before{
+    content:"";
+    position:absolute;
+    top:-6px;
+    left:50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent rgba(30,30,30,.96) transparent;
   }
 }
 
-/* 念のため：ヘッダーは常に前 */
+/* ★ここが本命：スマホは body.is-mobile で強制ボトムシート化 */
+body.is-mobile .tags .tag.tooltip{ position: static; }
+
+body.is-mobile .tags .tag.tooltip .tip{
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  top: auto;
+
+  width: auto;
+  min-width: 0;
+  max-width: none;
+
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+
+  transform: translateY(10px);
+}
+
+/* スマホは三角不要 */
+body.is-mobile .tags .tag.tooltip .tip::before{ display:none; }
+
+/* 開いた時 */
+body.is-mobile .tags .tag.tooltip.active .tip{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* 念のため前面 */
 header{ position: relative; z-index: 1000; }
+    
   </style>
 </head>
 
@@ -1156,18 +1151,21 @@ document.getElementById("y").textContent = new Date().getFullYear();
 
 const tags = Array.from(document.querySelectorAll(".tags .tag.tooltip"));
 
-function isMobile(){
-  return window.matchMedia("(max-width: 720px)").matches;
+function setMode(){
+  const mobile = window.matchMedia("(max-width: 720px)").matches;
+  document.body.classList.toggle("is-mobile", mobile);
 }
 
-function closeAll(){
-  tags.forEach(t => t.classList.remove("active"));
-}
+function closeAll(){ tags.forEach(t => t.classList.remove("active")); }
+
+setMode();
+window.addEventListener("resize", () => { setMode(); closeAll(); });
+window.addEventListener("orientationchange", () => { setMode(); closeAll(); });
 
 tags.forEach(tag => {
   tag.addEventListener("click", (e) => {
-    // PCはhoverで出す設計なので、クリックでは何もしない（誤爆防止）
-    if(!isMobile()) return;
+    // ★スマホ以外はクリック動作させない（PCはhover運用）
+    if(!document.body.classList.contains("is-mobile")) return;
 
     e.preventDefault();
     e.stopPropagation();
@@ -1178,22 +1176,15 @@ tags.forEach(tag => {
   });
 });
 
-// 画面タップで閉じる（スマホだけ）
+// 画面タップで閉じる（スマホのみ）
 document.addEventListener("click", () => {
-  if(!isMobile()) return;
+  if(!document.body.classList.contains("is-mobile")) return;
   closeAll();
 });
-  
-  window.addEventListener("resize", () => {
-  if(!isMobile()) closeAll(); // PC幅に戻ったら全部閉じる
-});
-window.addEventListener("orientationchange", () => {
-  closeAll(); // 回転したら一旦閉じる
-});
 
-// スクロール/スワイプ開始でも閉じる（スマホだけ）
+// スワイプ開始でも閉じる（スマホのみ）
 document.addEventListener("touchstart", (e) => {
-  if(!isMobile()) return;
+  if(!document.body.classList.contains("is-mobile")) return;
   if(!e.target.closest(".tags .tag.tooltip")) closeAll();
 }, {passive:true});
 </script>
