@@ -660,6 +660,43 @@ header{
 .hero:after{
   z-index: 0; /* 光を背景へ送る */
 }
+/* ===== スマホ用 tooltip 修正 ===== */
+@media (hover: none) and (pointer: coarse){
+
+  .tag.tooltip{
+    position: relative;
+  }
+
+  .tag.tooltip .tip{
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 10px);
+    transform: translateX(-50%) scale(.96);
+    width: 240px;
+    max-width: 80vw;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+
+  /* タップ時に表示 */
+  .tag.tooltip:active .tip,
+  .tag.tooltip:focus-within .tip{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+    pointer-events: auto;
+    z-index: 9999;
+  }
+
+  /* iOSのhover暴走を無効化 */
+  .tag.tooltip:hover .tip{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 
 
   </style>
