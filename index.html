@@ -1152,7 +1152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tags = Array.from(document.querySelectorAll(".tags .tag.tooltip"));
 
   function setMode(){
-    const mobile = window.matchMedia("(max-width: 720px)").matches;
+    const mobile = window.matchMedia("(max-width: 1024px)").matches;
     document.body.classList.toggle("is-mobile", mobile);
   }
 
