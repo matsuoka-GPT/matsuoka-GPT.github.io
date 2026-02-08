@@ -1122,6 +1122,26 @@ The latest publications and citation information are maintained via ORCID and Ze
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+      // ===== tooltip: mobile tap support (one-open + outside close) =====
+  const tooltipTags = document.querySelectorAll(".tags .tag.tooltip");
+
+  function closeAll(){
+    tooltipTags.forEach(t => t.classList.remove("is-open"));
+  }
+
+  tooltipTags.forEach(tag => {
+    tag.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const willOpen = !tag.classList.contains("is-open");
+      closeAll();
+      if (willOpen) tag.classList.add("is-open");
+    });
+  });
+
+  // 外をタップしたら閉じる
+  document.addEventListener("click", closeAll);
+  document.addEventListener("scroll", closeAll, { passive: true });
+</script>
+
 </body>
 </html>
