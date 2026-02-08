@@ -755,6 +755,47 @@ header{
 /* 念のため：ヘッダーやヒーローより常に前へ */
 header{ position: relative; z-index: 1000; }
 
+ /* ===== Mobile tooltip panel ===== */
+@media (max-width: 640px){
+
+  /* スマホではタグ基準を無効化 */
+  .tags .tag.tooltip{
+    position: static;
+  }
+
+  /* ツールチップを画面UIに変更 */
+  .tags .tag.tooltip .tip{
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 22px;
+    top: auto;
+
+    transform: translateY(20px);
+    width: auto;
+    max-width: none;
+
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.6;
+
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* 開いたとき */
+  .tags .tag.tooltip.active .tip{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* 三角矢印はスマホでは消す */
+  .tags .tag.tooltip .tip::before{
+    display:none;
+  }
+}   
   </style>
 </head>
 
@@ -1238,5 +1279,26 @@ function bindMobileTooltips(){
 
 bindMobileTooltips();
 </script>
+
+  <script>
+document.querySelectorAll(".tag.tooltip").forEach(tag=>{
+  tag.addEventListener("click", function(e){
+    e.stopPropagation();
+
+    document.querySelectorAll(".tag.tooltip").forEach(t=>{
+      if(t!==tag) t.classList.remove("active");
+    });
+
+    tag.classList.toggle("active");
+  });
+});
+
+document.addEventListener("click", ()=>{
+  document.querySelectorAll(".tag.tooltip").forEach(t=>{
+    t.classList.remove("active");
+  });
+});
+</script>
+
 </body>
 </html>
