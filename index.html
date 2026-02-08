@@ -1247,6 +1247,7 @@ The latest publications and citation information are maintained via ORCID and Ze
     </footer>
   </div>
 
+
 <script>
 document.getElementById("y").textContent = new Date().getFullYear();
 
@@ -1254,38 +1255,13 @@ function isMobile(){
   return window.matchMedia("(max-width: 640px)").matches;
 }
 
-/* スマホだけ：タップで開閉 */
-function bindMobileTooltips(){
-  document.querySelectorAll('.tag.tooltip').forEach(tag=>{
-    tag.addEventListener('click', e=>{
-      if(!isMobile()) return;   // ★PCでは無効
-      e.stopPropagation();
-
-      document.querySelectorAll('.tag.tooltip').forEach(t=>{
-        if(t!==tag) t.classList.remove('active');
-      });
-
-      tag.classList.toggle('active');
-    });
-  });
-
-  document.addEventListener('click', ()=>{
-    if(!isMobile()) return;
-    document.querySelectorAll('.tag.tooltip').forEach(t=>{
-      t.classList.remove('active');
-    });
-  });
-}
-
-bindMobileTooltips();
-</script>
-
- <script>
 document.addEventListener("DOMContentLoaded", () => {
   const tags = document.querySelectorAll(".tags .tag.tooltip");
 
+  // PCはホバー運用のまま（クリック挙動を入れない）
+  if(!isMobile()) return;
+
   tags.forEach(tag => {
-    // iOSでも確実にタップ対象にする
     tag.style.cursor = "pointer";
 
     tag.addEventListener("click", (e) => {
@@ -1305,7 +1281,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tags.forEach(t => t.classList.remove("active"));
   });
 
-  // スクロール開始でも閉じる（スマホで便利）
+  // 画面外タップでも閉じる（iOS対策）
   document.addEventListener("touchstart", (e) => {
     if (!e.target.closest(".tags .tag.tooltip")) {
       tags.forEach(t => t.classList.remove("active"));
@@ -1313,6 +1289,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }, {passive:true});
 });
 </script>
-
 </body>
 </html>
