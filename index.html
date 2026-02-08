@@ -659,35 +659,33 @@ details.fold[open] > summary::before{
 }
 
 /* Mobile bottom sheet: only when body.is-mobile */
-body.is-mobile .tags .tag.tooltip{
-  position: static;
-}
-body.is-mobile .tags .tag.tooltip .tip{
+body.is-mobile .tags .tag.tooltip .tip {
   position: fixed;
   left: 12px;
   right: 12px;
   bottom: 14px;
   top: auto;
-
-  width: auto;
+  
+  /* 幅を固定して背景の欠けを防ぐ */
+  width: calc(100vw - 24px); 
   max-width: none;
-
-  padding: 14px 16px;
+  
+  /* 背景色と余白の再定義 */
+  background: rgba(30, 30, 30, 0.96) !important;
+  padding: 16px;
   border-radius: 16px;
+  
+  /* テキスト設定 */
   font-size: 14px;
   line-height: 1.6;
-
+  white-space: normal; /* スマホの横幅に合わせて適度に改行させる */
+  overflow-wrap: break-word;
+  
+  /* アニメーション用 */
   transform: translateY(10px);
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.3); /* 下から出るので影を上に */
 }
-body.is-mobile .tags .tag.tooltip .tip::before{
-  display:none;
-}
-body.is-mobile .tags .tag.tooltip.active .tip{
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
-}
+
 
 /* header always above */
 header{ position: relative; z-index: 1000; }
