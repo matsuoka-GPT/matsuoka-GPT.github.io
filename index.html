@@ -1172,10 +1172,20 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
 
       const willOpen = !tag.classList.contains("active");
-      closeAll();
-      if(willOpen) tag.classList.add("active");
+      // 一旦すべてのタグの重なり順をリセット
+    tags.forEach(t => {
+      t.classList.remove("active");
+      t.style.zIndex = ""; 
     });
+
+    if(willOpen) {
+      tag.classList.add("active");
+      // クリックされたタグ（と、その中の吹き出し）を最前面にする
+      tag.style.zIndex = "10002"; 
+    }
   });
+});
+
 
   document.addEventListener("click", () => {
     if(!document.body.classList.contains("is-mobile")) return;
