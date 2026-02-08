@@ -661,6 +661,66 @@ header{
 .hero:after{
   z-index: 0; /* 光を背景へ送る */
 }
+/* ===== Tag Tooltip: PCは右カード、スマホは下シート ===== */
+.tags .tag.tooltip{ position: relative; cursor: pointer; }
+
+/* 共通：通常は隠す */
+.tags .tag.tooltip .tip{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+/* 開いた時（共通） */
+.tags .tag.tooltip.is-open .tip{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* --- PC/タブレット：右カード --- */
+@media (min-width: 721px){
+  .tags .tag.tooltip .tip{
+    position: fixed;
+    width: 340px;
+    max-width: 36vw;
+    background: rgba(30,30,30,.96);
+    color:#fff;
+    padding: 14px 16px;
+    border-radius: 14px;
+    box-shadow: 0 20px 45px rgba(0,0,0,.35);
+    transform: translateY(-6px);
+    z-index: 9999;
+  }
+  .tags .tag.tooltip.is-open .tip{ transform: translateY(0); }
+}
+
+/* --- スマホ：下ボトムシート --- */
+@media (max-width: 720px){
+  .tags .tag.tooltip .tip{
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 14px;
+
+    width: auto;
+    max-width: none;
+
+    background: rgba(30,30,30,.96);
+    color:#fff;
+    padding: 14px 16px;
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(0,0,0,.35);
+
+    transform: translateY(10px);
+    z-index: 9999;
+  }
+  .tags .tag.tooltip.is-open .tip{ transform: translateY(0); }
+}
+
+/* 念のため：ヘッダーやヒーローより常に前へ */
+header{ position: relative; z-index: 1000; }
 
   </style>
 </head>
@@ -1113,27 +1173,59 @@ The latest publications and citation information are maintained via ORCID and Ze
     </footer>
   </div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-      // ===== tooltip: mobile tap support (one-open + outside close) =====
-  const tooltipTags = document.querySelectorAll(".tags .tag.tooltip");
+ <script>
+document.querySelectorAll('.tag.tooltip').forEach(tag => {
 
-  function closeAll(){
-    tooltipTags.forEach(t => t.classList.remove("is-open"));
-  }
+  tag.addEventListener('click', (e) => {
+    e.stopPropagation();
 
-  tooltipTags.forEach(tag => {
-    tag.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const willOpen = !tag.classList.contains("is-open");
-      closeAll();
-      if (willOpen) tag.classList.add("is-open");
+    // 他を閉じる
+    document.querySelectorAll('.tag.tooltip').forEach(t=>{
+      if(t !== tag) t.classList.remove('is-open');
     });
+
+    tag.classList.toggle('is-open');
+
+    const tip = tag.querySelector('.tip');
+    if(!tip) return;
+
+    // PCだけ：右カードの位置合わせ（スマホは下固定なので不要）
+    if(window.matchMedia('(min-width: 721px)').matches){
+      const rect = tag.getBoundingClientRect();
+
+      // 右に出す（画面外にはみ出すなら左に出す）
+      const margin = 12;
+      const preferredLeft = rect.right + margin;
+      const tipWidth = tip.offsetWidth || 340;
+      const maxLeft = window.innerWidth - tipWidth - margin;
+
+      const left = Math.min(preferredLeft, maxLeft);
+      const top  = rect.top + window.scrollY;
+
+      tip.style.left = left + "px";
+      tip.style.top  = top  + "px";
+    } else {
+      // スマホ：固定なので座標指定を消す
+      tip.style.left = "";
+      tip.style.top  = "";
+    }
   });
 
-  // 外をタップしたら閉じる
-  document.addEventListener("click", closeAll);
-  document.addEventListener("scroll", closeAll, { passive: true });
+});
+
+// 画面のどこかを押したら閉じる
+document.addEventListener('click', () => {
+  document.querySelectorAll('.tag.tooltip').forEach(t=>{
+    t.classList.remove('is-open');
+  });
+});
+
+// スクロールしたら閉じる（スマホで“残り続ける”事故防止）
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.tag.tooltip').forEach(t=>{
+    t.classList.remove('is-open');
+  });
+}, {passive:true});
 </script>
 
 </body>
