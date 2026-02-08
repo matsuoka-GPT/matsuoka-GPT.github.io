@@ -1183,6 +1183,13 @@ document.addEventListener("click", () => {
   if(!isMobile()) return;
   closeAll();
 });
+  
+  window.addEventListener("resize", () => {
+  if(!isMobile()) closeAll(); // PC幅に戻ったら全部閉じる
+});
+window.addEventListener("orientationchange", () => {
+  closeAll(); // 回転したら一旦閉じる
+});
 
 // スクロール/スワイプ開始でも閉じる（スマホだけ）
 document.addEventListener("touchstart", (e) => {
