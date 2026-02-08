@@ -1280,23 +1280,37 @@ function bindMobileTooltips(){
 bindMobileTooltips();
 </script>
 
-  <script>
-document.querySelectorAll(".tag.tooltip").forEach(tag=>{
-  tag.addEventListener("click", function(e){
-    e.stopPropagation();
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tags = document.querySelectorAll(".tags .tag.tooltip");
 
-    document.querySelectorAll(".tag.tooltip").forEach(t=>{
-      if(t!==tag) t.classList.remove("active");
+  tags.forEach(tag => {
+    // iOSでも確実にタップ対象にする
+    tag.style.cursor = "pointer";
+
+    tag.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 他を閉じる
+      tags.forEach(t => { if (t !== tag) t.classList.remove("active"); });
+
+      // 自分をトグル
+      tag.classList.toggle("active");
     });
-
-    tag.classList.toggle("active");
   });
-});
 
-document.addEventListener("click", ()=>{
-  document.querySelectorAll(".tag.tooltip").forEach(t=>{
-    t.classList.remove("active");
+  // 画面のどこか押したら全部閉じる
+  document.addEventListener("click", () => {
+    tags.forEach(t => t.classList.remove("active"));
   });
+
+  // スクロール開始でも閉じる（スマホで便利）
+  document.addEventListener("touchstart", (e) => {
+    if (!e.target.closest(".tags .tag.tooltip")) {
+      tags.forEach(t => t.classList.remove("active"));
+    }
+  }, {passive:true});
 });
 </script>
 
