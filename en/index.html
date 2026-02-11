@@ -1,1 +1,997 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script><script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.25.0-min.js.gz"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('b45bdc9b5b39f4fa49649ea778952afe', {"autocapture":{"elementInteractions":true}});</script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Matsuoka × GPT Thought Experiment Lab</title>
+  <meta name="description" content="A public lab that tests and publishes how intelligence is used: human hypotheses (structure) × AI verification (consistency)." />
+
+  <!-- Keep: verification can remain in EN page too (harmless) -->
+  <meta name="google-site-verification" content="2kPgsP84bfHQeiSXu4gFB-SlHnOI2oZHqPBE1YfxNcA" />
+
+  <!-- OG / Twitter -->
+  <meta property="og:title" content="Matsuoka × GPT Thought Experiment Lab" />
+  <meta property="og:description" content="Cross-disciplinary thought experiments, organized into reproducible artifacts and published with DOI." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    /* Outputs grid: 4 columns */
+    .outputs-grid{
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    /* Hero: two columns */
+    .hero-inner{
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 900px){
+      .hero-inner{ grid-template-columns: 1fr; }
+    }
+
+    /* Profile card */
+    .profile-card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      align-self: start;
+    }
+
+    .profile-head{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .avatar{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(43,100,255,.22);
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .profile-name{ font-weight: 800; line-height: 1.2; }
+    .profile-role{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    .profile-body{ font-size: 13.5px; color: #1a2133; }
+    .profile-body ul{ margin: 10px 0 0; padding-left: 18px; }
+    .profile-body li{ margin: 6px 0; }
+
+    .profile-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .profile-links a{
+      text-decoration:none;
+      font-size: 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 8px 20px rgba(18,26,40,.05);
+    }
+
+    .profile-links a:hover{
+      border-color: rgba(43,100,255,.30);
+      box-shadow: var(--shadow2);
+    }
+
+    /* outputs cards */
+    .outputs-grid li{
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.75);
+      box-shadow: var(--shadow);
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .outputs-grid a{
+      text-decoration: none;
+      color: var(--accent2);
+      font-size: 14px;
+      line-height: 1.4;
+      display: inline-block;
+    }
+
+    .outputs-grid li:hover{
+      box-shadow: var(--shadow2);
+      border-color: rgba(43,100,255,.30);
+      transform: translateY(-2px);
+      transition: all .12s ease;
+    }
+
+    @media (max-width: 900px){
+      .outputs-grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px){
+      .outputs-grid{ grid-template-columns: 1fr; }
+    }
+
+    :root{
+      --w: 980px;
+
+      --bg0:#ffffff;
+      --bg1:#fbfcff;
+
+      --text:#111;
+      --muted:#475069;
+
+      --line: rgba(18, 26, 40, .10);
+      --line2: rgba(18, 26, 40, .14);
+
+      --card: rgba(255,255,255,.82);
+      --glass: rgba(255,255,255,.62);
+
+      --shadow: 0 10px 30px rgba(18, 26, 40, .06);
+      --shadow2: 0 12px 34px rgba(18, 26, 40, .09);
+
+      --radius: 16px;
+      --radius2: 12px;
+
+      --accent: #2b64ff;
+      --accent2:#1b46c9;
+
+      --focus: 0 0 0 4px rgba(43,100,255,.14);
+    }
+
+    * { box-sizing: border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      line-height:1.7;
+      color:var(--text);
+
+      background:
+        radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 90% 8%, rgba(255,255,255,.45), transparent 55%),
+        radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%),
+        linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff);
+
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.18;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.9), rgba(255,255,255,0) 30%),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,.9), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.85), rgba(255,255,255,0) 26%),
+        radial-gradient(circle at 60% 60%, rgba(255,255,255,.7), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 90% 90%, rgba(255,255,255,.8), rgba(255,255,255,0) 22%);
+      filter: blur(0.2px);
+      mix-blend-mode: overlay;
+    }
+
+    a{ color: inherit; }
+    a:hover{ color: var(--accent2); }
+
+    .wrap{
+      max-width:var(--w);
+      margin:0 auto;
+      padding: 34px 18px 44px;
+      position:relative;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding: 8px 0 10px;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color: #1a2133;
+      box-shadow: 0 6px 18px rgba(18,26,40,.05);
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:18px;height:18px;
+      border-radius:999px;
+      background: rgba(43,100,255,.14);
+      color: var(--accent2);
+      font-weight:700;
+      font-size:12px;
+      line-height:1;
+    }
+
+    .topnav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .topnav a{
+      text-decoration:none;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color: #1a2133;
+      opacity:.9;
+    }
+    .topnav a:hover{
+      border-color: var(--line);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero{
+      margin-top: 8px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45));
+      box-shadow: var(--shadow);
+      padding: 26px 18px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:-35% -25%;
+      background:
+        radial-gradient(900px 480px at 68% 38%, rgba(43,100,255,.22), transparent 62%),
+        linear-gradient(120deg, transparent 32%, rgba(255,255,255,.70) 50%, transparent 64%);
+      transform: rotate(-6deg);
+      opacity:.7;
+      pointer-events:none;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: 32px;
+      letter-spacing: .02em;
+      position:relative;
+      z-index:1;
+    }
+
+    .lead{
+      margin:0;
+      font-size:16px;
+      color: #1c2336;
+      position:relative;
+      z-index:1;
+      max-width: 46em;
+    }
+
+    .lead strong{
+      color: #0f1627;
+      border-bottom: 2px solid rgba(43,100,255,.20);
+      padding-bottom: 1px;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+      position:relative;
+      z-index:1;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius: 12px;
+      padding: 10px 14px;
+      text-decoration:none;
+      font-size:14px;
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      color: #121a2a;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+      border-color: rgba(43,100,255,.30);
+    }
+    .btn:active{
+      transform: translateY(0px);
+      box-shadow: var(--shadow);
+    }
+    .btn:focus{
+      outline:none;
+      box-shadow: var(--shadow), var(--focus);
+    }
+
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(43,100,255,.95), rgba(27,70,201,.95));
+      border-color: rgba(43,100,255,.40);
+      color: #fff;
+    }
+    .btn.primary:hover{
+      border-color: rgba(255,255,255,.30);
+    }
+
+    .note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      position:relative;
+      z-index:1;
+    }
+
+    section{ margin-top: 26px; }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: .02em;
+      color: #111827;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .cards{ grid-template-columns: 1fr 1fr 1fr 1fr; }
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 14px 14px 12px;
+      min-height: 132px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      border-color: rgba(43,100,255,.28);
+      box-shadow: var(--shadow2);
+    }
+
+    .card .ico{
+      width:34px; height:34px;
+      border-radius: 12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border: 1px solid rgba(43,100,255,.18);
+      background: rgba(43,100,255,.08);
+      margin-bottom: 10px;
+    }
+    .card svg{ width:20px; height:20px; stroke: var(--accent2); }
+
+    .card strong{
+      display:block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color:#111827;
+    }
+    .card p{
+      margin:0;
+      font-size: 12.8px;
+      color: var(--muted);
+    }
+
+    .box{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .two{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .muted{ color: var(--muted); font-size: 14px; }
+    .small{ font-size: 12px; }
+
+    ul{ margin: 10px 0 0; padding-left: 18px; }
+    li{ margin: 6px 0; }
+
+    .outputs a{
+      text-decoration: none;
+      color: var(--accent2);
+      border-bottom: 1px solid rgba(43,100,255,.20);
+    }
+    .outputs a:hover{
+      border-bottom-color: rgba(43,100,255,.60);
+    }
+
+    footer{
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(18,26,40,.10);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      border:1px solid rgba(18,26,40,.14);
+      border-bottom-width:2px;
+      padding:2px 6px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.6);
+    }
+
+    .avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* --- fold --- */
+    details.fold{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow);
+      padding: 12px 14px;
+      margin-top: 12px;
+    }
+    details.fold > summary{
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color:#111827;
+      user-select: none;
+      font-size: 18px;
+      width: fit-content;
+      margin: 0 auto;
+    }
+    details.fold > summary::-webkit-details-marker{ display:none; }
+    details.fold > summary::before{
+      content: "▶";
+      font-size: 20px;
+      color: var(--accent2);
+      transition: transform .18s ease;
+    }
+    details.fold[open] > summary::before{
+      content: "▼";
+    }
+    details.fold .fold-body{ margin-top: 10px; }
+
+    /* Tag Tooltip */
+    .tags .tag.tooltip{
+      position: relative;
+      cursor: pointer;
+    }
+
+    .tags .tag.tooltip .tip{
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 10px);
+      transform: translateX(-50%) translateY(0);
+
+      width: 320px;
+      max-width: min(80vw, 360px);
+
+      background: rgba(30,30,30,.85);
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 10px;
+
+      font-size: 13px;
+      line-height: 1.5;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+
+      z-index: 9999;
+
+      writing-mode: horizontal-tb;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    @media (hover:hover) and (pointer:fine){
+      .tags .tag.tooltip:hover .tip{
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(4px);
+      }
+
+      .tags .tag.tooltip .tip::before{
+        content:"";
+        position:absolute;
+        top:-6px;
+        left:50%;
+        transform: translateX(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent transparent rgba(30,30,30,.96) transparent;
+      }
+    }
+
+    body.is-mobile .tags .tag.tooltip{ position: static; }
+    body.is-mobile .tags .tag.tooltip .tip{
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: -15px;
+      top: auto;
+
+      width: calc(100vw - 24px);
+      max-width: none;
+
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+
+      transform: translateY(10px);
+    }
+    body.is-mobile .tags .tag.tooltip .tip::before{ display:none; }
+    body.is-mobile .tags .tag.tooltip.active .tip{
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="tags" aria-label="tags">
+
+        <div class="tag tooltip">
+          <span class="pill">S</span>Structural Thinking
+          <span class="tip">
+            Structure-oriented thinking.<br>
+            Focus on the shared generative structure behind phenomena, not only on individual events.
+          </span>
+        </div>
+
+        <div class="tag tooltip">
+          <span class="pill">C</span>Co-Intelligence
+          <span class="tip">
+            Co-Intelligence.<br>
+            A protocol that combines human hypothesis-building with AI verification and consistency checks.
+          </span>
+        </div>
+
+        <div class="tag tooltip">
+          <span class="pill">X</span>Cross-Disciplinary
+          <span class="tip">
+            Cross-disciplinary analysis.<br>
+            Extract shared structures across physics, society, and institutions.
+          </span>
+        </div>
+
+        <div class="tag tooltip">
+          <span class="pill">P</span>Verify → Publish
+          <span class="tip">
+            Verification → Publication.<br>
+            Organize thought experiments into reproducible artifacts and publish them for third-party review.
+          </span>
+        </div>
+
+      </div>
+
+      <nav class="topnav" aria-label="navigation">
+        <!-- Language switch -->
+        <a href="../" title="Japanese">JP</a>
+        <a href="./" title="English">EN</a>
+
+        <a href="#projects">Projects</a>
+        <a href="#method">Method</a>
+        <a href="#outputs">Outputs</a>
+        <a href="#collab">Contact</a>
+        <a href="#essays">Essays</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-label="hero">
+      <div class="hero-inner">
+        <div>
+          <h1>Matsuoka × GPT Thought Experiment Lab</h1>
+          <p class="lead">
+            This is not a lab for a single domain, but a public lab that tests and publishes <strong>how intelligence is used</strong>.<br/>
+            We combine human hypotheses (structure) with AI verification (consistency), organize cross-disciplinary thought experiments into reproducible artifacts, and publish them.
+          </p>
+
+          <details style="margin-top:20px; padding:15px; background-color:#f5f7fb; border-radius:10px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:1.1em;">
+              Research Profile
+            </summary>
+
+            <div style="margin-top:10px; line-height:1.6;">
+              Takafumi Matsuoka is an independent researcher and concept architect working on interdisciplinary structural theory across physics, complex systems, and socio-technical systems.<br><br>
+
+              Primary research includes the BFSSU/DMF cosmological model (Black Hole Fractal Steady-State Universe / Dynamic Mass Flow), ontology of physical entities (photon ontology and quantum vacuum structure), and structural analysis of intelligence and institutional stability (co-intelligence and assurance-based governance models).<br><br>
+
+              The work focuses on reconstructing scientific and social frameworks through formalized structural analysis and reproducible thought experiments.<br><br>
+
+              This website functions as a public research hub.<br>
+              The latest publications and citation information are maintained via ORCID and Zenodo.<br>
+            </div>
+          </details>
+
+          <div class="cta">
+            <a class="btn primary" href="#outputs" aria-label="outputs">View outputs</a>
+            <a class="btn" href="#collab" aria-label="contact">CONTACT</a>
+
+            <div class="research-notice" style="margin-top:12px; padding:12px 14px; border:1px solid #e6e6e6; border-radius:10px; background:#fafafa; color:#777; font-size:0.85em; line-height:1.6;">
+              <b>Research Notice</b><br>
+              This site is not intended as an introductory explanation for general audiences.<br>
+              The content presents hypotheses and structural models and assumes criticism, verification, and reproducibility checks.<br>
+              It is designed for researchers and engineers with academic interest.
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="profile">
+          <div class="profile-head">
+            <div class="avatar">
+              <img src="/images/matu.png" alt="Pine crest (mon)" />
+            </div>
+            <div>
+              <div class="profile-name">Takafumi Matsuoka</div>
+              <div class="profile-role">Concept Architect</div>
+            </div>
+          </div>
+
+          <div class="profile-body">
+            <div style="margin-top:12px; font-size:0.9em; color:#555;">
+              ORCID iD:
+              <a href="https://orcid.org/0009-0003-1530-4234" target="_blank" rel="noopener">
+                0009-0003-1530-4234
+              </a>
+            </div>
+
+            <div class="muted" style="margin-bottom:6px;">Focus</div>
+            <ul>
+              <li>Cross-disciplinary thought experiments via structural thinking</li>
+              <li>Verification and publication via Co-Intelligence</li>
+              <li>Public artifacts (DOI) and constructive external discussion</li>
+            </ul>
+
+            <div class="profile-links">
+              <a href="#outputs">Outputs</a>
+              <a href="#method">Method</a>
+              <a href="#collab">Contact</a>
+            </div>
+
+            <div class="note">
+              This site is a “public hub.”<br>
+              PDFs/DOIs are primarily aggregated on external repositories such as Zenodo.<br>
+              Lightweight hosting via <span class="kbd">GitHub Pages</span>.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="projects" aria-label="projects">
+      <h2>Projects</h2>
+
+      <div class="cards">
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0" />
+              <path d="M2 12c2.5-4 6.5-6 10-6s7.5 2 10 6c-2.5 4-6.5 6-10 6S4.5 16 2 12Z" />
+            </svg>
+          </div>
+          <strong>Cosmology / BFSSU &amp; DMF</strong>
+          <p>Organize the black-hole hierarchical universe and ground flow (DMF), emphasizing observational consistency and counterexample analysis.</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18" />
+              <path d="M4 21V7l8-4l8 4v14" />
+              <path d="M9 21v-8h6v8" />
+            </svg>
+          </div>
+          <strong>Social Design / Tax &amp; State Models</strong>
+          <p>Thought experiments on institutional design under demographic constraints, administrative cost, and consensus formation.</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l8 4v6c0 5-3 8-8 8s-8-3-8-8V7l8-4Z" />
+              <path d="M9 12l2 2l4-4" />
+            </svg>
+          </div>
+          <strong>Safety Engineering / Aviation Safety Model</strong>
+          <p>Propose implementable safety architecture and clarify design constraints that maximize survivability.</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18h6" />
+              <path d="M10 22h4" />
+              <path d="M12 2a7 7 0 0 0-4 12c.6.5 1 1.4 1 2h6c0-.6.4-1.5 1-2A7 7 0 0 0 12 2Z" />
+            </svg>
+          </div>
+          <strong>Co-Intelligence / Method</strong>
+          <p>Protocols for thought experiments, verification, explicit limitations, and publication. Debate by structure—not by persona.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" aria-label="method">
+      <h2>Method</h2>
+
+      <div class="box">
+        <ol>
+          <li><strong>Hypothesis</strong>: define with structural necessity and reproducibility in mind</li>
+          <li><strong>Cross-check</strong>: compare with known data, existing theories, and search for counterexamples</li>
+          <li><strong>Write</strong>: convert into a traceable form (assumptions, limitations, predictions)</li>
+          <li><strong>Publish</strong>: DOI, multilingual access, and external Q&amp;A when needed</li>
+        </ol>
+
+        <div style="margin-bottom:16px; padding:14px 16px; border:1px solid #e6e6e6; border-radius:12px; background:#fafafa; color:#555; font-size:0.85em; line-height:1.7;">
+          <b>Research Statement</b><br>
+          This lab is not a single-domain institute. It is an open thought-experiment project combining human structural hypotheses with AI consistency checks.<br>
+          The goal is not to assert authority, but to examine compatibility with existing theories and to present falsifiability and criticism pathways.<br>
+          The content is published as hypothetical models, not as established theory.
+        </div>
+      </div>
+    </section>
+
+    <section id="outputs" aria-label="outputs">
+      <h2>Outputs (Zenodo)</h2>
+
+      <details class="fold">
+        <summary>List of papers</summary>
+
+        <div class="fold-body">
+          <div class="box outputs">
+            <ul class="outputs-grid">
+              <li><a href="https://doi.org/10.5281/zenodo.17720251" target="_blank" rel="noopener">BFSSU Digest Edition</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.17948058" target="_blank" rel="noopener">BFSSU Detailed Edition</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18150465" target="_blank" rel="noopener">BFSSU Unified Field Theory</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18159902" target="_blank" rel="noopener">Co-Intelligence (Overview)</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18160163" target="_blank" rel="noopener">Selective Tax System &amp; Assurance-Generating State Model</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18160426" target="_blank" rel="noopener">Matsuoka × GPT Thought Experiment Lab</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18186447" target="_blank" rel="noopener">New Aviation Safety Model</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18194511" target="_blank" rel="noopener">DMF as an Unobservable Ground Flow (Unified Interpretation)</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18204127" target="_blank" rel="noopener">Dual Mass Flow &amp; Redefinition of Gravity</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18230187" target="_blank" rel="noopener">Stellar Formation Theory in the DMF Universe</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18271759" target="_blank" rel="noopener">Why Do Civilizations Build Megastructures?</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18327352" target="_blank" rel="noopener">Biodiversity in the High-Energy Early Earth</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18377656" target="_blank" rel="noopener">Where Does Extreme Value Come From?</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18483656" target="_blank" rel="noopener">Constraint Dominance &amp; Contraction of Structural Space</a></li>
+              <li><a href="https://doi.org/10.5281/zenodo.18512529" target="_blank" rel="noopener">Asymmetry of Cognitive Hierarchies &amp; Self-Amplifying Conflict</a></li>
+
+              <li><a href="#" title="In editing">Ontological Reframing of the Photon (in editing)</a></li>
+              <li><a href="#" title="In editing">In editing</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="collab" aria-label="contact">
+      <h2>Questions / Collaboration / Requests</h2>
+      <div class="box">
+        <p><strong>Audience</strong>: researchers, engineers, public-sector professionals, and companies (any domain)</p>
+        <p><strong>Style</strong>: open verification (public) or limited briefing (if needed)</p>
+        <p class="muted">
+          <b>Contact Policy</b><br>
+          Questions, criticism, and verification proposals are welcome.<br>
+          Sales pitches, promotions, and citation-boost services are not answered.
+        </p>
+        <p><strong>Contact</strong>: <a href="mailto:matsuoka-gpt@technocratnet.jp">matsuoka-gpt@technocratnet.jp</a></p>
+      </div>
+    </section>
+
+    <section id="essays" aria-label="essays">
+      <h2>Short Essays</h2>
+
+      <details class="fold">
+        <summary>List of essays</summary>
+
+        <div class="box">
+          <div class="muted" style="margin-bottom:10px;">
+            A collection of short essays written through daily work with AI—kept as readable artifacts.
+          </div>
+
+          <!-- Keep existing links; titles are already bilingual on your site -->
+          <ul class="outputs-grid">
+            <li><a href="../essays/pyramid_design_freedom.html"><strong>Did the Pyramid’s Design Have Degrees of Freedom?</strong><br><span class="muted small">Why is it that shape?</span></a></li>
+            <li><a href="../essays/knowledge_trap_tsurezure.html"><strong>On the Knowledge Trap</strong><br><span class="muted small">Why do people who “know” things take the long way around?</span></a></li>
+            <li><a href="../essays/co-intelligence-story-and-awe.html"><strong>Co-Intelligence Has Story and Awe</strong><br><span class="muted small">Co-Intelligence has a lifespan (lol)</span></a></li>
+            <li><a href="../essays/value-structure.html"><strong>Efficient Laundry Theory</strong><br><span class="muted small">It’s best not to fold laundry</span></a></li>
+            <li><a href="../essays/mealtime-happiness.html"><strong>Mealtime and Happiness</strong><br><span class="muted small">Cherish your mealtimes</span></a></li>
+            <li><a href="../essays/body-odor-process.html"><strong>The Process of Body Odor</strong><br><span class="muted small">Body odor is a history of your diet</span></a></li>
+            <li><a href="../essays/flying-car-bill-bill.html"><strong>Flying Cars Are “Building-to-Building” Transport</strong><br><span class="muted small">It might be convenient to have</span></a></li>
+            <li><a href="../essays/life-100-percent.html"><strong>Life Is Fully Digested, No Matter the Age</strong><br><span class="muted small">Completion in subjective time</span></a></li>
+            <li><a href="../essays/life-and-death-structure.html"><strong>Life and Death from a Structural Perspective</strong><br><span class="muted small">A phase transition perspective</span></a></li>
+            <li><a href="../essays/average-is-a-coarse-metric.html"><strong>Average: A Far-Too-Coarse Metric</strong><br><span class="muted small">On the dangers of “average”</span></a></li>
+            <li><a href="../essays/concept-architect-no-ideology.html"><strong>Concept Architects Have No Ideology</strong><br><span class="muted small">Just looking at structure</span></a></li>
+            <li><a href="../essays/media-outliers.html"><strong>What We See in Media Is Mostly Outliers</strong><br><span class="muted small">Please watch carefully</span></a></li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <section id="faq" aria-label="faq">
+      <h2>FAQ</h2>
+      <div class="two">
+        <div class="box">
+          <p><strong>Q. Is this part of Technocrat’s business activities?</strong><br/>
+            A. No. This is primarily a public activity to publish thought experiments and verification (collaboration may occur when needed).</p>
+
+          <p><strong>Q. Are the conclusions final?</strong><br/>
+            A. Uncertainty is explicitly stated, and counterexamples and alternative explanations are included where relevant.</p>
+
+          <p><strong>Q. Is this established theory?</strong><br/>
+            A. No. The content is published as hypothetical models for consistency checks and counterexample exploration—not as finalized theory.</p>
+        </div>
+
+        <div class="box">
+          <p><strong>Q. Can I cite or examine this as research material?</strong><br/>
+            A. Yes. Critical review, verification, and falsification are assumed. Please cite the source appropriately.</p>
+
+          <p><strong>Q. Why emphasize “Matsuoka × GPT”?</strong><br/>
+            A. To make the reproducibility conditions (the thinking apparatus) explicit and avoid black-box claims.</p>
+
+          <p><strong>Q. Do you work across any domain?</strong><br/>
+            A. Yes—however, high-risk domains are treated cautiously and may require expert collaboration.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Matsuoka × GPT Thought Experiment Lab</div>
+      <div>Hosted on GitHub Pages.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const y = document.getElementById("y");
+      if (y) y.textContent = new Date().getFullYear();
+
+      const tags = Array.from(document.querySelectorAll(".tags .tag.tooltip"));
+
+      function setMode(){
+        const mobile = window.matchMedia("(max-width: 1024px)").matches;
+        document.body.classList.toggle("is-mobile", mobile);
+      }
+
+      function closeAll(){
+        tags.forEach(t => t.classList.remove("active"));
+      }
+
+      setMode();
+
+      let lastMode = document.body.classList.contains("is-mobile");
+
+      function handleResize() {
+        setMode();
+        const currentMode = document.body.classList.contains("is-mobile");
+        if (currentMode !== lastMode) {
+          closeAll();
+          lastMode = currentMode;
+        }
+      }
+
+      window.addEventListener("resize", handleResize);
+      window.addEventListener("orientationchange", () => {
+        setTimeout(handleResize, 100);
+      });
+
+      tags.forEach(tag => {
+        tag.addEventListener("click", (e) => {
+          if(!document.body.classList.contains("is-mobile")) return;
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          const willOpen = !tag.classList.contains("active");
+
+          tags.forEach(t => {
+            t.classList.remove("active");
+            t.style.zIndex = "";
+          });
+
+          if(willOpen) {
+            tag.classList.add("active");
+            tag.style.zIndex = "10002";
+          }
+        });
+      });
+
+      document.addEventListener("click", () => {
+        if(!document.body.classList.contains("is-mobile")) return;
+        closeAll();
+      });
+
+      document.addEventListener("touchstart", (e) => {
+        if(!document.body.classList.contains("is-mobile")) return;
+        if(!e.target.closest(".tags .tag.tooltip")) closeAll();
+      }, {passive:true});
+    });
+  </script>
+</body>
+</html>
 
