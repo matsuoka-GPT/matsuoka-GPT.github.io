@@ -304,30 +304,6 @@
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
-    .topnav{
-  display:flex;
-  align-items:center;     /* ← 縦ズレ防止 */
-  gap:10px;
-  flex-wrap:nowrap;       /* ← 右ナビを2行にしない */
-}
-
-.topnav .menu{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;         /* ← 折り返しはメニュー側だけ許可 */
-  justify-content:flex-end;
-}
-
-.topnav .lang{
-  display:flex;
-  gap:6px;
-  flex:0 0 auto;          /* ← 言語は固定 */
-  padding-right:6px;
-  border-right:1px solid var(--line);
-  margin-right:6px;
-}
-
-
     .hero{
       margin-top: 8px;
       border:1px solid var(--line);
@@ -767,11 +743,6 @@ header{ position: relative; z-index: 1000; }
     <a href="#collab">コラボ</a>
     <a href="#essays">徒然</a>
     <a href="#faq">FAQ</a>
-  </span>
-  
-   <span class="lang">
-    <a href="./" title="Japanese">JP</a>
-    <a href="./en/" title="English">EN</a>
   </span>
 </nav>
     </header>
