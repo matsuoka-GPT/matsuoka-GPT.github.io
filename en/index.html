@@ -555,12 +555,18 @@
       pointer-events: none;
       transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
 
-      z-index: 10000;
+      z-index: 9999;
 
       writing-mode: horizontal-tb;
       white-space: normal;
       overflow-wrap: break-word;
     }
+    /* ホバーしたチップ（.tag）を、他のチップやコンテンツより手前に出す */
+.tags .tag:hover {
+  z-index: 10000;
+  position: relative;
+}
+
 
     @media (hover:hover) and (pointer:fine){
       .tags .tag.tooltip:hover .tip{
