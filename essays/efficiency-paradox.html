@@ -11,31 +11,50 @@
             color: #333;
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px 15px; /* スマホ向けに外側の余白を狭く調整 */
             background-color: #f9f9f9;
+            /* 英語の長単語が画面からはみ出さないように設定 */
+            overflow-wrap: break-word;
         }
         article {
             background-color: #fff;
-            padding: 50px;
+            padding: 30px 20px; /* 内側の余白をスマホに最適化 */
             border-radius: 8px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
+        @media (min-width: 768px) {
+            /* PCなど広い画面では余白をたっぷり取る */
+            article {
+                padding: 50px;
+            }
+            body {
+                padding: 40px 20px;
+            }
+        }
         h1 {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
+            font-size: 1.6rem; /* スマホ向けに少し小さく */
+            margin-bottom: 30px;
             border-bottom: 2px solid #eee;
             padding-bottom: 20px;
+        }
+        @media (min-width: 768px) {
+            h1 { font-size: 2rem; }
         }
         .section {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
             margin-bottom: 30px;
         }
         .lang-ja, .lang-en {
             flex: 1;
-            min-width: 300px;
+            min-width: 100%; /* スマホでは上下に並べる */
+        }
+        @media (min-width: 768px) {
+            .lang-ja, .lang-en {
+                min-width: 300px; /* PCでは横に並べる */
+            }
         }
         .lang-en {
             color: #666;
@@ -59,7 +78,7 @@
 
 <article>
     <h1>ダイパとコスパはトレードオフ<br>
-    <span style="font-size: 1.2rem; font-weight: normal; color: #888;">The Trade-off Between Time-Performance and Cost-Performance</span></h1>
+    <span style="font-size: 1.1rem; font-weight: normal; color: #888; display: block; margin-top: 10px;">The Trade-off Between Time-Performance and Cost-Performance</span></h1>
 
     <div class="section">
         <div class="lang-ja">
