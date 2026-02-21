@@ -2,43 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reflections: Time as an Index</title>
     <style>
         body {
-            line-height: 1.8;
-            color: #333;
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 0 20px;
-            font-family: "Georgia", serif; /* 英語のエッセイらしくセリフ体に変更 */
-            background-color: #f9f9f9;
-        }
-        .diary-container {
-            background-color: #fff;
-            padding: 40px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-radius: 8px;
-        }
-        h1 {
-            font-size: 1.5rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            color: #555;
-        }
-        .date {
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: block;
-            font-style: italic;
-        }
-        p {
-            margin-bottom: 1.5em;
-        }
-        .highlight {
-            color: #2980b9; /* 英語版は少し知的な青系をアクセントに */
-            font-weight: 500;
-        }
+    line-height: 1.8;
+    color: #333;
+    /* max-widthはそのまま、marginを調整 */
+    max-width: 600px;
+    margin: 20px auto; /* 上下の余白をスマホに合わせて少し詰めました */
+    padding: 0 15px;    /* 左右の余白を確保 */
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.diary-container {
+    background-color: #fff;
+    padding: 30px 20px; /* パディングを少し調整（スマホで中身を広くするため） */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    /* 幅を自動調整させる */
+    width: 100%;
+    box-sizing: border-box; /* パディングを含めた幅計算にする */
+}
     </style>
 </head>
 <body>
