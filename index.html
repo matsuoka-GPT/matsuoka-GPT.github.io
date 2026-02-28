@@ -691,7 +691,11 @@ body.is-mobile .tags .tag.tooltip.active .tip{
   pointer-events: auto;
   transform: translateY(0);
 }
-.philosophy {
+
+/* header always above */
+header{ position: relative; z-index: 1000; }
+    
+    .philosophy {
   margin: 32px 0 48px;
   text-align: center;
   font-size: 1.05rem;
@@ -699,9 +703,6 @@ body.is-mobile .tags .tag.tooltip.active .tip{
   color: #444;
   font-style: italic;
 }
-
-/* header always above */
-header{ position: relative; z-index: 1000; }
     
   </style>
 </head>
