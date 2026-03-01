@@ -12,7 +12,6 @@
 
   <meta name="google-site-verification" content="2kPgsP84bfHQeiSXu4gFB-SlHnOI2oZHqPBE1YfxNcA" />
 
-  <!-- OG / Twitter (任意：後で差し替え) -->
   <meta property="og:title" content="松岡×GPT 思考実験ラボ" />
   <meta property="og:description" content="構造思考×協働知性で、分野横断の思考実験を検証し、成果物として公開する。" />
   <meta property="og:type" content="website" />
@@ -30,13 +29,12 @@
       gap: 12px;
     }
 
-    /* Hero を2カラム化（左：説明 / 右：プロフィール） */
     .hero-inner{
       display: grid;
       grid-template-columns: 1.6fr 1fr;
       gap: 14px;
       position: relative;
-      z-index: 1; /* hero:after の上に出す */
+      z-index: 1;
     }
 
     @media (max-width: 900px){
@@ -73,7 +71,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* ←はみ出し防止 */
+  overflow: hidden;
 }
 
     .profile-name{
@@ -124,7 +122,6 @@
       box-shadow: var(--shadow2);
     }
 
-    /* 各リンクをカード風に */
     .outputs-grid li{
       border: 1px solid var(--line);
       border-radius: var(--radius2);
@@ -134,7 +131,6 @@
       text-align: center;
     }
 
-    /* リンクの見た目 */
     .outputs-grid a{
       text-decoration: none;
       color: var(--accent2);
@@ -143,7 +139,6 @@
       display: inline-block;
     }
 
-    /* hover時：少しだけ反応 */
     .outputs-grid li:hover{
       box-shadow: var(--shadow2);
       border-color: rgba(43,100,255,.30);
@@ -151,14 +146,12 @@
       transition: all .12s ease;
     }
 
-    /* タブレット以下は2列 */
     @media (max-width: 900px){
       .outputs-grid{
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    /* スマホは1列 */
     @media (max-width: 520px){
       .outputs-grid{
         grid-template-columns: 1fr;
@@ -186,7 +179,7 @@
       --radius: 16px;
       --radius2: 12px;
 
-      --accent: #2b64ff; /* 1色だけ：品を保つ */
+      --accent: #2b64ff;
       --accent2:#1b46c9;
 
       --focus: 0 0 0 4px rgba(43,100,255,.14);
@@ -217,7 +210,7 @@
       overflow-x:hidden;
     }
 
-    /* うっすら星屑/ノイズっぽい質感（主張しない） */
+    /* うっすら星屑/ノイズっぽい質感 */
     body:before{
       content:"";
       position:fixed;
@@ -532,7 +525,7 @@
     .avatar img{
   width: 100%;
   height: 100%;
-  object-fit: contain; /* ←松紋を切らずに収める */
+  object-fit: contain;
 }
 
   /* --- fold (details/summary) 共通スタイル --- */
@@ -557,7 +550,6 @@
   }
   details.fold > summary::-webkit-details-marker{ display:none; }
 
-  /* 三角（開閉で変化） */
  /* summaryのレイアウト */
 details.fold > summary{
   cursor: pointer;
@@ -568,32 +560,27 @@ details.fold > summary{
   font-weight: 800;
   color:#111827;
   user-select: none;
-  font-size: 18px; /* ←タイトル少し大きく */
-  display: inline-flex;   /* ← これが効く：横幅を中身分だけにする */
-  width: fit-content;     /* ← 念のため（効かないブラウザでもinline-flexでOK） */
-  margin: 0 auto;         /* ← セットごと中央へ */
+  font-size: 18px;
+  display: inline-flex;  
+  width: fit-content;  
+  margin: 0 auto;    
 }
 
-/* 標準マーカー消す */
 details.fold > summary::-webkit-details-marker{
   display:none;
 }
 
-/* 左側の大きい三角 */
 details.fold > summary::before{
   content: "▶";
-  font-size: 20px;   /* ←ここで大きさ調整（24でもOK） */
+  font-size: 20px; 
   color: var(--accent2);
   transition: transform .18s ease;
 }
 
-/* 開いた時は下向き */
 details.fold[open] > summary::before{
   content: "▼";
 }
 
-
-  /* 中身の余白 */
   details.fold .fold-body{ margin-top: 10px; }
     
 /* ===== Focus Tooltip ===== */
@@ -634,7 +621,6 @@ details.fold[open] > summary::before{
 
   z-index: 9999;
 
-  /* 縦積み暴走を絶対に防ぐ */
   writing-mode: horizontal-tb;
   white-space: normal;
   overflow-wrap: break-word;
@@ -981,7 +967,6 @@ The latest publications and citation information are maintained via ORCID and Ze
   <section id="outputs" aria-label="outputs">
   <h2>成果物（Zenodo）</h2>
 
-  <!-- ここから折りたたみ -->
   <details class="fold">
     <summary>論文一覧</summary>
 
@@ -1292,14 +1277,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setMode();
-  /* --- ここから書き換え --- */
 let lastMode = document.body.classList.contains("is-mobile");
 
 function handleResize() {
   setMode();
   const currentMode = document.body.classList.contains("is-mobile");
   
-  // モード（PC/スマホ）が実際に切り替わった時だけ、開いている吹き出しをリセットする
   if (currentMode !== lastMode) {
     closeAll();
     lastMode = currentMode;
@@ -1308,10 +1291,8 @@ function handleResize() {
 
 window.addEventListener("resize", handleResize);
 window.addEventListener("orientationchange", () => {
-  // 回転時は少し時間をおいてから判定すると安定します
   setTimeout(handleResize, 100);
 });
-/* --- ここまで --- */
 
 
   tags.forEach(tag => {
@@ -1322,7 +1303,7 @@ window.addEventListener("orientationchange", () => {
       e.stopPropagation();
 
       const willOpen = !tag.classList.contains("active");
-      // 一旦すべてのタグの重なり順をリセット
+  
     tags.forEach(t => {
       t.classList.remove("active");
       t.style.zIndex = ""; 
@@ -1330,7 +1311,6 @@ window.addEventListener("orientationchange", () => {
 
     if(willOpen) {
       tag.classList.add("active");
-      // クリックされたタグ（と、その中の吹き出し）を最前面にする
       tag.style.zIndex = "10002"; 
     }
   });
