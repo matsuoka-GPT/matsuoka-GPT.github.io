@@ -1,51 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Comparison: Impact vs Nuclear</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
             color: #24292f;
             max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 20px 15px; /* スマホの端に文字がくっつかないよう調整 */
             background-color: #ffffff;
+            font-size: 18px; /* スマホで読みやすいサイズ */
         }
         h1 {
-            border-bottom: 2px solid #eaecef;
-            padding-bottom: 0.3em;
+            font-size: 1.6em;
+            border-bottom: 3px solid #05264c;
+            padding-bottom: 10px;
             color: #05264c;
+            line-height: 1.2;
         }
         h2 {
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 0.3em;
-            margin-top: 24px;
+            font-size: 1.3em;
+            border-left: 5px solid #05264c;
+            padding-left: 10px;
+            margin-top: 40px;
+            background: #f6f8fa;
         }
         .subtitle {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #57606a;
-            margin-top: -15px;
             margin-bottom: 30px;
             font-style: italic;
+            display: block;
         }
         .formula-box {
-            background-color: #f6f8fa;
-            border-radius: 6px;
-            padding: 16px;
-            margin: 20px 0;
+            background-color: #05264c;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
             text-align: center;
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: 1.4em;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .highlight {
+            color: #cf222e;
+            font-weight: bold;
+        }
+        .lang-section {
+            margin-bottom: 60px;
+        }
+        hr {
+            border: 0;
+            border-top: 2px dashed #d0d7de;
+            margin: 60px 0;
         }
         .footer {
-            margin-top: 50px;
-            font-size: 0.9em;
+            margin-top: 40px;
+            font-size: 0.8em;
             color: #6e7781;
-            text-align: right;
+            text-align: center;
             border-top: 1px solid #eaecef;
-            padding-top: 10px;
+            padding-top: 20px;
         }
-        strong { color: #cf222e; } /* Highlight for emphasis */
     </style>
 </head>
 <body>
