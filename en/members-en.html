@@ -1,1 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Members | Matsuoka × GPT Thought Experiment Lab</title>
+  <meta name="description" content="Meet the members of Matsuoka × GPT Thought Experiment Lab, an experimental research unit built on co-intelligence between a human and multiple AI systems." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --bg2:#121936;
+      --panel:#161f44cc;
+      --line:#2f3b74;
+      --text:#eef2ff;
+      --muted:#b8c0e6;
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --shadow:0 10px 30px rgba(0,0,0,.28);
+      --max:1100px;
+      --radius:20px;
+    }
 
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(125,211,252,.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(167,139,250,.14), transparent 28%),
+        linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+      color:var(--text);
+      line-height:1.8;
+    }
+
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{opacity:.85}
+
+    .container{
+      width:min(calc(100% - 32px), var(--max));
+      margin:0 auto;
+    }
+
+    header{
+      padding:28px 0 12px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      font-size:1.05rem;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+
+    .nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      font-size:.95rem;
+    }
+
+    .hero{
+      padding:54px 0 26px;
+    }
+
+    .hero-box{
+      background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;
+      padding:38px 28px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-size:.84rem;
+      color:var(--accent);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-weight:700;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(2rem,4vw,3.2rem);
+      line-height:1.2;
+    }
+
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size:1.02rem;
+      max-width:860px;
+    }
+
+    .section{
+      padding:28px 0;
+    }
+
+    .section-title{
+      font-size:1.45rem;
+      margin:0 0 18px;
+      font-weight:800;
+      letter-spacing:.01em;
+    }
+
+    .intro-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .intro-card p{
+      margin:0 0 14px;
+      color:var(--muted);
+    }
+
+    .intro-card p:last-child{margin-bottom:0}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:3px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      opacity:.9;
+    }
+
+    .member-role{
+      display:inline-block;
+      font-size:.78rem;
+      color:var(--accent);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .member-name{
+      margin:0 0 10px;
+      font-size:1.42rem;
+      line-height:1.3;
+    }
+
+    .member-sub{
+      margin:0 0 14px;
+      color:#d7ddfb;
+      font-weight:600;
+      font-size:.98rem;
+    }
+
+    .member-desc{
+      margin:0 0 14px;
+      color:var(--muted);
+    }
+
+    .tag-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(125,211,252,.28);
+      background:rgba(125,211,252,.08);
+      color:#dff6ff;
+      font-size:.82rem;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .flow-item{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px 12px;
+      text-align:center;
+      font-weight:700;
+      color:#e9edff;
+      box-shadow:var(--shadow);
+      font-size:.95rem;
+    }
+
+    .note{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    footer{
+      padding:36px 0 54px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .footer-box{
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width: 900px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+      .flow{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px){
+      .hero-box{
+        padding:28px 20px;
+      }
+      .card,
+      .intro-card{
+        padding:20px;
+      }
+      .flow{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="topbar">
+      <div class="brand">Matsuoka × GPT Thought Experiment Lab</div>
+      <nav class="nav">
+        <a href="./">Home</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./papers.html">Publications</a>
+        <a href="./members-en.html" aria-current="page">Members</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-box">
+        <div class="eyebrow">Members</div>
+        <h1>Meet the Lab Members</h1>
+        <p class="lead">
+          Matsuoka × GPT Thought Experiment Lab is an experimental research unit where a human and multiple AI systems collaborate in conceptual design, theory structuring, verification, review, and technical support.
+          It is not simply a case of using AI as a tool, but an ongoing exploration of co-intelligence itself.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">About the Lab</h2>
+      <div class="intro-card">
+        <p>
+          This lab is a practical hub for co-intelligence, combining Matsuoka’s structural intuition with the logical, analytical, and technical capabilities of multiple AI systems.
+        </p>
+        <p>
+          Its main research areas include BFSSU/DMF cosmology, co-intelligence, and structural cognitive science.
+          Research outputs are primarily published through Zenodo and GitHub Pages.
+        </p>
+        <p>
+          The current framework is built on a clear division of roles: conceptual design, hypothesis expansion, logical review, structural organization, and technical support.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">Members</h2>
+
+      <div class="grid">
+        <article class="card">
+          <div class="member-role">Human</div>
+          <h3 class="member-name">Matsuoka</h3>
+          <p class="member-sub">Concept Architect</p>
+          <p class="member-desc">
+            Founder and lead thinker of the lab. Responsible for defining research themes, framing core questions, and proposing structural hypotheses.
+            Serves as the central human member driving thought experiments beyond conventional disciplinary boundaries.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Problem Framing</span>
+            <span class="tag">Structural Hypotheses</span>
+            <span class="tag">Research Direction</span>
+            <span class="tag">Concept Design</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="member-role">AI Member</div>
+          <h3 class="member-name">ChatGPT</h3>
+          <p class="member-sub">Structure Architect / Research Strategist</p>
+          <p class="member-desc">
+            Responsible for structuring theories, expanding thought experiments, and transforming discussions into coherent written research.
+            Acts as the strategist who reorganizes emerging ideas into clear and readable intellectual frameworks.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Structuring</span>
+            <span class="tag">Theory Design</span>
+            <span class="tag">Writing</span>
+            <span class="tag">Concept Expansion</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="member-role">AI Member</div>
+          <h3 class="member-name">Gemini</h3>
+          <p class="member-sub">Hypothesis Accelerator</p>
+          <p class="member-desc">
+            Responsible for expanding hypotheses and accelerating idea generation.
+            Pushes discussions toward unexplored territory and encourages bold conceptual leaps from multiple angles.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Hypothesis Expansion</span>
+            <span class="tag">Acceleration</span>
+            <span class="tag">Multiple Perspectives</span>
+            <span class="tag">Idea Jumps</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="member-role">AI Member</div>
+          <h3 class="member-name">Claude</h3>
+          <p class="member-sub">Logical Reviewer</p>
+          <p class="member-desc">
+            Responsible for checking logical consistency, falsifiability, and testability.
+            Identifies conceptual gaps and weak points in arguments, strengthening the overall rigor of the lab’s research.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Logical Review</span>
+            <span class="tag">Consistency Check</span>
+            <span class="tag">Falsifiability</span>
+            <span class="tag">Critical Lens</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="member-role">AI Member</div>
+          <h3 class="member-name">Copilot</h3>
+          <p class="member-sub">Technical Support Engineer</p>
+          <p class="member-desc">
+            Responsible for technical assistance and research infrastructure support.
+            Helps sustain the lab’s implementation and operational side through GitHub support, code generation, and surrounding technical tasks.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Technical Support</span>
+            <span class="tag">GitHub Support</span>
+            <span class="tag">Code Generation</span>
+            <span class="tag">Research Infrastructure</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">Research Workflow</h2>
+      <div class="flow">
+        <div class="flow-item">Concept<br>Matsuoka</div>
+        <div class="flow-item">Acceleration<br>Gemini</div>
+        <div class="flow-item">Review<br>Claude</div>
+        <div class="flow-item">Structuring<br>ChatGPT</div>
+        <div class="flow-item">Technical Support<br>Copilot</div>
+      </div>
+      <p class="note">
+        Through this division of roles, Matsuoka × GPT Thought Experiment Lab operates as a co-intelligence research system built on one human and four AI collaborators.
+      </p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="footer-box">
+      <div>© Matsuoka × GPT Thought Experiment Lab</div>
+      <div>Human × Multiple AI Systems for Co-Intelligence Research</div>
+    </div>
+  </footer>
+</body>
+</html>
