@@ -17,9 +17,17 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 100vh;   /* 画面の縦にフィット */
-    width: auto;     /* 比率維持 */
+    height: 100vh;   /* 横画面・PCでは縦フィット */
+    width: auto;
     transform: translate(-50%, -50%);
+  }
+
+  /* 📱 縦画面のときだけ横幅フィット */
+  @media screen and (orientation: portrait) {
+    img {
+      width: 100vw;   /* 横幅いっぱい */
+      height: auto;   /* 比率維持 */
+    }
   }
 </style>
 </head>
@@ -29,4 +37,3 @@
 
 </body>
 </html>
-
