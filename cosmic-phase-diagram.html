@@ -25,11 +25,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    max-height: 100vh;
-    width: auto;
-    transform: translate(-50%, -50%);
+    transform-origin: center center;
     cursor: zoom-in;
-    transition: transform 0.2s ease;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 </style>
 </head>
@@ -43,53 +42,93 @@
   const img = document.getElementById('diagram');
   const container = document.getElementById('container');
 
-  let zoomed = false;
+  let scale = 1;
+  let isZoomed = false;
+  let originX = 0;
+  let originY = 0;
   let offsetX = 0;
   let offsetY = 0;
+  let dragging = false;
   let startX = 0;
   let startY = 0;
 
+  function fitToScreen() {
+    const naturalRatio = img.naturalWidth / img.naturalHeight;
+    const containerRatio = container.clientWidth / container.clientHeight;
+
+    if (naturalRatio > containerRatio) {
+      scale = container.clientWidth / img.naturalWidth;
+    } else {
+      scale = container.clientHeight / img.naturalHeight;
+    }
+
+    offsetX = 0;
+    offsetY = 0;
+    img.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    img.style.cursor = "zoom-in";
+    isZoomed = false;
+  }
+
+  img.onload = fitToScreen;
+  window.onresize = fitToScreen;
+
   img.addEventListener('click', (e) => {
-    const rect = img.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const clickY = e.clientY - rect.top;
+    if (!isZoomed) {
+      const rect = img.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
 
-    if (!zoomed) {
-      zoomed = true;
-      img.style.cursor = "zoom-out";
+      const zoomFactor = img.naturalWidth / (rect.width);
 
-      const scale = img.naturalHeight / rect.height;
+      originX = (container.clientWidth / 2) - (clickX * zoomFactor);
+      originY = (container.clientHeight / 2) - (clickY * zoomFactor);
 
-      offsetX = (container.clientWidth / 2) - (clickX * scale);
-      offsetY = (container.clientHeight / 2) - (clickY * scale);
+      scale = zoomFactor;
+      offsetX = originX;
+      offsetY = originY;
 
       img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+      img.style.cursor = "zoom-out";
+      isZoomed = true;
     } else {
-      zoomed = false;
-      img.style.cursor = "zoom-in";
-      img.style.transform = "translate(-50%, -50%) scale(1)";
+      fitToScreen();
     }
   });
 
   container.addEventListener('mousedown', (e) => {
-    if (!zoomed) return;
+    if (!isZoomed) return;
+    dragging = true;
     startX = e.clientX - offsetX;
     startY = e.clientY - offsetY;
-
-    const move = (e2) => {
-      offsetX = e2.clientX - startX;
-      offsetY = e2.clientY - startY;
-      img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${img.naturalHeight / img.height})`;
-    };
-
-    const up = () => {
-      window.removeEventListener('mousemove', move);
-      window.removeEventListener('mouseup', up);
-    };
-
-    window.addEventListener('mousemove', move);
-    window.addEventListener('mouseup', up);
   });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    offsetX = e.clientX - startX;
+    offsetY = e.clientY - startY;
+    img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+  });
+
+  window.addEventListener('mouseup', () => dragging = false);
+
+  container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+
+    const rect = img.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const prevScale = scale;
+    scale *= delta;
+
+    offsetX -= (mouseX * (scale - prevScale));
+    offsetY -= (mouseY * (scale - prevScale));
+
+    img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    isZoomed = true;
+    img.style.cursor = "zoom-out";
+  }, { passive: false });
 </script>
 
 </body>
