@@ -90,6 +90,31 @@
     window.addEventListener('mousemove', move);
     window.addEventListener('mouseup', up);
   });
+  
+  let dragging = false;
+let startX = 0;
+let startY = 0;
+
+// 長押し開始（mousedown）
+container.addEventListener('mousedown', (e) => {
+  if (!isZoomed) return; // ズーム時だけドラッグ可能
+  dragging = true;
+  startX = e.clientX - offsetX;
+  startY = e.clientY - offsetY;
+});
+
+// ドラッグ中（mousemove）
+window.addEventListener('mousemove', (e) => {
+  if (!dragging) return;
+  offsetX = e.clientX - startX;
+  offsetY = e.clientY - startY;
+  img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+});
+
+// ドラッグ終了（mouseup）
+window.addEventListener('mouseup', () => {
+  dragging = false;
+});
 </script>
 
 </body>
