@@ -78,7 +78,7 @@
       const clickX = e.clientX - rect.left;
       const clickY = e.clientY - rect.top;
 
-      const zoomFactor = img.naturalWidth / (rect.width);
+      scale = 1; // 等倍に固定
 
       originX = (container.clientWidth / 2) - (clickX * zoomFactor);
       originY = (container.clientHeight / 2) - (clickY * zoomFactor);
