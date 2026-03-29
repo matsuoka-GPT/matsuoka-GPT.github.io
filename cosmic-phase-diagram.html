@@ -73,27 +73,26 @@
   window.onresize = fitToScreen;
 
   img.addEventListener('click', (e) => {
-    if (!isZoomed) {
-      const rect = img.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const clickY = e.clientY - rect.top;
+  if (!isZoomed) {
+    const rect = img.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
 
-      scale = 1; // 等倍に固定
+    // 等倍にする
+    scale = 1;
 
-      originX = (container.clientWidth / 2) - (clickX * zoomFactor);
-      originY = (container.clientHeight / 2) - (clickY * zoomFactor);
+    // 等倍時のクリック中心ズーム
+    offsetX = (container.clientWidth / 2) - (clickX * scale);
+    offsetY = (container.clientHeight / 2) - (clickY * scale);
 
-      scale = zoomFactor;
-      offsetX = originX;
-      offsetY = originY;
+    img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    img.style.cursor = "zoom-out";
+    isZoomed = true;
 
-      img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
-      img.style.cursor = "zoom-out";
-      isZoomed = true;
-    } else {
-      fitToScreen();
-    }
-  });
+  } else {
+    fitToScreen();
+  }
+});
 
   container.addEventListener('mousedown', (e) => {
     if (!isZoomed) return;
