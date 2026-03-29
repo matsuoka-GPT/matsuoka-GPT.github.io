@@ -5,53 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cosmic Phase Diagram</title>
 <style>
-  body {
+  html, body {
     margin: 0;
     padding: 0;
-    text-align: center;
     background: #000;
+    overflow: hidden; /* 横スクロール禁止 */
   }
+
   img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
+    height: 100vh;      /* 画面の縦いっぱいに表示 */
+    width: auto;        /* 縦に合わせて横を自動調整 */
+    max-width: none;    /* ブラウザの自動縮小を無効化 */
+    display: block;
+    margin: 0 auto;     /* 中央寄せ */
   }
-  figcaption {
-    color: #ccc;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-  }
-  html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-　}
-
-　figure {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-　}
-
-　img {
-  display: block;
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-　}
-
 </style>
 </head>
 <body>
 
-<figure>
-  <img src="images/cosmic-phase-diagram-2.png" alt="Cosmic Phase Diagram">
-  <figcaption>
-    Cosmic Phase Diagram — Unified model of temperature, pressure, and particle degrees of freedom.
-  </figcaption>
-</figure>
+<img src="images/cosmic-phase-diagram-2.png" alt="Cosmic Phase Diagram">
 
 </body>
 </html>
-
