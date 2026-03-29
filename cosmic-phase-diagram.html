@@ -54,12 +54,14 @@
   let startY = 0;
 
   // クリックでズーム
- img.addEventListener('click', (e) => {
+img.addEventListener('dblclick', (e) => {
+  e.preventDefault(); // ブラウザのデフォルト動作を無効化
+
   if (!isZoomed) {
     // 現在の画像の表示サイズを取得
     const rect = img.getBoundingClientRect();
 
-    // クリック位置（画像内座標）
+    // ダブルクリック位置（画像内座標）
     const clickX = e.clientX - rect.left;
     const clickY = e.clientY - rect.top;
 
@@ -83,6 +85,7 @@
     fitToScreen();
   }
 });
+
 
 
   // ドラッグ開始
