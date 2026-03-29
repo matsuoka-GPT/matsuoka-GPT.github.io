@@ -35,7 +35,7 @@
     .topbar{
       position:sticky;
       top:0;
-      z-index:10;
+      z-index:20;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -65,8 +65,13 @@
       color:var(--sub);
     }
 
-    .top-link{
+    .top-actions{
+      display:flex;
+      gap:10px;
       flex-shrink:0;
+    }
+
+    .top-link{
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -101,7 +106,7 @@
         radial-gradient(circle at center, rgba(255,255,255,0.04), rgba(255,255,255,0.01) 45%, rgba(255,255,255,0) 70%);
     }
 
-    .figure-card{
+    .video-card{
       display:inline-block;
       margin:auto;
       padding:10px;
@@ -111,13 +116,13 @@
       box-shadow:0 10px 30px rgba(0,0,0,0.45);
     }
 
-    .figure-card img{
+    .video-card video{
       display:block;
-      height:auto;
-      max-width:none;
       width:min(1600px, 96vw);
+      height:auto;
       border-radius:12px;
       background:#000;
+      box-shadow:0 0 20px rgba(255,255,255,0.05);
     }
 
     .caption{
@@ -151,11 +156,11 @@
         height:calc(100vh - 92px);
       }
 
-      .figure-card{
+      .video-card{
         padding:8px;
       }
 
-      .figure-card img{
+      .video-card video{
         width:auto;
         max-width:none;
         max-height:calc(100vh - 128px);
@@ -167,9 +172,24 @@
       }
     }
 
+    @media (max-width: 640px){
+      .topbar{
+        align-items:flex-start;
+      }
+
+      .top-actions{
+        flex-direction:column;
+      }
+
+      .top-link{
+        padding:9px 11px;
+        font-size:0.85rem;
+      }
+    }
+
     @media (min-width: 769px){
       body{
-        max-width:1000px;
+        max-width:1100px;
         margin:0 auto;
       }
     }
@@ -182,21 +202,29 @@
       <h1 class="title">Cosmic Phase Diagram of Matter</h1>
       <p class="subtitle">Temperature — Pressure — Degrees of Freedom</p>
     </div>
-    <a class="top-link" href="images/cosmic-phase-diagram-2.png" target="_blank" rel="noopener">Open PDF</a>
+
+    <div class="top-actions">
+      <a class="top-link" href="./images/cosmic-phase-diagram.mp4" target="_blank" rel="noopener">Open Video</a>
+      <a class="top-link" href="./pdf/cosmic-phase-diagram.pdf" target="_blank" rel="noopener">Open PDF</a>
+    </div>
   </header>
 
   <main class="viewer-shell">
     <div class="viewer-stage">
-      <figure class="figure-card">
-        <img src="images/cosmic-phase-diagram.MP4" alt="Cosmic Phase Diagram of Matter" />
+      <figure class="video-card">
+        <video autoplay loop muted playsinline preload="metadata" controls poster="./images/cosmic-phase-diagram.jpg">
+          <source src="./images/cosmic-phase-diagram.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </figure>
     </div>
   </main>
 
   <div class="caption">
+    This animated diagram is designed for mobile viewing.
     Rotate your phone horizontally for a larger view.
-    For zoom controls and PDF-native navigation, use
-    <a href="images/cosmic-phase-diagram-2.png" target="_blank" rel="noopener">the PDF version</a>.
+    For a static high-resolution version, use
+    <a href="./pdf/cosmic-phase-diagram.pdf" target="_blank" rel="noopener">the PDF version</a>.
   </div>
 
 </body>
