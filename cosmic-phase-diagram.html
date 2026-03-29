@@ -54,36 +54,36 @@
   let startY = 0;
 
   // クリックでズーム
-  img.addEventListener('click', (e) => {
+ img.addEventListener('click', (e) => {
+  if (!isZoomed) {
+    // 現在の画像の表示サイズを取得
     const rect = img.getBoundingClientRect();
+
+    // クリック位置（画像内座標）
     const clickX = e.clientX - rect.left;
     const clickY = e.clientY - rect.top;
 
-    if (!zoomed) {
-      zoomed = true;
-      img.style.cursor = "zoom-out";
+    // 等倍にする
+    scale = 1;
 
-      // 等倍
-      scale = 1;
+    // 等倍時の画像内座標（自然サイズ基準）
+    const naturalX = clickX / fitScale;
+    const naturalY = clickY / fitScale;
 
-      // クリック位置を中心に
-      const naturalX = clickX / (rect.width / img.naturalWidth);
-      const naturalY = clickY / (rect.height / img.naturalHeight);
+    // クリック位置を画面中央に持ってくるためのオフセット
+    offsetX = (container.clientWidth / 2) - naturalX;
+    offsetY = (container.clientHeight / 2) - naturalY;
 
-      offsetX = (container.clientWidth / 2) - naturalX;
-      offsetY = (container.clientHeight / 2) - naturalY;
+    img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    img.style.cursor = "zoom-out";
+    isZoomed = true;
 
-      img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+  } else {
+    // フィットに戻す
+    fitToScreen();
+  }
+});
 
-    } else {
-      zoomed = false;
-      scale = container.clientHeight / img.naturalHeight; // フィット
-      offsetX = -50;
-      offsetY = -50;
-      img.style.cursor = "zoom-in";
-      img.style.transform = `translate(-50%, -50%) scale(${scale})`;
-    }
-  });
 
   // ドラッグ開始
   container.addEventListener('mousedown', (e) => {
