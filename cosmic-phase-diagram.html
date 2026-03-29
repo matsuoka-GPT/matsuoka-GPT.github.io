@@ -13,36 +13,82 @@
     overflow: hidden;
   }
 
-  /* 画像を縮小表示（画面にフィット） */
-  img {
+  #container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    touch-action: none;
+  }
+
+  #diagram {
     position: absolute;
     top: 50%;
     left: 50%;
     max-height: 100vh;
     width: auto;
     transform: translate(-50%, -50%);
-    cursor: zoom-in; /* マウスカーソルを＋にする */
+    cursor: zoom-in;
     transition: transform 0.2s ease;
-  }
-
-  /* クリックされたら等倍表示に切り替え */
-  img.zoomed {
-    max-height: none;
-    height: auto;
-    width: auto;
-    cursor: zoom-out;
-    transform: translate(-50%, -50%) scale(1);
   }
 </style>
 </head>
 <body>
 
-<img src="images/cosmic-phase-diagram-2.png" id="diagram">
+<div id="container">
+  <img src="images/cosmic-phase-diagram-2.png" id="diagram">
+</div>
 
 <script>
   const img = document.getElementById('diagram');
-  img.addEventListener('click', () => {
-    img.classList.toggle('zoomed');
+  const container = document.getElementById('container');
+
+  let zoomed = false;
+  let offsetX = 0;
+  let offsetY = 0;
+  let startX = 0;
+  let startY = 0;
+
+  img.addEventListener('click', (e) => {
+    const rect = img.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    if (!zoomed) {
+      zoomed = true;
+      img.style.cursor = "zoom-out";
+
+      const scale = img.naturalHeight / rect.height;
+
+      offsetX = (container.clientWidth / 2) - (clickX * scale);
+      offsetY = (container.clientHeight / 2) - (clickY * scale);
+
+      img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    } else {
+      zoomed = false;
+      img.style.cursor = "zoom-in";
+      img.style.transform = "translate(-50%, -50%) scale(1)";
+    }
+  });
+
+  container.addEventListener('mousedown', (e) => {
+    if (!zoomed) return;
+    startX = e.clientX - offsetX;
+    startY = e.clientY - offsetY;
+
+    const move = (e2) => {
+      offsetX = e2.clientX - startX;
+      offsetY = e2.clientY - startY;
+      img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${img.naturalHeight / img.height})`;
+    };
+
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
   });
 </script>
 
