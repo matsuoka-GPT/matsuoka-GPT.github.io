@@ -1,39 +1,35 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Cosmic Phase Diagram</title>
+
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #000;
-    height: 100%;
-    overflow: hidden;
-  }
 
-  img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 100vh;   /* 横画面・PCでは縦フィット */
-    width: auto;
-    transform: translate(-50%, -50%);
-  }
+body{
+margin:0;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
 
-  /* 📱 縦画面のときだけ横幅フィット */
-  @media screen and (orientation: portrait) {
-    img {
-      width: 100vw;   /* 横幅いっぱい */
-      height: auto;   /* 比率維持 */
-    }
-  }
+iframe{
+width:90vw;
+height:90vh;
+border:none;
+box-shadow:0 0 20px rgba(255,255,255,0.2);
+}
+
 </style>
 </head>
+
 <body>
 
-<img src="images/cosmic-phase-diagram-2.png" alt="Cosmic Phase Diagram">
+<iframe src="./pdf/cosmic-phase-diagram.pdf"></iframe>
 
 </body>
 </html>
