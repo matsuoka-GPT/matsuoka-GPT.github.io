@@ -27,9 +27,10 @@
     left: 50%;
     max-height: 100vh;
     width: auto;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     cursor: zoom-in;
     transition: transform 0.2s ease;
+    user-select: none;
   }
 </style>
 </head>
@@ -44,11 +45,15 @@
   const container = document.getElementById('container');
 
   let zoomed = false;
-  let offsetX = 0;
-  let offsetY = 0;
+  let scale = 1;
+  let offsetX = -50;  // translate(-50%, -50%) と整合
+  let offsetY = -50;
+
+  let dragging = false;
   let startX = 0;
   let startY = 0;
 
+  // クリックでズーム
   img.addEventListener('click', (e) => {
     const rect = img.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
@@ -58,65 +63,48 @@
       zoomed = true;
       img.style.cursor = "zoom-out";
 
-      const scale = img.naturalHeight / rect.height;
+      // 等倍
+      scale = 1;
 
-      offsetX = (container.clientWidth / 2) - (clickX * scale);
-      offsetY = (container.clientHeight / 2) - (clickY * scale);
+      // クリック位置を中心に
+      const naturalX = clickX / (rect.width / img.naturalWidth);
+      const naturalY = clickY / (rect.height / img.naturalHeight);
+
+      offsetX = (container.clientWidth / 2) - naturalX;
+      offsetY = (container.clientHeight / 2) - naturalY;
 
       img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+
     } else {
       zoomed = false;
+      scale = container.clientHeight / img.naturalHeight; // フィット
+      offsetX = -50;
+      offsetY = -50;
       img.style.cursor = "zoom-in";
-      img.style.transform = "translate(-50%, -50%) scale(1)";
+      img.style.transform = `translate(-50%, -50%) scale(${scale})`;
     }
   });
 
+  // ドラッグ開始
   container.addEventListener('mousedown', (e) => {
     if (!zoomed) return;
+    dragging = true;
     startX = e.clientX - offsetX;
     startY = e.clientY - offsetY;
+  });
 
-    const move = (e2) => {
-      offsetX = e2.clientX - startX;
-      offsetY = e2.clientY - startY;
-      img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${img.naturalHeight / img.height})`;
-    };
+  // ドラッグ中
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    offsetX = e.clientX - startX;
+    offsetY = e.clientY - startY;
+    img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+  });
 
-    const up = () => {
-      window.removeEventListener('mousemove', move);
-      window.removeEventListener('mouseup', up);
-    };
-
-  　  window.addEventListener('mousemove', move);
-　    window.addEventListener('mouseup', up);
-　  });
-
-  let dragging = false;
-let startX = 0;
-let startY = 0;
-
-// 長押し開始（mousedown）
-container.addEventListener('mousedown', (e) => {
-  if (!isZoomed) return; // ズーム時だけドラッグ可能
-  dragging = true;
-  startX = e.clientX - offsetX;
-  startY = e.clientY - offsetY;
-});
-
-// ドラッグ中（mousemove）
-window.addEventListener('mousemove', (e) => {
-  if (!dragging) return;
-  offsetX = e.clientX - startX;
-  offsetY = e.clientY - startY;
-  img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
-});
-
-// ドラッグ終了（mouseup）
-window.addEventListener('mouseup', () => {
-  dragging = false;
-});
-
-  
+  // ドラッグ終了
+  window.addEventListener('mouseup', () => {
+    dragging = false;
+  });
 </script>
 
 </body>
