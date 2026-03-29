@@ -9,21 +9,42 @@
     margin: 0;
     padding: 0;
     background: #000;
-    overflow: hidden; /* 横スクロール禁止 */
+    height: 100%;
+    overflow: hidden;
   }
 
+  /* 画像を縮小表示（画面にフィット） */
   img {
-    height: 100vh;      /* 画面の縦いっぱいに表示 */
-    width: auto;        /* 縦に合わせて横を自動調整 */
-    max-width: none;    /* ブラウザの自動縮小を無効化 */
-    display: block;
-    margin: 0 auto;     /* 中央寄せ */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-height: 100vh;
+    width: auto;
+    transform: translate(-50%, -50%);
+    cursor: zoom-in; /* マウスカーソルを＋にする */
+    transition: transform 0.2s ease;
+  }
+
+  /* クリックされたら等倍表示に切り替え */
+  img.zoomed {
+    max-height: none;
+    height: auto;
+    width: auto;
+    cursor: zoom-out;
+    transform: translate(-50%, -50%) scale(1);
   }
 </style>
 </head>
 <body>
 
-<img src="images/cosmic-phase-diagram-2.png" alt="Cosmic Phase Diagram">
+<img src="images/cosmic-phase-diagram-2.png" id="diagram">
+
+<script>
+  const img = document.getElementById('diagram');
+  img.addEventListener('click', () => {
+    img.classList.toggle('zoomed');
+  });
+</script>
 
 </body>
 </html>
