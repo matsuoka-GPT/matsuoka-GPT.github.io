@@ -181,11 +181,39 @@
         padding:8px;
       }
 
-      .video-card video{
-        width:auto;
-        max-width:none;
-        max-height:calc(100vh - 128px);
-      }
+      @media (orientation: landscape){
+  .topbar{
+    padding:12px 18px;
+  }
+
+  .title{
+    font-size:1.02rem;
+  }
+
+  .viewer-shell{
+    padding:0px 12px 10px;
+  }
+
+  .viewer-stage{
+    height:calc(100vh - 92px);
+  }
+
+  .video-card{
+    padding:8px;
+  }
+
+  .media-wrap video,
+  .media-wrap .poster{
+    width:auto;
+    max-width:none;
+    max-height:calc(100vh - 128px);
+  }
+
+  .caption{
+    padding:0 16px 16px;
+    font-size:0.85rem;
+  }
+}
 
       .caption{
         padding:0 16px 16px;
