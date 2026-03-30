@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Cosmic Phase Diagram Viewer</title>
+
   <style>
     :root{
       --bg:#05070d;
@@ -13,9 +14,7 @@
       --accent:#6ea8ff;
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{ box-sizing:border-box; }
 
     html, body{
       margin:0;
@@ -45,9 +44,7 @@
       border-bottom:1px solid var(--line);
     }
 
-    .title-wrap{
-      min-width:0;
-    }
+    .title-wrap{ min-width:0; }
 
     .title{
       margin:0;
@@ -99,8 +96,7 @@
       justify-content:center;
       align-items:center;
       border-radius:18px;
-      background:
-        radial-gradient(circle at center, rgba(255,255,255,0.04), rgba(255,255,255,0.01) 45%, rgba(255,255,255,0) 70%);
+      background:radial-gradient(circle at center, rgba(255,255,255,0.04), rgba(255,255,255,0.01) 45%, rgba(255,255,255,0) 70%);
     }
 
     .video-card{
@@ -113,26 +109,26 @@
       box-shadow:0 10px 30px rgba(0,0,0,0.45);
     }
 
-   .media-wrap{
-  position:relative;
-}
+    .media-wrap{
+      position:relative;
+    }
 
-.media-wrap video{
-  width:100%;
-  height:auto;
-  display:block;
-}
+    .media-wrap video{
+      width:100%;
+      height:auto;
+      display:block;
+    }
 
-.media-wrap .poster{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;   /* ← これが重要 */
-  object-fit:cover; /* または contain */
-  z-index:2;
-  transition:opacity 0.4s ease;
-}
+    .media-wrap .poster{
+      position:absolute !important;
+      top:0 !important;
+      left:0 !important;
+      width:100% !important;
+      height:100% !important;
+      object-fit:contain !important;
+      z-index:2;
+      transition:opacity 0.4s ease;
+    }
 
     .caption{
       padding:0 16px 24px;
@@ -149,38 +145,21 @@
     }
 
     @media (orientation: landscape){
-      .topbar{
-        padding:12px 18px;
-      }
+      .topbar{ padding:12px 18px; }
+      .title{ font-size:1.02rem; }
+      .viewer-shell{ padding:0px 12px 10px; }
+      .viewer-stage{ min-height:calc(100vh - 92px); }
+      .video-card{ padding:8px; }
+      .media-wrap{ width:auto; }
 
-      .title{
-        font-size:1.02rem;
-      }
-
-      .viewer-shell{
-        padding:0px 12px 10px;
-      }
-
-      .viewer-stage{
-        min-height:calc(100vh - 92px);
-      }
-
-      .video-card{
-        padding:8px;
-      }
-
-      .media-wrap{
+      .media-wrap video,
+      .media-wrap .poster{
+        display:block;
         width:auto;
+        height:auto;
+        max-width:96vw;
+        max-height:calc(100vh - 128px);
       }
-
-     .media-wrap video,
-.media-wrap .poster{
-  display:block;
-  width:auto;
-  height:auto;
-  max-width:96vw;
-  max-height:calc(100vh - 128px);
-}
 
       .caption{
         padding:0 16px 16px;
@@ -189,14 +168,8 @@
     }
 
     @media (max-width: 640px){
-      .topbar{
-        align-items:flex-start;
-      }
-
-      .top-actions{
-        flex-direction:column;
-      }
-
+      .topbar{ align-items:flex-start; }
+      .top-actions{ flex-direction:column; }
       .top-link{
         padding:9px 11px;
         font-size:0.85rem;
@@ -209,18 +182,9 @@
         margin:0 auto;
       }
     }
-    
-    .media-wrap .poster{
-  position:absolute !important;
-  top:0 !important;
-  left:0 !important;
-  width:100% !important;
-  height:100% !important;
-  object-fit:contain !important;
-  z-index:2;
-}
   </style>
 </head>
+
 <body>
 
   <header class="topbar">
@@ -239,21 +203,9 @@
     <div class="viewer-stage">
       <figure class="video-card">
         <div class="media-wrap">
-          <img
-            src="images/cosmic-phase-diagram-2.png"
-            alt="Cosmic Phase Diagram poster"
-            class="poster"
-            id="poster"
-          >
-          <video
-            id="cosmicVideo"
-            muted
-            loop
-            playsinline
-            preload="auto"
-          >
+          <img src="images/cosmic-phase-diagram-2.png" alt="Cosmic Phase Diagram poster" class="poster" id="poster">
+          <video id="cosmicVideo" muted loop playsinline preload="auto">
             <source src="images/cosmic-phase-diagram.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
         </div>
       </figure>
@@ -280,18 +232,14 @@
       setTimeout(() => {
         video.play().catch(() => {});
         poster.style.opacity = "0";
-        setTimeout(() => {
-          poster.style.display = "none";
-        }, 400);
+        setTimeout(() => { poster.style.display = "none"; }, 400);
       }, wait);
     }
 
     video.addEventListener("canplay", startVideoAfterDelay, { once: true });
 
     setTimeout(() => {
-      if (poster.style.display !== "none") {
-        startVideoAfterDelay();
-      }
+      if (poster.style.display !== "none") startVideoAfterDelay();
     }, 3000);
   </script>
 
