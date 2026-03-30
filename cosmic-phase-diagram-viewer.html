@@ -211,15 +211,17 @@
   </header>
 
   <main class="viewer-shell">
-    <div class="viewer-stage">
-      <figure class="video-card">
-        <video autoplay loop muted playsinline preload="metadata" poster="images/cosmic-phase-diagram-2.png">
-          <source src="images/cosmic-phase-diagram.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </figure>
-    </div>
-  </main>
+    
+　<div class="viewer-stage">
+　<figure class="video-card">
+　<img src="images/cosmic-phase-diagram-2.png" class="poster" id="poster">
+　<video id="cosmicVideo" muted loop playsinline preload="auto">
+  <source src="images/cosmic-phase-diagram.mp4" type="video/mp4">
+　</video>
+</figure>
+</div>
+    
+</main>
 
   <div class="caption">
     This animated diagram is designed for mobile viewing.
@@ -227,6 +229,22 @@
     For a static high-resolution version, use
     <a href="images/cosmic-phase-diagram-2.png" target="_blank" rel="noopener">the PDF version</a>.
   </div>
+
+<script>
+const video = document.getElementById("cosmicVideo");
+const poster = document.getElementById("poster");
+const MIN_DISPLAY_TIME = 2000; // 2秒
+let startTime = Date.now();
+video.addEventListener("canplaythrough", () => {
+let elapsed = Date.now() - startTime;
+let wait = Math.max(0, MIN_DISPLAY_TIME - elapsed);
+setTimeout(() => {
+poster.style.opacity = "0";
+video.play();
+setTimeout(()=>{ poster.style.display="none"; },400);
+}, wait);
+});
+</script>
 
 </body>
 </html>
