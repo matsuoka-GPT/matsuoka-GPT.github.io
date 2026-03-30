@@ -116,13 +116,34 @@
       box-shadow:0 10px 30px rgba(0,0,0,0.45);
     }
 
-    .video-card video{
+   .media-wrap{
+      position:relative;
+      display:inline-block;
+      line-height:0;
+    }
+
+    .media-wrap video,
+    .media-wrap .poster{
       display:block;
       width:min(1600px, 96vw);
       height:auto;
       border-radius:12px;
       background:#000;
       box-shadow:0 0 20px rgba(255,255,255,0.05);
+    }
+
+    .media-wrap .poster{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      opacity:1;
+      transition:opacity 0.4s ease;
+      object-fit:contain;
+    }
+
+    .media-wrap video{
+      position:relative;
+      z-index:1;
     }
 
     .caption{
