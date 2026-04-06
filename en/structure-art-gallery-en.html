@@ -1,174 +1,475 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Structure Art Gallery | 松岡×GPT 思考実験ラボ</title>
+  <meta name="description" content="松岡×GPT思考実験ラボにおける構造概念・理論構造・思考モデルの視覚化作品を展示するストラクチャーアートギャラリー。" />
+  <link rel="canonical" href="https://matsuoka-gpt.github.io/structure-art-gallery.html" />
 
-<title>Structure Art Gallery | Matsuoka × GPT Thought Experiment Lab</title>
+  <style>
+    :root{
+      --w: 1100px;
+      --bg0:#ffffff;
+      --bg1:#f7f9ff;
+      --text:#111;
+      --muted:#4b556b;
+      --line: rgba(18,26,40,.10);
+      --line2: rgba(18,26,40,.14);
+      --card: rgba(255,255,255,.82);
+      --glass: rgba(255,255,255,.64);
+      --shadow: 0 10px 30px rgba(18,26,40,.06);
+      --shadow2: 0 14px 36px rgba(18,26,40,.10);
+      --radius: 18px;
+      --radius2: 14px;
+      --accent: #2b64ff;
+      --accent2:#1b46c9;
+      --focus: 0 0 0 4px rgba(43,100,255,.14);
+    }
 
-<meta name="description"
-content="Structure Art Gallery presenting visualized concept architectures and structural models developed in the Matsuoka × GPT Thought Experiment Lab." />
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
 
-<link rel="canonical"
-href="https://matsuoka-gpt.github.io/structure-art-gallery-en.html" />
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      line-height:1.7;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 90% 8%, rgba(255,255,255,.45), transparent 55%),
+        radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%),
+        linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff);
+      overflow-x:hidden;
+    }
 
-<style>
-/* CSSは日本語版と同じなのでそのまま流用 */
-</style>
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.18;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.9), rgba(255,255,255,0) 30%),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,.9), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.85), rgba(255,255,255,0) 26%),
+        radial-gradient(circle at 60% 60%, rgba(255,255,255,.7), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 90% 90%, rgba(255,255,255,.8), rgba(255,255,255,0) 22%);
+      filter: blur(.2px);
+      mix-blend-mode: overlay;
+    }
+
+    a{ color:inherit; }
+    a:hover{ color:var(--accent2); }
+
+    .wrap{
+      max-width:var(--w);
+      margin:0 auto;
+      padding:34px 18px 50px;
+      position:relative;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:8px 0 10px;
+      position:relative;
+      z-index:10;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .brand a{
+      text-decoration:none;
+    }
+
+    .brand-title{
+      font-size:15px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+
+    .brand-sub{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .topnav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .topnav a{
+      text-decoration:none;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color:#1a2133;
+      opacity:.92;
+    }
+
+    .topnav a:hover{
+      border-color:var(--line);
+      background:rgba(255,255,255,.55);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    .hero{
+      margin-top:8px;
+      border:1px solid var(--line);
+      border-radius:calc(var(--radius) + 2px);
+      background:linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.46));
+      box-shadow:var(--shadow);
+      padding:28px 20px 22px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:-35% -25%;
+      background:
+        radial-gradient(900px 480px at 68% 38%, rgba(43,100,255,.20), transparent 62%),
+        linear-gradient(120deg, transparent 32%, rgba(255,255,255,.72) 50%, transparent 64%);
+      transform:rotate(-6deg);
+      opacity:.72;
+      pointer-events:none;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:34px;
+      letter-spacing:.02em;
+      position:relative;
+      z-index:1;
+    }
+
+    .lead{
+      margin:0;
+      max-width:55em;
+      font-size:16px;
+      color:#1c2336;
+      position:relative;
+      z-index:1;
+    }
+
+    .lead strong{
+      color:#0f1627;
+      border-bottom:2px solid rgba(43,100,255,.20);
+      padding-bottom:1px;
+    }
+
+    .hero-meta{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.64);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color:#1a2133;
+      box-shadow:0 6px 18px rgba(18,26,40,.05);
+    }
+
+    .section{
+      margin-top:28px;
+    }
+
+    .box{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--glass);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+
+    .section h2{
+      margin:0 0 12px;
+      font-size:22px;
+      letter-spacing:.02em;
+      color:#111827;
+    }
+
+    .muted{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:18px;
+      margin-top:16px;
+    }
+
+    @media (max-width: 980px){
+      .gallery-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px){
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .art-card{
+      display:flex;
+      flex-direction:column;
+      text-decoration:none;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:rgba(255,255,255,.78);
+      box-shadow:var(--shadow);
+      transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+      min-height:100%;
+    }
+
+    .art-card:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow2);
+      border-color:rgba(43,100,255,.28);
+    }
+
+    .thumb-wrap{
+      aspect-ratio: 4 / 5;
+      background:
+        linear-gradient(180deg, rgba(18,26,40,.05), rgba(18,26,40,.02)),
+        radial-gradient(circle at center, rgba(43,100,255,.07), transparent 60%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+    }
+
+    .thumb-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .art-body{
+      padding:14px 14px 16px;
+    }
+
+    .art-no{
+      font-size:12px;
+      font-weight:700;
+      color:var(--accent2);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+
+    .art-title{
+      margin:0 0 6px;
+      font-size:17px;
+      line-height:1.35;
+      color:#111827;
+    }
+
+    .art-sub{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .notes{
+      margin-top:12px;
+      padding-left:18px;
+    }
+
+    .notes li{
+      margin:6px 0;
+      color:#1d2435;
+    }
+
+    .back-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius:12px;
+      padding:10px 14px;
+      text-decoration:none;
+      font-size:14px;
+      border:1px solid var(--line2);
+      background:rgba(255,255,255,.78);
+      box-shadow:var(--shadow);
+      color:#121a2a;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow2);
+      border-color:rgba(43,100,255,.30);
+    }
+
+    footer{
+      margin-top:38px;
+      padding-top:16px;
+      border-top:1px solid rgba(18,26,40,.10);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media (max-width: 720px){
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .topnav{
+        justify-content:flex-start;
+      }
+
+      h1{
+        font-size:28px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <a href="./">
+          <div class="brand-title">松岡×GPT 思考実験ラボ</div>
+          <div class="brand-sub">Matsuoka × GPT Thought Experiment Lab</div>
+        </a>
+      </div>
 
-<div class="wrap">
+      <nav class="topnav" aria-label="navigation">
+        <a href="./#projects">プロジェクト</a>
+        <a href="./#method">方法論</a>
+        <a href="./#outputs">成果物</a>
+        <a href="./#essays">徒然</a>
+        <a href="./members.html">メンバー紹介</a>
+      </nav>
+    </header>
 
-<header>
+    <section class="hero" aria-label="hero">
+      <h1>Structure Art Gallery</h1>
+      <p class="lead">
+        松岡×GPT思考実験ラボにおいて生成・整理された<strong>構造概念の視覚化作品</strong>を展示するギャラリーです。
+        ここに並ぶ図像は単なる装飾ではなく、理論構造・思考プロセス・認知モデルを可視化した研究資産です。
+      </p>
 
-<div class="brand">
-<a href="./">
-<div class="brand-title">Matsuoka × GPT Thought Experiment Lab</div>
-<div class="brand-sub">Collaborative Intelligence Research</div>
-</a>
-</div>
+      <div class="hero-meta">
+        <span class="tag">Concept Architecture</span>
+        <span class="tag">Structural Visualization</span>
+        <span class="tag">Research Assets</span>
+        <span class="tag">PNG Direct View</span>
+      </div>
 
-<nav class="topnav" aria-label="navigation">
-<a href="./#projects">Projects</a>
-<a href="./#method">Methodology</a>
-<a href="./#outputs">Outputs</a>
-<a href="./#essays">Essays</a>
-<a href="./members-en.html">Lab Members</a>
-</nav>
+      <div class="back-links">
+        <a class="btn" href="./#outputs">← 成果物へ戻る</a>
+        <a class="btn" href="./">トップページへ戻る</a>
+      </div>
+    </section>
 
-</header>
+    <section class="section" aria-label="gallery">
+      <div class="box">
+        <h2>作品一覧</h2>
+        <p class="muted">
+          各カードをクリックすると、オリジナルPNG画像を原寸に近い形で表示します。
+          図版単体での観察を前提とした、軽量なアーカイブ形式です。
+        </p>
 
+        <div class="gallery-grid">
+          <a class="art-card" href="images/cosmic-phase-diagram-2.png" target="_blank" rel="noopener">
+            <div class="thumb-wrap">
+              <img src="images/cosmic-phase-diagram-2.png" alt="Structure Art 001 Cosmic Phase Structure">
+            </div>
+            <div class="art-body">
+              <div class="art-no">Structure Art 001</div>
+              <h3 class="art-title">Cosmic Phase Structure</h3>
+              <p class="art-sub">宇宙相関モデル / 宇宙相図系の構造可視化</p>
+            </div>
+          </a>
 
-<section class="hero">
+          <a class="art-card" href="images/History-Dependent Adaptive System(HDAS).png" target="_blank" rel="noopener">
+            <div class="thumb-wrap">
+              <img src="images/History-Dependent Adaptive System(HDAS).png" alt="Structure Art 002 History-Dependent Adaptive System">
+            </div>
+            <div class="art-body">
+              <div class="art-no">Structure Art 002</div>
+              <h3 class="art-title">History-Dependent Adaptive System</h3>
+              <p class="art-sub">履歴依存型適応システム / 行動・免疫・判断の共通構造モデル</p>
+            </div>
+          </a>
 
-<h1>Structure Art Gallery</h1>
+          <a class="art-card" href="images/LLM-Validated Theory Method (LVTM).png" target="_blank" rel="noopener">
+            <div class="thumb-wrap">
+              <img src="images/LLM-Validated Theory Method (LVTM).png" alt="Structure Art 003 LVTM">
+            </div>
+            <div class="art-body">
+              <div class="art-no">Structure Art 003</div>
+              <h3 class="art-title">LVTM: LLM-Validated Theory Modeling</h3>
+              <p class="art-sub">LLM検証型理論構築法 / 協働知性5.0 の概念構造図</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-<p class="lead">
-This gallery presents <strong>visualized concept architectures</strong>
-developed within the Matsuoka × GPT Thought Experiment Lab.
-The images displayed here are not decorative illustrations,
-but research assets that visualize theoretical structures,
-cognitive models, and conceptual architectures.
-</p>
+    <section class="section" aria-label="notes">
+      <div class="box">
+        <h2>Gallery Notes</h2>
+        <ul class="notes">
+          <li>本ギャラリーは、論文・Essay・構造論文に対応する視覚的研究資産のアーカイブです。</li>
+          <li>各作品は、理論や概念の「言語表現」ではなく「構造表現」として位置づけられます。</li>
+          <li>今後の追加作品は、Structure Art 004, 005... の形式で連番管理していく想定です。</li>
+        </ul>
+      </div>
+    </section>
 
-<div class="hero-meta">
-<span class="tag">Concept Architecture</span>
-<span class="tag">Structural Visualization</span>
-<span class="tag">Research Assets</span>
-<span class="tag">PNG Direct View</span>
-</div>
-
-<div class="back-links">
-<a class="btn" href="./#outputs">← Back to Outputs</a>
-<a class="btn" href="./">Back to Top</a>
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="box">
-
-<h2>Gallery Works</h2>
-
-<p class="muted">
-Click each card to open the original PNG image.
-This lightweight archive format allows each structure to be observed independently.
-</p>
-
-
-<div class="gallery-grid">
-
-<a class="art-card"
-href="images/cosmic-phase-diagram-2.png"
-target="_blank" rel="noopener">
-
-<div class="thumb-wrap">
-<img src="images/cosmic-phase-diagram-2.png"
-alt="Structure Art 001 Cosmic Phase Structure">
-</div>
-
-<div class="art-body">
-<div class="art-no">Structure Art 001</div>
-<h3 class="art-title">Cosmic Phase Structure</h3>
-<p class="art-sub">
-Visualization of cosmic phase structures and hierarchical universe models.
-</p>
-</div>
-
-</a>
-
-
-<a class="art-card"
-href="images/History-Dependent Adaptive System(HDAS).png"
-target="_blank" rel="noopener">
-
-<div class="thumb-wrap">
-<img src="images/History-Dependent Adaptive System(HDAS).png"
-alt="Structure Art 002 History-Dependent Adaptive System">
-</div>
-
-<div class="art-body">
-<div class="art-no">Structure Art 002</div>
-<h3 class="art-title">History-Dependent Adaptive System</h3>
-<p class="art-sub">
-A unified structural model explaining behavior, immunity, and judgment.
-</p>
-</div>
-
-</a>
-
-
-<a class="art-card"
-href="images/LLM-Validated Theory Method (LVTM).png"
-target="_blank" rel="noopener">
-
-<div class="thumb-wrap">
-<img src="images/LLM-Validated Theory Method (LVTM).png"
-alt="Structure Art 003 LVTM">
-</div>
-
-<div class="art-body">
-<div class="art-no">Structure Art 003</div>
-<h3 class="art-title">LVTM: LLM-Validated Theory Modeling</h3>
-<p class="art-sub">
-Concept architecture of Collaborative Intelligence 5.0.
-</p>
-</div>
-
-</a>
-
-</div>
-</div>
-</section>
-
-
-<section class="section">
-
-<div class="box">
-
-<h2>Gallery Notes</h2>
-
-<ul class="notes">
-<li>This gallery archives visual research assets related to papers, essays, and structural theories.</li>
-<li>Each work represents a structural expression of concepts rather than purely textual explanations.</li>
-<li>Future works will be added sequentially as Structure Art 004, 005, and so on.</li>
-</ul>
-
-</div>
-
-</section>
-
-
-<footer>
-<div>© Matsuoka × GPT Thought Experiment Lab</div>
-<div>Structure Art Gallery / Visualized Concept Architectures</div>
-</footer>
-
-</div>
-
+    <footer>
+      <div>© Matsuoka × GPT Thought Experiment Lab</div>
+      <div>Structure Art Gallery / Visualized Concept Architectures</div>
+    </footer>
+  </div>
 </body>
 </html>
