@@ -368,11 +368,28 @@
         font-size:28px;
       }
     }
-   .art-caption-fold{
+  .art-card{
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  border:1px solid rgba(18,26,40,.10);
+  border-radius:16px;
+  overflow:hidden;
+  background:rgba(255,255,255,.78);
+  box-shadow:0 10px 30px rgba(18,26,40,.06);
+  transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+  min-height:auto; /* ← ここ重要 */
+}
+
+.art-body{
+  padding:14px 14px 16px;
+}
+
+.art-caption-fold{
   margin-top:8px;
   border:1px solid rgba(18,26,40,.08);
   border-radius:12px;
-  background: rgba(255,255,255,.58);
+  background:rgba(255,255,255,.58);
   overflow:hidden;
 }
 
@@ -395,7 +412,6 @@
   display:inline-block;
   margin-right:8px;
   font-size:12px;
-  transition:transform .15s ease;
 }
 
 .art-caption-fold[open] summary::before{
@@ -403,10 +419,16 @@
 }
 
 .art-caption-body{
+  display:none;          /* ← 閉じた時は完全に消す */
   padding:0 12px 12px;
   font-size:13px;
   line-height:1.75;
   color:#4b556b;
+  margin:0;
+}
+
+.art-caption-fold[open] .art-caption-body{
+  display:block;         /* ← 開いた時だけ表示 */
 }
     
     </style>
