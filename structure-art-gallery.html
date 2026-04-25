@@ -502,28 +502,24 @@
     document.querySelectorAll('.caption-close-btn').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
-    e.stopPropagation();
-
+    
     const details = this.closest('details');
     const card = details.closest('.art-card');
+    
+    // 1. スクロール先（カードの少し上）を計算
+    const targetY = card.getBoundingClientRect().top + window.pageYOffset - 30;
 
-    // 1. カードの上端位置を取得
-    const targetOffset = card.getBoundingClientRect().top + window.pageYOffset - 20;
+    // 2. まず閉じる（ここを先に実行してガタつきを防ぐ、あるいは同時に動かす）
+    details.open = false;
 
-    // 2. スムーズに上部へスクロール
+    // 3. 瞬時に、あるいはスムーズに位置を戻す
     window.scrollTo({
-      top: targetOffset,
+      top: targetY,
       behavior: 'smooth'
     });
-
-    // 3. スクロールに合わせてdetailsを閉じる
-    // （少しだけ遅延させることで「追いかける」ような自然な動きになります）
-    setTimeout(() => {
-      details.open = false;
-    }, 100); 
   });
 });
-    
-  </script>
+   </script>
+  
 </body>
 </html>
