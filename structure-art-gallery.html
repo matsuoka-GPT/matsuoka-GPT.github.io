@@ -712,9 +712,11 @@
     </footer>
   </div>
   
-  <script>
+ <script>
 document.querySelectorAll('.caption-close-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();   
+    e.stopPropagation();  
     this.closest('details').open = false;
   });
 });
