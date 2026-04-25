@@ -1,17 +1,16 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Structure Art Gallery | Matsuoka × GPT Thought Experiment Lab</title>
-  <meta name="description" content="Structure Art Gallery presenting visualized concept architectures and structural models developed in the Matsuoka × GPT Thought Experiment Lab." />
+  <meta name="description" content="A gallery showcasing visual representations of structural concepts, theoretical frameworks, and cognitive models from the Matsuoka × GPT Thought Experiment Lab." />
   <link rel="canonical" href="https://matsuoka-gpt.github.io/structure-art-gallery.html" />
 
   <style>
     :root{
       --w: 1100px;
       --bg0:#ffffff;
-      --bg1:#f7f9ff;
       --text:#111;
       --muted:#4b556b;
       --line: rgba(18,26,40,.10);
@@ -21,10 +20,8 @@
       --shadow: 0 10px 30px rgba(18,26,40,.06);
       --shadow2: 0 14px 36px rgba(18,26,40,.10);
       --radius: 18px;
-      --radius2: 14px;
       --accent: #2b64ff;
       --accent2:#1b46c9;
-      --focus: 0 0 0 4px rgba(43,100,255,.14);
     }
 
     *{ box-sizing:border-box; }
@@ -32,7 +29,7 @@
 
     body{
       margin:0;
-      font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height:1.7;
       color:var(--text);
       background:
@@ -59,7 +56,7 @@
       mix-blend-mode: overlay;
     }
 
-    a{ color:inherit; }
+    a{ color:inherit; transition: color .2s; }
     a:hover{ color:var(--accent2); }
 
     .wrap{
@@ -79,370 +76,126 @@
       z-index:10;
     }
 
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
+    .brand{ display:flex; flex-direction:column; gap:4px; }
+    .brand a{ text-decoration:none; }
+    .brand-title{ font-size:15px; font-weight:800; letter-spacing:.02em; }
+    .brand-sub{ font-size:12px; color:var(--muted); }
 
-    .brand a{
-      text-decoration:none;
-    }
-
-    .brand-title{
-      font-size:15px;
-      font-weight:800;
-      letter-spacing:.02em;
-    }
-
-    .brand-sub{
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .topnav{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
+    .topnav{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
     .topnav a{
-      text-decoration:none;
-      font-size:13px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-      color:#1a2133;
-      opacity:.92;
+      text-decoration:none; font-size:13px; padding:8px 10px; border-radius:999px;
+      border:1px solid transparent; color:#1a2133; opacity:.92;
     }
-
     .topnav a:hover{
-      border-color:var(--line);
-      background:rgba(255,255,255,.55);
-      backdrop-filter:blur(8px);
-      -webkit-backdrop-filter:blur(8px);
+      border-color:var(--line); background:rgba(255,255,255,.55);
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
     }
 
     .hero{
-      margin-top:8px;
-      border:1px solid var(--line);
-      border-radius:calc(var(--radius) + 2px);
+      margin-top:8px; border:1px solid var(--line); border-radius:calc(var(--radius) + 2px);
       background:linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.46));
-      box-shadow:var(--shadow);
-      padding:28px 20px 22px;
-      overflow:hidden;
-      position:relative;
+      box-shadow:var(--shadow); padding:28px 20px 22px; overflow:hidden; position:relative;
     }
 
     .hero:after{
-      content:"";
-      position:absolute;
-      inset:-35% -25%;
+      content:""; position:absolute; inset:-35% -25%;
       background:
         radial-gradient(900px 480px at 68% 38%, rgba(43,100,255,.20), transparent 62%),
         linear-gradient(120deg, transparent 32%, rgba(255,255,255,.72) 50%, transparent 64%);
-      transform:rotate(-6deg);
-      opacity:.72;
-      pointer-events:none;
+      transform:rotate(-6deg); opacity:.72; pointer-events:none;
     }
 
-    h1{
-      margin:0 0 10px;
-      font-size:34px;
-      letter-spacing:.02em;
-      position:relative;
-      z-index:1;
-    }
+    h1{ margin:0 0 10px; font-size:34px; letter-spacing:.02em; position:relative; z-index:1; }
+    .lead{ margin:0; max-width:55em; font-size:16px; color:#1c2336; position:relative; z-index:1; }
+    .lead strong{ color:#0f1627; border-bottom:2px solid rgba(43,100,255,.20); padding-bottom:1px; }
 
-    .lead{
-      margin:0;
-      max-width:55em;
-      font-size:16px;
-      color:#1c2336;
-      position:relative;
-      z-index:1;
-    }
-
-    .lead strong{
-      color:#0f1627;
-      border-bottom:2px solid rgba(43,100,255,.20);
-      padding-bottom:1px;
-    }
-
-    .hero-meta{
-      margin-top:16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      position:relative;
-      z-index:1;
-    }
-
+    .hero-meta{ margin-top:16px; display:flex; flex-wrap:wrap; gap:10px; position:relative; z-index:1; }
     .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.64);
-      backdrop-filter:blur(8px);
-      -webkit-backdrop-filter:blur(8px);
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:13px;
-      color:#1a2133;
-      box-shadow:0 6px 18px rgba(18,26,40,.05);
+      display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
+      background:rgba(255,255,255,.64); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+      padding:7px 12px; border-radius:999px; font-size:13px; color:#1a2133; box-shadow:0 6px 18px rgba(18,26,40,.05);
     }
 
-    .section{
-      margin-top:28px;
-    }
-
+    .section{ margin-top:28px; }
     .box{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:var(--glass);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      box-shadow:var(--shadow);
-      padding:18px;
+      border:1px solid var(--line); border-radius:var(--radius); background:var(--glass);
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); box-shadow:var(--shadow); padding:18px;
     }
-
-    .section h2{
-      margin:0 0 12px;
-      font-size:22px;
-      letter-spacing:.02em;
-      color:#111827;
-    }
-
-    .muted{
-      color:var(--muted);
-      font-size:14px;
-    }
+    .section h2{ margin:0 0 12px; font-size:22px; letter-spacing:.02em; color:#111827; }
+    .muted{ color:var(--muted); font-size:14px; }
 
     .gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:18px;
-      margin-top:16px;
+      display:grid; grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:18px; margin-top:16px;
     }
 
-    @media (max-width: 980px){
-      .gallery-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-      }
+    .art-card{
+      display:flex; flex-direction:column; border:1px solid var(--line);
+      border-radius:16px; overflow:hidden; background:rgba(255,255,255,.78);
+      box-shadow:var(--shadow); transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease;
     }
+    .art-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow2); border-color:rgba(43,100,255,.28); }
 
-    @media (max-width: 640px){
-      .gallery-grid{
-        grid-template-columns:1fr;
-      }
-    }
-
-    .art-card:hover{
-      transform:translateY(-3px);
-      box-shadow:var(--shadow2);
-      border-color:rgba(43,100,255,.28);
-    }
+    .art-link{ text-decoration:none; color:inherit; display:block; }
 
     .thumb-wrap{
       aspect-ratio: 4 / 5;
-      background:
-        linear-gradient(180deg, rgba(18,26,40,.05), rgba(18,26,40,.02)),
-        radial-gradient(circle at center, rgba(43,100,255,.07), transparent 60%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(18,26,40,.05), rgba(18,26,40,.02));
+      display:flex; align-items:center; justify-content:center; overflow:hidden; border-bottom:1px solid var(--line);
     }
+    .thumb-wrap img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-    .thumb-wrap img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+    .art-body{ padding:14px 14px 16px; }
+    .art-no{ font-size:12px; font-weight:700; color:var(--accent2); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
+    .art-title{ margin:0 0 6px; font-size:17px; line-height:1.35; color:#111827; }
+
+    .art-caption-fold{
+      margin-top:8px; border:1px solid rgba(18,26,40,.08); border-radius:12px;
+      background:rgba(255,255,255,.58); overflow:hidden; cursor: default;
     }
-
-    .art-body{
-      padding:14px 14px 16px;
+    .art-caption-fold summary{
+      cursor:pointer; list-style:none; padding:10px 12px; font-size:13px; font-weight:700;
+      color:#1b46c9; user-select:none;
     }
+    .art-caption-fold summary::-webkit-details-marker{ display:none; }
+    .art-caption-fold summary::before{ content:"▶"; display:inline-block; margin-right:8px; font-size:12px; }
+    .art-caption-fold[open] summary::before{ content:"▼"; }
 
-    .art-no{
-      font-size:12px;
-      font-weight:700;
-      color:var(--accent2);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      margin-bottom:6px;
+    .art-caption-body{ padding:0 12px 12px; font-size:13px; line-height:1.75; color:var(--muted); margin:0; }
+
+    .caption-close-wrap { text-align: center; margin-top: 20px; }
+    .caption-close-btn {
+      padding: 8px 18px; border: 1px solid var(--accent); background: rgba(43, 100, 255, 0.05);
+      color: var(--accent); border-radius: 20px; cursor: pointer; transition: all 0.3s ease;
+      font-size: 12px; font-weight: bold;
     }
+    .caption-close-btn:hover { background: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(43, 100, 255, 0.2); }
 
-    .art-title{
-      margin:0 0 6px;
-      font-size:17px;
-      line-height:1.35;
-      color:#111827;
-    }
+    .notes{ margin-top:12px; padding-left:18px; }
+    .notes li{ margin:6px 0; color:#1d2435; }
 
-    .art-sub{
-      margin:0;
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .notes{
-      margin-top:12px;
-      padding-left:18px;
-    }
-
-    .notes li{
-      margin:6px 0;
-      color:#1d2435;
-    }
-
-    .back-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:16px;
-    }
-
+    .back-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
     .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      border-radius:12px;
-      padding:10px 14px;
-      text-decoration:none;
-      font-size:14px;
-      border:1px solid var(--line2);
-      background:rgba(255,255,255,.78);
-      box-shadow:var(--shadow);
-      color:#121a2a;
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      display:inline-flex; align-items:center; gap:10px; border-radius:12px; padding:10px 14px;
+      text-decoration:none; font-size:14px; border:1px solid var(--line2); background:rgba(255,255,255,.78);
+      box-shadow:var(--shadow); color:#121a2a; transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-
-    .btn:hover{
-      transform:translateY(-2px);
-      box-shadow:var(--shadow2);
-      border-color:rgba(43,100,255,.30);
-    }
+    .btn:hover{ transform:translateY(-2px); box-shadow:var(--shadow2); border-color:rgba(43,100,255,.30); }
 
     footer{
-      margin-top:38px;
-      padding-top:16px;
-      border-top:1px solid rgba(18,26,40,.10);
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
-      color:var(--muted);
-      font-size:13px;
+      margin-top:38px; padding-top:16px; border-top:1px solid var(--line);
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:var(--muted); font-size:13px;
     }
 
+    @media (max-width: 980px){ .gallery-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 720px){
-      header{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .topnav{
-        justify-content:flex-start;
-      }
-
-      h1{
-        font-size:28px;
-      }
+      header{ flex-direction:column; align-items:flex-start; }
+      .topnav{ justify-content:flex-start; }
+      h1{ font-size:28px; }
     }
-  .art-card{
-  display:flex;
-  flex-direction:column;
-  text-decoration:none;
-  border:1px solid rgba(18,26,40,.10);
-  border-radius:16px;
-  overflow:hidden;
-  background:rgba(255,255,255,.78);
-  box-shadow:0 10px 30px rgba(18,26,40,.06);
-  transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease;
-  min-height:auto; /* ← ここ重要 */
-}
-
-.art-body{
-  padding:14px 14px 16px;
-}
-
-.art-caption-fold{
-  margin-top:8px;
-  border:1px solid rgba(18,26,40,.08);
-  border-radius:12px;
-  background:rgba(255,255,255,.58);
-  overflow:hidden;
-}
-
-.art-caption-fold summary{
-  cursor:pointer;
-  list-style:none;
-  padding:10px 12px;
-  font-size:13px;
-  font-weight:700;
-  color:#1b46c9;
-  user-select:none;
-}
-
-.art-caption-fold summary::-webkit-details-marker{
-  display:none;
-}
-
-.art-caption-fold summary::before{
-  content:"▶";
-  display:inline-block;
-  margin-right:8px;
-  font-size:12px;
-}
-
-.art-caption-fold[open] summary::before{
-  content:"▼";
-}
-
-.art-caption-body{
-  display:none;       
-  padding:0 12px 12px;
-  font-size:13px;
-  line-height:1.75;
-  color:#4b556b;
-  margin:0;
-}
-
-.art-caption-fold[open] .art-caption-body{
-  display:block;     
-}
-
-  .caption-close-wrap {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.caption-close-btn {
-  padding: 8px 18px;
-  border: 1px solid var(--accent);
-  background: rgba(43, 100, 255, 0.05);
-  color: var(--accent);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.caption-close-btn:hover {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(43, 100, 255, 0.2);
-}
-    
-     </style>
- </head>
+    @media (max-width: 640px){ .gallery-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
 
 <body>
   <div class="wrap">
@@ -450,61 +203,60 @@
       <div class="brand">
         <a href="./">
           <div class="brand-title">Matsuoka × GPT Thought Experiment Lab</div>
-          <div class="brand-sub">Collaborative Intelligence Research</div>
+          <div class="brand-sub">Scientific Structure & Cognitive Architecture</div>
         </a>
       </div>
-
       <nav class="topnav" aria-label="navigation">
-      <a href="./#projects">Projects</a>
-      <a href="./#method">Methodology</a>
-      <a href="./#outputs">Outputs</a>
-      <a href="./#essays">Essays</a>
-      <a href="./members-en.html">Lab Members</a>
+        <a href="./#projects">Projects</a>
+        <a href="./#method">Methodology</a>
+        <a href="./#outputs">Outputs</a>
+        <a href="./#essays">Reflections</a>
+        <a href="./members.html">Members</a>
       </nav>
     </header>
 
     <section class="hero" aria-label="hero">
       <h1>Structure Art Gallery</h1>
       <p class="lead">
-      This gallery presents <strong>visualized concept architectures</strong>
-      developed within the Matsuoka × GPT Thought Experiment Lab.
-      The images displayed here are not decorative illustrations,
-      but research assets that visualize theoretical structures,
-      cognitive models, and conceptual architectures.
+        A gallery showcasing <strong>visualizations of structural concepts</strong> generated and organized within the Matsuoka × GPT Thought Experiment Lab.
+        These images are not mere decorations; they are research assets visualizing theoretical frameworks, thought processes, and cognitive models.
       </p>
-
       <div class="hero-meta">
         <span class="tag">Concept Architecture</span>
         <span class="tag">Structural Visualization</span>
         <span class="tag">Research Assets</span>
         <span class="tag">PNG Direct View</span>
       </div>
-
       <div class="back-links">
         <a class="btn" href="./#outputs">← Back to Outputs</a>
-        <a class="btn" href="./">Back to Top</a>
+        <a class="btn" href="./">Home</a>
       </div>
     </section>
 
     <section class="section" aria-label="gallery">
       <div class="box">
-        <h2>Gallery Works</h2>
+        <h2>Works</h2>
         <p class="muted">
-        Click each card to open the original PNG image.
-        This lightweight archive format allows each structure to be observed independently.
+          Click the image area of each card to view the original PNG image.<br>
+          Click "View Description" to explore the detailed structural definitions of each work.
         </p>
 
         <div class="gallery-grid">
-          <a class="art-card" href="../images/cosmic-phase-diagram-2.png" target="_blank" rel="noopener">
-            <div class="thumb-wrap">
-              <img src="../images/thumbs/cosmic-phase-diagram-2.jpg" alt="Structure Art 001 Cosmic Phase Structure">
-            </div>
-           <div class="art-body">
-           <div class="art-no">Structure Art 001</div>
-           <h3 class="art-title">Cosmic Phase Structure</h3>
-        <details class="art-caption-fold">
-        <summary>Read Caption</summary>
-        <div class="art-caption-body">
+          
+          <div class="art-card">
+            <a class="art-link" href="../images/cosmic-phase-diagram-2.png" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/cosmic-phase-diagram-2.jpg" alt="Cosmic Phase Structure">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 001</div>
+                <h3 class="art-title">Cosmic Phase Diagram Model</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>View Description</summary>
+                <div class="art-caption-body">
         This work is a piece of structure art that visualizes the relationship between matter states and energy environments in the universe in the form of a conceptual phase diagram.<br>
         In conventional cosmology, the universe has generally been interpreted through the behavior of particles, celestial bodies, and gravitational interactions.<br>
         In this research, however, the universe is viewed not as a collection of individual astronomical objects, but as a large-scale energy environment system undergoing continuous state transitions.<br>
@@ -513,24 +265,28 @@
         This phase diagram provides a conceptual framework for understanding various cosmic phenomena not as isolated events, but as part of a continuous process of matter phase transitions.<br>
         Extreme environments such as stellar interiors, planetary cores, and high-energy astrophysical regions can all be interpreted as different domains within this phase structure.<br>
         This work presents a perspective in which the universe is understood not as a mere collection of particles and celestial objects, but as a dynamic matter phase space whose structures evolve according to changing energy conditions. It represents one of the conceptual foundations of cosmic structure research within the Matsuoka × GPT Thought Experiment Lab.
-        <div class="caption-close-wrap">
-         <button type="button" class="caption-close-btn">Close</button>
-         </div>
-         </div>
-         </details>
-         </div>
-         </a>
-
-          <a class="art-card" href="../images/History-Dependent Adaptive System(HDAS).png" target="_blank" rel="noopener">
-            <div class="thumb-wrap">
-              <img src="../images/thumbs/History-Dependent Adaptive System(HDAS).jpg" alt="Structure Art 002 History-Dependent Adaptive System">
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
             </div>
+          </div>
+
+          <div class="art-card">
+            <a class="art-link" href="../images/History-Dependent Adaptive System(HDAS).png" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/History-Dependent Adaptive System(HDAS).jpg" alt="History-Dependent Adaptive System">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 002</div>
+                <h3 class="art-title">History-Dependent Adaptive System (HDAS)</h3>
+              </div>
+            </a>
             <div class="art-body">
-              <div class="art-no">Structure Art 002</div>
-              <h3 class="art-title">History-Dependent Adaptive System</h3>
               <details class="art-caption-fold">
-              <summary>Read Caption</summary>
-              <div class="art-caption-body">
+                <summary>View Description</summary>
+                <div class="art-caption-body">
               Life is not a simple stimulus–response machine.<br>
               Biological systems do not merely receive external stimuli; they accumulate these experiences as internal histories and use them to shape future responses.<br>
               This work visualizes a structural model that connects three phenomena that appear very different at first glance: the nervous system, the immune system, and personality formation.<br>
@@ -556,24 +312,28 @@
               The three outputs shown at the bottom of the diagram illustrate how this principle appears across different domains of living systems.<br>
               Behavioral reactions, immune defense responses, and cognitive judgments may appear to be distinct phenomena, yet they share the same structural foundation.<br>
               Life can therefore be understood as a dynamic system that continuously accumulates environmental experiences as history and transforms that history into structured responses.
-            <div class="caption-close-wrap">
-         <button type="button" class="caption-close-btn">Close</button>
-         </div>
-         </div>
-         </details>
-         </div>
-         </a>
-          
-           <a class="art-card"href="../images/LLM-Validated Theory Method (LVTM).png"target="_blank">
-            <div class="thumb-wrap">
-              <img src="../images/thumbs/LLM-Validated Theory Method (LVTM).jpg"alt="Structure Art 003 LVTM">
-             </div>
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="art-card">
+            <a class="art-link" href="../images/LLM-Validated Theory Method (LVTM).png" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/LLM-Validated Theory Method (LVTM).jpg" alt="LVTM">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 003</div>
+                <h3 class="art-title">LVTM: LLM-Validated Theory Modeling</h3>
+              </div>
+            </a>
             <div class="art-body">
-              <div class="art-no">Structure Art 003</div>
-              <h3 class="art-title">LVTM: LLM-Validated Theory Modeling</h3>
               <details class="art-caption-fold">
-              <summary>Read Caption</summary>
-              <div class="art-caption-body">
+                <summary>View Description</summary>
+                <div class="art-caption-body">
               How are scientific theories created?<br>
               Throughout the history of science, theoretical development has generally followed a cyclical process: proposing hypotheses, testing them against observation and logical reasoning, and refining them through repeated revision.<br>
               However, this process also contains inherent structural limitations arising from the cognitive constraints of human researchers.<br>
@@ -603,24 +363,28 @@
               Through this complementary relationship, a new form of intellectual process emerges.<br>
               This research refers to this process as <b>Co-Intelligence</b>.<br>
               This work therefore visualizes the conceptual model of <b>Co-Intelligence 5.0</b>, a collaborative framework in which human structural intuition and AI-generated constraints work together to accelerate the discovery of theoretical structures in the age of artificial intelligence.
-           　 <div class="caption-close-wrap">
-         <button type="button" class="caption-close-btn">Close</button>
-         </div>
-         </div>
-         </details>
-         </div>
-         </a>
-          
-          <a class="art-card" href="../images/Biodiversity of Early Earth.png" target="_blank" rel="noopener">
-            <div class="thumb-wrap">
-              <img src="../images/thumbs/Biodiversity of Early Earth.jpg" alt="Structure Art 001 Cosmic Phase Structure">
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
             </div>
-             <div class="art-body">
-            <div class="art-no">Structure Art 004</div>
-         <h3 class="art-title">Early Earth Environment and Biodiversity</h3>
-         <details class="art-caption-fold">
-         <summary>Read Caption</summary>
-         <div class="art-caption-body">
+          </div>
+
+          <div class="art-card">
+            <a class="art-link" href="../images/Biodiversity of Early Earth.png" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/Biodiversity of Early Earth.jpg" alt="Early Earth Biodiversity">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 004</div>
+                <h3 class="art-title">Biodiversity in Early Earth Environments</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>View Description</summary>
+                <div class="art-caption-body">
         This work is a piece of structure art that visualizes the influence of the high-energy environment of early Earth on biological evolution as a conceptual process.<br>
         In conventional evolutionary theory, biological diversity is primarily explained through mutation and natural selection.<br>
         Natural selection is a powerful framework that preserves traits suited to the environment and has been extremely effective in explaining evolution within modern ecosystems.<br>
@@ -646,24 +410,28 @@
         In this phase, natural selection plays a central role by organizing and preserving viable traits, eventually leading to the stable biological structures observed in modern ecosystems.<br>
         This structure art therefore presents evolution not merely as a biological phenomenon, but as a large-scale system in which environmental conditions, informational variation, and selection processes interact dynamically.<br>
         Biodiversity, in this view, is not simply the result of adaptation, but a residual structure produced by a vast exploratory process driven by the high-energy conditions of early Earth.<br>
-       <div class="caption-close-wrap">
-         <button type="button" class="caption-close-btn">Close</button>
-         </div>
-         </div>
-         </details>
-         </div>
-         </a>
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
 
-          <a class="art-card" href="../images/DMF theory and the elucidation of electromagnetic waves.png" target="_blank" rel="noopener">
-  <div class="thumb-wrap">
-    <img src="../images/thumbs/DMF theory and the elucidation of electromagnetic waves.jpg" alt="Structure Art 005 DMF Theory and Electromagnetic Unification">
-  </div>
-  <div class="art-body">
-    <div class="art-no">Structure Art 005</div>
-    <h3 class="art-title">DMF Theory and the Unified Understanding of Electromagnetic Waves</h3>
-    <details class="art-caption-fold">
-      <summary>Read Description</summary>
-      <div class="art-caption-body">
+          <div class="art-card">
+            <a class="art-link" href="../images/DMF theory and the elucidation of electromagnetic waves.png" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/DMF theory and the elucidation of electromagnetic waves.jpg" alt="DMF Theory and EM Waves">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 005</div>
+                <h3 class="art-title">DMF Theory and Electromagnetic Waves</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>View Description</summary>
+                <div class="art-caption-body">
         This structure art reconstructs the conventional concept of the photon—traditionally treated as either a “particle” or a “wave”—and visualizes electromagnetic waves, heat, matter, and energy as a single unified structure.<br>
         The central claim of this work is clear: a photon is not a particle, but an energy-dependent propagation mode within Dynamic Mass Flow (DMF).<br>
         ■ 1. Foundational Structure: DMF as a Continuous Flow<br>
@@ -711,24 +479,24 @@
         Its essence can be summarized in one statement:<br>
         Light, heat, matter, and energy are all different states within DMF.<br>
         From this perspective, traditional separations—wave vs. particle, energy vs. matter, observation vs. reality—disappear, and physical phenomena are unified under a single structural principle.
-      <div class="caption-close-wrap">
-         <button type="button" class="caption-close-btn">Close</button>
-         </div>
-         </div>
-         </details>
-         </div>
-         </a>
-          
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
             </div>
-         </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
     <section class="section" aria-label="notes">
       <div class="box">
         <h2>Gallery Notes</h2>
         <ul class="notes">
-          <li>This gallery is an archive of visual research assets corresponding to structural papers.</li>
-          <li>Each work is positioned as a "structural expression" of a theory or concept.</li>
+          <li>This gallery serves as an archive of visual research assets corresponding to the Lab's structural papers.</li>
+          <li>Each work is positioned as a "structural representation" of a specific theory or concept.</li>
         </ul>
       </div>
     </section>
@@ -738,45 +506,15 @@
       <div>Structure Art Gallery / Visualized Concept Architectures</div>
     </footer>
   </div>
-  
-<script>
-document.querySelectorAll('.art-caption-fold').forEach(fold => {
-  
-  fold.addEventListener('mouseenter', function() {
-    const link = this.closest('.art-card');
-    if (link) {
-      this._originalHref = link.getAttribute('href');
-      link.removeAttribute('href');
-      link.style.cursor = 'default';
-    }
-  });
 
-  fold.addEventListener('mouseleave', function() {
-    const link = this.closest('.art-card');
-    if (link && this._originalHref) {
-      link.setAttribute('href', this._originalHref);
-      link.style.cursor = 'pointer';
-    }
-  });
-
-  fold.addEventListener('click', function(e) {
-    e.stopPropagation();
-  });
-});
-
-document.querySelectorAll('.caption-close-btn').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const details = this.closest('details');
-    details.open = false;
-    const link = details.closest('.art-card');
-    if (link && details._originalHref) {
-      link.setAttribute('href', details._originalHref);
-    }
-  });
-});
-</script>
-  
+  <script>
+    document.querySelectorAll('.caption-close-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.closest('details').open = false;
+      });
+    });
+  </script>
 </body>
 </html>
