@@ -740,11 +740,40 @@
   </div>
   
 <script>
+document.querySelectorAll('.art-caption-fold').forEach(fold => {
+  
+  fold.addEventListener('mouseenter', function() {
+    const link = this.closest('.art-card');
+    if (link) {
+      this._originalHref = link.getAttribute('href');
+      link.removeAttribute('href');
+      link.style.cursor = 'default';
+    }
+  });
+
+  fold.addEventListener('mouseleave', function() {
+    const link = this.closest('.art-card');
+    if (link && this._originalHref) {
+      link.setAttribute('href', this._originalHref);
+      link.style.cursor = 'pointer';
+    }
+  });
+
+  fold.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+});
+
 document.querySelectorAll('.caption-close-btn').forEach(btn => {
   btn.addEventListener('click', function(e) {
-    e.preventDefault();    
-    e.stopPropagation();   
-    this.closest('details').open = false;
+    e.preventDefault();
+    e.stopPropagation();
+    const details = this.closest('details');
+    details.open = false;
+    const link = details.closest('.art-card');
+    if (link && details._originalHref) {
+      link.setAttribute('href', details._originalHref);
+    }
   });
 });
 </script>
