@@ -729,21 +729,17 @@
   </div>
   
 <script>
-// すべての解説（details）要素を対象にする
 document.querySelectorAll('.art-caption-fold').forEach(fold => {
   
-  // 1. 解説エリアにマウスが入ったら、親のリンク先を一時的に「何もしない」状態にする
   fold.addEventListener('mouseenter', function() {
     const link = this.closest('.art-card');
     if (link) {
-      // 本来のURLを一時保存し、リンクを無効化
       this._originalHref = link.getAttribute('href');
       link.removeAttribute('href');
       link.style.cursor = 'default';
     }
   });
 
-  // 2. 解説エリアからマウスが出たら、リンク先を元に戻す
   fold.addEventListener('mouseleave', function() {
     const link = this.closest('.art-card');
     if (link && this._originalHref) {
@@ -752,20 +748,17 @@ document.querySelectorAll('.art-caption-fold').forEach(fold => {
     }
   });
 
-  // 3. クリック時のイベント伝播も念のため完全に遮断
   fold.addEventListener('click', function(e) {
     e.stopPropagation();
   });
 });
 
-// Closeボタンの処理
 document.querySelectorAll('.caption-close-btn').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     const details = this.closest('details');
     details.open = false;
-    // 閉じられた瞬間にマウス位置が外れることを考慮し、リンクを即座に復元
     const link = details.closest('.art-card');
     if (link && details._originalHref) {
       link.setAttribute('href', details._originalHref);
