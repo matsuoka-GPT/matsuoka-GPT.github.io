@@ -161,7 +161,28 @@
     .art-caption-fold summary::before{ content:"▶"; display:inline-block; margin-right:8px; font-size:12px; }
     .art-caption-fold[open] summary::before{ content:"▼"; }
 
-    .art-caption-body{ padding:0 12px 12px; font-size:13px; line-height:1.75; color:var(--muted); margin:0; }
+    /* 中身のコンテナにアニメーションを設定 */
+.art-caption-body {
+  padding: 0 12px 12px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0;
+  
+  /* 追加：滑らかに閉じるための設定 */
+  display: block !important; /* JSで高さを制御するため常にブロックに */
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease-out, padding 0.4s ease;
+  opacity: 0;
+}
+
+/* 開いている時の状態 */
+.art-caption-fold[open] .art-caption-body {
+  max-height: 1000px; /* 十分な高さを確保 */
+  opacity: 1;
+  padding: 0 12px 16px;
+}
 
     .caption-close-wrap { text-align: center; margin-top: 20px; }
     .caption-close-btn {
@@ -498,15 +519,31 @@
     </footer>
   </div>
 
-  <script>
-    // Closeボタンの処理のみ
-    document.querySelectorAll('.caption-close-btn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        this.closest('details').open = false;
-      });
-    });
-  </script>
+ <script>
+document.querySelectorAll('.caption-close-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const details = this.closest('details');
+    const body = details.querySelector('.art-caption-body');
+    
+    // 1. まず高さを0にしてアニメーションを開始（上が降りてくる動き）
+    body.style.maxHeight = '0';
+    body.style.opacity = '0';
+    
+    // 2. アニメーション（0.4秒）が終わったタイミングで、detailsを閉じる
+    setTimeout(() => {
+      details.open = false;
+      // 次回開いた時のためにスタイルをリセット
+      body.style.maxHeight = '';
+      body.style.opacity = '';
+    }, 400);
+    
+    // 3. 親カードの位置までスムーズにスクロール（置いてけぼり防止）
+    details.closest('.art-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+});
+</script>
 </body>
 </html>
