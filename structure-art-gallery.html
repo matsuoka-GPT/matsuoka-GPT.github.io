@@ -729,6 +729,15 @@
   </div>
   
 <script>
+// 1. 解説（details）をクリックした際、親要素のリンク(<a>)にイベントが伝わらないようにする
+document.querySelectorAll('.art-caption-fold').forEach(fold => {
+  fold.addEventListener('click', function(e) {
+    // リンクへのイベント伝播をストップ
+    e.stopPropagation();
+  });
+});
+
+// 2. Closeボタンの既存処理（念のため維持）
 document.querySelectorAll('.caption-close-btn').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();    
