@@ -417,6 +417,29 @@
 .art-caption-fold[open] .art-caption-body{
   display:block;     
 }
+
+  .caption-close-wrap {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.caption-close-btn {
+  padding: 8px 18px;
+  border: 1px solid var(--accent);
+  background: rgba(43, 100, 255, 0.05);
+  color: var(--accent);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.caption-close-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(43, 100, 255, 0.2);
+}
     
      </style>
  </head>
@@ -490,10 +513,13 @@
         This phase diagram provides a conceptual framework for understanding various cosmic phenomena not as isolated events, but as part of a continuous process of matter phase transitions.<br>
         Extreme environments such as stellar interiors, planetary cores, and high-energy astrophysical regions can all be interpreted as different domains within this phase structure.<br>
         This work presents a perspective in which the universe is understood not as a mere collection of particles and celestial objects, but as a dynamic matter phase space whose structures evolve according to changing energy conditions. It represents one of the conceptual foundations of cosmic structure research within the Matsuoka × GPT Thought Experiment Lab.
-        </div>
-        </details>
-       </div>
-          </a>
+        <div class="caption-close-wrap">
+         <button type="button" class="caption-close-btn">Close</button>
+         </div>
+         </div>
+         </details>
+         </div>
+         </a>
 
           <a class="art-card" href="../images/History-Dependent Adaptive System(HDAS).png" target="_blank" rel="noopener">
             <div class="thumb-wrap">
@@ -530,10 +556,13 @@
               The three outputs shown at the bottom of the diagram illustrate how this principle appears across different domains of living systems.<br>
               Behavioral reactions, immune defense responses, and cognitive judgments may appear to be distinct phenomena, yet they share the same structural foundation.<br>
               Life can therefore be understood as a dynamic system that continuously accumulates environmental experiences as history and transforms that history into structured responses.
-             </div>
-             </details>
-             </div>
-             </a>
+            <div class="caption-close-wrap">
+         <button type="button" class="caption-close-btn">Close</button>
+         </div>
+         </div>
+         </details>
+         </div>
+         </a>
           
            <a class="art-card"href="../images/LLM-Validated Theory Method (LVTM).png"target="_blank">
             <div class="thumb-wrap">
@@ -574,11 +603,14 @@
               Through this complementary relationship, a new form of intellectual process emerges.<br>
               This research refers to this process as <b>Co-Intelligence</b>.<br>
               This work therefore visualizes the conceptual model of <b>Co-Intelligence 5.0</b>, a collaborative framework in which human structural intuition and AI-generated constraints work together to accelerate the discovery of theoretical structures in the age of artificial intelligence.
-           　 </div>
-              </details>
-              </div>
-              </a>
-
+           　 <div class="caption-close-wrap">
+         <button type="button" class="caption-close-btn">Close</button>
+         </div>
+         </div>
+         </details>
+         </div>
+         </a>
+          
           <a class="art-card" href="../images/Biodiversity of Early Earth.png" target="_blank" rel="noopener">
             <div class="thumb-wrap">
               <img src="../images/thumbs/Biodiversity of Early Earth.jpg" alt="Structure Art 001 Cosmic Phase Structure">
@@ -614,10 +646,13 @@
         In this phase, natural selection plays a central role by organizing and preserving viable traits, eventually leading to the stable biological structures observed in modern ecosystems.<br>
         This structure art therefore presents evolution not merely as a biological phenomenon, but as a large-scale system in which environmental conditions, informational variation, and selection processes interact dynamically.<br>
         Biodiversity, in this view, is not simply the result of adaptation, but a residual structure produced by a vast exploratory process driven by the high-energy conditions of early Earth.<br>
-       </div>
-      </details>
-     </div>
-     </a>
+       <div class="caption-close-wrap">
+         <button type="button" class="caption-close-btn">Close</button>
+         </div>
+         </div>
+         </details>
+         </div>
+         </a>
 
           <a class="art-card" href="../images/DMF theory and the elucidation of electromagnetic waves.png" target="_blank" rel="noopener">
   <div class="thumb-wrap">
@@ -676,10 +711,13 @@
         Its essence can be summarized in one statement:<br>
         Light, heat, matter, and energy are all different states within DMF.<br>
         From this perspective, traditional separations—wave vs. particle, energy vs. matter, observation vs. reality—disappear, and physical phenomena are unified under a single structural principle.
-      </div>
- 　   </details>
- 　　 </div>
-　　　</a>
+      <div class="caption-close-wrap">
+         <button type="button" class="caption-close-btn">Close</button>
+         </div>
+         </div>
+         </details>
+         </div>
+         </a>
           
             </div>
          </div>
@@ -700,5 +738,16 @@
       <div>Structure Art Gallery / Visualized Concept Architectures</div>
     </footer>
   </div>
+  
+<script>
+document.querySelectorAll('.caption-close-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();    
+    e.stopPropagation();   
+    this.closest('details').open = false;
+  });
+});
+</script>
+  
 </body>
 </html>
