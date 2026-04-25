@@ -502,17 +502,10 @@
     document.querySelectorAll('.caption-close-btn').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
-    
     const details = this.closest('details');
     const card = details.closest('.art-card');
-    
-    // 1. スクロール先（カードの少し上）を計算
     const targetY = card.getBoundingClientRect().top + window.pageYOffset - 30;
-
-    // 2. まず閉じる（ここを先に実行してガタつきを防ぐ、あるいは同時に動かす）
     details.open = false;
-
-    // 3. 瞬時に、あるいはスムーズに位置を戻す
     window.scrollTo({
       top: targetY,
       behavior: 'smooth'
