@@ -417,6 +417,26 @@
 .art-caption-fold[open] .art-caption-body{
   display:block; 
 }
+
+    .caption-close-wrap {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.caption-close-btn {
+  padding: 8px 18px;
+  border: 1px solid #aaa;
+  background: transparent;
+  color: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.caption-close-btn:hover {
+  background: #fff;
+  color: #000;
+}
     
     </style>
 </head>
@@ -691,5 +711,14 @@
       <div>Structure Art Gallery / Visualized Concept Architectures</div>
     </footer>
   </div>
+  
+  <script>
+document.querySelectorAll('.caption-close-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.closest('details').open = false;
+  });
+});
+</script>
+  
 </body>
 </html>
