@@ -440,6 +440,27 @@
   color: #fff;
   box-shadow: 0 4px 12px rgba(43, 100, 255, 0.2);
 }
+.art-view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 14px;
+  background: #f0f4ff;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid rgba(43,100,255,0.15);
+  transition: all 0.2s ease;
+}
+
+.art-view-link:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.02);
+}
     
     </style>
 </head>
@@ -491,14 +512,13 @@
           図版単体での観察を前提とした、軽量なアーカイブ形式です。
         </p>
 
-        <div class="gallery-grid">
-          <a class="art-card" href="images/cosmic-phase-diagram-2.png" target="_blank" rel="noopener">
-            <div class="thumb-wrap">
-              <img src="images/thumbs/cosmic-phase-diagram-2.jpg" alt="Structure Art 001 Cosmic Phase Structure">
-            </div>
-             <div class="art-body">
-            <div class="art-no">Structure Art 001</div>
-            <h3 class="art-title">宇宙相図モデル</h3>
+       <div class="art-card">
+  <div class="thumb-wrap">
+    <img src="images/thumbs/cosmic-phase-diagram-2.jpg" alt="...">
+  </div>
+  <div class="art-body">
+    <div class="art-no">Structure Art 001</div>
+    <h3 class="art-title">宇宙相図モデル</h3>
          <details class="art-caption-fold">
          <summary>作品解説を読む</summary>
          <div class="art-caption-body">
@@ -515,6 +535,12 @@
          </div>
          </div>
          </details>
+    　　　<a href="images/cosmic-phase-diagram-2.png" target="_blank" class="art-view-link">
+      <span>Open Original PNG</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+    </a>
+  </div>
+</div>
          </div>
          </a>
 
