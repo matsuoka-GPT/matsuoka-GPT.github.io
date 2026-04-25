@@ -507,14 +507,20 @@
     </footer>
   </div>
 
-  <script>
+   <script>
     document.querySelectorAll('.caption-close-btn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        this.closest('details').open = false;
-      });
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const details = this.closest('details');
+    const card = details.closest('.art-card');
+    const targetY = card.getBoundingClientRect().top + window.pageYOffset - 30;
+    details.open = false;
+    window.scrollTo({
+      top: targetY,
+      behavior: 'smooth'
     });
-  </script>
+  });
+});
+   </script>
 </body>
 </html>
