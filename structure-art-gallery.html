@@ -499,12 +499,30 @@
   </div>
 
   <script>
-    // Closeボタンの処理のみ
     document.querySelectorAll('.caption-close-btn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        this.closest('details').open = false;
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const details = this.closest('details');
+    const card = details.closest('.art-card');
+
+    // 1. カードの上端位置を取得
+    const targetOffset = card.getBoundingClientRect().top + window.pageYOffset - 20;
+
+    // 2. スムーズに上部へスクロール
+    window.scrollTo({
+      top: targetOffset,
+      behavior: 'smooth'
+    });
+
+    // 3. スクロールに合わせてdetailsを閉じる
+    // （少しだけ遅延させることで「追いかける」ような自然な動きになります）
+    setTimeout(() => {
+      details.open = false;
+    }, 100); 
+  });
+});
       });
     });
   </script>
