@@ -204,7 +204,7 @@
       <figure class="video-card">
         <div class="media-wrap">
           <img src="images/thumbs/cosmic-phase-diagram-2.jpg" alt="Cosmic Phase Diagram poster" class="poster" id="poster">
-          <video id="cosmicVideo" muted loop playsinline preload="auto">
+          <video id="cosmicVideo" controls muted loop playsinline preload="auto">
             <source src="images/cosmic-phase-diagram.mp4" type="video/mp4">
           </video>
         </div>
@@ -224,6 +224,7 @@
     const poster = document.getElementById("poster");
     const MIN_DISPLAY_TIME = 3000;
     const startTime = Date.now();
+    video.volume = 0.5;
 
     function startVideoAfterDelay() {
       const elapsed = Date.now() - startTime;
