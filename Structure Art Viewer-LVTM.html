@@ -224,6 +224,7 @@
     const poster = document.getElementById("poster");
     const MIN_DISPLAY_TIME = 3000;
     const startTime = Date.now();
+    video.volume = 0.5;
 
     function startVideoAfterDelay() {
       const elapsed = Date.now() - startTime;
