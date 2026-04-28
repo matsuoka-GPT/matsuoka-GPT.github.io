@@ -182,6 +182,36 @@
         margin:0 auto;
       }
     }
+
+    /* iPhone SE / small phones: stack title + button vertically */
+@media (max-width: 480px) {
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .top-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .top-link {
+    width: auto;
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+
+  .title {
+    font-size: 0.95rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+}
   </style>
 </head>
 
