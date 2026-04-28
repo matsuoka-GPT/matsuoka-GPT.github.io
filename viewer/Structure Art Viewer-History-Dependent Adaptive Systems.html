@@ -182,6 +182,48 @@
         margin:0 auto;
       }
     }
+
+    /* iPhone SE / small phones fix */
+@media (max-width: 420px) {
+
+  .viewer-shell {
+    padding: 8px 6px 16px;
+    align-items: flex-start;
+  }
+
+  .viewer-stage {
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .video-card {
+    width: 100%;
+    padding: 6px;
+    margin: 0;
+    display: block;
+  }
+
+  .media-wrap {
+    width: 100%;
+  }
+
+  .media-wrap video,
+  .media-wrap .poster {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain;
+  }
+
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+}
   </style>
 </head>
 
