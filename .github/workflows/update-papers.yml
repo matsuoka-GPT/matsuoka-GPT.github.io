@@ -91,15 +91,19 @@ jobs:
           head -n 120 papers.html
 
       - name: Commit changes
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+  run: |
+    git config --local user.email "actions@github.com"
+    git config --local user.name "GitHub Actions"
 
-          git add papers.html
+    git add papers.html
 
-          if ! git diff --cached --exit-code; then
-            git commit -m "Update papers list"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+    if ! git diff --cached --exit-code; then
+      git commit -m "Update papers list"
+
+      # ★これを追加
+      git pull --rebase origin main
+
+      git push origin main
+    else
+      echo "No changes to commit."
+    fi
