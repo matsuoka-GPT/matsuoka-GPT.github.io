@@ -1,1 +1,42 @@
+name: Update Papers List
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # 毎日0時に実行
+  workflow_dispatch:       # 手動実行も可能
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Zenodo RSS
+        run: |
+          curl -s 'https://zenodo.org/api/records/?q=creators.name:"Takafumi Matsuoka"&sort=mostrecent&size=50' > zenodo.json
+
+      - name: Generate papers list
+        run: |
+          echo "<ul>" > papers_list.html
+          cat zenodo.json | jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"" + .doi_url + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' >> papers_list.html
+          echo "</ul>" >> papers_list.html
+
+      - name: Insert into papers.html
+        run: |
+          awk '
+            /AUTO-GENERATED-CONTENT:START/ {print; system("cat papers_list.html"); skip=1}
+            /AUTO-GENERATED-CONTENT:END/ {skip=0}
+            skip==0 {print}
+          ' papers.html > papers_new.html
+          mv papers_new.html papers.html
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add papers.html
+          git commit -m "Update papers list" || echo "No changes"
+          git push
 
