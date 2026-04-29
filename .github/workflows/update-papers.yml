@@ -20,19 +20,23 @@ jobs:
 
       - name: Fetch Zenodo Records
         run: |
-          # URL全体をシングルクォートで囲み、スペースなどの誤認を防ぎます
-          curl -s 'https://zenodo.org/api/records/?q=creators.name:"Takafumi+Matsuoka"&sort=mostrecent&size=50' > zenodo.json
-          # 取得したファイルが空でないか、JSONとして正しいかデバッグ表示（Actionsのログで確認用）
+          # 検索クエリをより確実に（q=... をシンプルにし、二重引用符をURLエンコード）
+          curl -s "https://zenodo.org/api/records/?q=creators.name:%22Matsuoka,%20Takafumi%22&sort=mostrecent&size=50" > zenodo.json
+          # デバッグ用：中身が空でないか確認
           cat zenodo.json
 
       - name: Generate papers list
         run: |
           echo "<ul>" > papers_list.html
-          # jqがエラーで止まらないように、念のため入力チェックを追加
-          if jq -e . zenodo.json >/dev/null 2>&1; then
-            cat zenodo.json | jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"https://doi.org/" + .doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' >> papers_list.html
+          # 1. JSONが有効か 2. ヒット件数が0より大きいか を厳格にチェック
+          COUNT=$(jq '.hits.total // 0' zenodo.json)
+          
+          if [ "$COUNT" -gt 0 ]; then
+            # ヒットがある場合のみ処理
+            jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"https://doi.org/" + .doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' zenodo.json >> papers_list.html
           else
-            echo "<li>論文データが取得できませんでした。</li>" >> papers_list.html
+            # ヒットがない場合
+            echo "<li>現在、表示できる論文データが見つかりません。 (Total: $COUNT)</li>" >> papers_list.html
           fi
           echo "</ul>" >> papers_list.html
 
