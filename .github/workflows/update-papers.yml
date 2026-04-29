@@ -21,20 +21,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq
 
-      - name: Fetch Zenodo Records
+            - name: Fetch Zenodo Records
         run: |
           curl -L -s \
             -H "Accept: application/json" \
             -H "User-Agent: Mozilla/5.0" \
-            'https://zenodo.org/api/records?q=%22Takafumi%20Matsuoka%22&sort=mostrecent&size=50' \
+            --get 'https://zenodo.org/api/records' \
+            --data-urlencode 'q=creators.name:"Matsuoka, Takafumi" OR creators.name:"Takafumi Matsuoka" OR "Takafumi Matsuoka"' \
+            --data-urlencode 'sort=mostrecent' \
+            --data-urlencode 'size=50' \
             -o zenodo.json
 
           echo "--- API Response Preview ---"
-          head -c 500 zenodo.json
+          head -c 1000 zenodo.json
           echo
-          echo "--- jq check ---"
-          jq '.' zenodo.json | head -c 1000 || true
-          echo
+          echo "--- Total hits ---"
+          jq '.hits.total // .hits.total.value // "unknown"' zenodo.json || true
 
       - name: Generate papers list
         run: |
