@@ -20,7 +20,7 @@ jobs:
       - name: Generate papers list
         run: |
           echo "<ul>" > papers_list.html
-          cat zenodo.json | jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"" + .doi_url + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' >> papers_list.html
+          cat zenodo.json | jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"" + .links.doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' >> papers_list.html
           echo "</ul>" >> papers_list.html
 
       - name: Insert into papers.html
