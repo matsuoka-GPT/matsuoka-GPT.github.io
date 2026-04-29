@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
@@ -16,55 +17,89 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
 
       - name: Fetch Zenodo Records
         run: |
-          # クローラー対策を回避するため、ブラウザのUser-Agentを偽装してリクエスト
-          curl -L -s -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-          'https://zenodo.org/api/records/?q=creators.name:"Takafumi+Matsuoka"&sort=mostrecent&size=50' -o zenodo.json
-          
-          # デバッグ用：中身がHTML（エラー画面）になっていないかログで確認できるようにする
+          curl -L -s \
+            -H "Accept: application/json" \
+            -H "User-Agent: Mozilla/5.0" \
+            'https://zenodo.org/api/records?q=%22Takafumi%20Matsuoka%22&sort=mostrecent&size=50' \
+            -o zenodo.json
+
           echo "--- API Response Preview ---"
-          head -c 200 zenodo.json
-          echo -e "\n--------------------------"
+          head -c 500 zenodo.json
+          echo
+          echo "--- jq check ---"
+          jq '.' zenodo.json | head -c 1000 || true
+          echo
 
       - name: Generate papers list
         run: |
           echo "<ul>" > papers_list.html
-          
-          # JSONが正当であり、かつ業績(hits)が存在するか厳密にチェック
-          if jq -e '.hits.hits' zenodo.json >/dev/null 2>&1; then
-            # 業績がある場合：HTMLリストを生成
-            jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"https://doi.org/" + .doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' zenodo.json >> papers_list.html
+
+          if jq -e '.hits.hits and (.hits.hits | length > 0)' zenodo.json >/dev/null 2>&1; then
+            jq -r '
+              .hits.hits[] |
+              "<li><strong>" +
+              (.metadata.title // "Untitled") +
+              "</strong><br>DOI: <a href=\"https://doi.org/" +
+              (.doi // "") +
+              "\">" +
+              (.doi // "No DOI") +
+              "</a><br>Published: " +
+              (.metadata.publication_date // "Unknown") +
+              "</li>"
+            ' zenodo.json >> papers_list.html
           else
-            # 業績がない、またはボット判定で弾かれた場合
             echo "<li>現在、論文リストを読み込めません。Zenodoのサイトを確認してください。</li>" >> papers_list.html
           fi
-          
+
           echo "</ul>" >> papers_list.html
 
       - name: Insert into papers.html
         run: |
-          # papers.htmlが存在しない場合の予備処理
           if [ ! -f papers.html ]; then
-            echo '<html><body></body></html>' > papers.html
+            echo '<!DOCTYPE html><html lang="ja"><body><!-- AUTO-GENERATED-CONTENT:START --><!-- AUTO-GENERATED-CONTENT:END --></body></html>' > papers.html
           fi
 
           awk '
-            /AUTO-GENERATED-CONTENT:START/ {print; system("cat papers_list.html"); skip=1; next}
-            /AUTO-GENERATED-CONTENT:END/ {skip=0}
-            skip==0 {print}
+            /AUTO-GENERATED-CONTENT:START/ {
+              print
+              system("cat papers_list.html")
+              skip=1
+              next
+            }
+            /AUTO-GENERATED-CONTENT:END/ {
+              skip=0
+            }
+            skip==0 {
+              print
+            }
           ' papers.html > papers_new.html
+
           mv papers_new.html papers.html
+
+      - name: Debug generated files
+        run: |
+          echo "--- papers_list.html ---"
+          cat papers_list.html
+          echo
+          echo "--- papers.html after insert ---"
+          head -n 120 papers.html
 
       - name: Commit changes
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+
           git add papers.html
-          # 変更がある場合のみPush
+
           if ! git diff --cached --exit-code; then
-            git commit -m "Update papers list [skip ci]"
+            git commit -m "Update papers list"
             git push
+          else
+            echo "No changes to commit."
           fi
