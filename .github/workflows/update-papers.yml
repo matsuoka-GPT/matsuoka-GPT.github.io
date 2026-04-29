@@ -8,28 +8,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # リポジトリへの書き込み権限を明示的に許可
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-            - name: Fetch Zenodo Records
+      - name: Fetch Zenodo Records
         run: |
           curl -s "https://zenodo.org/api/records/?q=creators.name:%22Takafumi%20Matsuoka%22&sort=mostrecent&size=50" > zenodo.json
-
-
 
       - name: Generate papers list
         run: |
           echo "<ul>" > papers_list.html
-          cat zenodo.json | jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"" + .links.doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' >> papers_list.html
+          # jqのクエリを少し堅牢に修正（.links.doiがnullの場合の対策など）
+          cat zenodo.json | jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"https://doi.org/" + .doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' >> papers_list.html
           echo "</ul>" >> papers_list.html
 
       - name: Insert into papers.html
         run: |
+          # 元のpapers.htmlが存在しない場合のエラー回避
+          touch papers.html
           awk '
             /AUTO-GENERATED-CONTENT:START/ {print; system("cat papers_list.html"); skip=1; next}
             /AUTO-GENERATED-CONTENT:END/ {skip=0}
@@ -42,5 +46,5 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add papers.html
-          git commit -m "Update papers list" || echo "No changes"
-          git push
+          # 変更がない場合にエラーで止まらないようにする
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update papers list" && git push)
