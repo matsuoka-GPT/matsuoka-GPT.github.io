@@ -21,22 +21,49 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq
 
-                  - name: Fetch Zenodo Records
+                        - name: Fetch Zenodo Records
         run: |
-          curl -L -s \
-            -H "Accept: application/json" \
-            -H "User-Agent: Mozilla/5.0" \
-            --get 'https://zenodo.org/api/records' \
-            --data-urlencode 'q=0009-0003-1530-4234' \
-            --data-urlencode 'sort=mostrecent' \
-            --data-urlencode 'size=50' \
-            -o zenodo.json
+          set -e
 
-          echo "--- API Response Preview ---"
+          queries=(
+            'Takafumi Matsuoka'
+            '"Takafumi Matsuoka"'
+            'Matsuoka Takafumi'
+            '"Matsuoka, Takafumi"'
+            '0009-0003-1530-4234'
+          )
+
+          found=0
+
+          for q in "${queries[@]}"; do
+            echo "Trying query: $q"
+
+            curl -L -s \
+              -H "Accept: application/json" \
+              -H "User-Agent: Mozilla/5.0" \
+              --get 'https://zenodo.org/api/records' \
+              --data-urlencode "q=$q" \
+              --data-urlencode 'sort=mostrecent' \
+              --data-urlencode 'size=50' \
+              -o zenodo_tmp.json
+
+            total=$(jq '.hits.total // .hits.total.value // 0' zenodo_tmp.json)
+            echo "Total hits: $total"
+
+            if [ "$total" != "0" ] && [ "$total" != "null" ]; then
+              mv zenodo_tmp.json zenodo.json
+              found=1
+              break
+            fi
+          done
+
+          if [ "$found" = "0" ]; then
+            echo '{"hits":{"hits":[]}}' > zenodo.json
+          fi
+
+          echo "--- Final Zenodo JSON Preview ---"
           head -c 1000 zenodo.json
           echo
-          echo "--- Total hits ---"
-          jq '.hits.total // .hits.total.value // "unknown"' zenodo.json || true
 
       - name: Generate papers list
         run: |
