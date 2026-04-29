@@ -21,13 +21,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq
 
-            - name: Fetch Zenodo Records
+                  - name: Fetch Zenodo Records
         run: |
           curl -L -s \
             -H "Accept: application/json" \
             -H "User-Agent: Mozilla/5.0" \
             --get 'https://zenodo.org/api/records' \
-            --data-urlencode 'q=creators.name:"Matsuoka, Takafumi" OR creators.name:"Takafumi Matsuoka" OR "Takafumi Matsuoka"' \
+            --data-urlencode 'q=0009-0003-1530-4234' \
             --data-urlencode 'sort=mostrecent' \
             --data-urlencode 'size=50' \
             -o zenodo.json
