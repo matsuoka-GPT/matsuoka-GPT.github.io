@@ -13,9 +13,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Fetch Zenodo RSS
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Fetch Zenodo Records
         run: |
-          curl -s 'https://zenodo.org/api/records/?q=creators.name:"Takafumi Matsuoka"&sort=mostrecent&size=50' > zenodo.json
+          curl -s "https://zenodo.org/api/records/?q=creators.name:\"Takafumi Matsuoka\"&sort=mostrecent&size=50" > zenodo.json
 
       - name: Generate papers list
         run: |
@@ -26,7 +29,7 @@ jobs:
       - name: Insert into papers.html
         run: |
           awk '
-            /AUTO-GENERATED-CONTENT:START/ {print; system("cat papers_list.html"); skip=1}
+            /AUTO-GENERATED-CONTENT:START/ {print; system("cat papers_list.html"); skip=1; next}
             /AUTO-GENERATED-CONTENT:END/ {skip=0}
             skip==0 {print}
           ' papers.html > papers_new.html
@@ -39,4 +42,3 @@ jobs:
           git add papers.html
           git commit -m "Update papers list" || echo "No changes"
           git push
-
