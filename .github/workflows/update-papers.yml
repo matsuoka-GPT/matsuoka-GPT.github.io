@@ -2,13 +2,12 @@ name: Update Papers List
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # 毎日0時に実行
-  workflow_dispatch:      # 手動実行も可能
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    # リポジトリへの書き込み権限を許可（これがないと最後でエラーになります）
     permissions:
       contents: write
 
@@ -21,18 +20,24 @@ jobs:
 
       - name: Fetch Zenodo Records
         run: |
-          curl -s "https://zenodo.org/api/records/?q=creators.name:%22Takafumi%20Matsuoka%22&sort=mostrecent&size=50" > zenodo.json
+          # URL全体をシングルクォートで囲み、スペースなどの誤認を防ぎます
+          curl -s 'https://zenodo.org/api/records/?q=creators.name:"Takafumi+Matsuoka"&sort=mostrecent&size=50' > zenodo.json
+          # 取得したファイルが空でないか、JSONとして正しいかデバッグ表示（Actionsのログで確認用）
+          cat zenodo.json
 
       - name: Generate papers list
         run: |
           echo "<ul>" > papers_list.html
-          # リンク先を https://doi.org/ 経由にして確実に飛べるように調整しています
-          cat zenodo.json | jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"https://doi.org/" + .doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' >> papers_list.html
+          # jqがエラーで止まらないように、念のため入力チェックを追加
+          if jq -e . zenodo.json >/dev/null 2>&1; then
+            cat zenodo.json | jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"https://doi.org/" + .doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' >> papers_list.html
+          else
+            echo "<li>論文データが取得できませんでした。</li>" >> papers_list.html
+          fi
           echo "</ul>" >> papers_list.html
 
       - name: Insert into papers.html
         run: |
-          # 挿入処理（タグの間に papers_list.html の中身を流し込みます）
           awk '
             /AUTO-GENERATED-CONTENT:START/ {print; system("cat papers_list.html"); skip=1; next}
             /AUTO-GENERATED-CONTENT:END/ {skip=0}
@@ -45,5 +50,4 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add papers.html
-          # 変更がある場合のみコミットしてプッシュ
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update papers list" && git push)
