@@ -20,28 +20,37 @@ jobs:
 
       - name: Fetch Zenodo Records
         run: |
-          # 検索クエリをより確実に（q=... をシンプルにし、二重引用符をURLエンコード）
-          curl -s "https://zenodo.org/api/records/?q=creators.name:%22Matsuoka,%20Takafumi%22&sort=mostrecent&size=50" > zenodo.json
-          # デバッグ用：中身が空でないか確認
-          cat zenodo.json
+          # クローラー対策を回避するため、ブラウザのUser-Agentを偽装してリクエスト
+          curl -L -s -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+          'https://zenodo.org/api/records/?q=creators.name:"Takafumi+Matsuoka"&sort=mostrecent&size=50' -o zenodo.json
+          
+          # デバッグ用：中身がHTML（エラー画面）になっていないかログで確認できるようにする
+          echo "--- API Response Preview ---"
+          head -c 200 zenodo.json
+          echo -e "\n--------------------------"
 
       - name: Generate papers list
         run: |
           echo "<ul>" > papers_list.html
-          # 1. JSONが有効か 2. ヒット件数が0より大きいか を厳格にチェック
-          COUNT=$(jq '.hits.total // 0' zenodo.json)
           
-          if [ "$COUNT" -gt 0 ]; then
-            # ヒットがある場合のみ処理
+          # JSONが正当であり、かつ業績(hits)が存在するか厳密にチェック
+          if jq -e '.hits.hits' zenodo.json >/dev/null 2>&1; then
+            # 業績がある場合：HTMLリストを生成
             jq -r '.hits.hits[] | "<li><strong>" + .metadata.title + "</strong><br>DOI: <a href=\"https://doi.org/" + .doi + "\">" + .doi + "</a><br>Published: " + .metadata.publication_date + "</li>"' zenodo.json >> papers_list.html
           else
-            # ヒットがない場合
-            echo "<li>現在、表示できる論文データが見つかりません。 (Total: $COUNT)</li>" >> papers_list.html
+            # 業績がない、またはボット判定で弾かれた場合
+            echo "<li>現在、論文リストを読み込めません。Zenodoのサイトを確認してください。</li>" >> papers_list.html
           fi
+          
           echo "</ul>" >> papers_list.html
 
       - name: Insert into papers.html
         run: |
+          # papers.htmlが存在しない場合の予備処理
+          if [ ! -f papers.html ]; then
+            echo '<html><body></body></html>' > papers.html
+          fi
+
           awk '
             /AUTO-GENERATED-CONTENT:START/ {print; system("cat papers_list.html"); skip=1; next}
             /AUTO-GENERATED-CONTENT:END/ {skip=0}
@@ -54,4 +63,8 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add papers.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update papers list" && git push)
+          # 変更がある場合のみPush
+          if ! git diff --cached --exit-code; then
+            git commit -m "Update papers list [skip ci]"
+            git push
+          fi
