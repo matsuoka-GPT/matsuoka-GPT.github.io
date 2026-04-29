@@ -16,9 +16,10 @@ jobs:
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Fetch Zenodo Records
- 　     run: |
+            - name: Fetch Zenodo Records
+        run: |
           curl -s "https://zenodo.org/api/records/?q=creators.name:%22Takafumi%20Matsuoka%22&sort=mostrecent&size=50" > zenodo.json
+
 
 
       - name: Generate papers list
