@@ -690,14 +690,19 @@ header{ position: relative; z-index: 1000; }
   letter-spacing: 0.04em;
 }
 
+.outputs-grid li a {
+  display: block;        /* ← 横並びをやめて縦並びにする */
+  text-align: center;    /* ← 中央揃え */
+}
+
 .face-icon {
   width: 64px;
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 6px;
+  display: block;
+  margin: 0 auto 8px;    /* ← 完全に中央に配置される */
 }
-
     
   </style>
 
