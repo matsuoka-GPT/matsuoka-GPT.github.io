@@ -1134,9 +1134,7 @@
   <h2 class="collab-title">
     <span>Contact / Collaboration</span>
 
-    <span class="language-flags" aria-label="Supported Languages">
-      🇯🇵 🇺🇸 🇬🇧 🇨🇳 🇰🇷 🇫🇷 🇩🇪 🇪🇸 🇵🇹 🇮🇹 🇷🇺 🇸🇦 🇮🇳 🇹🇭 🇻🇳 🇮🇩 🇹🇷 🇵🇱 🇳🇱 🇸🇪 🇫🇮 🇨🇿 🇬🇷 🇮🇱
-    </span>
+   <span id="language-flags">🇯🇵 🇺🇸 🇬🇧 🇨🇳 🇰🇷 🇫🇷 🇩🇪 🇪🇸 🇵🇹</span>
 
   </h2>
 
@@ -1343,12 +1341,7 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
-  <script>
-twemoji.parse(document.body,{
-    folder:'svg',
-    ext:'.svg'
-});
-</script>
+  <script>twemoji.parse(document.getElementById("language-flags"),{folder:"svg",ext:".svg"});</script>
   
 </body>
 </html>
