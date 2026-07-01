@@ -665,25 +665,11 @@
 
 /* Contactタイトル */
 
-.collab-title{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    flex-wrap:wrap;
-}
-
-.language-flags{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    flex-wrap:wrap;
-    font-size:20px;
-    line-height:1;
-}
-
-.language-flags img.emoji{
-    width:22px;
-    height:22px;
+#language-flags img.emoji{
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+    margin-right:4px;
 }
 
     
@@ -1341,7 +1327,7 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
-  <script>twemoji.parse(document.body,{folder:'svg',ext:'.svg'});</script>
+  <script>twemoji.parse(document.getElementById("language-flags"));</script>
   
 </body>
 </html>
