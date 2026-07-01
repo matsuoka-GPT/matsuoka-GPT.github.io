@@ -729,6 +729,31 @@ header{ position: relative; z-index: 1000; }
   font-size: 0.9rem;
 }
 
+/* Contactタイトル */
+
+.collab-title{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.language-flags{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    font-size:20px;
+    line-height:1;
+}
+
+#language-flags img.emoji{
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+    margin-right:4px;
+}
+
     
   </style>
 
@@ -1164,7 +1189,10 @@ header{ position: relative; z-index: 1000; }
     </section>
 
     <section id="collab" aria-label="collaboration">
-      <h2>質問・コラボ・依頼</h2>
+
+    <h2 class="collab-title">
+    <span>質問・コラボ・依頼</span>
+    <span id="language-flags">🇯🇵 🇺🇸 🇬🇧 🇨🇳 🇰🇷 🇫🇷 🇩🇪 🇪🇸 🇵🇹 +100 Languages</span>
       <div class="box">
         <p><strong>対象</strong>：研究者・エンジニア・行政・企業（分野不問）</p>
         <p><strong>スタイル</strong>：公開前提の共同検証／限定公開のブリーフィング（必要に応じて）</p>
@@ -1358,6 +1386,9 @@ window.addEventListener("orientationchange", () => {
   }, {passive:true});
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<script>twemoji.parse(document.getElementById("language-flags"),{folder:"svg",ext:".svg"});</script>
 
 </body>
 </html>
