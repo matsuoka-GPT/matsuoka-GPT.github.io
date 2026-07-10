@@ -1375,6 +1375,12 @@
   <script>twemoji.parse(document.getElementById("language-flags"),{folder:"svg",ext:".svg"});</script>
 
   <a href="#" id="backToTop">TOPへ</a>
+  <script>
+  document.getElementById('backToTop').onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  };
+</script>
   
 </body>
 </html>
