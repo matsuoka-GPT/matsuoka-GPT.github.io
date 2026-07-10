@@ -754,6 +754,40 @@ header{ position: relative; z-index: 1000; }
     margin-right:4px;
 }
 
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  background: #007bff;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+  opacity: 0.85;
+}
+
+.top-icon {
+  font-size: 36px; 
+  line-height: 1;
+  display: inline-block;
+}
+
+#backToTop:hover {
+  opacity: 1;
+}
+
+#backToTop {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+#backToTop.show {
+  opacity: 1;
+}
+
     
   </style>
 
@@ -1414,6 +1448,10 @@ window.addEventListener("orientationchange", () => {
 
 <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
 <script>twemoji.parse(document.getElementById("language-flags"),{folder:"svg",ext:".svg"});</script>
+
+<a href="#" id="backToTop"><span class="top-icon">🔝</span></a>
+<script>document.getElementById('backToTop').onclick = function() {window.scrollTo({ top: 0, behavior: 'smooth' });return false;};</script>
+<script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
 
 </body>
 </html>
