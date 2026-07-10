@@ -703,10 +703,14 @@
   opacity: 0.85;
 }
 
-#backToTop:hover {
-  opacity: 1;
+#backToTop {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
-
     
   </style>
 
@@ -1374,7 +1378,7 @@
   <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
   <script>twemoji.parse(document.getElementById("language-flags"),{folder:"svg",ext:".svg"});</script>
 
-  <a href="#" id="backToTop">TOPへ</a>
+  <a href="#" id="backToTop">↑</a>
   <script>
   document.getElementById('backToTop').onclick = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
