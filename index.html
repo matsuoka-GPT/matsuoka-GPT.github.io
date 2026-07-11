@@ -700,8 +700,10 @@
   font-size: 24px;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: opacity 0.3s ease;
-  opacity: 0.85;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
 }
 
 .top-icon {
