@@ -717,21 +717,8 @@
 #backToTop.show {
   opacity: 1;
 }
-
-.id-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px 16px;
-  margin-top: 12px;
-}
-
-.id-item img {
-  height: 32px;
-  width: auto;
-  vertical-align: middle;
-}
     
-  </style>
+</style>
 
   <!-- ============================= -->
 <!-- Structured Data: Organization -->
@@ -907,48 +894,49 @@
   </div>
 
   <div class="profile-body">
-  <div style="margin-top:12px; font-size:0.9em; color:#555;">
-    Research Profiles & Identifiers<br>
-  </div>
-
-  <div class="id-grid">
+    <div style="margin-top:12px; font-size:0.9em; color:#555;">
+      Research Profiles & Identifiers<br>
+    </div>
 
     <!-- ORCID -->
-    <a href="https://orcid.org/0009-0003-1530-4234" target="_blank" class="id-item">
-      <img src="./images/ORCID Logotype with tagline.png" 
-           alt="ORCID iD Profile">
-    </a>
+    <div style="margin-top:10px;">
+      <a href="https://orcid.org/0009-0003-1530-4234" target="_blank" style="text-decoration:none;">
+        <img src="./images/ORCID Logotype with tagline.png" 
+             alt="ORCID iD Profile" style="height:36px; width:auto; vertical-align:middle;">
+      </a>
+    </div>
 
     <!-- Google Scholar -->
-    <a href="https://scholar.google.com/citations?user=fcRcf8kAAAAJ&hl=ja" target="_blank" class="id-item">
-      <img src="./images/scholar-logo-64dp.png" 
-           alt="Google Scholar Profile">
-    </a>
+   <div style="margin-top:8px;">
+      <a href="https://scholar.google.com/citations?user=fcRcf8kAAAAJ&hl=ja" target="_blank" style="text-decoration:none;">
+        <img src="./images/scholar-logo-64dp.png" 
+             alt="Google Scholar Profile" style="height:22px; width:auto; vertical-align:middle;">
+      </a>
+    </div>
 
-    <!-- Zenodo -->
-    <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Matsuoka%2C%20Takafumi%22" 
-       target="_blank" class="id-item">
-      <img src="./images/Zenodo Icon.png" 
-           alt="Zenodo Profile">
-    </a>
+    <!-- Zenodo DOI -->
+    <div style="margin-top:10px;">
+      <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Matsuoka%2C%20Takafumi%22&l=list&p=1&s=20&sort=bestmatch" target="_blank" style="text-decoration:none;">
+        <img src="./images/Zenodo Icon.png" 
+             alt="Zenodo Profile" style="height:28px; width:auto; vertical-align:middle;">
+      </a>
 
     <!-- OpenAIRE -->
-    <a href="https://explore.openaire.eu/search/advanced/research-outcomes?f0=authorid&fv0=0009-0003-1530-4234" 
-       target="_blank" class="id-item">
-      <img src="./images/OpenAIRE.png" 
-           alt="OpenAIRE Profile">
-    </a>
+     <div style="margin-top:10px;">
+      <a href="https://explore.openaire.eu/search/advanced/research-outcomes?f0=authorid&fv0=0009-0003-1530-4234" target="_blank" style="text-decoration:none;">
+        <img src="./images/OpenAIRE.png" 
+             alt="OpenAIRE Profile" style="height:26px; width:auto; vertical-align:middle;">
+      </a>
+    </div> 
 
     <!-- GitHub -->
-    <a href="https://github.com/matsuoka-GPT" target="_blank" class="id-item">
-      <img src="./images/GitHub_Lockup_Black.png" 
-           alt="GitHub Profile">
-    </a>
-
-  </div>
-</div>
-
-      
+     <div style="margin-top:10px;">
+      <a href="https://github.com/matsuoka-GPT" target="_blank" style="text-decoration:none;">
+        <img src="./images/GitHub_Lockup_Black.png" 
+             alt="OpenAIRE Profile" style="height:23px; width:auto; vertical-align:middle;">
+      </a>
+    </div>
+     
       <div style="margin-top:6px;">
       <a href="https://doi.org/10.5281/zenodo.18739136" target="_blank">
       <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18739136.svg" alt="DOI Badge">
