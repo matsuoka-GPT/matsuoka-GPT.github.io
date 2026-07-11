@@ -29,6 +29,7 @@
             text-align: center;
             font-size: 1.6rem;
             color: #222;
+            margin-top: 0;
             margin-bottom: 40px;
             border-bottom: 1px dashed #eee;
             padding-bottom: 25px;
@@ -46,9 +47,20 @@
             font-size: 0.85rem;
             color: #bbb;
         }
+
+        .pill {
+        cursor: pointer;
+        text-decoration: underline;
+        }
+        
     </style>
 </head>
 <body>
+     <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
   <article>
   <h1>民主主義とメタ認知</h1>
 
@@ -114,8 +126,15 @@
     メタ認知とは、現代人のための帝王学なのかもしれない。そして、それを学ぶことは、自由を活かし余計な苦悩を避けるための技術なのかもしれません。</p>
 
 </article>
+
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
    <div class="footer">
 © 2026 Collaborative Intelligence with ChatGPT
 </div>
+    
 </body>
 </html>
