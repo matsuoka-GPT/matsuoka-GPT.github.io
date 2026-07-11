@@ -29,6 +29,7 @@
             text-align: center;
             font-size: 1.6rem;
             color: #222;
+            margin-top: 0;
             margin-bottom: 40px;
             border-bottom: 1px dashed #eee;
             padding-bottom: 25px;
@@ -46,9 +47,20 @@
             font-size: 0.85rem;
             color: #bbb;
         }
+
+        .pill {
+        cursor: pointer;
+        text-decoration: underline;
+        }
+        
     </style>
 </head>
 <body>
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
   <article>
   <h1>依存との付き合い方</h1>
 
@@ -105,8 +117,15 @@
     それこそが、この滑稽で、愛おしく、そしていささか厄介な人間の世界を、客観的視座から優雅に愉しむための知性の使い方なのであろう。</p>
 
 </article>
+
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
    <div class="footer">
 © 2026 Collaborative Intelligence with Gemini
 </div>
+    
 </body>
 </html>
