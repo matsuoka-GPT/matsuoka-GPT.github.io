@@ -29,6 +29,7 @@
             text-align: center;
             font-size: 1.8rem;
             color: #222;
+            margin-top: 0;
             margin-bottom: 10px;
             padding-bottom: 10px;
         }
@@ -57,9 +58,20 @@
             font-size: 0.85rem;
             color: #bbb;
         }
+
+        .pill {
+        cursor: pointer;
+        text-decoration: underline;
+        }
+        
     </style>
 </head>
 <body>
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
 <article>
     <h1>合理的という不合理</h1>
     <p class="subtitle">―― 動的概念としての合理性とその限界 ――</p>
@@ -95,5 +107,11 @@
         © 2026 Collaborative Intelligence with Gemini
     </div>
 </article>
+
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
 </body>
 </html>
