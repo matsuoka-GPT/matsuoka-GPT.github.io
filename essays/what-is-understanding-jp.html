@@ -29,6 +29,7 @@
             text-align: center;
             font-size: 1.6rem;
             color: #222;
+            margin-top: 0;
             margin-bottom: 40px;
             border-bottom: 1px dashed #eee;
             padding-bottom: 25px;
@@ -46,9 +47,20 @@
             font-size: 0.85rem;
             color: #bbb;
         }
+
+        .pill {
+        cursor: pointer;
+        text-decoration: underline;
+        }
+        
     </style>
 </head>
 <body>
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
   <article>
   <h1>理解とは何か</h1>
 
@@ -153,8 +165,15 @@
      固有の能力ですらない。<br>
      理解とは、相互作用の中で成立し、努力をやめれば静かに崩れていく、極めて動的な現象なのだと思う。</p>
 </article>
+
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
    <div class="footer">
 © 2026 Collaborative Intelligence with Copilot & ChatGPT
 </div>
+    
 </body>
 </html>
