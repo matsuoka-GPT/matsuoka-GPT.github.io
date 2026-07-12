@@ -29,6 +29,7 @@
             text-align: center;
             font-size: 1.6rem;
             color: #222;
+            margin-top: 0; 
             margin-bottom: 40px;
             border-bottom: 1px dashed #eee;
             padding-bottom: 25px;
@@ -46,9 +47,19 @@
             font-size: 0.85rem;
             color: #bbb;
         }
+
+        .pill {
+        cursor: pointer;
+        text-decoration: underline;
+        }
+        
     </style>
 </head>
 <body>
+    <div class="left">
+        <a class="pill" href="/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
 
 <article>
     <h1>The Inevitable Trade-off of Personal Freedom</h1>
@@ -81,6 +92,11 @@
         © 2026 Collaborative Intelligence with Gemini
     </div>
 </article>
+
+    <div class="left">
+        <a class="pill" href="/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
 
 </body>
 </html>
