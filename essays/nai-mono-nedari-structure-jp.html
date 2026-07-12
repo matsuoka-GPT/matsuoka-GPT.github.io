@@ -29,6 +29,7 @@
             text-align: center;
             font-size: 1.6rem;
             color: #222;
+            margin-top: 0;
             margin-bottom: 40px;
             border-bottom: 1px dashed #eee;
             padding-bottom: 25px;
@@ -46,9 +47,20 @@
             font-size: 0.85rem;
             color: #bbb;
         }
+
+        .pill {
+        cursor: pointer;
+        text-decoration: underline;
+        }
+        
     </style>
 </head>
 <body>
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
 <article>
 <h1>無い物ねだりの構造</h1>
 <div class="subtitle">― 人間はなぜ価値を見失うのか ―</div>
@@ -160,5 +172,11 @@
         © 2026 Collaborative Intelligence with ChatGPT
     </div>
   </article>
+
+    <div class="left">
+        <a class="pill" href="/en/index.html">🔙🏠Home</a><br>
+        <a class="pill" onclick="history.back()">🔙✒️Essays</a>
+      </div>
+    
 </body>
 </html>
