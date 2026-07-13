@@ -1292,7 +1292,7 @@ header{ position: relative; z-index: 1000; }
       
 
         <ul class="outputs-grid">
-          <li><a href="../essays/What are emotions-jp.html"><strong>感情とは、いったい何なのか</strong><br><span class="muted small">それは人生を彩る機能の一つ</span></a></li>
+          <li><a id="essay36" href="../essays/What are emotions-jp.html"><strong>感情とは、いったい何なのか</strong><br><span class="muted small">それは人生を彩る機能の一つ</span></a></li>
           <li><a href="../essays/Contradictions and Paradoxes-jp.html"><strong>パラドックスや矛盾とは、いったい何なのか</strong><br><span class="muted small">それは自然界からの招待状</span></a></li>
           <li><a href="../essays/Democracy and Metacognition-jp.html"><strong>民主主義とメタ認知</strong><br><span class="muted small">少しでも苦悩を減らすには</span></a></li>
           <li><a href="../essays/Coping_with_addiction-jp.html"><strong>依存との付き合い方</strong><br><span class="muted small">依存は幸も不幸ももたらす</span></a></li>
@@ -1465,19 +1465,8 @@ window.addEventListener("orientationchange", () => {
 <script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
 
 <script>
-window.addEventListener("load", () => {
-    if (location.hash) {
-        const target = document.querySelector(location.hash);
-
-        if (target) {
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "center",
-                inline: "nearest"
-            });
-        }
-    }
-});
+window.addEventListener("load", () => {if (location.hash) {const target = document.querySelector(location.hash);
+if (target) {target.scrollIntoView({behavior: "smooth",block: "center",inline: "nearest"});}}});
 </script>
   
 </body>
