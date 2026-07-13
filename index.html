@@ -1404,11 +1404,36 @@
   <script>document.getElementById('backToTop').onclick = function() {window.scrollTo({ top: 0, behavior: 'smooth' });return false;};</script>
   <script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
 
-   <script>
-  window.addEventListener("load", () => {if (!location.hash) return;const target = document.querySelector(location.hash);
-　if (!target) return;requestAnimationFrame(() => {requestAnimationFrame(() => {target.scrollIntoView({
-  behavior: "smooth",block: "center",inline: "nearest"});});});});
-  </script>
+
+  <script>
+window.addEventListener("load", () => {
+
+    if (!location.hash) return;
+
+    const target = document.querySelector(location.hash);
+    if (!target) return;
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+                inline: "nearest"
+            });
+
+            // スクロール後にURLの #essay1 を消す
+            history.replaceState(
+                {},
+                document.title,
+                location.pathname
+            );
+
+        });
+    });
+
+});
+</script>
   
 </body>
 </html>
