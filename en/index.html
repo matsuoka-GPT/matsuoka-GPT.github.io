@@ -1327,7 +1327,7 @@ header{ position: relative; z-index: 1000; }
           <li><a href="../essays/life-and-death-structure-jp.html"><strong>構造から見た生命の生と死</strong><br><span class="muted small">相転移という視点</span></a></li>
           <li><a href="../essays/average-is-a-coarse-metric-jp.html"><strong>〜平均と言う雑過ぎる指標</strong><br><span class="muted small">平均という指標の危うさを考える</span></a></li>
           <li><a href="../essays/concept-architect-no-ideology-jp.html"><strong>コンセプトアーキテクトには主義も主張も無い</strong><br><span class="muted small">ただ構造を見ているだけ</span></a></li>
-          <li><a href="../essays/media-outliers-jp.html"onclick="sessionStorage.setItem('essayScroll', window.scrollY)"><strong>メディアで見えているのは、ほとんどが外れ値</strong><br><span class="muted small">注意深くして観て下さい。</span></a></li>
+          <li><a href="../essays/media-outliers-jp.html"onclick="><strong>メディアで見えているのは、ほとんどが外れ値</strong><br><span class="muted small">注意深くして観て下さい。</span></a></li>
         </ul>
       
     </div>
@@ -1463,11 +1463,6 @@ window.addEventListener("orientationchange", () => {
 <a href="#" id="backToTop"><span class="top-icon">🔝</span></a>
 <script>document.getElementById('backToTop').onclick = function() {window.scrollTo({ top: 0, behavior: 'smooth' });return false;};</script>
 <script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
-
-<script>
-window.addEventListener("load", function () { const y = sessionStorage.getItem("essayScroll");
-if (y !== null) {setTimeout(function () {window.scrollTo({top: parseInt(y),behavior: "instant"});}, 100);}});
-</script>
   
 </body>
 </html>
