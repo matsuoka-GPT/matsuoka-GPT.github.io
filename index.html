@@ -1405,10 +1405,22 @@
   <script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
 
   <script>
-  window.addEventListener("load", () => {if (!location.hash) return;const target = document.querySelector(location.hash);
-　if (!target) return;requestAnimationFrame(() => {requestAnimationFrame(() => {target.scrollIntoView({
-  behavior: "smooth",block: "center",inline: "nearest"});});});});
-  </script>
+window.addEventListener("load", () => {
+    if (location.hash) {
+        const target = document.querySelector(location.hash);
+
+        if (target) {
+            setTimeout(() => {
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                    inline: "nearest"
+                });
+            }, 200);
+        }
+    }
+});
+</script>
   
 </body>
 </html>
