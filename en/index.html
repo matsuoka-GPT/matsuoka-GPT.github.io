@@ -1463,6 +1463,22 @@ window.addEventListener("orientationchange", () => {
 <a href="#" id="backToTop"><span class="top-icon">🔝</span></a>
 <script>document.getElementById('backToTop').onclick = function() {window.scrollTo({ top: 0, behavior: 'smooth' });return false;};</script>
 <script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
+
+<script>
+window.addEventListener("load", () => {
+    if (location.hash) {
+        const target = document.querySelector(location.hash);
+
+        if (target) {
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+                inline: "nearest"
+            });
+        }
+    }
+});
+</script>
   
 </body>
 </html>
