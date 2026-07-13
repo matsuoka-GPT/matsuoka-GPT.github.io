@@ -1465,12 +1465,8 @@ window.addEventListener("orientationchange", () => {
 <script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
 
 <script>
-window.addEventListener("load", function () {
-    const y = sessionStorage.getItem("essayScroll");
-    if (y !== null) {
-        window.scrollTo(0, parseInt(y));
-    }
-});
+window.addEventListener("load", function () { const y = sessionStorage.getItem("essayScroll");
+if (y !== null) {setTimeout(function () {window.scrollTo({top: parseInt(y),behavior: "instant"});}, 100);}});
 </script>
   
 </body>
