@@ -1466,7 +1466,7 @@ window.addEventListener("orientationchange", () => {
 
 <script>
 window.addEventListener("load", () => {if (location.hash) {const target = document.querySelector(location.hash);
-if (target) {setTimeout(() => {target.scrollIntoView({behavior: "instant",block: "center"});}, 200);}}});
+if (target) {setTimeout(() => {target.scrollIntoView({behavior: "smooth", "instant",block: "center"});}, 200);}}});
 </script>
   
 </body>
