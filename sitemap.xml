@@ -1,502 +1,689 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
   <url>
-       <loc>https://matsuoka-gpt.github.io/members.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Contradictions%20and%20Paradoxes-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Contradictions%20and%20Paradoxes-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Contradictions%20and%20Paradoxes-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-cosmic-phase.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Contradictions%20and%20Paradoxes-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Contradictions%20and%20Paradoxes-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Contradictions%20and%20Paradoxes-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/What%20are%20emotions-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Coping_with_addiction-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Coping_with_addiction-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Coping_with_addiction-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Contradictions%20and%20Paradoxes-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Coping_with_addiction-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Coping_with_addiction-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Coping_with_addiction-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Democracy%20and%20Metacognition-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Democracy%20and%20Metacognition-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Democracy%20and%20Metacognition-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Democracy%20and%20Metacognition-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Coping_with_addiction-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Democracy%20and%20Metacognition-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Democracy%20and%20Metacognition-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Democracy%20and%20Metacognition-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/money_philosophy-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Freedom%20is%20a%20trade-off-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Freedom%20is%20a%20trade-off-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Freedom%20is%20a%20trade-off-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/what-is-understanding-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Freedom%20is%20a%20trade-off-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Freedom%20is%20a%20trade-off-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Freedom%20is%20a%20trade-off-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/four-brains-co-intelligence-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Nuclear%20weapons%20and%20meteorites-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Nuclear%20weapons%20and%20meteorites-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Nuclear%20weapons%20and%20meteorites-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/responsibility_overdrive-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/Nuclear%20weapons%20and%20meteorites-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/Nuclear%20weapons%20and%20meteorites-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/Nuclear%20weapons%20and%20meteorites-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/rationality-and-irrationality-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/What%20are%20emotions-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/What%20are%20emotions-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/What-are-emotions-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/what-is-chance-and-luck-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/What-are-emotions-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/What%20are%20emotions-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/What-are-emotions-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/what-is-strategy-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/age%20by%20healthcheck-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/age%20by%20healthcheck-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/age%20by%20healthcheck-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/nai-mono-nedari-structure-en.htm</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/age%20by%20healthcheck-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/age%20by%20healthcheck-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/age%20by%20healthcheck-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/pure_self_time-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/average-is-a-coarse-metric-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/average-is-a-coarse-metric-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/average-is-a-coarse-metric-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/age%20by%20healthcheck-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/average-is-a-coarse-metric-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/average-is-a-coarse-metric-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/average-is-a-coarse-metric-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/ronpa_culture_deep_thinking-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/body-odor-process-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/body-odor-process-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/body-odor-process-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/egg-chicken-and-mood-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/body-odor-process-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/body-odor-process-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/body-odor-process-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Freedom%20is%20a%20trade-off-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/choice-as-constraint-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/choice-as-constraint-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/choice-as-constraint-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/why-diets-fail-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/choice-as-constraint-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/choice-as-constraint-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/choice-as-constraint-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/comparison-and-structure-games-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/civilization-convergence-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/civilization-convergence-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/civilization-convergence-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/civilization-convergence-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/civilization-convergence-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/civilization-convergence-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/civilization-convergence-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Nuclear%20weapons%20and%20meteorites-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/co-intelligence-story-and-awe-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/co-intelligence-story-and-awe-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/co-intelligence-story-and-awe-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/kozo-hitsuzensei-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/co-intelligence-story-and-awe-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/co-intelligence-story-and-awe-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/co-intelligence-story-and-awe-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/choice-as-constraint-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/comparison-and-structure-games-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/comparison-and-structure-games-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/comparison-and-structure-games-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/time-as-index-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/comparison-and-structure-games-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/comparison-and-structure-games-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/comparison-and-structure-games-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/efficiency-paradox-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/concept-architect-no-ideology-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/concept-architect-no-ideology-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/concept-architect-no-ideology-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/pyramid_design_freedom-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/concept-architect-no-ideology-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/concept-architect-no-ideology-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/concept-architect-no-ideology-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/knowledge_trap_tsurezure-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/efficiency-paradox-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/efficiency-paradox-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/efficiency-paradox-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/co-intelligence-story-and-awe-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/efficiency-paradox-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/efficiency-paradox-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/efficiency-paradox-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/value-structure-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/egg-chicken-and-mood-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/egg-chicken-and-mood-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/egg-chicken-and-mood-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/mealtime-happiness-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/egg-chicken-and-mood-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/egg-chicken-and-mood-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/egg-chicken-and-mood-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/body-odor-process-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/four-brains-co-intelligence-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/four-brains-co-intelligence-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/four-brains-co-intelligence-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/life-100-percent-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/four-brains-co-intelligence-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/four-brains-co-intelligence-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/four-brains-co-intelligence-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/life-and-death-structure-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/knowledge_trap_tsurezure-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/knowledge_trap_tsurezure-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/knowledge_trap_tsurezure-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/average-is-a-coarse-metric-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/knowledge_trap_tsurezure-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/knowledge_trap_tsurezure-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/knowledge_trap_tsurezure-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/concept-architect-no-ideology-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/kozo-hitsuzensei-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/kozo-hitsuzensei-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/kozo-hitsuzensei-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/media-outliers-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8000</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/kozo-hitsuzensei-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/kozo-hitsuzensei-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/kozo-hitsuzensei-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/jp/members.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/life-100-percent-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/life-100-percent-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/life-100-percent-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/structure-art-gallery.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/life-100-percent-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/life-100-percent-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/life-100-percent-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/jp/structure-art-gallery.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/life-and-death-structure-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/life-and-death-structure-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/life-and-death-structure-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/What-are-emotions-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/life-and-death-structure-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/life-and-death-structure-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/life-and-death-structure-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Contradictions%20and%20Paradoxes-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/mealtime-happiness-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/mealtime-happiness-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/mealtime-happiness-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Democracy%20and%20Metacognition-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/mealtime-happiness-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/mealtime-happiness-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/mealtime-happiness-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Coping_with_addiction-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/media-outliers-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/media-outliers-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/media-outliers-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/money_philosophy-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/media-outliers-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/media-outliers-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/media-outliers-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/what-is-understanding-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/money_philosophy-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/money_philosophy-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/money_philosophy-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/four-brains-co-intelligence-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/money_philosophy-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/money_philosophy-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/money_philosophy-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/responsibility_overdrive-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/nai-mono-nedari-structure-en.htm</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/nai-mono-nedari-structure-en.htm" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/nai-mono-nedari-structure-en.htm" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/rationality-and-irrationality-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/nai-mono-nedari-structure-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/nai-mono-nedari-structure-jp.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/nai-mono-nedari-structure-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/what-is-chance-and-luck-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/pure_self_time-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/pure_self_time-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/pure_self_time-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/what-is-strategy-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/pure_self_time-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/pure_self_time-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/pure_self_time-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/nai-mono-nedari-structure-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/pyramid_design_freedom-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/pyramid_design_freedom-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/pyramid_design_freedom-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/pure_self_time-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/pyramid_design_freedom-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/pyramid_design_freedom-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/pyramid_design_freedom-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/age%20by%20healthcheck-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/rationality-and-irrationality-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/rationality-and-irrationality-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/rationality-and-irrationality-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/ronpa_culture_deep_thinking-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/rationality-and-irrationality-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/rationality-and-irrationality-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/rationality-and-irrationality-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/egg-chicken-and-mood-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/responsibility_overdrive-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/responsibility_overdrive-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/responsibility_overdrive-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Freedom%20is%20a%20trade-off-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/responsibility_overdrive-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/responsibility_overdrive-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/responsibility_overdrive-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/why-diets-fail-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/ronpa_culture_deep_thinking-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/ronpa_culture_deep_thinking-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/ronpa_culture_deep_thinking-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/comparison-and-structure-games-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/ronpa_culture_deep_thinking-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/ronpa_culture_deep_thinking-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/ronpa_culture_deep_thinking-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/civilization-convergence-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/time-as-index-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/time-as-index-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/time-as-index-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/Nuclear%20weapons%20and%20meteorites-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/time-as-index-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/time-as-index-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/time-as-index-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/kozo-hitsuzensei-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/value-structure-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/value-structure-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/value-structure-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/choice-as-constraint-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/value-structure-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/value-structure-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/value-structure-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/time-as-index-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/welcome-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/welcome-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/welcome-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/efficiency-paradox-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/welcome-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/welcome-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/welcome-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/pyramid_design_freedom-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/what-is-chance-and-luck-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/what-is-chance-and-luck-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/what-is-chance-and-luck-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/knowledge_trap_tsurezure-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/what-is-chance-and-luck-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/what-is-chance-and-luck-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/what-is-chance-and-luck-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/co-intelligence-story-and-awe-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/what-is-strategy-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/what-is-strategy-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/what-is-strategy-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/value-structure-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/what-is-strategy-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/what-is-strategy-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/what-is-strategy-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/mealtime-happiness-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/what-is-understanding-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/what-is-understanding-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/what-is-understanding-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/body-odor-process-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/what-is-understanding-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/what-is-understanding-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/what-is-understanding-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/life-100-percent-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/why-diets-fail-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/why-diets-fail-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/why-diets-fail-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/life-and-death-structure-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/essays/why-diets-fail-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/why-diets-fail-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/why-diets-fail-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/average-is-a-coarse-metric-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/concept-architect-no-ideology-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/jp/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/essays/media-outliers-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/jp/members.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/members.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/members.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-History-Dependent%20Adaptive%20Systems.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/jp/structure-art-gallery.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/structure-art-gallery.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/structure-art-gallery.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-LVTM.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/members.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/members.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/members.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Biodiversity.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/structure-art-gallery.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/structure-art-gallery.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/structure-art-gallery.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Electromagnetic-Waves-en.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Biodiversity.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Four%20Brains.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.6400</priority>
+    <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Electromagnetic-Waves-en.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Electromagnetic-Waves-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Electromagnetic-Waves-jp.html" />
   </url>
   <url>
-       <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Electromagnetic-Waves-jp.html</loc>
-       <lastmod>2026-07-13T12:48:28+00:00</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.5120</priority>
+    <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Electromagnetic-Waves-jp.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Electromagnetic-Waves-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Electromagnetic-Waves-jp.html" />
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Four%20Brains.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-History-Dependent%20Adaptive%20Systems.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-LVTM.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-cosmic-phase.html</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
