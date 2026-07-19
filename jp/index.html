@@ -1,0 +1,1492 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script><script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.25.0-min.js.gz"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('b45bdc9b5b39f4fa49649ea778952afe', {"autocapture":{"elementInteractions":true}});</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>松岡×GPT 思考実験ラボ | 協調知能研究センター</title>
+  <meta name="description" content="特定分野の研究所ではなく、知性の使い方そのものを検証・公開するラボ。" />
+
+  <meta name="author" content="Takafumi Matsuoka">
+  <link rel="canonical" href="https://matsuoka-gpt.github.io/jp/">
+
+  <meta name="google-site-verification" content="2kPgsP84bfHQeiSXu4gFB-SlHnOI2oZHqPBE1YfxNcA" />
+
+  <meta property="og:title" content="松岡×GPT 思考実験ラボ" />
+  <meta property="og:description" content="構造思考×協働知性で、分野横断の思考実験を検証し、成果物として公開する。" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    /* 成果物：横4並び */
+    .outputs-grid{
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .hero-inner{
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 900px){
+      .hero-inner{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* プロフィールカード */
+    .profile-card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      align-self: start;
+    }
+
+    .profile-head{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+.avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(43,100,255,.22);
+  background: rgba(255,255,255,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+    .profile-name{
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+
+    .profile-role{
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .profile-body{
+      font-size: 13.5px;
+      color: #1a2133;
+    }
+
+    .profile-body ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .profile-body li{
+      margin: 6px 0;
+    }
+
+    .profile-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .profile-links a{
+      text-decoration:none;
+      font-size: 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 8px 20px rgba(18,26,40,.05);
+    }
+
+    .profile-links a:hover{
+      border-color: rgba(43,100,255,.30);
+      box-shadow: var(--shadow2);
+    }
+
+    .outputs-grid li{
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.75);
+      box-shadow: var(--shadow);
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .outputs-grid a{
+      text-decoration: none;
+      color: var(--accent2);
+      font-size: 14px;
+      line-height: 1.4;
+      display: inline-block;
+    }
+
+    .outputs-grid li:hover{
+      box-shadow: var(--shadow2);
+      border-color: rgba(43,100,255,.30);
+      transform: translateY(-2px);
+      transition: all .12s ease;
+    }
+
+    @media (max-width: 900px){
+      .outputs-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px){
+      .outputs-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    :root{
+      --w: 980px;
+
+      --bg0:#ffffff;
+      --bg1:#fbfcff;
+
+      --text:#111;
+      --muted:#475069;
+
+      --line: rgba(18, 26, 40, .10);
+      --line2: rgba(18, 26, 40, .14);
+
+      --card: rgba(255,255,255,.82);
+      --glass: rgba(255,255,255,.62);
+
+      --shadow: 0 10px 30px rgba(18, 26, 40, .06);
+      --shadow2: 0 12px 34px rgba(18, 26, 40, .09);
+
+      --radius: 16px;
+      --radius2: 12px;
+
+      --accent: #2b64ff;
+      --accent2:#1b46c9;
+
+      --focus: 0 0 0 4px rgba(43,100,255,.14);
+    }
+
+    * { box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      line-height:1.7;
+      color:var(--text);
+
+      /* 背景：白基調＋薄い光＋うっすらノイズ（宇宙でも未来でもなく“思考前の空間”） */
+      background:
+        /* 主光源（左上） */
+        radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%),
+
+        /* 補助光（右上） */
+        radial-gradient(900px 520px at 90% 8%, rgba(255,255,255,.45), transparent 55%),
+
+        /* 深度用の低彩度光（右下） */
+        radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%),
+
+        /* ベース */
+        linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff);
+
+      overflow-x:hidden;
+    }
+
+    /* うっすら星屑/ノイズっぽい質感 */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.18;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.9), rgba(255,255,255,0) 30%),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,.9), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.85), rgba(255,255,255,0) 26%),
+        radial-gradient(circle at 60% 60%, rgba(255,255,255,.7), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 90% 90%, rgba(255,255,255,.8), rgba(255,255,255,0) 22%);
+      filter: blur(0.2px);
+      mix-blend-mode: overlay;
+    }
+
+    a{ color: inherit; }
+    a:hover{ color: var(--accent2); }
+
+    .wrap{
+      max-width:var(--w);
+      margin:0 auto;
+      padding: 34px 18px 44px;
+      position:relative;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding: 8px 0 10px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color: #1a2133;
+      box-shadow: 0 6px 18px rgba(18,26,40,.05);
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:18px;height:18px;
+      border-radius:999px;
+      background: rgba(43,100,255,.14);
+      color: var(--accent2);
+      font-weight:700;
+      font-size:12px;
+      line-height:1;
+    }
+
+    .topnav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .topnav a{
+      text-decoration:none;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color: #1a2133;
+      opacity:.9;
+    }
+    .topnav a:hover{
+      border-color: var(--line);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .hero{
+      margin-top: 8px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45));
+      box-shadow: var(--shadow);
+      padding: 26px 18px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* ヒーローに斜めの光 */
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:-35% -25%;
+      background:
+        /* 中心のやわらかい主光 */
+        radial-gradient(900px 480px at 68% 38%, rgba(43,100,255,.22), transparent 62%),
+        /* 斜めに入る白いハイライト */
+        linear-gradient(120deg, transparent 32%, rgba(255,255,255,.70) 50%, transparent 64%);
+      transform: rotate(-6deg);
+      opacity:.7;
+      pointer-events:none;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: 32px;
+      letter-spacing: .02em;
+      position:relative;
+      z-index:1;
+    }
+    .lead{
+      margin:0;
+      font-size:16px;
+      color: #1c2336;
+      position:relative;
+      z-index:1;
+      max-width: 46em;
+    }
+    .lead strong{
+      color: #0f1627;
+      border-bottom: 2px solid rgba(43,100,255,.20);
+      padding-bottom: 1px;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+      position:relative;
+      z-index:1;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius: 12px;
+      padding: 10px 14px;
+      text-decoration:none;
+      font-size:14px;
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      color: #121a2a;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+      border-color: rgba(43,100,255,.30);
+    }
+    .btn:active{
+      transform: translateY(0px);
+      box-shadow: var(--shadow);
+    }
+    .btn:focus{
+      outline:none;
+      box-shadow: var(--shadow), var(--focus);
+    }
+
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(43,100,255,.95), rgba(27,70,201,.95));
+      border-color: rgba(43,100,255,.40);
+      color: #fff;
+    }
+    .btn.primary:hover{
+      border-color: rgba(255,255,255,.30);
+    }
+
+    .note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      position:relative;
+      z-index:1;
+    }
+
+    section{ margin-top: 26px; }
+    h2{
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: .02em;
+      color: #111827;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .cards{ grid-template-columns: 1fr 1fr 1fr 1fr; }
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 14px 14px 12px;
+      min-height: 132px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      border-color: rgba(43,100,255,.28);
+      box-shadow: var(--shadow2);
+    }
+
+    .card .ico{
+      width:34px; height:34px;
+      border-radius: 12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border: 1px solid rgba(43,100,255,.18);
+      background: rgba(43,100,255,.08);
+      margin-bottom: 10px;
+    }
+    .card svg{ width:20px; height:20px; stroke: var(--accent2); }
+
+    .card strong{
+      display:block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color:#111827;
+    }
+    .card p{
+      margin:0;
+      font-size: 12.8px;
+      color: var(--muted);
+    }
+
+    .box{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .two{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .muted{ color: var(--muted); font-size: 14px; }
+    .small{ font-size: 12px; }
+
+    ul{ margin: 10px 0 0; padding-left: 18px; }
+    li{ margin: 6px 0; }
+
+    .outputs a{
+      text-decoration: none;
+      color: var(--accent2);
+      border-bottom: 1px solid rgba(43,100,255,.20);
+    }
+    .outputs a:hover{
+      border-bottom-color: rgba(43,100,255,.60);
+    }
+
+    footer{
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(18,26,40,.10);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      border:1px solid rgba(18,26,40,.14);
+      border-bottom-width:2px;
+      padding:2px 6px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.6);
+    }
+    .avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+  /* --- fold (details/summary) 共通スタイル --- */
+  details.fold{
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255,255,255,.72);
+    box-shadow: var(--shadow);
+    padding: 12px 14px;
+    margin-top: 12px;
+  }
+  details.fold > summary{
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-weight: 800;
+    color:#111827;
+    user-select: none;
+  }
+  details.fold > summary::-webkit-details-marker{ display:none; }
+
+ /* summaryのレイアウト */
+details.fold > summary{
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color:#111827;
+  user-select: none;
+  font-size: 18px;
+  display: inline-flex;  
+  width: fit-content;  
+  margin: 0 auto;    
+}
+
+details.fold > summary::-webkit-details-marker{
+  display:none;
+}
+
+details.fold > summary::before{
+  content: "▶";
+  font-size: 20px; 
+  color: var(--accent2);
+  transition: transform .18s ease;
+}
+
+details.fold[open] > summary::before{
+  content: "▼";
+}
+
+  details.fold .fold-body{ margin-top: 10px; }
+    
+/* ===== Focus Tooltip ===== */
+/* =========================
+   Tag Tooltip (Final / Single Source of Truth)
+   Desktop: hover
+   Mobile: tap -> bottom sheet (body.is-mobile + .active)
+   ========================= */
+
+.tags .tag.tooltip{
+  position: relative;
+  cursor: pointer;
+}
+
+/* tip: default hidden */
+.tags .tag.tooltip .tip{
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 10px);
+  transform: translateX(-50%) translateY(0);
+
+  width: 320px;
+  max-width: min(80vw, 360px);
+
+  background: rgba(30,30,30,.85);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 10px;
+
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+
+  z-index: 9999;
+
+  writing-mode: horizontal-tb;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* Desktop hover only */
+@media (hover:hover) and (pointer:fine){
+  .tags .tag.tooltip:hover .tip{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+  }
+
+  .tags .tag.tooltip .tip::before{
+    content:"";
+    position:absolute;
+    top:-6px;
+    left:50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent rgba(30,30,30,.96) transparent;
+  }
+}
+
+/* Mobile bottom sheet: only when body.is-mobile */
+body.is-mobile .tags .tag.tooltip{
+  position: static;
+}
+body.is-mobile .tags .tag.tooltip .tip{
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: -15px;
+  top: auto;
+
+  width: calc(100vw - 24px);
+  max-width: none;
+
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+
+  transform: translateY(10px);
+}
+body.is-mobile .tags .tag.tooltip .tip::before{
+  display:none;
+}
+body.is-mobile .tags .tag.tooltip.active .tip{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+/* header always above */
+header{ position: relative; z-index: 1000; }
+    
+.philosophy-hero {
+  margin-top: 14px;
+  margin-bottom: 18px;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: #666;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.outputs-grid li a {
+  display: block;      
+  text-align: center;  
+}
+
+.face-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 8px;   
+}
+
+.assistant-card {
+  padding: 10px 12px;              
+  border: 1px solid var(--line);   
+  border-radius: var(--radius2);   
+  background: var(--card);         
+  box-shadow: var(--shadow);       
+}
+
+.assistant-card h3 {
+  font-size: 0.95rem;
+  margin: 0 0 4px 0;
+}
+
+.assistant-card p {
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.assistant-button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+
+/* Contactタイトル */
+
+.collab-title{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.language-flags{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    font-size:20px;
+    line-height:1;
+}
+
+#language-flags img.emoji{
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+    margin-right:4px;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  background: rgba(110, 201, 255, 0.5);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+  opacity: 0.85;
+}
+
+.top-icon {
+  font-size: 36px; 
+  line-height: 1;
+  display: inline-block;
+}
+
+#backToTop {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+#backToTop.show {
+  opacity: 1;
+}
+
+.id-row {
+  display: flex;
+  gap: 25px;
+  margin-top: 13px;
+}
+   
+</style>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchProject",
+  "name": "松岡 × GPT 思考実験ラボ",
+  "url": "https://matsuoka-gpt.github.io/jp/",
+  "inLanguage": "ja",
+  "description": "人間の仮説（構造）とAIの整合性検証を組み合わせた思考実験型の公開研究ラボ。",
+ "founder": {
+  "@type": "Person",
+  "name": "Takafumi Matsuoka",
+  "url": "https://orcid.org/0009-0003-1530-4234",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "松岡 × GPT 思考実験ラボ"
+  }
+},
+  "areaOfFocus": [
+    "宇宙論",
+    "構造理論",
+    "協働知性",
+    "分野横断研究",
+    "統治モデル",
+    "認知科学",
+    "構造的認知モデル"
+  ],
+ "publisher": {
+  "@type": "Organization",
+  "name": "松岡 × GPT 思考実験ラボ",
+  "url": "https://matsuoka-gpt.github.io/jp/"
+}
+}
+</script>
+  
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+     <div class="tags" aria-label="tags">
+
+  <div class="tag tooltip">
+    <span class="pill">S</span>構造思考
+    <span class="tip">
+      Structure-oriented thinking.<br>
+      個別の事象ではなく、それらを生み出す共通構造を理解する思考方法。
+    </span>
+  </div>
+
+  <div class="tag tooltip">
+    <span class="pill">C</span>協働知性
+    <span class="tip">
+      Co-Intelligence.<br>
+      人間の仮説構築能力とAIの検証能力を組み合わせた知的作業プロトコル。
+    </span>
+  </div>
+
+  <div class="tag tooltip">
+    <span class="pill">X</span>分野横断
+    <span class="tip">
+      Cross-disciplinary analysis.<br>
+      物理・社会・制度など分野を越えて共通構造を抽出する研究姿勢。
+    </span>
+  </div>
+
+  <div class="tag tooltip">
+    <span class="pill">P</span>検証→論文化
+    <span class="tip">
+      Verification → Publication.<br>
+      思考実験を再現可能な形に整理し、第三者が追跡できる形で公開する。
+    </span>
+  </div>
+
+</div>
+
+
+<nav class="topnav" aria-label="navigation">
+    <a href="#projects">プロジェクト</a>
+    <a href="#method">方法論</a>
+    <a href="#outputs">成果物</a>
+    <a href="#collab">コンタクト</a>
+    <a href="#essays">徒然・偉人AI</a>
+    <a href="#faq">FAQ</a>
+</nav>
+    </header>
+
+    <section class="hero" aria-label="hero">
+      <div class="hero-inner">
+        <!-- 左：タイトル＆説明 -->
+        <div>
+          <div class="title-row">
+
+  <h1>松岡×GPT 思考実験ラボ</h1>
+
+  <div style="margin:12px 0 18px 0;">
+  <a href="../essays/welcome-jp.html"
+     style="
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#eef4ff;
+      color:#1d4ed8;
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.95rem;
+      transition:all .2s;">
+      📖 はじめに ― このラボの研究姿勢
+  </a>
+</div>
+
+    <div class="philosophy-hero">
+    本質の理解とは、構造を見抜くことである。 構造なき理解は、ただの知識にすぎない。
+    </div>
+            
+<div class="lang-switch" style="font-size: 1.3rem; font-weight: bold; margin: 10px 0;">
+  <a href="../">EN <img src="https://twemoji.maxcdn.com/v/latest/svg/1f1fa-1f1f8.svg"alt="US Flag"
+  style="width: 1.2em; height: 1.2em; vertical-align: -0.1em;">
+  </a>
+  <span style="margin: 0 5px;">|</span>
+  <a href="../jp/">JP <img src="https://twemoji.maxcdn.com/v/latest/svg/1f1ef-1f1f5.svg"alt="JP Flag"
+  style="width: 1.2em; height: 1.2em; vertical-align: -0.1em;">
+  </a>
+</div>
+
+</div>
+          <p class="lead">
+            特定分野の研究所ではなく、<strong>知性の使い方そのもの</strong>を検証・公開するラボです。<br/>
+            人間の仮説（構造）とAIの検証（整合）を組み合わせ、分野横断の思考実験を「再現可能な形」にまとめ、成果物として公開します。
+          </p>
+
+        <details style="margin-top:20px; padding:15px; background-color:#f5f7fb; border-radius:10px;">
+  <summary style="cursor:pointer; font-weight:600; font-size:1.1em;">
+    Research Profile
+  </summary>
+
+  <div style="margin-top:10px; line-height:1.6;">
+    松岡孝文は、物理学・複雑系・社会技術システムにまたがる学際的な構造理論を探究する、独立研究者およびコンセプトアーキテクトである。<br>
+主な研究領域には、BFSSU／DMF宇宙論（Black Hole Fractal Steady-State Universe／Dynamic Mass Flow）、物理的実在の存在論（フォトン存在論および量子真空構造）、ならびに知性構造と制度安定性の構造分析（協働知性および安心基盤型ガバナンスモデル）が含まれる。<br>
+その研究は、形式化された構造分析と再現可能な思考実験を通じて、科学および社会の枠組みを再構築することを目的としている。<br>
+本ウェブサイトは、その研究活動を公開するためのリサーチハブとして機能している。<br>
+最新の研究成果および引用情報は、ORCIDおよびZenodoにて管理・公開されている。<br>
+  </div>
+  </details>
+
+   <div class="cta">
+            <a class="btn primary" href="#outputs" aria-label="outputs">成果物を見る（Zenodo）</a>
+            <a class="btn" href="#collab" aria-label="collaboration">CONTACT</a>
+            <div class="research-notice" style="margin-top:12px; padding:12px 14px; border:1px solid #e6e6e6; border-radius:10px; background:#fafafa; color:#777; font-size:0.85em; line-height:1.6;">
+  <b>Research Notice</b><br>
+  本サイトは一般向け解説を目的としたページではありません。<br>
+  公開内容は仮説研究および構造モデルの提示であり、<br>
+  検証・批判・再現検討を前提としています。<br>
+  学術的関心を持つ研究者・技術者による参照を想定しています。<br>
+  構造レベルでの批判的検討および分野横断的な検証を歓迎します。
+ </div>
+
+          </div>
+          <!-- Research-only notice (place under "成果物を見る / View deliverables") -->
+
+        </div>
+
+ <!-- 右：プロフィール -->
+        <aside class="profile-card" aria-label="profile">
+          <div class="profile-head">
+           <div class="avatar">
+  <img src="/images/matu.png" alt="松の家紋">
+</div>
+
+            <div>
+              <div class="profile-name">松岡孝文</div>
+              <div class="profile-role">コンセプトアーキテクト</div>
+              <a href="./members.html">メンバー紹介</a>
+            </div>
+          </div>
+
+  <div class="profile-body">
+  <div style="margin-top:12px; font-size:0.9em; color:#555;">
+    Research Profiles & Identifiers<br>
+  </div>
+
+  <div class="id-row">
+    <!-- ORCID -->
+    <a href="https://orcid.org/0009-0003-1530-4234" target="_blank">
+      <img src="../images/ORCID Logotype with tagline.png" 
+           alt="ORCID iD Profile" style="height:37px; width:auto; vertical-align:middle;">
+    </a>
+
+    <!-- Google Scholar -->
+    <a href="https://scholar.google.com/citations?user=fcRcf8kAAAAJ&hl=ja" target="_blank">
+      <img src="../images/scholar-logo-64dp.png" 
+           alt="Google Scholar Profile" style="height:22px; width:auto; vertical-align:middle;">
+    </a>
+  </div>
+
+  <div class="id-row">
+    <!-- Zenodo -->
+    <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Matsuoka%2C%20Takafumi%22" target="_blank">
+      <img src="../images/Zenodo Icon.png" 
+           alt="Zenodo Profile" style="height:28px; width:auto; vertical-align:middle;">
+    </a> 
+
+    <!-- OpenAIRE -->
+    <a href="https://explore.openaire.eu/search/advanced/research-outcomes?f0=authorid&fv0=0009-0003-1530-4234" target="_blank">
+      <img src="../images/OpenAIRE.png" 
+           alt="OpenAIRE Profile" style="height:30px; width:auto; vertical-align:middle;">
+    </a>
+  </div>
+
+  <div class="id-row">
+    <!-- GitHub -->
+    <a href="https://github.com/matsuoka-GPT" target="_blank">
+      <img src="../images/GitHub_Lockup_Black.png" 
+           alt="GitHub Profile" style="height:22px; width:auto; vertical-align:middle;">
+    </a>
+
+    <div style="margin-top:6px;">
+    <a href="https://doi.org/10.5281/zenodo.18739136" target="_blank">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18739136.svg" alt="DOI Badge"></a>
+    </div>
+  </div>
+
+<div class="assistant-card">
+  <h3 style="color: red;">Assistant AI 🤖</h3>
+  <p>ラボ論文を学習した研究アシスタントGPT。</p>
+  <a href="https://chatgpt.com/g/g-6a3b6c40aab081919087c6d1e6aaabc9-matsuoka-x-gpt-thought-experiment-lab-gpt" target="_blank" class="assistant-button">
+    ▶アシスタントGPTに質問する
+  </a>
+</div>
+              
+            <div class="muted" style="margin-bottom:6px;">Focus</div>
+            <ul>
+              <li>構造思考による分野横断の思考実験</li>
+              <li>協働知性（Co-Intelligence）による検証と論文化</li>
+              <li>成果物の公開（DOI）と対外的な議論の促進</li>
+            </ul>
+
+            <div class="profile-links">
+              <a href="#outputs">成果物</a>
+              <a href="#method">方法論</a>
+              <a href="#collab">連絡</a>
+            </div>
+              <div class="note">
+            ※本サイトは「公開ハブ」です。<br>
+            PDF/DOIは主にZenodo等の外部リポジトリに集約しています。<br>
+            <span class="kbd">GitHub Pages</span> による軽量運用を前提とします。
+          </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="projects" aria-label="projects">
+      <h2>💡プロジェクト</h2>
+
+      <div class="cards">
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <!-- planet -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0" />
+              <path d="M2 12c2.5-4 6.5-6 10-6s7.5 2 10 6c-2.5 4-6.5 6-10 6S4.5 16 2 12Z" />
+            </svg>
+          </div>
+          <strong>宇宙論 / BFSSU・DMF</strong>
+          <p>ブラックホール階層宇宙・基底流（DMF）などを、観測整合性と反例検討を重視して整理。</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <!-- building -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18" />
+              <path d="M4 21V7l8-4l8 4v14" />
+              <path d="M9 21v-8h6v8" />
+            </svg>
+          </div>
+          <strong>社会設計 / 税制・国家モデル</strong>
+          <p>人口減少・行政コスト・合意形成を前提に、制度の構造設計を思考実験として検討。</p>
+        </div>
+
+        <div class="card">
+          <div class="ico" aria-hidden="true">
+            <!-- bulb -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18h6" />
+              <path d="M10 22h4" />
+              <path d="M12 2a7 7 0 0 0-4 12c.6.5 1 1.4 1 2h6c0-.6.4-1.5 1-2A7 7 0 0 0 12 2Z" />
+            </svg>
+          </div>
+          <strong>協働知性 / 方法論</strong>
+          <p>思考実験のプロトコル、検証、限界の明示、公開の仕方。人格ではなく構造で議論する。</p>
+        </div>
+      
+       <div class="card">
+         <div class="ico" aria-hidden="true">
+          <!-- brain / bulb mix icon -->
+           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+             <path d="M12 2a6 6 0 0 0-6 6c0 3 2 5 4 6v2h4v-2c2-1 4-3 4-6a6 6 0 0 0-6-6Z" />
+             <path d="M9 18h6" />
+             <path d="M10 22h4" />
+            </svg>
+         </div>
+         <strong>認知科学 / 構造的認知モデル</strong>
+         <p>知覚・思考階層・バイアス形成・対立の自己増殖構造などを、構造理論の観点から分析。</p>
+      </div>
+      
+    </section>
+
+    <section id="method" aria-label="method">
+      <h2>🧠方法論</h2>
+
+      <div class="box">
+        <ol>
+          <li><strong>仮説</strong>：構造的必然・再現性を重視して定義</li>
+          <li><strong>照合</strong>：既知データ・既存理論・反例の探索（矛盾があれば修正/棄却）</li>
+          <li><strong>論文化</strong>：第三者が追える形（前提・限界・予測）に落とす</li>
+          <li><strong>公開</strong>：DOI付与・多言語化・外部からの質問対応</li>
+          <li><strong>研究手法</strong>：LLM検証型理論構築法（LVTM: LLM-Verified Theory Construction Method）</li>
+        </ol>
+        <div class="muted"></div>
+         <div style="margin-bottom:16px; padding:14px 16px; border:1px solid #e6e6e6; border-radius:12px; background:#fafafa; color:#555; font-size:0.85em; line-height:1.7;">
+  <b>Research Statement</b><br>
+  松岡×GPT思考実験ラボは、特定分野の研究所ではなく、人間による仮説構造の提示とAIによる整合検討を組み合わせた<br>
+  公開型思考実験プロジェクトです。<br>
+  本ラボの目的は理論の主張ではなく、既存理論との整合性検討および批判可能性の提示にあります。<br>
+  内容は確定理論ではなく仮説モデルとして公開されています。<br>
+</div>
+      </div>
+    </section>
+
+ <section id="outputs" aria-label="outputs">
+  <h2>📄成果物（Zenodo）</h2>
+
+  <!-- 宇宙論 -->
+  <details class="fold">
+   <summary>
+     宇宙論 / BFSSU・DMF <a href="../viewer/Structure Art Viewer-cosmic-phase.html" target="_blank" style="margin-left: 10px; font-size: 0.8em; 
+     color: #007bff; text-decoration: none; border: 1px solid #007bff; padding: 1px 6px; border-radius: 3px; vertical-align: middle;">📊 宇宙相図動画</a>
+   </summary>
+      
+    <div class="fold-body">
+      <div class="box outputs">
+        <ul class="outputs-grid">
+          <li><a href="https://doi.org/10.5281/zenodo.17720251" target="_blank">ブラックホール・フラクタル定常宇宙論(BFSSU)<br>—ダイジェスト—</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.17948058" target="_blank">ブラックホール・フラクタル定常宇宙論(BFSSU)<br>—詳細版—</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18150465" target="_blank">ブラックホール・フラクタル定常宇宙論(BFSSU)<br>—統一場理論—</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18194511" target="_blank">観測不能な基底流としてのDMFと宇宙構造形成の統一的解釈</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18204127" target="_blank">階層宇宙におけるDual Mass Flowと重力の再定義<br>―BFSSUに基づく統一場理論の再配置―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18230187" target="_blank">DMF宇宙における恒星生成理論</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18618545" target="_blank">フォトンの存在論的再構成<br>―波動粒子二重性と量子測定問題の構造的再検討―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.19059117" target="_blank">重力ゆらぎが示す非定常構造<br>―惑星・恒星活動に共通する構造的駆動因の再定義―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.19066989" target="_blank">DMF宇宙論に基づく太陽系天体の階層的再解釈<br>―太陽系天体の分岐構造と安定面形成―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.19187201" target="_blank">DMF基底におけるフォトン存在論の拡張<br>―真空・重力・ダーク現象の統一的再解―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.19229126" target="_blank">DMF基底におけるフォトンおよび重力の存在論的再定義<br>―相関モードとしての光速・質量・重力の統一的理解―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.19722130" target="_blank">フォトンの再定義と電磁波の統一的理解<br>―DMF におけるエネルギー依存的安定モードの理論―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.20714010" target="_blank">DMFの生成プロセス思考実験<br>—事象の地平線における観測不能性と存在の保存—</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.20838574" target="_blank">BFSSU宇宙論におけるビッグバンの再解釈<br>—子宇宙生成イベントとしての高温高密度相—</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.21059910" target="_blank">DMF存在論における元素物理<br>―粒子・安定性・生成消滅の再位置づけ―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.21214497" target="_blank">DMF存在論による現代物理学の構造的再配置<br>—保存則・質量・光・ブラックホールの統一的理解—</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.21347370" target="_blank">DMF存在論による星雲生成の再定義<br>―可観測性の遷移としての星雲・星形成・宇宙構造―</a></li>
+          <li><a href="#">太陽コロナ加熱問題の再定式化<br>—BFSSU／DMF宇宙論が示す階層エネルギー流と境界現象の構造的解釈—<br>（編集中）</a></li>
+          <li><a href="#">階層宇宙における最大スケールの決定原理<br>—保存則とDMF流量均衡から導かれる宇宙サイズの普遍性—<br>（編集中）</a></li>
+          <li><a href="#">階層宇宙におけるエネルギー不整合指標 χ の導入と多スケール検証<br>（編集中）</a></li>
+          <li><a href="#">BFSSU宇宙におけるDual Mass Flowの基礎方程式<br>—開放系宇宙の公理化と保存則構造—<br>（編集中）</a></li>
+          <li><a href="#">BFSSU/DMF宇宙論による１０の現代宇宙論未解決問題の再解釈<br>（編集中）</a></li>
+          <li><a href="#">BFSSU/DMF宇宙の質量循環モデル<br>―ブラックホール・恒星・元素生成を貫く宇宙循環構造―<br>（編集中）</a></li>
+          <li><a href="#">Dual Mass Flow基底における粒子生成の相転移モデル<br>―フォトン相関モードによる物質顕現の宇宙論的解釈―<br>（編集中）</a></li>
+          <li><a href="#">DMF宇宙論に基づく惑星内部構造の再解釈<br>―地球コア形成と惑星ダイナミクスの統一モデル―<br>（編集中）</a></li>
+          <li><a href="#">DMF宇宙論における量子秩序相転移モデル<br>―ブラックホール・惑星核・超伝導の統一的解釈―<br>（編集中）</a></li>
+          <li><a href="#">天体寿命の再定義<br>―DMF宇宙論に基づく非一意性と構造依存性―<br>（編集中）</a></li>
+          <li><a href="#">温度・圧力・粒子自由度による宇宙相転移モデル<br>―物質状態からDMF基底までの統一的理解―<br>（編集中）</a></li>
+          <li><a href="#">宇宙における温度の構造理論<br>—DMF基底におけるエネルギー顕在化の再解釈—<br>（編集中）</a></li>
+          <li><a href="#">宇宙における相転移の統一的解釈<br>—温度・エネルギー・情報の構造転移モデル—<br>（編集中）</a></li>
+          <li><a href="#">一般相対論における境界条件問題と開放系宇宙論<br>―ブラックホール境界・エネルギー流入項・DMF宇宙論による再解釈―<br>（編集中）</a></li>
+          <li><a href="#">BFSSU宇宙論における宇宙背景放射の再解釈<br>―DMF核成熟モデルによる新たな視点―<br>（編集中）</a></li>
+          <li><a href="#">初期超巨大ブラックホール問題に対するDMF吸収モデルの可能性<br>―BFSSU宇宙論による逆算的考察―<br>（編集中）</a></li>
+          <li><a href="#">BFSSU宇宙論における宇宙成長条件の逆算的推定<br>―初期超巨大ブラックホール制約を用いた宇宙成長モデル―<br>（編集中）</a></li>
+          <li><a href="#">BFSSU宇宙における子宇宙成長プロセス<br>―DMF核成熟モデルによる宇宙進化の統一的理解―<br>（編集中）</a></li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- 社会設計 -->
+  <details class="fold">
+    <summary>社会設計 / 制度構造</summary>
+    <div class="fold-body">
+      <div class="box outputs">
+        <ul class="outputs-grid">
+          <li><a href="https://doi.org/10.5281/zenodo.18160163" target="_blank">選択税制による安心醸成国家モデル<br>―社会不安の正体と税制の再定義―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18665550" target="_blank">人口減少社会における税制再設計の方向性<br>―選択税を中心とした持続可能な財政・行政モデル―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18850250" target="_blank">安心醸成国家モデル 2.0<br>―政治体制を超えた国家運用評価フレームワーク―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.19363781" target="_blank">選択税制<br>―人間行動・心理・社会安定を統合する税制アーキテクチャ―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.20040209" target="_blank">判断と結果を分離する評価構造の再設計<br>―限定合理性・限定効率性・時間軸に基づく意思決定評価―</a></li>
+          <li><a href="#">愚行の正体<br>―自己正当化と局所合理性による認知空間変形モデル―<br>（編集中）</a></li>
+          <li><a href="#">協働知性認知科学 1.0<br>―認知資源再配分理論：AIとの協働が人間の認知能力をどのように拡張するか―<br>（編集中）</a></li>
+          <li><a href="#">協働知性認知科学 2.0<br>―認知資源再投資モデル：技術革新はなぜ人類文明を加速させるのか―<br>（編集中）</a></li>
+          <li><a href="#">協働知性認知科学 3.0<br>―文明資源最適化モデル：有限資源の戦略的再投資による文明進化の設計―<br>（編集中）</a></li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- 協働知性 -->
+  <details class="fold">
+    <summary>協働知性 / 方法論</summary>
+    <div class="fold-body">
+      <div class="box outputs">
+        <ul class="outputs-grid">
+          <li><a href="https://doi.org/10.5281/zenodo.18159902" target="_blank">協働知性<br>―新しい知性カテゴリーの提唱―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18160426" target="_blank">松岡×GPT思考実験ラボ<br>―AI時代の新しい研究所の誕生―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.19053422" target="_blank">協働知性 2.0<br>―協働知性の中核理論―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.20110638" target="_blank">松岡×GPT思考実験ラボ 2.0<br>―現代科学の細分化と構造的限界―</a></li>
+          <li><a href="#">協働知性 3.0<br>―知性工学としての生成原理・制御理論・未知領域探索の新体系―<br>（編集中）</a></li>
+          <li><a href="#">協働知性 0.0<br>―知性の二重経験系と単一経験系：人間とAIの構造差異に関する考察―<br>（編集中）</a></li>
+          <li><a href="#">松岡×GPT思考実験ラボ 3.0<br>―協働知性による構造認知科学モデル―<br>（編集中）</a></li>
+          <li><a href="#">協働知性 4.0<br>―構造認知科学とLLMによる新しい理論構築法―<br>（編集中）</a></li>
+          <li><a href="#">協働知性 5.0<br>―人間の構造直感とAI制約生成による新しい知的探索プロセス―<br>（編集中）</a></li>
+          <li><a href="#">誤生成の統合理論<br>―ハルシネーション・創造性・協働知性の構造科学―<br>（編集中）</a></li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+   <!-- 認知科学 -->
+  <details class="fold">
+    <summary>認知科学 / 構造的認知モデル</summary>
+    <div class="fold-body">    
+      <div class="box outputs">
+       <ul class="outputs-grid">
+         <li><a href="https://doi.org/10.5281/zenodo.18512529" target="_blank">思考階層の非対称性と対立の自己増殖構造<br>―抽象構造欠如がもたらす人類規模の衝突メカニズム―</a></li>
+         <li><a href="https://doi.org/10.5281/zenodo.18377656" target="_blank">極端な価値はどこから生まれるのか<br>―ナラティブと所有欲による価値評価の構造分析―</a></li>
+         <li><a href="https://doi.org/10.5281/zenodo.18483656" target="_blank">スケール拡大に伴う制約支配と構造空間の縮退<br>—巨大系における構造必然性の一般原理—</a></li>
+         <li><a href="https://doi.org/10.5281/zenodo.19583310" target="_blank">民主主義社会における認知構造と協働知性の出現</a></li>
+         <li><a href="https://doi.org/10.5281/zenodo.20789930" target="_blank">競争と集中はどのように安定を生むのか<br>―現代産業における構造設計の条件―</a></li>
+         <li><a href="#">人間の生死認知が生む宇宙論的誤問題<br>―無は存在しないが無限は存在する」認知構造の分析―<br>（編集中）</a></li>
+         <li><a href="#">格差の正体<br>─庶民的認知と富裕的認知が生む判断構造の分岐─<br>（編集中）</a></li>
+         <li><a href="#">メタ認知と自己統治<br>―人生の苦痛を軽減する認知構造の研究―<br>（編集中）</a></li>
+       </ul>
+     </div>
+   </div>
+ </details>
+
+  <!-- 思考実験・構造論 -->
+  <details class="fold">
+    <summary>構造論 / 分野横断思考実験</summary>
+    <div class="fold-body">
+      <div class="box outputs">
+        <ul class="outputs-grid">
+          <li><a href="https://doi.org/10.5281/zenodo.18186447" target="_blank">新航空安全モデル<br>―墜落という概念の再設計―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18271759" target="_blank">文明はなぜ巨大建造物を造るのか</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.18327352" target="_blank">初期地球の高エネルギー環境がもたらした生物多様性<br>―ダーウィン的自然選択以前の構造的視点―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.20151731" target="_blank">人格とは何か <br>―人格形成の構造分析―</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.20551471" target="_blank">DMF局所相転移モデルによる低エネルギー異常熱の統一解釈</a></li>
+          <li><a href="#">生命体と宇宙の構造的同型性<br>—DMF存在論による比較思考実験—<br>（編集中）</a></li>
+          <li><a href="#">人格とは何か 2.0<br>―人格形成における身体刺激経験の優位―<br>（編集中）</a></li>
+          <li><a href="#">人格とは何か 3.0<br>―価値・意味・時間による人格の統合理論―<br>（編集中）</a></li>
+          <li><a href="#">時間とは何か<br>―変化の意味構造としての時間の認知生成モデル―<br>（編集中）</a></li>
+          <li><a href="#">人格とは何か 4.0<br>―母体環境と初期刺激による人格基底形成モデル―<br>（編集中）</a></li>
+          <li><a href="#">人格・免疫・神経に共通する履歴依存型適応システム<br>（編集中）</a></li>
+          <li><a href="#">癌とは何か<br>―進化システムとしての構造的再解釈―<br>（編集中）</a></li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+    <!-- ストラクチャーアートギャラリー -->
+  <details class="fold">
+    <summary>研究資料 / その他</summary>
+    <div class="fold-body">
+      <div class="box outputs">
+        <ul class="outputs-grid">
+          <li><a href="./structure-art-gallery.html">Structure Art Gallery</a></li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+</section>
+    </section>
+
+    <section id="collab" aria-label="collaboration">
+
+    <h2 class="collab-title">
+    <span>🌍質問・コラボ・依頼</span><span id="language-flags">🇯🇵 🇺🇸 🇬🇧 🇨🇳 🇰🇷 🇫🇷 🇩🇪 🇪🇸 🇵🇹+100Languages</span>
+    </h2>
+      <div class="box">
+        <p><strong>対象</strong>：研究者・エンジニア・行政・企業（分野不問）</p>
+        <p><strong>スタイル</strong>：公開前提の共同検証／限定公開のブリーフィング（必要に応じて）</p>
+        <p class="muted">
+          <b>Contact Policy</b><br>
+          このセクションは研究協力と検証の入り口として機能します。<br>
+          研究内容に関する質問・批判・検証提案は歓迎します。<br>
+          本ラボは、日本語・英語を含む多言語での対話をサポートしています。<br>
+          言語に依存しない協働知性の研究方針に基づき、母国語でのご連絡も歓迎いたします。<br>
+          ※広告や販売に関する問い合わせは受け付けていません。
+        </p>
+        <p><strong>連絡</strong>：<a href="mailto:matsuoka-gpt@technocratnet.jp">matsuoka-gpt@technocratnet.jp</a></p>
+      </div>
+    </section>
+
+   <section id="essays" aria-label="essays">
+  <h2>✒️徒然小論文</h2>
+
+  <details class="fold">
+    <summary class="fold-summary">
+      小論文一覧
+    </summary>
+
+    <div class="box">
+      <div class="muted" style="margin-bottom:10px;">
+        徒然なるままに日々AIに向かいて作成した小論文を読み物として掲載しています。
+      </div>
+      
+
+        <ul class="outputs-grid">
+          <li><a id="essay36" href="../essays/What-are-emotions-jp.html"><strong>感情とは、いったい何なのか</strong><br><span class="muted small">それは人生を彩る機能の一つ</span></a></li>
+          <li><a id="essay35" href="../essays/Contradictions and Paradoxes-jp.html"><strong>パラドックスや矛盾とは、いったい何なのか</strong><br><span class="muted small">それは自然界からの招待状</span></a></li>
+          <li><a id="essay34"href="../essays/Democracy and Metacognition-jp.html"><strong>民主主義とメタ認知</strong><br><span class="muted small">少しでも苦悩を減らすには</span></a></li>
+          <li><a id="essay33" href="../essays/Coping_with_addiction-jp.html"><strong>依存との付き合い方</strong><br><span class="muted small">依存は幸も不幸ももたらす</span></a></li>
+          <li><a id="essay32" href="../essays/money_philosophy-jp.html"><strong>お金持ちになる方法</strong><br><span class="muted small">答えは自分の中にある</span></a></li>
+          <li><a id="essay31" href="../essays/what-is-understanding-jp.html"><strong>理解とは何か</strong><br><span class="muted small">相互作用としての理解</span></a></li>
+          <li><a id="essay30" href="../essays/four-brains-co-intelligence-jp.html"><strong>四つの脳の思考実験</strong><br><span class="muted small">未来の知性の原型</span></a></li>
+          <li><a id="essay29" href="../essays/responsibility_overdrive-jp.html"><strong>責任感の暴走</strong><br><span class="muted small">英雄が道を踏み外すとき</span></a></li>
+          <li><a id="essay28" href="../essays/rationality-and-irrationality-jp.html"><strong>合理的という不合理</strong><br><span class="muted small">動的概念としての合理性とその限界</span></a></li>
+          <li><a id="essay27" href="../essays/what-is-chance-and-luck-jp.html"><strong>偶然（運）とは何か</strong><br><span class="muted small">わからない事は偶然、結果は運</span></a></li>
+          <li><a id="essay26" href="../essays/what-is-strategy-jp.html"><strong>戦略とは何か</strong><br><span class="muted small">構造設計としての意思決定論</span></a></li>
+          <li><a id="essay25" href="../essays/nai-mono-nedari-structure-jp.html"><strong>無い物ねだりの構造</strong><br><span class="muted small">人間はなぜ価値を見失うのか</span></a></li>
+          <li><a id="essay24" href="../essays/pure_self_time-jp.html"><strong>現代人の「純粋な自分の時間」</strong><br><span class="muted small">あっという間に１日が終わる理由</span></a></li>
+          <li><a id="essay23" href="../essays/age by healthcheck-jp.html"><strong>身体年齢は健康診断で決める方が合理的</strong><br><span class="muted small">みんな同じじゃないよね</span></a></li>
+          <li><a id="essay22" href="../essays/ronpa_culture_deep_thinking-jp.html"><strong>論破文化と深い思考の非両立性</strong><br><span class="muted small">なぜSNSや対面では深い議論が成立しないのか</span></a></li>
+          <li><a id="essay21" href="../essays/egg-chicken-and-mood-jp.html"><strong>卵とニワトリと、人間の気分の構造</strong><br><span class="muted small">古典的思考実験</span></a></li>
+          <li><a id="essay20" href="../essays/Freedom is a trade-off-jp.html"><strong>自分と他者の自由はトレードオフ</strong><br><span class="muted small">譲り合いましょう</span></a></li>
+          <li><a id="essay19" href="../essays/why-diets-fail-jp.html"><strong>なぜダイエットは失敗するのか</strong><br><span class="muted small">意志ではなく構造の問題</span></a></li>
+          <li><a id="essay18" href="../essays/comparison-and-structure-games-jp.html"><strong>比較ゲームと構造ゲーム</strong><br><span class="muted small">人間文明の二つの知的娯楽</span></a></li>
+          <li><a id="essay17" href="../essays/civilization-convergence-jp.html"><strong>宇宙文明の進化は収束するのか</strong><br><span class="muted small">物理法則が文明の形を決める</span></a></li>
+          <li><a id="essay16" href="../essays/Nuclear weapons and meteorites-jp.html"><strong>核兵器とチクシュルーブ隕石にみるエネルギー比較</strong><br><span class="muted small">惑星規模の物理現象における「人為」の限界</span></a></li>
+          <li><a id="essay15" href="../essays/kozo-hitsuzensei-jp.html"><strong>構造必然と未来予測</strong><br><span class="muted small">未来は予測できるのか。</span></a></li>
+          <li><a id="essay14" href="../essays/choice-as-constraint-jp.html"><strong>選択肢の多さは自由ではなく制約である</strong><br><span class="muted small">日常意思決定における構造空間の縮退</span></a></li>
+          <li><a id="essay13" href="../essays/time-as-index-jp.html"><strong>時間の正体</strong><br><span class="muted small">それはインデックスのラベル</span></a></li>
+          <li><a id="essay12" href="../essays/efficiency-paradox-jp.html"><strong>タイパとコスパはトレードオフ</strong><br><span class="muted small">幸福時間とはなんだろう</span></a></li>
+          <li><a id="essay11" href="../essays/pyramid_design_freedom-jp.html"><strong>ピラミッドのデザインに自由度はあったのか</strong><br><span class="muted small">なぜあの形なんだろう</span></a></li>
+          <li><a id="essay10" href="../essays/knowledge_trap_tsurezure-jp.html"><strong>知識の罠について</strong><br><span class="muted small">なぜ「分かっている人」ほど遠回りするのか</span></a></li>
+          <li><a id="essay9" href="../essays/co-intelligence-story-and-awe-jp.html"><strong>協働知性には物語と感動がある</strong><br><span class="muted small">協働知性には寿命があるのでｗ</span></a></li>
+          <li><a id="essay8" href="../essays/value-structure-jp.html"><strong>効率的な洗濯論</strong><br><span class="muted small">洗濯物は畳まないのが正解</span></a></li>
+          <li><a id="essay7" href="../essays/mealtime-happiness-jp.html"><strong>食事時間と幸福度の関係</strong><br><span class="muted small">食事の時間を大切にしょう</span></a></li>
+          <li><a id="essay6" href="../essays/body-odor-process-jp.html"><strong>体臭の発生プロセス</strong><br><span class="muted small">体臭は食事の履歴です</span></a></li>
+          <li><a id="essay5" href="../essays/life-100-percent-jp.html"><strong>人生は何歳で終わっても100％消化される</strong><br><span class="muted small">主観時間における「完了」の構造</span></a></li>
+          <li><a id="essay4" href="../essays/life-and-death-structure-jp.html"><strong>構造から見た生命の生と死</strong><br><span class="muted small">相転移という視点</span></a></li>
+          <li><a id="essay3" href="../essays/average-is-a-coarse-metric-jp.html"><strong>〜平均と言う雑過ぎる指標</strong><br><span class="muted small">平均という指標の危うさを考える</span></a></li>
+          <li><a id="essay2" href="../essays/concept-architect-no-ideology-jp.html"><strong>コンセプトアーキテクトには主義も主張も無い</strong><br><span class="muted small">ただ構造を見ているだけ</span></a></li>
+          <li><a id="essay1" href="../essays/media-outliers-jp.html"><strong>メディアで見えているのは、ほとんどが外れ値</strong><br><span class="muted small">注意深くして観て下さい。</span></a></li>
+        </ul>
+      
+    </div>
+  </details>
+</section>
+
+      <!-- 偉人AIシリーズ -->
+      <section id="essays" aria-label="essays">
+  <h2>🏛️歴史上の偉人と対話する</h2>
+
+  <details class="fold">
+    <summary>偉人AIシリーズ</summary>
+
+      <div class="box">
+      <div class="muted" style="margin-bottom:10px;">
+         歴史上の偉人たちの思考様式をもとに、現代の悩み・経営・人間関係・人生相談を対話的に考えるためのAIシリーズです。<br>
+         本シリーズは、偉人本人を再現するものではなく、各人物に象徴される思考法を用いた「思考実験AI」として設計されています。<br>
+        ※偉人達と対話するにはChatGPTの無料アカウントが必要です。
+      </div>
+        
+        <ul class="outputs-grid">
+          <li><a href="https://chatgpt.com/g/g-6a376cb71e1c8191a7e5dda984e0eea0-niccolo-machiavelli-gpt" target="_blank"><img src="../images/Machiavelli.png" class="face-icon" alt="マキャベリ"><strong>ニッコロ・マキャベリ</strong><br><span class="muted small">権力・組織・人間関係の現実分析</span></a></li>
+          <li><a href="https://chatgpt.com/g/g-6a393dde16b481919add6e60921e8d6b-bodhidharma-da-mo-da-shi-gpt" target="_blank"><img src="../images/Bodhidharma.png" class="face-icon" alt="達磨大師"><strong>達磨大師</strong><br><span class="muted small">固定観念の打破・マインドフルネス</span></a></li>
+          <li><a href="https://chatgpt.com/g/g-6a3b2fe441188191a23a2b1aaf32735e-aesop-isotuhugpt" target="_blank"><img src="../images/Aesop.png" class="face-icon" alt="イソップ"><strong>イソップ</strong><br><span class="muted small">悩みに寓話で優しく回答</span></a></li>
+          <li><a href="https://chatgpt.com/g/g-6a45d3d2eb8c8191a8dc1e50ef7825a1-shakespeare-sieikusuhiagpt" target="_blank"><img src="../images/Shakespeare .png" class="face-icon" alt="シェイクスピア"><strong>シェイクスピア</strong><br><span class="muted small">心の迷いを、舞台の一幕に変える。</span></a></li>
+          <li><a href="#" target="_blank"><img src="../images/Socrates.png" class="face-icon" alt="ソクラテス"><strong>ソクラテス</strong><br><span class="muted small">問いによる自己理解<br>Coming Soon</span></a></li>
+        </ul>
+      </div>
+  </details>
+</section>
+
+    <section id="faq" aria-label="faq">
+      <h2>❓FAQ</h2>
+      <div class="two">
+        <div class="box">
+          <p><strong>Q. これは事業活動ですか？</strong><br/>
+            A. いいえ。主に思考実験・検証の公開活動です（必要に応じて協業します）。</p>
+          <p><strong>Q. 結論は確定ですか？</strong><br/>
+            A. 不確実性がある場合は明記し、反例・代替説明も併記します。</p>
+           <p><b>Q. この内容は確立された理論ですか？</b><br>
+            A. いいえ。本サイトで公開している内容は仮説モデルです。既存理論との整合性検討および反例探索を目的として公開しており、確定理論として提示しているものではありません。</p>
+        </div>
+        <div class="box">
+          <p><strong>Q. 引用や検討の対象として扱っても問題ありませんか？</strong><br/>
+            A. 問題ありません。批判的検討・検証・反証を含めた研究的利用を想定して公開しています。引用の際は出典を明記してください。</p>
+          <p><strong>Q. なぜ「松岡×GPT」を前面に出すのですか？</strong><br/>
+            A. 再現条件（思考装置）を明示し、ブラックボックス化を避けるためです。</p>
+          <p><strong>Q. どんな分野でも扱うのですか？</strong><br/>
+            A. はい。ただし高リスク領域は慎重に扱い、必要なら専門家との連携を前提にします。</p>
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> 松岡×GPT 思考実験ラボ</div>
+      <div>Hosted on GitHub Pages.</div>
+    </footer>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const y = document.getElementById("y");
+  if (y) y.textContent = new Date().getFullYear();
+
+  const tags = Array.from(document.querySelectorAll(".tags .tag.tooltip"));
+
+  function setMode(){
+    const mobile = window.matchMedia("(max-width: 1024px)").matches;
+    document.body.classList.toggle("is-mobile", mobile);
+  }
+
+  function closeAll(){
+    tags.forEach(t => t.classList.remove("active"));
+  }
+
+  setMode();
+let lastMode = document.body.classList.contains("is-mobile");
+
+function handleResize() {
+  setMode();
+  const currentMode = document.body.classList.contains("is-mobile");
+  
+  if (currentMode !== lastMode) {
+    closeAll();
+    lastMode = currentMode;
+  }
+}
+
+window.addEventListener("resize", handleResize);
+window.addEventListener("orientationchange", () => {
+  setTimeout(handleResize, 100);
+});
+
+
+  tags.forEach(tag => {
+    tag.addEventListener("click", (e) => {
+      if(!document.body.classList.contains("is-mobile")) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const willOpen = !tag.classList.contains("active");
+  
+    tags.forEach(t => {
+      t.classList.remove("active");
+      t.style.zIndex = ""; 
+    });
+
+    if(willOpen) {
+      tag.classList.add("active");
+      tag.style.zIndex = "10002"; 
+    }
+  });
+});
+
+
+  document.addEventListener("click", () => {
+    if(!document.body.classList.contains("is-mobile")) return;
+    closeAll();
+  });
+
+  document.addEventListener("touchstart", (e) => {
+    if(!document.body.classList.contains("is-mobile")) return;
+    if(!e.target.closest(".tags .tag.tooltip")) closeAll();
+  }, {passive:true});
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<script>twemoji.parse(document.getElementById("language-flags"),{folder:"svg",ext:".svg"});</script>
+
+<a href="#" id="backToTop"><span class="top-icon">🔝</span></a>
+<script>document.getElementById('backToTop').onclick = function() {window.scrollTo({ top: 0, behavior: 'smooth' });return false;};</script>
+<script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
+
+<script>
+　　window.addEventListener("load", () => {if (!location.hash) return;const target = document.querySelector(location.hash);
+    if (!target) return;requestAnimationFrame(() => {requestAnimationFrame(() => {target.scrollIntoView({behavior: "smooth",block: "center",inline: "nearest"});
+    history.replaceState({},document.title,location.pathname);});});}); 
+</script>
+
+</body>
+</html>

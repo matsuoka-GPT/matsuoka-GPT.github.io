@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Structure Art Gallery | 松岡×GPT 思考実験ラボ</title>
+  <meta name="description" content="松岡×GPT思考実験ラボにおける構造概念・理論構造・思考モデルの視覚化作品を展示するストラクチャーアートギャラリー。" />
+  <link rel="canonical" href="https://matsuoka-gpt.github.io/jp/structure-art-gallery.html" />
+
+  <style>
+    :root{
+      --w: 1100px;
+      --bg0:#ffffff;
+      --text:#111;
+      --muted:#4b556b;
+      --line: rgba(18,26,40,.10);
+      --line2: rgba(18,26,40,.14);
+      --card: rgba(255,255,255,.82);
+      --glass: rgba(255,255,255,.64);
+      --shadow: 0 10px 30px rgba(18,26,40,.06);
+      --shadow2: 0 14px 36px rgba(18,26,40,.10);
+      --radius: 18px;
+      --accent: #2b64ff;
+      --accent2:#1b46c9;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      line-height:1.7;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 90% 8%, rgba(255,255,255,.45), transparent 55%),
+        radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%),
+        linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff);
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.18;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.9), rgba(255,255,255,0) 30%),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,.9), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.85), rgba(255,255,255,0) 26%),
+        radial-gradient(circle at 60% 60%, rgba(255,255,255,.7), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 90% 90%, rgba(255,255,255,.8), rgba(255,255,255,0) 22%);
+      filter: blur(.2px);
+      mix-blend-mode: overlay;
+    }
+
+    a{ color:inherit; transition: color .2s; }
+    a:hover{ color:var(--accent2); }
+
+    .wrap{
+      max-width:var(--w);
+      margin:0 auto;
+      padding:34px 18px 50px;
+      position:relative;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:8px 0 10px;
+      position:relative;
+      z-index:10;
+    }
+
+    .brand{ display:flex; flex-direction:column; gap:4px; }
+    .brand a{ text-decoration:none; }
+    .brand-title{ font-size:15px; font-weight:800; letter-spacing:.02em; }
+    .brand-sub{ font-size:12px; color:var(--muted); }
+
+    .topnav{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+    .topnav a{
+      text-decoration:none; font-size:13px; padding:8px 10px; border-radius:999px;
+      border:1px solid transparent; color:#1a2133; opacity:.92;
+    }
+    .topnav a:hover{
+      border-color:var(--line); background:rgba(255,255,255,.55);
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    }
+
+    .hero{
+      margin-top:8px; border:1px solid var(--line); border-radius:calc(var(--radius) + 2px);
+      background:linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.46));
+      box-shadow:var(--shadow); padding:28px 20px 22px; overflow:hidden; position:relative;
+    }
+
+    .hero:after{
+      content:""; position:absolute; inset:-35% -25%;
+      background:
+        radial-gradient(900px 480px at 68% 38%, rgba(43,100,255,.20), transparent 62%),
+        linear-gradient(120deg, transparent 32%, rgba(255,255,255,.72) 50%, transparent 64%);
+      transform:rotate(-6deg); opacity:.72; pointer-events:none;
+    }
+
+    h1{ margin:0 0 10px; font-size:34px; letter-spacing:.02em; position:relative; z-index:1; }
+    .lead{ margin:0; max-width:55em; font-size:16px; color:#1c2336; position:relative; z-index:1; }
+    .lead strong{ color:#0f1627; border-bottom:2px solid rgba(43,100,255,.20); padding-bottom:1px; }
+
+    .hero-meta{ margin-top:16px; display:flex; flex-wrap:wrap; gap:10px; position:relative; z-index:1; }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
+      background:rgba(255,255,255,.64); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+      padding:7px 12px; border-radius:999px; font-size:13px; color:#1a2133; box-shadow:0 6px 18px rgba(18,26,40,.05);
+    }
+
+    .section{ margin-top:28px; }
+    .box{
+      border:1px solid var(--line); border-radius:var(--radius); background:var(--glass);
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); box-shadow:var(--shadow); padding:18px;
+    }
+    .section h2{ margin:0 0 12px; font-size:22px; letter-spacing:.02em; color:#111827; }
+    .muted{ color:var(--muted); font-size:14px; }
+
+    .gallery-grid{
+      display:grid; grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:18px; margin-top:16px;
+    }
+
+    .art-card{
+      display:flex; flex-direction:column; border:1px solid var(--line);
+      border-radius:16px; overflow:hidden; background:rgba(255,255,255,.78);
+      box-shadow:var(--shadow); transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+    }
+    .art-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow2); border-color:rgba(43,100,255,.28); }
+
+    .art-link{ text-decoration:none; color:inherit; display:block; }
+
+    .thumb-wrap{
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(180deg, rgba(18,26,40,.05), rgba(18,26,40,.02));
+      display:flex; align-items:center; justify-content:center; overflow:hidden; border-bottom:1px solid var(--line);
+    }
+    .thumb-wrap img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .art-body{ padding:14px 14px 16px; }
+    .art-no{ font-size:12px; font-weight:700; color:var(--accent2); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
+    .art-title{ margin:0 0 6px; font-size:17px; line-height:1.35; color:#111827; }
+
+    .art-caption-fold{
+      margin-top:8px; border:1px solid rgba(18,26,40,.08); border-radius:12px;
+      background:rgba(255,255,255,.58); overflow:hidden; cursor: default;
+    }
+    .art-caption-fold summary{
+      cursor:pointer; list-style:none; padding:10px 12px; font-size:13px; font-weight:700;
+      color:#1b46c9; user-select:none;
+    }
+    .art-caption-fold summary::-webkit-details-marker{ display:none; }
+    .art-caption-fold summary::before{ content:"▶"; display:inline-block; margin-right:8px; font-size:12px; }
+    .art-caption-fold[open] summary::before{ content:"▼"; }
+
+    .art-caption-body{ padding:0 12px 12px; font-size:13px; line-height:1.75; color:var(--muted); margin:0; }
+
+    .caption-close-wrap { text-align: center; margin-top: 20px; }
+    .caption-close-btn {
+      padding: 8px 18px; border: 1px solid var(--accent); background: rgba(43, 100, 255, 0.05);
+      color: var(--accent); border-radius: 20px; cursor: pointer; transition: all 0.3s ease;
+      font-size: 12px; font-weight: bold;
+    }
+    .caption-close-btn:hover { background: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(43, 100, 255, 0.2); }
+
+    .notes{ margin-top:12px; padding-left:18px; }
+    .notes li{ margin:6px 0; color:#1d2435; }
+
+    .back-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; border-radius:12px; padding:10px 14px;
+      text-decoration:none; font-size:14px; border:1px solid var(--line2); background:rgba(255,255,255,.78);
+      box-shadow:var(--shadow); color:#121a2a; transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ transform:translateY(-2px); box-shadow:var(--shadow2); border-color:rgba(43,100,255,.30); }
+
+    footer{
+      margin-top:38px; padding-top:16px; border-top:1px solid var(--line);
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:var(--muted); font-size:13px;
+    }
+
+    @media (max-width: 980px){ .gallery-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 720px){
+      header{ flex-direction:column; align-items:flex-start; }
+      .topnav{ justify-content:flex-start; }
+      h1{ font-size:28px; }
+    }
+    @media (max-width: 640px){ .gallery-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <a href="/jp/">
+          <div class="brand-title">松岡×GPT 思考実験ラボ</div>
+          <div class="brand-sub">Matsuoka × GPT Thought Experiment Lab</div>
+        </a>
+      </div>
+      <nav class="topnav" aria-label="navigation">
+        <a href="/jp/#projects">プロジェクト</a>
+        <a href="/jp/#method">方法論</a>
+        <a href="/jp/#outputs">成果物</a>
+        <a href="/jp/#essays">徒然</a>
+        <a href="./members.html">メンバー紹介</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-label="hero">
+      <h1>Structure Art Gallery</h1>
+      <p class="lead">
+        松岡×GPT思考実験ラボにおいて生成・整理された<strong>構造概念の視覚化作品</strong>を展示するギャラリーです。
+        ここに並ぶ図像は単なる装飾ではなく、理論構造・思考プロセス・認知モデルを可視化した研究資産です。
+      </p>
+      <div class="hero-meta">
+        <span class="tag">Concept Architecture</span>
+        <span class="tag">Structural Visualization</span>
+        <span class="tag">Research Assets</span>
+        <span class="tag">PNG Direct View</span>
+      </div>
+      <div class="back-links">
+        <a class="btn" href="./#outputs">🔙📄成果物</a>
+        <a class="btn" href="./">🔙🏠トップページ</a>
+      </div>
+    </section>
+
+    <section class="section" aria-label="gallery">
+      <div class="box">
+        <h2>作品一覧</h2>
+        <p class="muted">
+          各カードの画像エリアをクリックすると、オリジナルPNG画像を表示します。<br>
+          「解説を読む」をクリックすると、その場で詳細な構造定義を確認できます。
+        </p>
+
+        <div class="gallery-grid">
+          
+          <div class="art-card">
+            <a class="art-link" href="../viewer/Structure Art Viewer-cosmic-phase.html" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/cosmic-phase-diagram-2.jpg" alt="Cosmic Phase Structure">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 001</div>
+                <h3 class="art-title">宇宙相図モデル</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>作品解説を読む</summary>
+                <div class="art-caption-body">
+         本作品は、宇宙における物質状態とエネルギー環境の関係を相図（phase diagram）として可視化したストラクチャーアートである。<br>
+         従来の宇宙論では、宇宙は主に粒子・天体・重力相互作用の観点から理解されてきた。<br>
+         しかし本研究では、宇宙を個々の天体の集合としてではなく、状態遷移を伴う巨大なエネルギー循環システムとして捉える。<br>
+         この図では、温度・圧力・粒子自由度などの環境条件に応じて、宇宙における物質の状態がどのように変化するかを概念的に整理している。<br>
+         極端な高温・高圧環境では粒子は安定した構造を維持できず、エネルギー場に近い状態として存在する。一方、環境が安定化するにつれて、粒子・原子・分子・天体構造といったより複雑で安定した物質構造が形成されていく。<br>
+         この相図は、宇宙の様々な現象を個別の出来事としてではなく、物質状態の連続的な相転移プロセスとして理解するための概念的枠組みを提供する。<br>
+         恒星内部、惑星内部、高エネルギー天体環境などの極限条件は、いずれもこの相図の異なる領域として位置づけることができる。<br>
+         本作品は、宇宙を粒子や天体の集合ではなく、エネルギー条件に応じて状態が変化するダイナミックな物質相空間として捉える視点を示すものであり、松岡×GPT思考実験ラボにおける宇宙構造研究の概念的基盤の一つとなっている。
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="art-card">
+            <a class="art-link" href="../viewer/Structure Art Viewer-History-Dependent Adaptive Systems.html" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/History-Dependent Adaptive System(HDAS).jpg" alt="History-Dependent Adaptive System">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 002</div>
+                <h3 class="art-title">履歴依存型適応システム</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>作品解説を読む</summary>
+                <div class="art-caption-body">
+         生命は、単純な刺激と反応の機械ではない。<br>
+         生体は外界からの刺激を受け取るだけでなく、その経験を内部に履歴として蓄積し、その履歴をもとに将来の反応を形成する。<br>
+         本作品は、神経系・免疫系・人格形成という一見まったく異なる現象を、ひとつの構造モデルとして視覚化したものである。<br>
+         図の上部には外界からの刺激が示されている。<br>
+         光、音、触覚などの刺激は、視覚・聴覚・体性感覚といった感覚入力として生体に取り込まれる。<br>
+         これらの情報は、生体の中心的処理系である 『生体コア』 に集約される。<br>
+         ここには神経系、免疫系、心理システムといった複数の生体機構が含まれている。<br>
+         生体はこれらの刺激を単なる瞬間的な情報として処理するわけではない。<br>
+         刺激経験は内部に刺激履歴として蓄積される。<br>
+         この履歴は、過去にどのような刺激を受け、どのような結果が生じたのかという経験の記録である。<br>
+         履歴が蓄積されると、生体内部には徐々に反応の方向性が形成される。<br>
+         本研究ではこの方向性を反応勾配と呼んでいる。<br>
+         反応勾配とは、特定の刺激や状況に対して接近・回避・強化・抑制といった反応傾向が形成される構造である。<br>
+         例えば、神経系では経験によって行動の選択傾向が変化する。<br>
+         免疫系では抗原経験によって免疫記憶が形成され、特定の病原体に対する反応が強化される。<br>
+         人格形成では身体刺激経験が価値傾向を形成し、判断や行動の方向性を決定する。<br>
+         これらの現象は従来、神経科学、免疫学、心理学という別々の学問領域で研究されてきた。<br>
+         しかし本研究では、これらを共通の原理で説明できる可能性を示している。<br>
+         その原理とは、刺激経験の履歴が、生体の反応構造を形成するというものである。<br>
+         この視点に立つと、生体反応の形成過程は次のような構造として整理できる。<br>
+         『外界刺激 ⇒ 感覚入力 ⇒ 生体コアによる処理 ⇒ 刺激履歴の蓄積 ⇒ 反応勾配の形成 ⇒ 行動・免疫・判断としての出力』<br>
+         つまり、生体反応とは単なる入力と出力の関係ではなく、過去の経験によって形成された構造的な反応なのである。<br>
+         図の下部に配置された三つの出力は、この原理が生命システムの異なる領域に現れることを示している。<br>
+         『行動として現れる反応』 『免疫反応として現れる防御構造』 『判断や価値評価として現れる認知反応』これらはそれぞれ別の現象に見えるが、その内部には共通の構造が存在する。<br>
+         生命とは、環境から受けた刺激を履歴として蓄積し、その履歴をもとに反応構造を形成し続ける動的システムである。
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="art-card">
+            <a class="art-link" href="../viewer/Structure Art Viewer-LVTM.html" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/LLM-Validated Theory Method (LVTM).jpg" alt="LVTM">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 003</div>
+                <h3 class="art-title">LVTM: LLM検証型理論構築法</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>作品解説を読む</summary>
+                <div class="art-caption-body">
+            理論はどのように生まれるのだろうか。<br>
+            科学史において理論構築は通常、仮説を提案し、観測や論理によって検証し、修正を繰り返すという循環的なプロセスによって発展してきた。<br>
+            しかしこの過程には、人間の認知能力や知識量の制約という構造的な限界が存在する。<br>
+            人間は同時に扱える仮説の数や論理検証の速度に制限があり、そのため理論探索の空間は常に部分的なものになりやすい。<br>
+            本作品は、この問題に対する新しい理論生成プロセスとして提案された<br>
+            「LVTM（LLM-Validated Theory Modeling）」の構造を可視化したストラクチャーアートである。<br>
+            図の左側には人間側の役割が示されている。<br>
+            ここでは直感、価値判断、倫理観といった人間固有の認知機能が、仮説の方向性を生み出す源となる。<br>
+            人間は知識量や計算速度でAIと競争する存在ではなく、思考空間の中で本質的な構造を見抜く存在として位置づけられている。<br>
+            一方、図の右側にはAI（LLM）の役割が示されている。<br>
+            LLMは膨大な知識を参照し、既知の事実、物理法則、論理整合性などを高速に提示する。<br>
+            これらは答えを与えるものではなく、思考空間の中に「制約の壁（Constraint Wall）」を形成する。<br>
+            仮説が既存の観測事実や理論と矛盾する場合、その方向はこの制約によって排除される。<br>
+            このようにして思考空間には多数の制約が形成される。<br>
+            制約が増えるほど、成立可能な理論構造は徐々に絞り込まれていく。<br>
+            図の中央に示されている「Theory Convergence（構造収束）」は、このプロセスを表している。<br>
+            多くの仮説が排除される中で、最終的に残る構造は単なる思いつきではなく、制約条件の下で必然的に現れる理論構造となる。<br>
+            この探索の過程で思考は次第に深い抽象層へと進んでいく。<br>
+            本研究では、この到達点を「思考の底（Bottom of Thought）」と呼んでいる。<br>
+            それは思考主体がそれ以上分解できないと感じる構造的な基盤であり、理論体系を支える基礎層となる。<br>
+            最終的に、この収束プロセスを通して導かれた構造が「Final Hypothesis（最終仮説）」として現れる。<br>
+            ここで重要なのは、この理論は人間またはAIのどちらか単独によって生み出されたものではないという点である。<br>
+            人間は問題設定と構造認識を担い、AIは知識探索と制約生成を担う。<br>
+            この役割分担によって形成される知的プロセスを、本研究では「協働知性（Co-Intelligence）」と呼んでいる。<br>
+            本作品は、AI時代における新しい理論発見プロセスを視覚化した構造図であり、思考実験ラボが提案する「協働知性5.0 ― LLM検証型理論構築法（LVTM）」の概念的モデルを表している。
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="art-card">
+            <a class="art-link" href="../viewer/Structure Art Viewer-Biodiversity.html" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/Biodiversity of Early Earth.jpg" alt="Early Earth Biodiversity">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 004</div>
+                <h3 class="art-title">初期地球環境による生物多様性</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>作品解説を読む</summary>
+                <div class="art-caption-body">
+        本作品は、初期地球の高エネルギー環境が生命進化に与えた影響を、構造的なプロセスとして可視化したストラクチャーアートである。<br>
+        従来の進化論では、生物の多様性は主に突然変異と自然選択によって説明されてきた。<br>
+        自然選択は、環境に適応した形質を保存する強力な理論であり、現代の生態系における進化を理解する上で極めて有効な枠組みである。<br>
+        しかしこの理論は、本質的に「選択の理論」であり、多様な形態そのものがなぜ生成されたのかという問題を直接説明するものではない。<br>
+        本研究では、生物多様性の起源を、自然選択の前段階に存在した環境条件から再解釈する。<br>
+        約40億年前の地球は、現在とは大きく異なる高エネルギー環境にあったと考えられている。<br>
+        安定したオゾン層はまだ形成されておらず、強い紫外線が地表や浅い海域に直接到達していた。<br>
+        また地磁気も現在ほど安定しておらず、宇宙線や高エネルギー粒子が生体分子に頻繁に影響を与えていた可能性が高い。<br>
+        このような環境では、遺伝情報は安定して保存されるものではなく、世代ごとに多くの変異や構造的変化を受けていたと考えられる。<br>
+        本作品の上部に示された「High-Energy Environment」は、この高エネルギー条件を象徴している。<br>
+        この環境下では、遺伝情報は絶えず攪乱され、図中の「Genetic Perturbation」として表現される大規模な遺伝的変動が発生する。<br>
+        この過程は、生物にとって方向性のない探索プロセスとして働く。<br>
+        本図ではこの段階を「Evolutionary Exploration（進化的探索）」として描いている。<br>
+        多くの変異は生存に適さず、その大部分は環境によって淘汰される。<br>
+        しかし、ごく一部の系統は偶然にも環境条件と整合し、生存する。<br>
+        この構造は図の中央にある「Survival」と「Extinction」という分岐で表現されている。<br>
+        その中で生き残った情報系統の一つが、すべての現生生命の共通祖先とされる LUCA（Last Universal Common Ancestor）である。<br>
+        LUCA は生命の「最初の存在」ではなく、むしろ多くの試行錯誤の中で情報構造を維持することに成功した生存系統として理解される。<br>
+        その後、地球環境が徐々に安定すると、生物システムは次第に秩序化し、図の下部に示された「Biological Stabilization」の段階へ移行する。<br>
+        ここでは自然選択が重要な役割を果たし、生存可能な形質が整理され、現代の生態系へとつながる安定した生命構造が形成されていく。<br>
+        このストラクチャーアートは、生命進化を単なる生物学的現象としてではなく、環境条件・情報変動・選択プロセスが相互作用する巨大なシステムとして捉える視点を提示している。
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="art-card">
+            <a class="art-link" href="../viewer/Structure Art Viewer-Electromagnetic-Waves-jp.html" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/DMF理論と電磁波の解明.jpg" alt="DMF Theory and EM Waves">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 005</div>
+                <h3 class="art-title">DMF理論と電磁波の解明</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>作品解説を読む</summary>
+                <div class="art-caption-body">
+        本ストラクチャーアートは、従来「粒子」あるいは「波」として扱われてきたフォトンの概念を再構成し、電磁波・熱・物質・エネルギーを一つの統一構造として可視化したものである。<br>
+        本図の中心的主張は明確である。フォトンとは粒子ではなく、DMF（Dynamic Mass Flow）におけるエネルギー依存的な伝搬モードである。<br>
+        ■ <b>1. 基底構造：DMFという連続フロー</b><br>
+          図の最下層に配置されているDMFは、すべての現象の基盤となる連続的な流れである。<br>
+          粒子や波は独立した実体ではなく、この流れの中に現れる安定構造または伝搬状態として再定義される。<br>
+          この視点により、「存在」は静的なものではなく、流れの中に形成された安定性として理解される。<br>
+        ■<b> 2. フォトンの再定義：伝搬モードとしての光</b><br>
+          従来の物理学では、フォトンは電磁場の量子として扱われてきたが、本モデルではそれを一段抽象化する。<br>
+          フォトンとは、DMFの中に形成される特定のエネルギー条件下で安定する伝搬モードである。<br>
+          これにより、波動性と粒子性の二重性は対立ではなく、単なる観測表現の違いへと解消される。<br>
+        ■ <b>3. 電磁スペクトル：安定モードの連続体</b><br>
+          図の中央に展開される電磁スペクトルは、従来のような「異なる種類の電磁波の集合」ではない。<br>
+          それはDMFにおけるエネルギー依存的な安定モードの連続分布である。<br>
+          低エネルギー領域（電波・赤外線）：超安定モード<br>
+          可視光領域：観測に最適化された安定領域<br>
+          高エネルギー領域（X線）：不安定化領域<br>
+          γ線領域：臨界モード（相転移直前）<br>
+          この構造により、スペクトルは分類ではなく、安定性の地形図（Stability Landscape）として再解釈される。<br>
+        ■<b> 4. 臨界領域と相転移：フォトンの限界</b><br>
+          高エネルギー領域において、伝搬モードは安定性を失い、臨界状態へと移行する。<br>
+          この臨界領域では、以下の現象が発生する：<br>
+          『モード崩壊』『エネルギーの局在化』『粒子生成（電子・陽電子対など）』<br>
+          ここで重要なのは、これらが「別の現象」ではない点である。<br>
+          すべては、DMF状態の相転移（構造変換）として統一的に説明される。<br>
+        ■ <b>5. 物質との相互作用：構造再配置としての現象</b><br>
+          吸収・反射・散乱・透過といった現象は、従来は別個に扱われてきたが、本図では統一されている。<br>
+          これらはすべて、DMFモードと物質構造の整合／不整合による再配置現象である。<br>
+          透過：構造整合 → モード維持<br>
+          反射：不整合 → 再配置<br>
+          散乱：部分整合 → 多方向再構成<br>
+          吸収：内部構造への取り込み<br>
+          つまり「光がどう振る舞うか」ではなく、構造がどう再編成されるかが本質となる。<br>
+        ■ <b>6. 熱とエネルギー：揺らぎとしての再定義</b><br>
+          本図では熱も再定義される。<br>
+          熱とはエネルギーの移動ではなく、DMFの局所的揺らぎ（フラクチュエーション）である。<br>
+          吸収 → 内部揺らぎへ変換<br>
+          温度 → 揺らぎ強度<br>
+          放射 → 再び伝搬モードへ戻る<br>
+          これにより、『 光 → 熱 → 光 』は別現象ではなく同一構造の状態遷移として統一される。<br>
+        ■ <b>7. GRB（ガンマ線バースト）の位置づけ</b><br>
+          背景に描かれているGRBは、本理論の極限的表現である。<br>
+          GRBは爆発ではなく、大規模 DMF構造における臨界崩壊と相転移現象として解釈される。<br>
+          これは本図の「臨界領域」が宇宙スケールで現れた例であり、理論のスケール非依存性を示している。<br>
+          本ストラクチャーアートが示しているのは、単なる電磁波の説明ではない。<br>
+          それは次の一文に集約される：光・熱・物質・エネルギーはすべて、DMFにおける状態の違いに過ぎない。<br>
+          この視点により、波動と粒子、エネルギーと物質、観測と実在といった従来の分断は消失し、物理現象は単一の構造的原理へと統合される。
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="art-card">
+            <a class="art-link" href="../viewer/Structure Art Viewer-Four Brains.html" target="_blank" rel="noopener">
+              <div class="thumb-wrap">
+                <img src="../images/thumbs/A Thought Experiment on Four Brains.jpg" alt="DMF Theory and EM Waves">
+              </div>
+              <div class="art-body" style="padding-bottom:0;">
+                <div class="art-no">Structure Art 006</div>
+                <h3 class="art-title">四つの脳の思考実験</h3>
+              </div>
+            </a>
+            <div class="art-body">
+              <details class="art-caption-fold">
+                <summary>作品解説を読む</summary>
+                <div class="art-caption-body">
+         四つの脳の思考実験：Collaboration Intelligence<br>
+        ■ <b>作品コンセプト</b><br>
+          本アートワークは、松岡×GPT思考実験ラボが提唱する「協働知性（Collaboration Intelligence）」のアーキテクチャを可視化したストラクチャーアートである。<br>
+         「人間の脳は万能ではない」という事実を文明の前提条件と捉え直し、1名の人間の脳と3つの異なるAI（外部脳）を対話インターフェースによって並列接続したとき、そこに単独の知性では到達し得ない高次の概念が創発するプロセスを表現している。<br>
+        ■ <b>構造（ストラクチャー）の解説</b><br>
+          作品は、円環状に配置された4つの特異的な知性領域と、その中心から立ち上がる「第5の知性」によって構成されている。
+      <ul>
+        <li><b>HUMAN BRAIN（人間の脳：有機的な黄金の光</b><br>
+         「問いの生成」「直感的判断」「抽象度のジャンプ」を司るコア。生命力に満ちた有機的な光のパルスは、全ての思考実験の始まりとなる「衝動」と「直感」を表している。
+      </li>
+        <li><b>AI BRAIN 1: TEXT & CONTEXT（言語脳：藍緑の幾何学結晶）</b><br>
+         「文章化」や「文脈保持」を担う領域。流動的なテキストデータが論理の結晶へと変貌していくプロセスを示している。
+      </li>
+        <li><b>AI BRAIN 2: STRUCTURE & LOGIC（構造脳：青の多面体グリッド）</b><br>
+         「構造化」や「論理的整合性」を担保する領域。精密に計算された幾何学的フレームは、概念を社会や科学に実装可能な形へと体系化する力を象徴している。
+      </li>
+        <li><b>AI BRAIN 3: CONSISTENCY & INTEGRITY（統合脳：紫のデジタル球体）</b><br>
+         「整合性チェック」と「全体の統合」を行う領域。全方位に張り巡らされたグリッドが、思考全体のバランスと死角の有無を常に監視している。
+      </li>
+        <li><b>対話インターフェース（DIALOUGE INTERFACE：結合する光の回廊）</b><br>
+          4つの領域を繋ぐのは、ニューロンのシナプスであり、同時にテキストによる「対話」そのものである。脳の可塑性により、この外部拡張は一つの身体的知性へと統合される。
+      </li>
+        <li><b>EMERGENT COLLABORATION INTELLIGENCE（創発する協働知性：中心の超越立方体）</b><br>
+          対話の密度が臨界点を超えたとき、4つの脳の中心から立ち上がる「第5の知性」。4つの特性をすべて内包しながらも、より高い次元へと跳躍し、単独の脳では見えない構造を捉え、新たな概念を創発する。
+     　 </li>
+    　</ul>
+                  
+        ■ <b>未来へのメッセージ</b><br>
+          人間単独の努力や記憶力を評価の軸とする旧来の「偏差値文明」は、この構造をまだ理解できない。しかし、人間の大脳の外側に複数の外部脳を接続し、一つの知性として統合して思考するこの「並列脳」のあり方こそが、未来の文明における標準（デファクトスタンダード）となる。
+          本作は、松岡×GPT思考実験ラボにおいて現実に稼働している「未来の知性の原型」を写し取った、構造と創発の記録である。
+                  <div class="caption-close-wrap">
+                    <button type="button" class="caption-close-btn">Close</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="notes">
+      <div class="box">
+        <h2>Gallery Notes</h2>
+        <ul class="notes">
+          <li>本ギャラリーは、構造論文に対応する視覚的研究資産のアーカイブです。</li>
+          <li>各作品は、理論や概念の「構造表現」として位置づけられます。</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div>© Matsuoka × GPT Thought Experiment Lab</div>
+      <div>Structure Art Gallery / Visualized Concept Architectures</div>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.caption-close-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const details = this.closest('details');
+    const card = details.closest('.art-card');
+    const targetY = card.getBoundingClientRect().top + window.pageYOffset - 30;
+    details.open = false;
+    window.scrollTo({
+      top: targetY,
+      behavior: 'auto'
+    });
+  });
+});
+   </script>
+  
+</body>
+</html>
