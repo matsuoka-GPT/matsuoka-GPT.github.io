@@ -687,10 +687,21 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-en.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-jp.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-en.html" />
+  </url>
+  <url>
     <loc>https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-jp.html</loc>
     <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-en.html" />
     <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-jp.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-en.html" />
   </url>
 </urlset>
