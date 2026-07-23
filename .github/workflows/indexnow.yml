@@ -1,0 +1,65 @@
+name: Deploy GitHub Pages and submit changed URLs to IndexNow
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-indexnow
+  cancel-in-progress: false
+
+jobs:
+  deploy-and-submit:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build static Pages artifact with IndexNow key file
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          rsync -a --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '_site/' \
+            ./ _site/
+          if [ -z "${INDEXNOW_KEY}" ]; then
+            echo "INDEXNOW_KEY secret is not set; key file will not be generated."
+            exit 0
+          fi
+          printf '%s' "${INDEXNOW_KEY}" > "_site/${INDEXNOW_KEY}.txt"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Submit changed HTML URLs to IndexNow
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          INDEXNOW_HOST: matsuoka-gpt.github.io
+          INDEXNOW_BASE_URL: https://matsuoka-gpt.github.io
+        run: python3 .github/scripts/submit-indexnow.py
