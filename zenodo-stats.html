@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zenodo Analytics Dashboard | Matsuoka x GPT Thought Experiment Lab</title>
+  <meta name="description" content="Daily Zenodo analytics for Takafumi Matsuoka." />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --w: 980px; --bg0:#ffffff; --bg1:#fbfcff; --text:#111; --muted:#475069;
+      --line: rgba(18, 26, 40, .10); --card: rgba(255,255,255,.82);
+      --shadow: 0 10px 30px rgba(18, 26, 40, .06); --shadow2: 0 12px 34px rgba(18, 26, 40, .09);
+      --radius: 16px; --radius2: 12px; --accent: #2b64ff; --accent2:#1b46c9;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif; line-height:1.7; color:var(--text); background: radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%), radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%), linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff); }
+    a { color: inherit; } a:hover { color: var(--accent2); }
+    .wrap { max-width:var(--w); margin:0 auto; padding: 34px 18px 44px; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:14px; padding: 8px 0 20px; }
+    .brand { font-weight:900; letter-spacing:-.02em; } .brand span { color:var(--accent2); }
+    .home-link { text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:8px 12px; background:rgba(255,255,255,.72); }
+    .hero, .card { border:1px solid var(--line); border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow); backdrop-filter: blur(10px); }
+    .hero { padding:24px; margin-bottom:16px; } h1 { font-size: clamp(30px, 5vw, 52px); line-height:1.04; margin: 0 0 12px; letter-spacing:-.045em; }
+    .muted { color:var(--muted); } .updated { display:inline-block; margin-top:10px; font-size:14px; color:var(--muted); }
+    .metrics { display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin:16px 0; }
+    .metric-card { border:1px solid var(--line); border-radius:var(--radius2); background:rgba(255,255,255,.75); box-shadow:var(--shadow); padding:14px; }
+    .metric-card span { display:block; color:var(--muted); font-size:13px; } .metric-card strong { display:block; font-size:28px; line-height:1.2; } .delta { color:var(--accent2)!important; font-size:12px!important; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:16px; } .card { padding:18px; margin-bottom:16px; overflow:hidden; }
+    h2 { margin:0 0 12px; font-size:22px; letter-spacing:-.02em; }
+    .table-wrap { overflow-x:auto; } table { width:100%; border-collapse:collapse; min-width:680px; } th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; } th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; } td small { display:block; color:var(--muted); margin-top:2px; }
+    canvas { width:100%; min-height:280px; }
+    footer { color:var(--muted); font-size:13px; margin-top:20px; }
+    @media (max-width: 820px) { .metrics, .grid { grid-template-columns:1fr; } header { align-items:flex-start; flex-direction:column; } .hero { padding:18px; } table { min-width:760px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header><div class="brand">Matsuoka × GPT <span>Thought Experiment Lab</span></div><a class="home-link" href="./">Home</a></header>
+    <section class="hero">
+      <h1>Zenodo Analytics Dashboard</h1>
+      <p class="muted">Public Zenodo record statistics collected via the Zenodo REST API for Takafumi Matsuoka.</p>
+      <p class="muted">Scope: Zenodo default record statistics: aggregated across all versions of each concept record.</p>
+      <span class="updated">Last updated: Not generated yet</span>
+    </section>
+    <section class="metrics">
+      <article class="metric-card"><span>Total papers</span><strong>0</strong></article>
+      <article class="metric-card"><span>Total Views</span><strong>0</strong><span class="delta">+0 since previous run</span></article>
+      <article class="metric-card"><span>Total Unique Views</span><strong>0</strong><span class="delta">+0 since previous run</span></article>
+      <article class="metric-card"><span>Total Downloads</span><strong>0</strong><span class="delta">+0 since previous run</span></article>
+      <article class="metric-card"><span>Total Unique Downloads</span><strong>0</strong><span class="delta">+0 since previous run</span></article>
+    </section>
+    <section class="card"><h2>30-day Views and Downloads Trend</h2><canvas id="trendChart"></canvas></section>
+    <section class="grid">
+      <article class="card"><h2>Downloads Top 10</h2><div class="table-wrap"><table><thead><tr><th>Rank</th><th>Title</th><th>Downloads</th><th>Δ</th></tr></thead><tbody></tbody></table></div></article>
+      <article class="card"><h2>Recent Growth Top 10</h2><div class="table-wrap"><table><thead><tr><th>Rank</th><th>Title</th><th>Downloads</th><th>Δ</th></tr></thead><tbody></tbody></table></div></article>
+    </section>
+    <section class="card"><h2>Category Totals</h2><div class="table-wrap"><table><thead><tr><th>Category</th><th>Records</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody><tr><td>BFSSU / DMF Cosmology</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Co-Intelligence</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Social Systems and Public Policy</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Cognitive Science</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Other</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div></section>
+    <section class="card"><h2>All Records</h2><div class="table-wrap"><table><thead><tr><th>Title</th><th>DOI</th><th>Published</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody></tbody></table></div></section>
+    <footer>Generated automatically from Zenodo public records. Category rules are maintained in <code>data/zenodo/categories.json</code>.</footer>
+  </main>
+  <script>
+    const points = [];
+    const ctx = document.getElementById('trendChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: { labels: points.map(p => p.date), datasets: [{ label: 'Views', data: points.map(p => p.views), borderColor: '#2b64ff', backgroundColor: 'rgba(43,100,255,.12)', tension: .28 }, { label: 'Downloads', data: points.map(p => p.downloads), borderColor: '#111827', backgroundColor: 'rgba(17,24,39,.10)', tension: .28 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, scales: { y: { beginAtZero: true } } }
+    });
+  </script>
+</body>
+</html>

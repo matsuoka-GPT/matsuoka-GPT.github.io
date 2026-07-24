@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {
+      "name": "BFSSU / DMF Cosmology",
+      "match": {
+        "title": ["BFSSU", "DMF", "cosmology", "cosmic", "universe", "photon", "electromagnetic"],
+        "doi": []
+      }
+    },
+    {
+      "name": "Co-Intelligence",
+      "match": {
+        "title": ["co-intelligence", "collaborative intelligence", "GPT", "LLM", "AI", "four brains"],
+        "doi": []
+      }
+    },
+    {
+      "name": "Social Systems and Public Policy",
+      "match": {
+        "title": ["social", "public policy", "policy", "democracy", "governance", "systems"],
+        "doi": []
+      }
+    },
+    {
+      "name": "Cognitive Science",
+      "match": {
+        "title": ["cognitive", "cognition", "metacognition", "emotion", "understanding", "mind"],
+        "doi": []
+      }
+    },
+    {
+      "name": "Other",
+      "match": {
+        "title": [],
+        "doi": []
+      }
+    }
+  ]
+}

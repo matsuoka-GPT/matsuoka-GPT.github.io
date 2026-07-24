@@ -1,0 +1,33 @@
+{
+  "hits": {
+    "hits": [
+      {
+        "id": 102,
+        "conceptrecid": "c-dmf",
+        "metadata": {
+          "title": "DMF Cosmology & <Escaped>",
+          "doi": "10.5281/zenodo.102",
+          "publication_date": "2026-02-01",
+          "version": "2",
+          "creators": [{"name": "Takafumi Matsuoka"}]
+        },
+        "stats": {"views": 12, "unique_views": 9, "downloads": 7, "unique_downloads": 5},
+        "links": {"html": "https://zenodo.org/records/102"}
+      },
+      {
+        "id": 101,
+        "conceptrecid": "c-dmf",
+        "metadata": {
+          "title": "Old DMF Cosmology",
+          "doi": "10.5281/zenodo.101",
+          "publication_date": "2025-01-01",
+          "version": "1",
+          "creators": [{"name": "Takafumi Matsuoka"}]
+        },
+        "stats": {"views": 5, "unique_views": 4, "downloads": 2, "unique_downloads": 1},
+        "links": {"html": "https://zenodo.org/records/101"}
+      }
+    ]
+  },
+  "links": {"next": "fixture-page-2"}
+}
