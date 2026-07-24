@@ -1,7 +1,7 @@
 {
   "categories": [
     {
-      "name": "BFSSU / DMF Cosmology",
+      "name": "Cosmology / BFSSU & DMF",
       "match": {
         "title": [
           "BFSSU",
@@ -10,27 +10,16 @@
           "cosmic",
           "universe",
           "photon",
-          "electromagnetic"
+          "electromagnetic",
+          "gravity",
+          "stellar",
+          "nebula"
         ],
         "doi": []
       }
     },
     {
-      "name": "Co-Intelligence",
-      "match": {
-        "title": [
-          "co-intelligence",
-          "collaborative intelligence",
-          "GPT",
-          "LLM",
-          "AI",
-          "four brains"
-        ],
-        "doi": []
-      }
-    },
-    {
-      "name": "Social Systems and Public Policy",
+      "name": "Social Design / Institutional Structures",
       "match": {
         "title": [
           "social",
@@ -38,13 +27,14 @@
           "policy",
           "democracy",
           "governance",
-          "systems",
+          "institutional",
           "security-centered",
           "security centered",
           "national model",
           "selective tax",
           "tax system",
           "aviation safety",
+          "evaluation structures",
           "peace of mind",
           "安心醸成",
           "国家モデル",
@@ -55,7 +45,21 @@
       }
     },
     {
-      "name": "Cognitive Science",
+      "name": "Co-Intelligence / Methodology",
+      "match": {
+        "title": [
+          "co-intelligence",
+          "collaborative intelligence",
+          "GPT",
+          "LLM",
+          "AI",
+          "thought experiment lab"
+        ],
+        "doi": []
+      }
+    },
+    {
+      "name": "Cognitive Science / Structural Cognition",
       "match": {
         "title": [
           "cognitive",
@@ -63,13 +67,34 @@
           "metacognition",
           "emotion",
           "understanding",
-          "mind"
+          "mind",
+          "hierarchies",
+          "value",
+          "bounded rationality"
         ],
         "doi": []
       }
     },
     {
-      "name": "Other",
+      "name": "Thought Experiments / Structural Theory",
+      "match": {
+        "title": [
+          "thought experiment",
+          "structural",
+          "civilization",
+          "megastructures",
+          "biodiversity",
+          "personality",
+          "living systems",
+          "early earth",
+          "anomalous heat",
+          "competition and concentration"
+        ],
+        "doi": []
+      }
+    },
+    {
+      "name": "Unclassified",
       "match": {
         "title": [],
         "doi": []
