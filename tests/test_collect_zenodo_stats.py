@@ -7,7 +7,13 @@ import sys
 import threading
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
+from urllib.error import HTTPError
 from urllib.parse import parse_qs, urlparse
+from unittest.mock import patch
+
+import pytest
+
+from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_PAGE_SIZE, build_url, iter_records, request_json
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures"
@@ -15,9 +21,11 @@ FIXTURES = ROOT / "tests" / "fixtures"
 
 class FixtureHandler(BaseHTTPRequestHandler):
     retry_count = 0
+    queries = []
 
     def do_GET(self):
         query = parse_qs(urlparse(self.path).query)
+        FixtureHandler.queries.append(query)
         page = query.get("page", ["1"])[0]
         if page == "1" and FixtureHandler.retry_count == 0:
             FixtureHandler.retry_count += 1
@@ -42,7 +50,74 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+
+def test_default_page_size_uses_unauthenticated_safe_limit():
+    assert DEFAULT_PAGE_SIZE == 25
+
+
+def test_build_url_preserves_author_search_and_page_size():
+    url = build_url(
+        DEFAULT_API_URL,
+        {
+            "q": 'creators.name:"Takafumi Matsuoka"',
+            "all_versions": "true",
+            "sort": "mostrecent",
+            "size": DEFAULT_PAGE_SIZE,
+            "page": 1,
+        },
+    )
+    parsed = urlparse(url)
+    query = parse_qs(parsed.query)
+    assert parsed.scheme == "https"
+    assert parsed.netloc == "zenodo.org"
+    assert parsed.path == "/api/records"
+    assert query["q"] == ['creators.name:"Takafumi Matsuoka"']
+    assert query["size"] == ["25"]
+    assert query["page"] == ["1"]
+
+
+def test_iter_records_keeps_paginating_after_25_records():
+    pages = [
+        {
+            "hits": {"hits": [{"id": i} for i in range(1, 26)]},
+            "links": {"next": "page-2"},
+        },
+        {
+            "hits": {"hits": [{"id": i} for i in range(26, 31)]},
+            "links": {},
+        },
+    ]
+    urls = []
+
+    def fake_request_json(url: str):
+        urls.append(url)
+        return pages.pop(0)
+
+    with patch("scripts.collect_zenodo_stats.request_json", side_effect=fake_request_json):
+        records = list(iter_records("Takafumi Matsuoka", DEFAULT_PAGE_SIZE, DEFAULT_API_URL))
+
+    assert [record["id"] for record in records] == list(range(1, 31))
+    queries = [parse_qs(urlparse(url).query) for url in urls]
+    assert [query["page"] for query in queries] == [["1"], ["2"]]
+    assert all(query["size"] == ["25"] for query in queries)
+    assert all(query["q"] == ['creators.name:"Takafumi Matsuoka"'] for query in queries)
+
+
+def test_request_json_logs_4xx_response_body(capsys):
+    class BodyHTTPError(HTTPError):
+        def read(self, *args, **kwargs):
+            return b'{"message":"size must be between 1 and 25 for unauthenticated requests"}'
+
+    error = BodyHTTPError("https://zenodo.org/api/records?size=100", 400, "Bad Request", {}, None)
+    with patch("urllib.request.urlopen", side_effect=error):
+        with pytest.raises(RuntimeError, match="HTTP 400"):
+            request_json("https://zenodo.org/api/records?size=100")
+
+    assert "size must be between 1 and 25" in capsys.readouterr().err
+
 def test_collect_zenodo_stats_dashboard(tmp_path: Path):
+    FixtureHandler.retry_count = 0
+    FixtureHandler.queries = []
     server = HTTPServer(("127.0.0.1", 0), FixtureHandler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
@@ -81,6 +156,11 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
         check=True,
         cwd=ROOT,
     )
+
+    first_success_queries = [query for query in FixtureHandler.queries if query.get("page") == ["1"] or query.get("page") == ["2"]]
+    assert first_success_queries[0]["q"] == ['creators.name:"Takafumi Matsuoka"']
+    assert first_success_queries[0]["size"] == ["25"]
+    assert [query["page"] for query in first_success_queries[:3]] == [["1"], ["1"], ["2"]]
 
     records = read_csv(output_dir / "zenodo_records.csv")
     assert len(records) == 2

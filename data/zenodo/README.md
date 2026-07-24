@@ -14,3 +14,9 @@ without undercounting.
 
 If Zenodo changes this behavior in the future, update the collector and the test
 fixtures together so the aggregation scope remains explicit.
+
+The default unauthenticated collection page size is intentionally `25`. Zenodo
+currently rejects unauthenticated records API requests using `size=100` with
+HTTP 400, while paginated `size=25` requests remain accepted. The collector
+therefore keeps `size=25` as its default and follows Zenodo pagination links so
+records beyond the first 25 are still fetched.
