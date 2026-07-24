@@ -425,13 +425,6 @@ def fmt_delta(value: int) -> str:
     return f"{sign}{value}"
 
 
-def history_chart_points(history: list[dict[str, str]]) -> list[dict[str, Any]]:
-    return [
-        {"date": history_key(row), "views": metric_int(row, "views"), "downloads": metric_int(row, "downloads")}
-        for row in history[-30:]
-    ]
-
-
 def metric_card(label: str, value: int, delta: int | None = None) -> str:
     delta_html = f'<span class="delta">{safe(fmt_delta(delta))} since previous run</span>' if delta is not None else ""
     return f'<article class="metric-card"><span>{safe(label)}</span><strong>{value:,}</strong>{delta_html}</article>'
@@ -442,7 +435,7 @@ def record_rows(records: list[ZenodoRecord]) -> str:
     for record in records:
         doi = safe(record.doi)
         title = safe(record.title)
-        title_html = f'<a href="{safe(record.record_url)}">{title}</a>' if record.record_url else title
+        title_html = f'<a class="paper-title" href="{safe(record.record_url)}" title="{title}">{title}</a>' if record.record_url else f'<span class="paper-title" title="{title}">{title}</span>'
         doi_html = f'<a href="https://doi.org/{doi}">{doi}</a>' if doi else ""
         rows.append(
             "<tr>"
@@ -456,6 +449,16 @@ def record_rows(records: list[ZenodoRecord]) -> str:
             "</tr>"
         )
     return "\n".join(rows)
+
+
+def records_table(records: list[ZenodoRecord]) -> str:
+    table = '<div class="table-wrap"><table><thead><tr><th>Title</th><th>DOI</th><th>Published</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody>{rows}</tbody></table></div>'
+    first_rows = table.format(rows=record_rows(records[:10]))
+    remaining = records[10:]
+    if not remaining:
+        return first_rows
+    remaining_rows = table.format(rows=record_rows(remaining))
+    return f'{first_rows}<details class="all-papers"><summary>Show all papers</summary>{remaining_rows}</details>'
 
 
 def compact_rows(records: list[ZenodoRecord], metric: str) -> str:
@@ -489,7 +492,6 @@ def category_rows(categories: list[dict[str, Any]]) -> str:
 
 def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], generated_at: str, aggregate_delta: dict[str, int], categories: list[dict[str, Any]], history: list[dict[str, str]]) -> None:
     aggregate = totals(records)
-    chart_points = history_chart_points(history)
     html_text = f"""<!doctype html>
 <html lang=\"en\">
 <head>
@@ -497,7 +499,6 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
   <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />
   <title>Zenodo Analytics Dashboard | Matsuoka x GPT Thought Experiment Lab</title>
   <meta name=\"description\" content=\"Daily Zenodo analytics for {safe(author)}.\" />
-  <script src=\"https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js\"></script>
   <style>
     :root {{
       --w: 980px; --bg0:#ffffff; --bg1:#fbfcff; --text:#111; --muted:#475069;
@@ -508,22 +509,24 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     * {{ box-sizing: border-box; }}
     body {{ margin:0; font-family: system-ui, -apple-system, \"Segoe UI\", \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif; line-height:1.7; color:var(--text); background: radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%), radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%), linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff); }}
     a {{ color: inherit; }} a:hover {{ color: var(--accent2); }}
-    .wrap {{ max-width:var(--w); margin:0 auto; padding: 34px 18px 44px; }}
-    header {{ display:flex; justify-content:space-between; align-items:center; gap:14px; padding: 8px 0 20px; }}
+    .wrap {{ max-width:var(--w); margin:0 auto; padding: 24px 16px 36px; }}
+    header {{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding: 6px 0 16px; }}
     .brand {{ font-weight:900; letter-spacing:-.02em; }} .brand span {{ color:var(--accent2); }}
     .home-link {{ text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:8px 12px; background:rgba(255,255,255,.72); }}
     .hero, .card {{ border:1px solid var(--line); border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow); backdrop-filter: blur(10px); }}
-    .hero {{ padding:24px; margin-bottom:16px; }} h1 {{ font-size: clamp(30px, 5vw, 52px); line-height:1.04; margin: 0 0 12px; letter-spacing:-.045em; }}
+    .hero {{ padding:20px; margin-bottom:14px; }} h1 {{ font-size: clamp(28px, 5vw, 48px); line-height:1.04; margin: 0 0 10px; letter-spacing:-.045em; }}
     .muted {{ color:var(--muted); }} .updated {{ display:inline-block; margin-top:10px; font-size:14px; color:var(--muted); }}
-    .metrics {{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin:16px 0; }}
-    .metric-card {{ border:1px solid var(--line); border-radius:var(--radius2); background:rgba(255,255,255,.75); box-shadow:var(--shadow); padding:14px; }}
+    .metrics {{ display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin:14px 0; }}
+    .metric-card {{ border:1px solid var(--line); border-radius:var(--radius2); background:rgba(255,255,255,.75); box-shadow:var(--shadow); padding:12px; }}
     .metric-card span {{ display:block; color:var(--muted); font-size:13px; }} .metric-card strong {{ display:block; font-size:28px; line-height:1.2; }} .delta {{ color:var(--accent2)!important; font-size:12px!important; }}
-    .grid {{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }} .card {{ padding:18px; margin-bottom:16px; overflow:hidden; }}
-    h2 {{ margin:0 0 12px; font-size:22px; letter-spacing:-.02em; }}
-    .table-wrap {{ overflow-x:auto; }} table {{ width:100%; border-collapse:collapse; min-width:680px; }} th,td {{ border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }} th {{ color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }} td small {{ display:block; color:var(--muted); margin-top:2px; }}
-    canvas {{ width:100%; min-height:280px; }}
-    footer {{ color:var(--muted); font-size:13px; margin-top:20px; }}
-    @media (max-width: 820px) {{ .metrics, .grid {{ grid-template-columns:1fr; }} header {{ align-items:flex-start; flex-direction:column; }} .hero {{ padding:18px; }} table {{ min-width:760px; }} }}
+    .grid {{ display:grid; grid-template-columns: 1fr; gap:14px; }} .card {{ padding:16px; margin-bottom:14px; overflow:hidden; }}
+    h2 {{ margin:0 0 10px; font-size:21px; letter-spacing:-.02em; }}
+    .table-wrap {{ overflow-x:auto; }} table {{ width:100%; border-collapse:collapse; min-width:680px; }} th,td {{ border-bottom:1px solid var(--line); padding:8px 7px; text-align:left; vertical-align:top; }} th {{ color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }} td small {{ display:block; color:var(--muted); margin-top:2px; }}
+    .paper-title {{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }}
+    .all-papers {{ margin-top:12px; }} .all-papers > summary {{ cursor:pointer; color:var(--accent2); font-weight:800; padding:10px 0; }}
+    footer {{ color:var(--muted); font-size:13px; margin-top:18px; }}
+    @media (max-width: 980px) {{ .metrics {{ grid-template-columns:repeat(2, 1fr); }} }}
+    @media (max-width: 820px) {{ header {{ align-items:flex-start; flex-direction:column; }} .hero {{ padding:16px; }} .card {{ padding:14px; }} table {{ min-width:720px; }} th,td {{ padding:7px 6px; }} }}
   </style>
 </head>
 <body>
@@ -542,24 +545,13 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
       {metric_card('Total Downloads', aggregate['downloads'], aggregate_delta['downloads_delta'])}
       {metric_card('Total Unique Downloads', aggregate['unique_downloads'], aggregate_delta['unique_downloads_delta'])}
     </section>
-    <section class=\"card\"><h2>30-day Views and Downloads Trend</h2><canvas id=\"trendChart\"></canvas></section>
     <section class=\"grid\">
       <article class=\"card\"><h2>Downloads Top 10</h2><div class=\"table-wrap\"><table><thead><tr><th>Rank</th><th>Title</th><th>Downloads</th><th>Δ</th></tr></thead><tbody>{compact_rows(download_ranking(records), 'downloads')}</tbody></table></div></article>
-      <article class=\"card\"><h2>Recent Growth Top 10</h2><div class=\"table-wrap\"><table><thead><tr><th>Rank</th><th>Title</th><th>Downloads</th><th>Δ</th></tr></thead><tbody>{compact_rows(recent_growth_ranking(records), 'downloads')}</tbody></table></div></article>
     </section>
     <section class=\"card\"><h2>Category Totals</h2><div class=\"table-wrap\"><table><thead><tr><th>Category</th><th>Records</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody>{category_rows(categories)}</tbody></table></div></section>
-    <section class=\"card\"><h2>All Records</h2><div class=\"table-wrap\"><table><thead><tr><th>Title</th><th>DOI</th><th>Published</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody>{record_rows(records)}</tbody></table></div></section>
+    <section class=\"card\"><h2>All Records</h2>{records_table(records)}</section>
     <footer>Generated automatically from Zenodo public records. Category rules are maintained in <code>data/zenodo/categories.json</code>.</footer>
   </main>
-  <script>
-    const points = {json.dumps(chart_points, ensure_ascii=False)};
-    const ctx = document.getElementById('trendChart');
-    new Chart(ctx, {{
-      type: 'line',
-      data: {{ labels: points.map(p => p.date), datasets: [{{ label: 'Views', data: points.map(p => p.views), borderColor: '#2b64ff', backgroundColor: 'rgba(43,100,255,.12)', tension: .28 }}, {{ label: 'Downloads', data: points.map(p => p.downloads), borderColor: '#111827', backgroundColor: 'rgba(17,24,39,.10)', tension: .28 }}] }},
-      options: {{ responsive: true, maintainAspectRatio: false, plugins: {{ legend: {{ position: 'bottom' }} }}, scales: {{ y: {{ beginAtZero: true }} }} }}
-    }});
-  </script>
 </body>
 </html>
 """

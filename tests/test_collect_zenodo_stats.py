@@ -233,6 +233,8 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
     assert "Zenodo Analytics Dashboard" in html
     assert "aggregated across all versions" in html
     assert "DMF Cosmology &amp; &lt;Escaped&gt;" in html
-    assert "30-day Views and Downloads Trend" in html
-    assert "new Chart" in html
+    assert "30-day Views and Downloads Trend" not in html
+    assert "new Chart" not in html
+    assert "Chart.js" not in html
+    assert "paper-title" in html
     server.shutdown()
