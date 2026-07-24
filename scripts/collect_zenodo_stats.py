@@ -433,32 +433,22 @@ def metric_card(label: str, value: int, delta: int | None = None) -> str:
 def record_rows(records: list[ZenodoRecord]) -> str:
     rows = []
     for record in records:
-        doi = safe(record.doi)
         title = safe(record.title)
-        title_html = f'<a class="paper-title" href="{safe(record.record_url)}" title="{title}">{title}</a>' if record.record_url else f'<span class="paper-title" title="{title}">{title}</span>'
-        doi_html = f'<a href="https://doi.org/{doi}">{doi}</a>' if doi else ""
         rows.append(
             "<tr>"
-            f"<td>{title_html}<small>{safe(record.category)}</small></td>"
-            f"<td>{doi_html}</td>"
+            f'<td><span class="paper-title" title="{title}">{title}</span></td>'
             f"<td>{safe(record.publication_date)}</td>"
-            f"<td>{record.views:,}<small>{fmt_delta(record.views_delta)}</small></td>"
-            f"<td>{record.unique_views:,}<small>{fmt_delta(record.unique_views_delta)}</small></td>"
-            f"<td>{record.downloads:,}<small>{fmt_delta(record.downloads_delta)}</small></td>"
-            f"<td>{record.unique_downloads:,}<small>{fmt_delta(record.unique_downloads_delta)}</small></td>"
+            f"<td>{record.views:,}</td>"
+            f"<td>{record.downloads:,}</td>"
             "</tr>"
         )
     return "\n".join(rows)
 
 
 def records_table(records: list[ZenodoRecord]) -> str:
-    table = '<div class="table-wrap"><table><thead><tr><th>Title</th><th>DOI</th><th>Published</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody>{rows}</tbody></table></div>'
-    first_rows = table.format(rows=record_rows(records[:10]))
-    remaining = records[10:]
-    if not remaining:
-        return first_rows
-    remaining_rows = table.format(rows=record_rows(remaining))
-    return f'{first_rows}<details class="all-papers"><summary>Show all papers</summary>{remaining_rows}</details>'
+    table = '<div class="table-wrap"><table><thead><tr><th>Title</th><th>Published</th><th>Views</th><th>Downloads</th></tr></thead><tbody>{rows}</tbody></table></div>'
+    note = '<p class="muted">Showing the 10 most recent records. Full data is available in <code>data/zenodo/zenodo_records.csv</code>.</p>'
+    return f'{table.format(rows=record_rows(records[:10]))}{note}'
 
 
 def compact_rows(records: list[ZenodoRecord], metric: str) -> str:
@@ -523,7 +513,6 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     h2 {{ margin:0 0 10px; font-size:21px; letter-spacing:-.02em; }}
     .table-wrap {{ overflow-x:auto; }} table {{ width:100%; border-collapse:collapse; min-width:680px; }} th,td {{ border-bottom:1px solid var(--line); padding:8px 7px; text-align:left; vertical-align:top; }} th {{ color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }} td small {{ display:block; color:var(--muted); margin-top:2px; }}
     .paper-title {{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }}
-    .all-papers {{ margin-top:12px; }} .all-papers > summary {{ cursor:pointer; color:var(--accent2); font-weight:800; padding:10px 0; }}
     footer {{ color:var(--muted); font-size:13px; margin-top:18px; }}
     @media (max-width: 980px) {{ .metrics {{ grid-template-columns:repeat(2, 1fr); }} }}
     @media (max-width: 820px) {{ header {{ align-items:flex-start; flex-direction:column; }} .hero {{ padding:16px; }} .card {{ padding:14px; }} table {{ min-width:720px; }} th,td {{ padding:7px 6px; }} }}
