@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 DEFAULT_API_URL = "https://zenodo.org/api/records"
-DEFAULT_AUTHOR = "Takafumi Matsuoka"
+DEFAULT_AUTHOR = "Matsuoka, Takafumi"
 DEFAULT_OUTPUT_DIR = Path("data/zenodo")
 DEFAULT_DASHBOARD_PATH = Path("zenodo-stats.html")
 DEFAULT_CATEGORIES_PATH = Path("data/zenodo/categories.json")

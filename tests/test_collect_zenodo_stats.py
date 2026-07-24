@@ -13,7 +13,7 @@ from unittest.mock import patch
 
 import pytest
 
-from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_PAGE_SIZE, build_url, iter_records, request_json
+from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, build_url, is_author_record, iter_records, request_json
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures"
@@ -51,6 +51,22 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 
+
+def test_default_author_uses_verified_zenodo_creator_name():
+    assert DEFAULT_AUTHOR == "Matsuoka, Takafumi"
+
+
+def test_exact_author_validation_accepts_verified_zenodo_creator_name():
+    record = {"metadata": {"creators": [{"name": "Matsuoka, Takafumi"}]}}
+
+    assert is_author_record(record, DEFAULT_AUTHOR)
+
+
+def test_exact_author_validation_rejects_unrelated_creators():
+    record = {"metadata": {"creators": [{"name": "Unrelated Creator"}]}}
+
+    assert not is_author_record(record, DEFAULT_AUTHOR)
+
 def test_default_page_size_uses_unauthenticated_safe_limit():
     assert DEFAULT_PAGE_SIZE == 25
 
@@ -59,7 +75,7 @@ def test_build_url_preserves_author_search_and_page_size():
     url = build_url(
         DEFAULT_API_URL,
         {
-            "q": 'creators.name:"Takafumi Matsuoka"',
+            "q": 'creators.name:"Matsuoka, Takafumi"',
             "all_versions": "true",
             "sort": "mostrecent",
             "size": DEFAULT_PAGE_SIZE,
@@ -71,7 +87,7 @@ def test_build_url_preserves_author_search_and_page_size():
     assert parsed.scheme == "https"
     assert parsed.netloc == "zenodo.org"
     assert parsed.path == "/api/records"
-    assert query["q"] == ['creators.name:"Takafumi Matsuoka"']
+    assert query["q"] == ['creators.name:"Matsuoka, Takafumi"']
     assert query["size"] == ["25"]
     assert query["page"] == ["1"]
 
@@ -94,13 +110,13 @@ def test_iter_records_keeps_paginating_after_25_records():
         return pages.pop(0)
 
     with patch("scripts.collect_zenodo_stats.request_json", side_effect=fake_request_json):
-        records = list(iter_records("Takafumi Matsuoka", DEFAULT_PAGE_SIZE, DEFAULT_API_URL))
+        records = list(iter_records("Matsuoka, Takafumi", DEFAULT_PAGE_SIZE, DEFAULT_API_URL))
 
     assert [record["id"] for record in records] == list(range(1, 31))
     queries = [parse_qs(urlparse(url).query) for url in urls]
     assert [query["page"] for query in queries] == [["1"], ["2"]]
     assert all(query["size"] == ["25"] for query in queries)
-    assert all(query["q"] == ['creators.name:"Takafumi Matsuoka"'] for query in queries)
+    assert all(query["q"] == ['creators.name:"Matsuoka, Takafumi"'] for query in queries)
 
 
 def test_request_json_logs_4xx_response_body(capsys):
@@ -158,7 +174,7 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
     )
 
     first_success_queries = [query for query in FixtureHandler.queries if query.get("page") == ["1"] or query.get("page") == ["2"]]
-    assert first_success_queries[0]["q"] == ['creators.name:"Takafumi Matsuoka"']
+    assert first_success_queries[0]["q"] == ['creators.name:"Matsuoka, Takafumi"']
     assert first_success_queries[0]["size"] == ["25"]
     assert [query["page"] for query in first_success_queries[:3]] == [["1"], ["1"], ["2"]]
 
