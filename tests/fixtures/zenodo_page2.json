@@ -1,0 +1,31 @@
+{
+  "hits": {
+    "hits": [
+      {
+        "id": 201,
+        "conceptrecid": "c-co",
+        "metadata": {
+          "title": "Co-Intelligence Research",
+          "doi": "10.5281/zenodo.201",
+          "publication_date": "2026-03-01",
+          "creators": [{"name": "Takafumi Matsuoka"}]
+        },
+        "stats": {"views": 20, "unique_views": 11, "downloads": 8, "unique_downloads": 6},
+        "links": {"html": "https://zenodo.org/records/201"}
+      },
+      {
+        "id": 301,
+        "conceptrecid": "c-other-author",
+        "metadata": {
+          "title": "Should Be Filtered",
+          "doi": "10.5281/zenodo.301",
+          "publication_date": "2026-04-01",
+          "creators": [{"name": "Takafumi Matsuoka Jr."}]
+        },
+        "stats": {"views": 999, "unique_views": 999, "downloads": 999, "unique_downloads": 999},
+        "links": {"html": "https://zenodo.org/records/301"}
+      }
+    ]
+  },
+  "links": {}
+}
