@@ -1,0 +1,63 @@
+{
+  "author": "Takafumi Matsuoka",
+  "generated_at": "2026-07-24T16:51:48+00:00",
+  "stats_scope": "Zenodo default record statistics: aggregated across all versions of each concept record",
+  "totals": {
+    "records": 0,
+    "views": 0,
+    "unique_views": 0,
+    "downloads": 0,
+    "unique_downloads": 0
+  },
+  "deltas": {
+    "views_delta": 0,
+    "unique_views_delta": 0,
+    "downloads_delta": 0,
+    "unique_downloads_delta": 0
+  },
+  "categories": [
+    {
+      "category": "BFSSU / DMF Cosmology",
+      "records": 0,
+      "views": 0,
+      "unique_views": 0,
+      "downloads": 0,
+      "unique_downloads": 0
+    },
+    {
+      "category": "Co-Intelligence",
+      "records": 0,
+      "views": 0,
+      "unique_views": 0,
+      "downloads": 0,
+      "unique_downloads": 0
+    },
+    {
+      "category": "Social Systems and Public Policy",
+      "records": 0,
+      "views": 0,
+      "unique_views": 0,
+      "downloads": 0,
+      "unique_downloads": 0
+    },
+    {
+      "category": "Cognitive Science",
+      "records": 0,
+      "views": 0,
+      "unique_views": 0,
+      "downloads": 0,
+      "unique_downloads": 0
+    },
+    {
+      "category": "Other",
+      "records": 0,
+      "views": 0,
+      "unique_views": 0,
+      "downloads": 0,
+      "unique_downloads": 0
+    }
+  ],
+  "download_ranking": [],
+  "recent_growth_ranking": [],
+  "records": []
+}
