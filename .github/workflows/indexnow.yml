@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows:
+      - Update Zenodo statistics
+    types:
+      - completed
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -16,14 +23,17 @@ concurrency:
 
 jobs:
   deploy-and-submit:
+    if: >-
+      ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
+      - name: Checkout latest main
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Configure Pages
@@ -58,8 +68,8 @@ jobs:
       - name: Submit changed HTML URLs to IndexNow
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-          BEFORE_SHA: ${{ github.event.before }}
-          AFTER_SHA: ${{ github.sha }}
+          BEFORE_SHA: ${{ github.event_name == 'push' && github.event.before || '' }}
+          AFTER_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
           INDEXNOW_HOST: matsuoka-gpt.github.io
           INDEXNOW_BASE_URL: https://matsuoka-gpt.github.io
         run: python3 .github/scripts/submit-indexnow.py
