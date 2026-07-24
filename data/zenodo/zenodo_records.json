@@ -34,27 +34,27 @@
     },
     {
       "category": "Social Systems and Public Policy",
-      "records": 0,
-      "views": 0,
-      "unique_views": 0,
-      "downloads": 0,
-      "unique_downloads": 0
+      "records": 5,
+      "views": 1231,
+      "unique_views": 1038,
+      "downloads": 944,
+      "unique_downloads": 819
     },
     {
       "category": "Cognitive Science",
-      "records": 2,
-      "views": 321,
-      "unique_views": 244,
-      "downloads": 258,
-      "unique_downloads": 205
+      "records": 1,
+      "views": 111,
+      "unique_views": 82,
+      "downloads": 89,
+      "unique_downloads": 67
     },
     {
       "category": "Other",
-      "records": 10,
-      "views": 1724,
-      "unique_views": 1439,
-      "downloads": 1311,
-      "unique_downloads": 1119
+      "records": 6,
+      "views": 703,
+      "unique_views": 563,
+      "downloads": 536,
+      "unique_downloads": 438
     }
   ],
   "download_ranking": [
@@ -97,7 +97,7 @@
     {
       "record_id": "18850250",
       "conceptrecid": "18850249",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0",
       "doi": "10.5281/zenodo.18850250",
       "publication_date": "2026-03-03",
@@ -133,7 +133,7 @@
     {
       "record_id": "19363781",
       "conceptrecid": "19363780",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "Selective Tax System / 選択税制",
       "doi": "10.5281/zenodo.19363781",
       "publication_date": "2026-04-01",
@@ -151,7 +151,7 @@
     {
       "record_id": "18186447",
       "conceptrecid": "18186446",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "New aviation safety model / 新航空安全モデル",
       "doi": "10.5281/zenodo.18186447",
       "publication_date": "2026-01-08",
@@ -169,7 +169,7 @@
     {
       "record_id": "18160163",
       "conceptrecid": "18160162",
-      "category": "Cognitive Science",
+      "category": "Social Systems and Public Policy",
       "title": "A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル",
       "doi": "10.5281/zenodo.18160163",
       "publication_date": "2026-01-06",
@@ -439,7 +439,7 @@
     {
       "record_id": "18665550",
       "conceptrecid": "18665549",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性",
       "doi": "10.5281/zenodo.18665550",
       "publication_date": "2026-02-17",
@@ -729,7 +729,7 @@
     {
       "record_id": "18160163",
       "conceptrecid": "18160162",
-      "category": "Cognitive Science",
+      "category": "Social Systems and Public Policy",
       "title": "A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル",
       "doi": "10.5281/zenodo.18160163",
       "publication_date": "2026-01-06",
@@ -765,7 +765,7 @@
     {
       "record_id": "18850250",
       "conceptrecid": "18850249",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0",
       "doi": "10.5281/zenodo.18850250",
       "publication_date": "2026-03-03",
@@ -981,7 +981,7 @@
     {
       "record_id": "19363781",
       "conceptrecid": "19363780",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "Selective Tax System / 選択税制",
       "doi": "10.5281/zenodo.19363781",
       "publication_date": "2026-04-01",
@@ -1107,7 +1107,7 @@
     {
       "record_id": "18665550",
       "conceptrecid": "18665549",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性",
       "doi": "10.5281/zenodo.18665550",
       "publication_date": "2026-02-17",
@@ -1287,7 +1287,7 @@
     {
       "record_id": "18186447",
       "conceptrecid": "18186446",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "New aviation safety model / 新航空安全モデル",
       "doi": "10.5281/zenodo.18186447",
       "publication_date": "2026-01-08",
@@ -1613,7 +1613,7 @@
     {
       "record_id": "19363781",
       "conceptrecid": "19363780",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "Selective Tax System / 選択税制",
       "doi": "10.5281/zenodo.19363781",
       "publication_date": "2026-04-01",
@@ -1721,7 +1721,7 @@
     {
       "record_id": "18850250",
       "conceptrecid": "18850249",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0",
       "doi": "10.5281/zenodo.18850250",
       "publication_date": "2026-03-03",
@@ -1757,7 +1757,7 @@
     {
       "record_id": "18665550",
       "conceptrecid": "18665549",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性",
       "doi": "10.5281/zenodo.18665550",
       "publication_date": "2026-02-17",
@@ -1937,7 +1937,7 @@
     {
       "record_id": "18186447",
       "conceptrecid": "18186446",
-      "category": "Other",
+      "category": "Social Systems and Public Policy",
       "title": "New aviation safety model / 新航空安全モデル",
       "doi": "10.5281/zenodo.18186447",
       "publication_date": "2026-01-08",
@@ -1973,7 +1973,7 @@
     {
       "record_id": "18160163",
       "conceptrecid": "18160162",
-      "category": "Cognitive Science",
+      "category": "Social Systems and Public Policy",
       "title": "A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル",
       "doi": "10.5281/zenodo.18160163",
       "publication_date": "2026-01-06",
