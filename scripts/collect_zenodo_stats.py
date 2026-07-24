@@ -329,7 +329,7 @@ def category_totals(records: list[ZenodoRecord], rules: list[CategoryRule]) -> l
 
 
 def download_ranking(records: list[ZenodoRecord]) -> list[ZenodoRecord]:
-    return sorted(records, key=lambda record: (record.downloads, record.unique_downloads, record.views), reverse=True)
+    return sorted(records, key=lambda record: (record.downloads, record.unique_downloads, record.publication_date), reverse=True)
 
 
 def recent_growth_ranking(records: list[ZenodoRecord]) -> list[ZenodoRecord]:
@@ -430,40 +430,38 @@ def metric_card(label: str, value: int, delta: int | None = None) -> str:
     return f'<article class="metric-card"><span>{safe(label)}</span><strong>{value:,}</strong>{delta_html}</article>'
 
 
-def record_rows(records: list[ZenodoRecord]) -> str:
+
+def download_ranking_rows(records: list[ZenodoRecord], start: int = 1, stop: int | None = None) -> str:
     rows = []
-    for record in records:
+    for rank, record in enumerate(records[start - 1 : stop], start=start):
         title = safe(record.title)
         rows.append(
             "<tr>"
-            f'<td><span class="paper-title" title="{title}">{title}</span></td>'
-            f"<td>{safe(record.publication_date)}</td>"
-            f"<td>{record.views:,}</td>"
-            f"<td>{record.downloads:,}</td>"
-            "</tr>"
-        )
-    return "\n".join(rows)
-
-
-def records_table(records: list[ZenodoRecord]) -> str:
-    table = '<div class="table-wrap"><table><thead><tr><th>Title</th><th>Published</th><th>Views</th><th>Downloads</th></tr></thead><tbody>{rows}</tbody></table></div>'
-    note = '<p class="muted">Showing the 10 most recent records. Full data is available in <code>data/zenodo/zenodo_records.csv</code>.</p>'
-    return f'{table.format(rows=record_rows(records[:10]))}{note}'
-
-
-def compact_rows(records: list[ZenodoRecord], metric: str) -> str:
-    rows = []
-    for rank, record in enumerate(records[:10], start=1):
-        delta = getattr(record, f"{metric}_delta", 0)
-        rows.append(
-            "<tr>"
             f"<td>{rank}</td>"
-            f"<td>{safe(record.title)}</td>"
-            f"<td>{getattr(record, metric):,}</td>"
-            f"<td>{fmt_delta(delta)}</td>"
+            f'<td><span class="paper-title" title="{title}">{title}</span></td>'
+            f"<td>{record.downloads:,}</td>"
+            f"<td>{fmt_delta(record.downloads_delta)}</td>"
             "</tr>"
         )
     return "\n".join(rows)
+
+
+def download_ranking_table(records: list[ZenodoRecord]) -> str:
+    return (
+        '<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Title</th><th>Downloads</th><th>Δ</th></tr></thead>'
+        f'<tbody>{download_ranking_rows(records, stop=10)}</tbody></table></div>'
+    )
+
+
+def expanded_download_ranking(records: list[ZenodoRecord]) -> str:
+    remaining_rows = download_ranking_rows(records, start=11)
+    if not remaining_rows:
+        return ""
+    return (
+        '<details class="download-rankings"><summary>Show all download rankings</summary>'
+        '<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Title</th><th>Downloads</th><th>Δ</th></tr></thead>'
+        f'<tbody>{remaining_rows}</tbody></table></div></details>'
+    )
 
 
 def category_rows(categories: list[dict[str, Any]]) -> str:
@@ -535,10 +533,9 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
       {metric_card('Total Unique Downloads', aggregate['unique_downloads'], aggregate_delta['unique_downloads_delta'])}
     </section>
     <section class=\"grid\">
-      <article class=\"card\"><h2>Downloads Top 10</h2><div class=\"table-wrap\"><table><thead><tr><th>Rank</th><th>Title</th><th>Downloads</th><th>Δ</th></tr></thead><tbody>{compact_rows(download_ranking(records), 'downloads')}</tbody></table></div></article>
+      <article class=\"card\"><h2>Downloads Top 10</h2>{download_ranking_table(download_ranking(records))}{expanded_download_ranking(download_ranking(records))}</article>
     </section>
     <section class=\"card\"><h2>Category Totals</h2><div class=\"table-wrap\"><table><thead><tr><th>Category</th><th>Records</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody>{category_rows(categories)}</tbody></table></div></section>
-    <section class=\"card\"><h2>All Records</h2>{records_table(records)}</section>
     <footer>Generated automatically from Zenodo public records. Category rules are maintained in <code>data/zenodo/categories.json</code>.</footer>
   </main>
 </body>

@@ -13,7 +13,7 @@ from unittest.mock import patch
 
 import pytest
 
-from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, build_url, is_author_record, iter_records, request_json
+from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, ZenodoRecord, build_url, download_ranking, is_author_record, iter_records, request_json, write_dashboard
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures"
@@ -50,6 +50,65 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+
+
+def make_record(index: int, downloads: int, unique_downloads: int | None = None, publication_date: str | None = None) -> ZenodoRecord:
+    return ZenodoRecord(
+        record_id=str(index),
+        conceptrecid=f"c-{index}",
+        title=f"Record {index} with a deliberately long title for clamp testing",
+        doi=f"10.5281/zenodo.{index}",
+        publication_date=publication_date or f"2026-01-{index:02d}",
+        views=downloads * 2,
+        unique_views=downloads,
+        downloads=downloads,
+        unique_downloads=unique_downloads if unique_downloads is not None else downloads,
+        version="1",
+        record_url=f"https://zenodo.org/records/{index}",
+        downloads_delta=index,
+    )
+
+
+def test_download_ranking_order_uses_required_tie_breakers():
+    records = [
+        make_record(1, 10, 5, "2026-01-01"),
+        make_record(2, 10, 7, "2026-01-01"),
+        make_record(3, 10, 7, "2026-02-01"),
+        make_record(4, 11, 1, "2025-01-01"),
+    ]
+
+    assert [record.record_id for record in download_ranking(records)] == ["4", "3", "2", "1"]
+
+
+def test_dashboard_download_ranking_replaces_all_records(tmp_path: Path):
+    records = [make_record(index, downloads=100 - index) for index in range(1, 14)]
+    dashboard = tmp_path / "zenodo-stats.html"
+
+    write_dashboard(
+        dashboard,
+        DEFAULT_AUTHOR,
+        records,
+        "2026-07-24T00:00:00+00:00",
+        {"views_delta": 0, "unique_views_delta": 0, "downloads_delta": 0, "unique_downloads_delta": 0},
+        [],
+        [],
+    )
+
+    html = dashboard.read_text(encoding="utf-8")
+    details_start = html.index('<details class="download-rankings">')
+    details_html = html[details_start : html.index("</details>", details_start)]
+    default_html = html[:details_start]
+
+    assert "<h2>All Records</h2>" not in html
+    assert "Show all download rankings" in details_html
+    assert "https://zenodo.org/records/" not in html
+    assert "https://doi.org/" not in html
+    assert "paper-title" in html
+    assert all(f"<td>{rank}</td>" in default_html for rank in range(1, 11))
+    assert all(f"<td>{rank}</td>" not in default_html for rank in range(11, 14))
+    assert all(f"<td>{rank}</td>" in details_html for rank in range(11, 14))
+    assert all(f"<td>{rank}</td>" not in details_html for rank in range(1, 11))
+    assert html.count('Record ') == len(records) * 2
 
 
 def test_default_author_uses_verified_zenodo_creator_name():
