@@ -499,7 +499,7 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     a {{ color: inherit; }} a:hover {{ color: var(--accent2); }}
     .wrap {{ max-width:var(--w); margin:0 auto; padding: 24px 16px 36px; }}
     header {{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding: 6px 0 16px; }}
-    .brand {{ font-weight:900; letter-spacing:-.02em; }} .brand span {{ color:var(--accent2); }}
+    .brand {{ color:var(--accent); font-weight:900; letter-spacing:-.02em; }} .brand span {{ color:var(--accent); }}
     .home-link {{ text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:8px 12px; background:rgba(255,255,255,.72); }}
     .hero, .card {{ border:1px solid var(--line); border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow); backdrop-filter: blur(10px); }}
     .hero {{ padding:20px; margin-bottom:14px; }} h1 {{ font-size: clamp(28px, 5vw, 48px); line-height:1.04; margin: 0 0 10px; letter-spacing:-.045em; }}
@@ -511,6 +511,8 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     h2 {{ margin:0 0 10px; font-size:21px; letter-spacing:-.02em; }}
     .table-wrap {{ overflow-x:auto; }} table {{ width:100%; border-collapse:collapse; min-width:680px; }} th,td {{ border-bottom:1px solid var(--line); padding:8px 7px; text-align:left; vertical-align:top; }} th {{ color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }} td small {{ display:block; color:var(--muted); margin-top:2px; }}
     .paper-title {{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }}
+    .download-rankings summary {{ color:var(--accent); cursor:pointer; font-weight:700; margin-top:10px; transition: color .15s ease; }}
+    .download-rankings summary:hover {{ color:var(--accent2); }}
     footer {{ color:var(--muted); font-size:13px; margin-top:18px; }}
     @media (max-width: 980px) {{ .metrics {{ grid-template-columns:repeat(2, 1fr); }} }}
     @media (max-width: 820px) {{ header {{ align-items:flex-start; flex-direction:column; }} .hero {{ padding:16px; }} .card {{ padding:14px; }} table {{ min-width:720px; }} th,td {{ padding:7px 6px; }} }}

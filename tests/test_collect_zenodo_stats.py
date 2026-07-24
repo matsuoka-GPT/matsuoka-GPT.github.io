@@ -13,7 +13,7 @@ from unittest.mock import patch
 
 import pytest
 
-from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, ZenodoRecord, build_url, download_ranking, is_author_record, iter_records, request_json, write_dashboard
+from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, ZenodoRecord, apply_categories, build_url, category_totals, download_ranking, is_author_record, iter_records, load_category_rules, request_json, write_dashboard
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures"
@@ -109,6 +109,41 @@ def test_dashboard_download_ranking_replaces_all_records(tmp_path: Path):
     assert all(f"<td>{rank}</td>" in details_html for rank in range(11, 14))
     assert all(f"<td>{rank}</td>" not in details_html for rank in range(1, 11))
     assert html.count('Record ') == len(records) * 2
+
+
+def test_policy_titles_classify_as_social_systems_and_not_other():
+    rules = load_category_rules(ROOT / "data" / "zenodo" / "categories.json")
+    records = [
+        ZenodoRecord(
+            record_id=str(index),
+            conceptrecid=f"policy-{index}",
+            title=title,
+            doi=f"10.5281/zenodo.policy{index}",
+            publication_date="2026-01-01",
+            views=1,
+            unique_views=1,
+            downloads=1,
+            unique_downloads=1,
+            version="v1.0",
+            record_url=f"https://zenodo.org/records/policy{index}",
+        )
+        for index, title in enumerate(
+            [
+                "A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0",
+                "Selective Tax System / 選択税制",
+                "A national model for fostering peace of mind through a selective tax system",
+                "New aviation safety model / 新航空安全モデル",
+            ],
+            start=1,
+        )
+    ]
+
+    categorized = apply_categories(records, rules)
+    categories = category_totals(categorized, rules)
+
+    assert {record.category for record in categorized} == {"Social Systems and Public Policy"}
+    assert next(category for category in categories if category["category"] == "Social Systems and Public Policy")["records"] == 4
+    assert next(category for category in categories if category["category"] == "Other")["records"] == 0
 
 
 def test_default_author_uses_verified_zenodo_creator_name():
