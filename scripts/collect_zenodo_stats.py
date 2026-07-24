@@ -23,7 +23,7 @@ DEFAULT_OUTPUT_DIR = Path("data/zenodo")
 DEFAULT_DASHBOARD_PATH = Path("zenodo-stats.html")
 DEFAULT_CATEGORIES_PATH = Path("data/zenodo/categories.json")
 DEFAULT_HISTORY_PATH = Path("data/zenodo/history.csv")
-DEFAULT_PAGE_SIZE = 100
+DEFAULT_PAGE_SIZE = 25
 MAX_RETRIES = 5
 BACKOFF_SECONDS = 2.0
 STATS_SCOPE = "Zenodo default record statistics: aggregated across all versions of each concept record"
@@ -103,6 +103,9 @@ def request_json(url: str) -> dict[str, Any]:
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
             retry_after: float | None = None
             if isinstance(exc, urllib.error.HTTPError) and exc.code < 500 and exc.code != 429:
+                body = exc.read().decode("utf-8", errors="replace")
+                if body:
+                    print(f"Zenodo API error response body: {body}", file=sys.stderr)
                 raise RuntimeError(f"Zenodo API request failed: HTTP {exc.code} {url}") from exc
             if isinstance(exc, urllib.error.HTTPError):
                 retry_after_header = exc.headers.get("Retry-After")
