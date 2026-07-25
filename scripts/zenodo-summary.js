@@ -17,7 +17,7 @@
     dashboard.href = "/zenodo-stats.html";
     dashboard.target = "_blank";
     dashboard.rel = "noopener noreferrer";
-    dashboard.innerHTML = '<span aria-hidden="true">📊</span> Analytics Dashboard';
+    dashboard.innerHTML = '<span aria-hidden="true">📊</span> Zenodo Analytics Dashboard';
 
     heading.append(title, dashboard);
 
