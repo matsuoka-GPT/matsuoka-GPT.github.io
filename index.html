@@ -383,6 +383,73 @@
       color: #111827;
     }
 
+    .outputs-heading{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .outputs-heading h2{ margin:0; }
+    .analytics-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      flex-shrink:0;
+      padding:6px 10px;
+      border:1px solid rgba(43,100,255,.32);
+      border-radius:999px;
+      background:rgba(43,100,255,.08);
+      color:var(--accent2);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.3;
+      text-decoration:none;
+    }
+    .analytics-link:hover{
+      border-color:rgba(43,100,255,.55);
+      background:rgba(43,100,255,.13);
+    }
+    .analytics-link:focus-visible{
+      outline:none;
+      box-shadow:var(--focus);
+    }
+    .outputs-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:0 0 14px;
+    }
+    .output-stat{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:2px;
+      min-width:116px;
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      background:rgba(255,255,255,.75);
+      box-shadow:0 6px 18px rgba(18,26,40,.05);
+    }
+    .output-stat span{
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .output-stat strong{
+      color:#111827;
+      font-size:16px;
+      font-variant-numeric:tabular-nums;
+      line-height:1;
+    }
+    @media (max-width:520px){
+      .outputs-heading{ align-items:flex-start; }
+      .analytics-link{ font-size:12px; padding:6px 8px; }
+      .outputs-stats{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); }
+      .output-stat{ min-width:0; }
+    }
+
     .cards{
       display:grid;
       grid-template-columns: 1fr;
@@ -1070,7 +1137,15 @@
     </section>
 
    <section id="outputs" aria-label="outputs">
-  <h2>📄Outputs (Zenodo)</h2>
+  <div class="outputs-heading">
+    <h2>📄Outputs (Zenodo)</h2>
+    <a class="analytics-link" href="zenodo-stats.html" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📊</span> Analytics Dashboard</a>
+  </div>
+  <div class="outputs-stats" id="zenodo-summary" aria-label="Zenodo publication statistics" aria-live="polite">
+    <div class="output-stat"><span>📄 Papers</span><strong data-zenodo-stat="records">—</strong></div>
+    <div class="output-stat"><span>👁 Views</span><strong data-zenodo-stat="views">—</strong></div>
+    <div class="output-stat"><span>⬇ Downloads</span><strong data-zenodo-stat="downloads">—</strong></div>
+  </div>
 
   <!-- Cosmology -->
   <details class="fold">
@@ -1355,6 +1430,21 @@
     document.addEventListener("DOMContentLoaded", () => {
       const y = document.getElementById("y");
       if (y) y.textContent = new Date().getFullYear();
+
+      fetch("data/zenodo/zenodo_records.json")
+        .then(response => {
+          if (!response.ok) throw new Error(`Zenodo statistics request failed: ${response.status}`);
+          return response.json();
+        })
+        .then(({totals}) => {
+          const number = new Intl.NumberFormat("en-US");
+          ["records", "views", "downloads"].forEach(metric => {
+            const value = totals?.[metric];
+            const target = document.querySelector(`[data-zenodo-stat="${metric}"]`);
+            if (target && Number.isFinite(value)) target.textContent = number.format(value);
+          });
+        })
+        .catch(error => console.warn("Unable to load Zenodo statistics.", error));
 
       const tags = Array.from(document.querySelectorAll(".tags .tag.tooltip"));
 
