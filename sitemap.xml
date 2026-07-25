@@ -641,6 +641,12 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/structure-art-gallery.html" />
   </url>
   <url>
+    <loc>https://matsuoka-gpt.github.io/zenodo-stats.html</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://matsuoka-gpt.github.io/viewer/Structure%20Art%20Viewer-Biodiversity.html</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
