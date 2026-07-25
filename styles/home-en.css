@@ -1,0 +1,12 @@
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+.tags .tag:hover {
+  z-index: 10000;
+  position: relative;
+}
+
+#backToTop {
+  transition: opacity 0.3s ease;
+}
