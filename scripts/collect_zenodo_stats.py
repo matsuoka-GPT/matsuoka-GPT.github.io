@@ -22,6 +22,7 @@ DEFAULT_AUTHOR = "Matsuoka, Takafumi"
 DEFAULT_OUTPUT_DIR = Path("data/zenodo")
 DEFAULT_DASHBOARD_PATH = Path("zenodo-stats.html")
 DEFAULT_CATEGORIES_PATH = Path("data/zenodo/categories.json")
+DEFAULT_PAPER_CATEGORIES_PATH = Path("data/zenodo/paper_categories.json")
 DEFAULT_HISTORY_PATH = Path("data/zenodo/history.csv")
 DEFAULT_PAGE_SIZE = 25
 MAX_RETRIES = 5
@@ -59,7 +60,7 @@ class ZenodoRecord:
     unique_downloads: int
     version: str
     record_url: str
-    category: str = "Other"
+    category: str = "Unclassified"
     views_delta: int = 0
     unique_views_delta: int = 0
     downloads_delta: int = 0
@@ -83,6 +84,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--page-size", type=int, default=DEFAULT_PAGE_SIZE)
     parser.add_argument("--api-url", default=DEFAULT_API_URL, help="Zenodo records API endpoint.")
     parser.add_argument("--categories", type=Path, default=DEFAULT_CATEGORIES_PATH)
+    parser.add_argument("--paper-categories", type=Path, default=DEFAULT_PAPER_CATEGORIES_PATH)
     parser.add_argument("--dashboard", type=Path, default=DEFAULT_DASHBOARD_PATH)
     parser.add_argument("--generated-at", help="Override generation timestamp for reproducible tests.")
     parser.add_argument(
@@ -261,7 +263,7 @@ def update_history(path: Path, generated_at: str, current: dict[str, int]) -> li
     updated.sort(key=history_key)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=HISTORY_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=HISTORY_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(updated)
     return updated
@@ -290,20 +292,30 @@ def load_category_rules(path: Path) -> list[CategoryRule]:
         match = item.get("match", {})
         rules.append(
             CategoryRule(
-                name=str(item.get("name", "Other")),
+                name=str(item.get("name", "Unclassified")),
                 title_terms=tuple(str(term).lower() for term in match.get("title", [])),
                 doi_terms=tuple(str(term).lower() for term in match.get("doi", [])),
             )
         )
-    return rules or [CategoryRule("Other", (), ())]
+    return rules or [CategoryRule("Unclassified", (), ())]
 
 
-def categorize_record(record: ZenodoRecord, rules: list[CategoryRule]) -> str:
+def load_paper_categories(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    papers = payload.get("papers", payload)
+    return {str(doi).lower(): str(category) for doi, category in papers.items() if not str(doi).startswith("_")}
+
+
+def categorize_record(record: ZenodoRecord, rules: list[CategoryRule], paper_categories: dict[str, str] | None = None) -> str:
     title = record.title.lower()
     doi = record.doi.lower()
-    fallback = "Other"
+    if paper_categories and doi in paper_categories:
+        return paper_categories[doi]
+    fallback = "Unclassified"
     for rule in rules:
-        if rule.name.lower() == "other":
+        if rule.name.lower() in {"other", "unclassified"}:
             fallback = rule.name
             continue
         if any(term and term in title for term in rule.title_terms):
@@ -313,14 +325,14 @@ def categorize_record(record: ZenodoRecord, rules: list[CategoryRule]) -> str:
     return fallback
 
 
-def apply_categories(records: list[ZenodoRecord], rules: list[CategoryRule]) -> list[ZenodoRecord]:
-    return [ZenodoRecord(**{**record.__dict__, "category": categorize_record(record, rules)}) for record in records]
+def apply_categories(records: list[ZenodoRecord], rules: list[CategoryRule], paper_categories: dict[str, str] | None = None) -> list[ZenodoRecord]:
+    return [ZenodoRecord(**{**record.__dict__, "category": categorize_record(record, rules, paper_categories)}) for record in records]
 
 
 def category_totals(records: list[ZenodoRecord], rules: list[CategoryRule]) -> list[dict[str, Any]]:
     names = [rule.name for rule in rules]
-    if "Other" not in names:
-        names.append("Other")
+    if "Unclassified" not in names:
+        names.append("Unclassified")
     result = []
     for name in names:
         grouped = [record for record in records if record.category == name]
@@ -338,7 +350,7 @@ def recent_growth_ranking(records: list[ZenodoRecord]) -> list[ZenodoRecord]:
 
 def write_csv(path: Path, records: list[ZenodoRecord]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=RECORD_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=RECORD_FIELDS, lineterminator="\n")
         writer.writeheader()
         for record in records:
             writer.writerow(record.to_dict())
@@ -538,7 +550,7 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
       <article class=\"card\"><h2>Downloads Top 10</h2>{download_ranking_table(download_ranking(records))}{expanded_download_ranking(download_ranking(records))}</article>
     </section>
     <section class=\"card\"><h2>Category Totals</h2><div class=\"table-wrap\"><table><thead><tr><th>Category</th><th>Records</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody>{category_rows(categories)}</tbody></table></div></section>
-    <footer>Generated automatically from Zenodo public records. Category rules are maintained in <code>data/zenodo/categories.json</code>.</footer>
+    <footer>Generated automatically from Zenodo public records. DOI category mappings are maintained in <code>data/zenodo/paper_categories.json</code>; fallback rules are maintained in <code>data/zenodo/categories.json</code>.</footer>
   </main>
 </body>
 </html>
@@ -566,7 +578,8 @@ def main() -> int:
     records = sorted(records, key=record_sort_key, reverse=True)
 
     rules = load_category_rules(args.categories)
-    records = apply_categories(records, rules)
+    paper_categories = load_paper_categories(args.paper_categories)
+    records = apply_categories(records, rules, paper_categories)
     records = apply_record_deltas(records, load_previous_records(records_path))
     generated_at = generated_timestamp(args.generated_at)
     aggregate = totals(records)
