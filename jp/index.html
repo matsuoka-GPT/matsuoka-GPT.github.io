@@ -826,6 +826,8 @@ header{ position: relative; z-index: 1000; }
 }
 </script>
   
+  <link rel="stylesheet" href="/styles/zenodo-summary.css">
+  <script src="/scripts/zenodo-summary.js" defer></script>
 </head>
 
 <body>
@@ -1125,7 +1127,7 @@ header{ position: relative; z-index: 1000; }
     </section>
 
  <section id="outputs" aria-label="outputs">
-  <h2>📄成果物（Zenodo）</h2>
+  <div data-zenodo-summary data-title="📄成果物（Zenodo）" data-aria-label="Zenodoの出版統計" data-records-label="論文数" data-views-label="閲覧数" data-downloads-label="ダウンロード数" data-locale="ja-JP"></div>
 
   <!-- 宇宙論 -->
   <details class="fold">
