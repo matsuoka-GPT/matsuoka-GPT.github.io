@@ -340,6 +340,30 @@ def load_paper_categories(path: Path) -> dict[str, str]:
     return {str(doi).lower(): str(category) for doi, category in papers.items() if not str(doi).startswith("_")}
 
 
+def fetch_missing_mapped_records(records: list[ZenodoRecord], paper_categories: dict[str, str], api_url: str) -> list[ZenodoRecord]:
+    """Fetch homepage papers omitted by the creator-name search.
+
+    The laboratory index is the category authority and occasionally contains a
+    Zenodo paper whose creator name is formatted differently.  DOI mappings are
+    therefore also the authoritative inclusion list, rather than merely labels
+    for the results returned by the author query.
+    """
+    known_dois = {record.doi.lower() for record in records}
+    supplemented = list(records)
+    for doi in paper_categories:
+        if doi in known_dois:
+            continue
+        record_id = doi.removeprefix("10.5281/zenodo.")
+        if not record_id.isdigit():
+            continue
+        record = normalize_record(request_json(f"{api_url.rstrip('/')}/{record_id}"))
+        if record.doi.lower() != doi:
+            raise RuntimeError(f"Mapped DOI {doi} resolved to unexpected DOI {record.doi}")
+        supplemented.append(record)
+        known_dois.add(doi)
+    return supplemented
+
+
 def categorize_record(record: ZenodoRecord, rules: list[CategoryRule], paper_categories: dict[str, str] | None = None) -> str:
     title = record.title.lower()
     doi = record.doi.lower()
@@ -684,16 +708,17 @@ def main() -> int:
     records_json_path = args.output_dir / "zenodo_records.json"
     history_path = args.output_dir / "history.csv"
 
+    rules = load_category_rules(args.categories)
+    paper_categories = load_paper_categories(args.paper_categories)
     raw_records = [
         normalize_record(record)
         for record in iter_records(args.author, args.page_size, args.api_url)
         if is_author_record(record, args.author)
     ]
+    raw_records = fetch_missing_mapped_records(raw_records, paper_categories, args.api_url)
     records = raw_records if args.include_all_versions else deduplicate_versions(raw_records)
     records = sorted(records, key=record_sort_key, reverse=True)
 
-    rules = load_category_rules(args.categories)
-    paper_categories = load_paper_categories(args.paper_categories)
     records = apply_categories(records, rules, paper_categories)
     # Read one canonical previous snapshot once, before writing any current-run
     # artifact, and use it for every paper and therefore every summary delta.
