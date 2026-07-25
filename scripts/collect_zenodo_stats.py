@@ -29,6 +29,7 @@ MAX_RETRIES = 5
 BACKOFF_SECONDS = 2.0
 STATS_SCOPE = "Zenodo default record statistics: aggregated across all versions of each concept record"
 METRIC_FIELDS = ["views", "unique_views", "downloads", "unique_downloads"]
+ARCHIVE_CATEGORY = "Archive / Legacy"
 HISTORY_FIELDS = ["generated_at", "records", *METRIC_FIELDS]
 RECORD_FIELDS = [
     "record_id",
@@ -60,7 +61,7 @@ class ZenodoRecord:
     unique_downloads: int
     version: str
     record_url: str
-    category: str = "Unclassified"
+    category: str = ARCHIVE_CATEGORY
     views_delta: int = 0
     unique_views_delta: int = 0
     downloads_delta: int = 0
@@ -324,12 +325,12 @@ def load_category_rules(path: Path) -> list[CategoryRule]:
         match = item.get("match", {})
         rules.append(
             CategoryRule(
-                name=str(item.get("name", "Unclassified")),
+                name=str(item.get("name", ARCHIVE_CATEGORY)),
                 title_terms=tuple(str(term).lower() for term in match.get("title", [])),
                 doi_terms=tuple(str(term).lower() for term in match.get("doi", [])),
             )
         )
-    return rules or [CategoryRule("Unclassified", (), ())]
+    return rules or [CategoryRule(ARCHIVE_CATEGORY, (), ())]
 
 
 def load_paper_categories(path: Path) -> dict[str, str]:
@@ -369,9 +370,9 @@ def categorize_record(record: ZenodoRecord, rules: list[CategoryRule], paper_cat
     doi = record.doi.lower()
     if paper_categories and doi in paper_categories:
         return paper_categories[doi]
-    fallback = "Unclassified"
+    fallback = ARCHIVE_CATEGORY
     for rule in rules:
-        if rule.name.lower() in {"other", "unclassified"}:
+        if rule.name == ARCHIVE_CATEGORY:
             fallback = rule.name
             continue
         if any(term and term in title for term in rule.title_terms):
@@ -387,8 +388,8 @@ def apply_categories(records: list[ZenodoRecord], rules: list[CategoryRule], pap
 
 def category_totals(records: list[ZenodoRecord], rules: list[CategoryRule]) -> list[dict[str, Any]]:
     names = [rule.name for rule in rules]
-    if "Unclassified" not in names:
-        names.append("Unclassified")
+    if ARCHIVE_CATEGORY not in names:
+        names.append(ARCHIVE_CATEGORY)
     result = []
     for name in names:
         grouped = [record for record in records if record.category == name]

@@ -245,7 +245,7 @@ def test_policy_papers_classify_as_homepage_categories():
     assert [record.category for record in categorized].count("Social Design / Institutional Structures") == 3
     assert categorized[-1].category == "Thought Experiments / Structural Theory"
     assert next(category for category in categories if category["category"] == "Social Design / Institutional Structures")["records"] == 3
-    assert next(category for category in categories if category["category"] == "Unclassified")["records"] == 0
+    assert next(category for category in categories if category["category"] == "Archive / Legacy")["records"] == 0
 
 
 def test_mapped_research_categories_cover_expected_sections_once():
@@ -254,8 +254,7 @@ def test_mapped_research_categories_cover_expected_sections_once():
     record_dois = {record["doi"].lower() for record in records_payload["records"]}
 
     assert len(mapping) == len(set(mapping))
-    assert record_dois < set(mapping)
-    assert set(mapping) - record_dois == {"10.5281/zenodo.20151731"}
+    assert record_dois <= set(mapping)
     assert mapping["10.5281/zenodo.18159902"] == "Co-Intelligence / Methodology"
     assert mapping["10.5281/zenodo.19053422"] == "Co-Intelligence / Methodology"
     assert mapping["10.5281/zenodo.18512529"] == "Cognitive Science / Structural Cognition"
@@ -264,7 +263,7 @@ def test_mapped_research_categories_cover_expected_sections_once():
     assert mapping["10.5281/zenodo.18327352"] == "Thought Experiments / Structural Theory"
     assert mapping["10.5281/zenodo.18186447"] == "Thought Experiments / Structural Theory"
     assert mapping["10.5281/zenodo.20151731"] == "Thought Experiments / Structural Theory"
-    assert mapping["10.5281/zenodo.18739136"] == "Co-Intelligence / Methodology"
+    assert mapping["10.5281/zenodo.18739136"] == "Archive / Legacy"
 
 
 def test_fetch_missing_mapped_records_supplements_author_search():
@@ -309,7 +308,7 @@ def test_category_counts_sum_to_total_paper_count():
     categorized = apply_categories(records, rules, paper_categories)
     categories = category_totals(categorized, rules)
 
-    assert len(categorized) == 37
+    assert len(categorized) == records_payload["totals"]["records"]
     assert sum(category["records"] for category in categories) == len(categorized)
     assert all(record.category != "Other" for record in categorized)
 

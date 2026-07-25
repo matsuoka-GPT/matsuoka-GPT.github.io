@@ -34,11 +34,11 @@
     },
     {
       "category": "Co-Intelligence / Methodology",
-      "records": 5,
-      "views": 605,
-      "unique_views": 426,
-      "downloads": 416,
-      "unique_downloads": 343
+      "records": 4,
+      "views": 537,
+      "unique_views": 375,
+      "downloads": 414,
+      "unique_downloads": 341
     },
     {
       "category": "Cognitive Science / Structural Cognition",
@@ -57,12 +57,12 @@
       "unique_downloads": 417
     },
     {
-      "category": "Unclassified",
-      "records": 0,
-      "views": 0,
-      "unique_views": 0,
-      "downloads": 0,
-      "unique_downloads": 0
+      "category": "Archive / Legacy",
+      "records": 1,
+      "views": 68,
+      "unique_views": 51,
+      "downloads": 2,
+      "unique_downloads": 2
     }
   ],
   "download_ranking": [
@@ -627,7 +627,7 @@
     {
       "record_id": "18739136",
       "conceptrecid": "18739135",
-      "category": "Co-Intelligence / Methodology",
+      "category": "Archive / Legacy",
       "title": "Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0)",
       "doi": "10.5281/zenodo.18739136",
       "publication_date": "2026-02-23",
@@ -1115,7 +1115,7 @@
     {
       "record_id": "18739136",
       "conceptrecid": "18739135",
-      "category": "Co-Intelligence / Methodology",
+      "category": "Archive / Legacy",
       "title": "Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0)",
       "doi": "10.5281/zenodo.18739136",
       "publication_date": "2026-02-23",
@@ -1801,7 +1801,7 @@
     {
       "record_id": "18739136",
       "conceptrecid": "18739135",
-      "category": "Co-Intelligence / Methodology",
+      "category": "Archive / Legacy",
       "title": "Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0)",
       "doi": "10.5281/zenodo.18739136",
       "publication_date": "2026-02-23",
