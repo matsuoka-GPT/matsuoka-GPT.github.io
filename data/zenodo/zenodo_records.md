@@ -47,7 +47,7 @@ Statistics scope: Zenodo default record statistics: aggregated across all versio
 | 29 | Thought Experiments / Structural Theory | Unified Interpretation of Low-Energy Anomalous Heat Phenomena via the DMF Local Phase Transition Model / DMF局所相転移モデルによる低エネルギー異常熱の統一解釈 | [10.5281/zenodo.20551471](https://doi.org/10.5281/zenodo.20551471) | 2026-06-05 | 73 | 0 | 29 | 0 |
 | 30 | Co-Intelligence / Methodology | Matsuoka x GPT Thought Experiment Lab 2.0 / 松岡×GPT 思考実験ラボ  2.0 | [10.5281/zenodo.20110638](https://doi.org/10.5281/zenodo.20110638) | 2026-05-10 | 37 | 0 | 18 | 0 |
 | 31 | Cosmology / BFSSU & DMF | A Thought Experiment on the Generation Process of DMF / DMFの生成プロセス思考実験 | [10.5281/zenodo.20714010](https://doi.org/10.5281/zenodo.20714010) | 2026-06-16 | 26 | 0 | 9 | 0 |
-| 32 | Co-Intelligence / Methodology | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 68 | 0 | 2 | 0 |
+| 32 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 68 | 0 | 2 | 0 |
 | 33 | Cosmology / BFSSU & DMF | A Structural Reconfiguration of Modern Physics Based on DMF Ontology / DMF存在論による現代物理学の構造的再配置 | [10.5281/zenodo.21214497](https://doi.org/10.5281/zenodo.21214497) | 2026-07-06 | 13 | 0 | 1 | 0 |
 | 34 | Thought Experiments / Structural Theory | Structural Isomorphism Between Living Systems and the Universe / 生命体と宇宙の構造的同型性 | [10.5281/zenodo.21522012](https://doi.org/10.5281/zenodo.21522012) | 2026-07-24 | 5 | 0 | 0 | 0 |
 | 35 | Cosmology / BFSSU & DMF | Redefining Nebula Formation within the DMF Ontology / DMF存在論による星雲生成の再定義 | [10.5281/zenodo.21347370](https://doi.org/10.5281/zenodo.21347370) | 2026-07-14 | 10 | 0 | 0 | 0 |
@@ -79,7 +79,7 @@ Statistics scope: Zenodo default record statistics: aggregated across all versio
 | 18 | Cosmology / BFSSU & DMF | Non-Stationary Structures Revealed by Gravitational Fluctuations / 重力ゆらぎが示す非定常構造 | [10.5281/zenodo.19059117](https://doi.org/10.5281/zenodo.19059117) | 2026-03-17 | 62 | 0 | 49 | 0 |
 | 19 | Co-Intelligence / Methodology | Co-Intelligence Version 2.0 / 協働知性  Version 2.0 | [10.5281/zenodo.19053422](https://doi.org/10.5281/zenodo.19053422) | 2026-03-16 | 107 | 0 | 84 | 0 |
 | 20 | Social Design / Institutional Structures | A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0 | [10.5281/zenodo.18850250](https://doi.org/10.5281/zenodo.18850250) | 2026-03-03 | 433 | 0 | 297 | 0 |
-| 21 | Co-Intelligence / Methodology | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 68 | 0 | 2 | 0 |
+| 21 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 68 | 0 | 2 | 0 |
 | 22 | Social Design / Institutional Structures | Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性 | [10.5281/zenodo.18665550](https://doi.org/10.5281/zenodo.18665550) | 2026-02-17 | 107 | 0 | 69 | 0 |
 | 23 | Cosmology / BFSSU & DMF | Ontological Reframing of the Photon / フォトンの存在論的再構成 | [10.5281/zenodo.18618545](https://doi.org/10.5281/zenodo.18618545) | 2026-02-12 | 89 | 0 | 62 | 0 |
 | 24 | Cognitive Science / Structural Cognition | The Asymmetry of Cognitive Hierarchies and the Self-Amplifying Structure of Conflict / 思考階層の非対称性と対立の自己増殖構造 | [10.5281/zenodo.18512529](https://doi.org/10.5281/zenodo.18512529) | 2026-02-07 | 111 | 0 | 89 | 0 |
@@ -104,10 +104,10 @@ Statistics scope: Zenodo default record statistics: aggregated across all versio
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Cosmology / BFSSU & DMF | 17 | 3720 | 2778 | 2990 | 2302 |
 | Social Design / Institutional Structures | 5 | 1120 | 959 | 816 | 721 |
-| Co-Intelligence / Methodology | 5 | 605 | 426 | 416 | 343 |
+| Co-Intelligence / Methodology | 4 | 537 | 375 | 414 | 341 |
 | Cognitive Science / Structural Cognition | 5 | 647 | 508 | 492 | 406 |
 | Thought Experiments / Structural Theory | 6 | 661 | 526 | 526 | 417 |
-| Unclassified | 0 | 0 | 0 | 0 | 0 |
+| Archive / Legacy | 1 | 68 | 51 | 2 | 2 |
 
 ## Records
 
@@ -133,7 +133,7 @@ Statistics scope: Zenodo default record statistics: aggregated across all versio
 | 18 | Cosmology / BFSSU & DMF | Non-Stationary Structures Revealed by Gravitational Fluctuations / 重力ゆらぎが示す非定常構造 | [10.5281/zenodo.19059117](https://doi.org/10.5281/zenodo.19059117) | 2026-03-17 | 62 | 0 | 49 | 0 |
 | 19 | Co-Intelligence / Methodology | Co-Intelligence Version 2.0 / 協働知性  Version 2.0 | [10.5281/zenodo.19053422](https://doi.org/10.5281/zenodo.19053422) | 2026-03-16 | 107 | 0 | 84 | 0 |
 | 20 | Social Design / Institutional Structures | A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0 | [10.5281/zenodo.18850250](https://doi.org/10.5281/zenodo.18850250) | 2026-03-03 | 433 | 0 | 297 | 0 |
-| 21 | Co-Intelligence / Methodology | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 68 | 0 | 2 | 0 |
+| 21 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 68 | 0 | 2 | 0 |
 | 22 | Social Design / Institutional Structures | Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性 | [10.5281/zenodo.18665550](https://doi.org/10.5281/zenodo.18665550) | 2026-02-17 | 107 | 0 | 69 | 0 |
 | 23 | Cosmology / BFSSU & DMF | Ontological Reframing of the Photon / フォトンの存在論的再構成 | [10.5281/zenodo.18618545](https://doi.org/10.5281/zenodo.18618545) | 2026-02-12 | 89 | 0 | 62 | 0 |
 | 24 | Cognitive Science / Structural Cognition | The Asymmetry of Cognitive Hierarchies and the Self-Amplifying Structure of Conflict / 思考階層の非対称性と対立の自己増殖構造 | [10.5281/zenodo.18512529](https://doi.org/10.5281/zenodo.18512529) | 2026-02-07 | 111 | 0 | 89 | 0 |
