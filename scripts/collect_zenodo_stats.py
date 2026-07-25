@@ -234,9 +234,10 @@ def metric_int(row: dict[str, Any], field: str) -> int:
         return 0
 
 
-def previous_history_row(history: list[dict[str, str]], today: str) -> dict[str, str] | None:
-    older = [row for row in history if history_key(row) < today]
-    return older[-1] if older else None
+def previous_history_row(history: list[dict[str, str]], generated_at: str) -> dict[str, str] | None:
+    """Return the latest completed run before ``generated_at`` (including the same day)."""
+    older = [row for row in history if row.get("generated_at", "") < generated_at]
+    return max(older, key=lambda row: row.get("generated_at", ""), default=None)
 
 
 def history_delta(current: dict[str, int], previous: dict[str, str] | None) -> dict[str, int]:
@@ -246,21 +247,17 @@ def history_delta(current: dict[str, int], previous: dict[str, str] | None) -> d
 
 
 def update_history(path: Path, generated_at: str, current: dict[str, int]) -> list[dict[str, str]]:
-    today = generated_at[:10]
     history = load_history(path)
     new_row = {"generated_at": generated_at, **{field: str(current[field]) for field in ["records", *METRIC_FIELDS]}}
-    replaced = False
-    updated: list[dict[str, str]] = []
-    for row in history:
-        if history_key(row) == today:
-            if not replaced:
-                updated.append(new_row)
-                replaced = True
-            continue
-        updated.append({field: row.get(field, "") for field in HISTORY_FIELDS})
-    if not replaced:
-        updated.append(new_row)
-    updated.sort(key=history_key)
+    # A run is a snapshot, not a calendar day. Replace only an exact timestamp
+    # (useful for reproducible reruns) and preserve every other successful run.
+    updated = [
+        {field: row.get(field, "") for field in HISTORY_FIELDS}
+        for row in history
+        if row.get("generated_at") != generated_at
+    ]
+    updated.append(new_row)
+    updated.sort(key=lambda row: row.get("generated_at", ""))
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=HISTORY_FIELDS, lineterminator="\n")
@@ -269,20 +266,55 @@ def update_history(path: Path, generated_at: str, current: dict[str, int]) -> li
     return updated
 
 
-def load_previous_records(path: Path) -> dict[str, dict[str, str]]:
-    if not path.exists():
-        return {}
-    with path.open(newline="", encoding="utf-8") as handle:
-        return {row.get("conceptrecid") or row.get("record_id", ""): row for row in csv.DictReader(handle)}
+def load_previous_records(json_path: Path, csv_path: Path) -> dict[str, dict[str, Any]]:
+    """Load papers from the immediately preceding persisted run.
+
+    JSON is the canonical snapshot because it stores the run timestamp and the
+    exact records used by both the dashboard totals and modal. CSV is retained
+    as a backwards-compatible migration fallback.
+    """
+    if json_path.exists():
+        payload = json.loads(json_path.read_text(encoding="utf-8"))
+        rows = payload.get("records", [])
+    elif csv_path.exists():
+        with csv_path.open(newline="", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
+    else:
+        rows = []
+    return {str(row.get("conceptrecid") or row.get("record_id", "")): row for row in rows}
 
 
-def apply_record_deltas(records: list[ZenodoRecord], previous: dict[str, dict[str, str]]) -> list[ZenodoRecord]:
+def apply_record_deltas(records: list[ZenodoRecord], previous: dict[str, dict[str, Any]]) -> list[ZenodoRecord]:
     updated = []
     for record in records:
         old = previous.get(record.conceptrecid)
-        deltas = {f"{field}_delta": 0 if old is None else getattr(record, field) - metric_int(old, field) for field in METRIC_FIELDS}
+        # A newly published paper had zero usage in the preceding snapshot, so
+        # its current counters must contribute to the aggregate change.
+        deltas = {f"{field}_delta": getattr(record, field) - metric_int(old or {}, field) for field in METRIC_FIELDS}
         updated.append(ZenodoRecord(**{**record.__dict__, **deltas}))
     return updated
+
+
+def record_delta_totals(records: list[ZenodoRecord]) -> dict[str, int]:
+    """Aggregate the exact per-paper deltas displayed by the modal."""
+    return {
+        f"{field}_delta": sum(getattr(record, f"{field}_delta") for record in records)
+        for field in METRIC_FIELDS
+    }
+
+
+def assert_delta_integrity(records: list[ZenodoRecord], aggregate_delta: dict[str, int]) -> None:
+    calculated = record_delta_totals(records)
+    if calculated != aggregate_delta:
+        raise RuntimeError(f"Per-paper delta integrity check failed: {calculated} != {aggregate_delta}")
+
+
+def snapshot_delta(current: dict[str, int], previous: dict[str, dict[str, Any]]) -> dict[str, int]:
+    """Calculate total changes independently from the two complete snapshots."""
+    return {
+        f"{field}_delta": current[field] - sum(metric_int(row, field) for row in previous.values())
+        for field in METRIC_FIELDS
+    }
 
 
 def load_category_rules(path: Path) -> list[CategoryRule]:
@@ -649,6 +681,7 @@ def generated_timestamp(value: str | None) -> str:
 def main() -> int:
     args = parse_args()
     records_path = args.output_dir / "zenodo_records.csv"
+    records_json_path = args.output_dir / "zenodo_records.json"
     history_path = args.output_dir / "history.csv"
 
     raw_records = [
@@ -662,16 +695,25 @@ def main() -> int:
     rules = load_category_rules(args.categories)
     paper_categories = load_paper_categories(args.paper_categories)
     records = apply_categories(records, rules, paper_categories)
-    records = apply_record_deltas(records, load_previous_records(records_path))
+    # Read one canonical previous snapshot once, before writing any current-run
+    # artifact, and use it for every paper and therefore every summary delta.
+    previous_records = load_previous_records(records_json_path, records_path)
+    records = apply_record_deltas(records, previous_records)
     generated_at = generated_timestamp(args.generated_at)
     aggregate = totals(records)
-    prior_history = load_history(history_path)
-    aggregate_delta = history_delta(aggregate, previous_history_row(prior_history, generated_at[:10]))
+    aggregate_delta = record_delta_totals(records)
+    assert_delta_integrity(records, aggregate_delta)
+    expected_delta = snapshot_delta(aggregate, previous_records)
+    if aggregate_delta != expected_delta:
+        raise RuntimeError(
+            "Current papers cannot reconcile with the previous snapshot "
+            f"(a concept may have disappeared): {aggregate_delta} != {expected_delta}"
+        )
     categories = category_totals(records, rules)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     write_csv(records_path, records)
-    write_json(args.output_dir / "zenodo_records.json", args.author, records, generated_at, aggregate_delta, categories)
+    write_json(records_json_path, args.author, records, generated_at, aggregate_delta, categories)
     write_markdown(args.output_dir / "zenodo_records.md", args.author, records, generated_at, aggregate_delta, categories)
     updated_history = update_history(history_path, generated_at, aggregate)
     write_dashboard(args.dashboard, args.author, records, generated_at, aggregate_delta, categories, updated_history)

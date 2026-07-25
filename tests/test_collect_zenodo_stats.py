@@ -14,7 +14,7 @@ from unittest.mock import patch
 
 import pytest
 
-from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, ZenodoRecord, apply_categories, build_url, category_totals, download_ranking, is_author_record, iter_records, load_category_rules, load_paper_categories, request_json, write_dashboard
+from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, METRIC_FIELDS, ZenodoRecord, apply_categories, apply_record_deltas, assert_delta_integrity, build_url, category_totals, download_ranking, is_author_record, iter_records, load_category_rules, load_paper_categories, previous_history_row, record_delta_totals, request_json, update_history, write_dashboard
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures"
@@ -68,6 +68,68 @@ def make_record(index: int, downloads: int, unique_downloads: int | None = None,
         record_url=f"https://zenodo.org/records/{index}",
         downloads_delta=index,
     )
+
+
+def previous_row(record: ZenodoRecord) -> dict[str, object]:
+    return record.to_dict()
+
+
+def assert_all_delta_integrity(records: list[ZenodoRecord], expected: dict[str, int]) -> None:
+    deltas = record_delta_totals(records)
+    assert deltas == {f"{field}_delta": expected[field] for field in METRIC_FIELDS}
+    assert_delta_integrity(records, deltas)
+
+
+def test_one_paper_gaining_five_views():
+    before = make_record(1, downloads=10)
+    current = ZenodoRecord(**{**before.to_dict(), "views": before.views + 5})
+
+    records = apply_record_deltas([current], {before.conceptrecid: previous_row(before)})
+
+    assert records[0].views_delta == 5
+    assert_all_delta_integrity(records, {"views": 5, "unique_views": 0, "downloads": 0, "unique_downloads": 0})
+
+
+def test_five_papers_gaining_one_view_each():
+    before = [make_record(index, downloads=10) for index in range(1, 6)]
+    current = [ZenodoRecord(**{**record.to_dict(), "views": record.views + 1}) for record in before]
+
+    records = apply_record_deltas(current, {record.conceptrecid: previous_row(record) for record in before})
+
+    assert [record.views_delta for record in records] == [1] * 5
+    assert_all_delta_integrity(records, {"views": 5, "unique_views": 0, "downloads": 0, "unique_downloads": 0})
+
+
+def test_newly_published_paper_uses_zero_baseline():
+    new_paper = make_record(1, downloads=3, unique_downloads=2)
+
+    records = apply_record_deltas([new_paper], {})
+
+    assert_all_delta_integrity(
+        records,
+        {"views": 6, "unique_views": 3, "downloads": 3, "unique_downloads": 2},
+    )
+
+
+def test_multiple_workflow_runs_on_same_day_use_immediately_previous_run(tmp_path: Path):
+    history_path = tmp_path / "history.csv"
+    totals = {"records": 1, "views": 10, "unique_views": 8, "downloads": 5, "unique_downloads": 4}
+    update_history(history_path, "2026-07-24T00:00:00+00:00", totals)
+    totals["views"] = 15
+    history = update_history(history_path, "2026-07-24T12:00:00+00:00", totals)
+
+    assert len(history) == 2
+    previous = previous_history_row(history, "2026-07-24T18:00:00+00:00")
+    assert previous is not None
+    assert previous["generated_at"] == "2026-07-24T12:00:00+00:00"
+
+
+def test_no_changes_between_runs_have_zero_deltas():
+    before = [make_record(index, downloads=10) for index in range(1, 4)]
+
+    records = apply_record_deltas(before, {record.conceptrecid: previous_row(record) for record in before})
+
+    assert_all_delta_integrity(records, {field: 0 for field in METRIC_FIELDS})
 
 
 def test_download_ranking_order_uses_required_tie_breakers():
@@ -137,9 +199,13 @@ def test_ranking_titles_have_compact_modal_details(tmp_path: Path):
     assert set(ranking_ids) == set(details)
     assert len(ranking_ids) == len(records)
     assert all(
-        {"views", "unique_views", "downloads", "unique_downloads"} <= set(detail)
+        {
+            "views", "unique_views", "downloads", "unique_downloads",
+            "views_delta", "unique_views_delta", "downloads_delta", "unique_downloads_delta",
+        } <= set(detail)
         for detail in details.values()
     )
+    assert details["1"]["downloads_delta"] == 1
     assert details["1"]["record_url"] == "https://zenodo.org/records/1"
     assert "/api/records/" not in page
     assert 'target="_blank"' in page
@@ -343,8 +409,9 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
     assert dmf["views_delta"] == "2"
     assert dmf["downloads_delta"] == "2"
     assert dmf["category"] == "Cosmology / BFSSU & DMF"
-    assert co["views_delta"] == "0"
-    assert co["downloads_delta"] == "0"
+    # A new concept uses a zero baseline and contributes all its counters.
+    assert co["views_delta"] == "20"
+    assert co["downloads_delta"] == "8"
     assert co["category"] == "Co-Intelligence / Methodology"
 
     history = read_csv(output_dir / "history.csv")
@@ -383,7 +450,7 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
         cwd=ROOT,
     )
     same_day_history = read_csv(output_dir / "history.csv")
-    assert len(same_day_history) == 2
+    assert len(same_day_history) == 3
     assert same_day_history[-1]["generated_at"] == "2026-07-24T12:00:00+00:00"
 
     html = dashboard.read_text(encoding="utf-8")
