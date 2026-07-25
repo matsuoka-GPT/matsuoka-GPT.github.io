@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import subprocess
 import sys
 import threading
@@ -101,14 +102,47 @@ def test_dashboard_download_ranking_replaces_all_records(tmp_path: Path):
 
     assert "<h2>All Records</h2>" not in html
     assert "Show all download rankings" in details_html
-    assert "https://zenodo.org/records/" not in html
+    assert "https://zenodo.org/records/" in html
     assert "https://doi.org/" not in html
     assert "paper-title" in html
     assert all(f"<td>{rank}</td>" in default_html for rank in range(1, 11))
     assert all(f"<td>{rank}</td>" not in default_html for rank in range(11, 14))
     assert all(f"<td>{rank}</td>" in details_html for rank in range(11, 14))
     assert all(f"<td>{rank}</td>" not in details_html for rank in range(1, 11))
-    assert html.count('Record ') == len(records) * 2
+    assert html.count('Record ') == len(records) * 3
+
+
+def test_ranking_titles_have_compact_modal_details(tmp_path: Path):
+    records = [make_record(index, downloads=100 - index) for index in range(1, 14)]
+    # The public link must not trust an API URL supplied by collected data.
+    records[0] = ZenodoRecord(**{**records[0].to_dict(), "record_url": "https://zenodo.org/api/records/1"})
+    dashboard = tmp_path / "zenodo-stats.html"
+
+    write_dashboard(
+        dashboard,
+        DEFAULT_AUTHOR,
+        records,
+        "2026-07-24T00:00:00+00:00",
+        {"views_delta": 0, "unique_views_delta": 0, "downloads_delta": 0, "unique_downloads_delta": 0},
+        [],
+        [],
+    )
+
+    page = dashboard.read_text(encoding="utf-8")
+    detail_match = re.search(r'<script type="application/json" id="record-details">(.*?)</script>', page)
+    assert detail_match is not None
+    details = json.loads(detail_match.group(1))
+    ranking_ids = re.findall(r'<button class="paper-title"[^>]+data-record-id="([^"]+)"', page)
+
+    assert set(ranking_ids) == set(details)
+    assert len(ranking_ids) == len(records)
+    assert all(
+        {"views", "unique_views", "downloads", "unique_downloads"} <= set(detail)
+        for detail in details.values()
+    )
+    assert details["1"]["record_url"] == "https://zenodo.org/records/1"
+    assert "/api/records/" not in page
+    assert 'target="_blank"' in page
 
 
 def test_policy_papers_classify_as_social_design():

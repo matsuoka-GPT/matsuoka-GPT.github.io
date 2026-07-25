@@ -450,7 +450,8 @@ def download_ranking_rows(records: list[ZenodoRecord], start: int = 1, stop: int
         rows.append(
             "<tr>"
             f"<td>{rank}</td>"
-            f'<td><span class="paper-title" title="{title}">{title}</span></td>'
+            f'<td><button class="paper-title" type="button" data-record-id="{safe(record.record_id)}" '
+            f'title="View statistics for {title}">{title}</button></td>'
             f"<td>{record.downloads:,}</td>"
             f"<td>{fmt_delta(record.downloads_delta)}</td>"
             "</tr>"
@@ -490,6 +491,23 @@ def category_rows(categories: list[dict[str, Any]]) -> str:
     )
 
 
+def modal_record_data(records: list[ZenodoRecord]) -> str:
+    """Return only the already-collected fields needed by the detail dialog."""
+    details = {
+        record.record_id: {
+            "title": record.title,
+            "category": record.category,
+            "publication_date": record.publication_date,
+            **{field: getattr(record, field) for field in METRIC_FIELDS},
+            **{f"{field}_delta": getattr(record, f"{field}_delta") for field in METRIC_FIELDS},
+            "record_url": f"https://zenodo.org/records/{urllib.parse.quote(record.record_id, safe='')}",
+        }
+        for record in records
+    }
+    # Prevent a title containing an HTML closing tag from ending the data element.
+    return json.dumps(details, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
 def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], generated_at: str, aggregate_delta: dict[str, int], categories: list[dict[str, Any]], history: list[dict[str, str]]) -> None:
     aggregate = totals(records)
     html_text = f"""<!doctype html>
@@ -522,12 +540,26 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     .grid {{ display:grid; grid-template-columns: 1fr; gap:14px; }} .card {{ padding:16px; margin-bottom:14px; overflow:hidden; }}
     h2 {{ margin:0 0 10px; font-size:21px; letter-spacing:-.02em; }}
     .table-wrap {{ overflow-x:auto; }} table {{ width:100%; border-collapse:collapse; min-width:680px; }} th,td {{ border-bottom:1px solid var(--line); padding:8px 7px; text-align:left; vertical-align:top; }} th {{ color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }} td small {{ display:block; color:var(--muted); margin-top:2px; }}
-    .paper-title {{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }}
+    .paper-title {{ display:-webkit-box; width:100%; padding:0; border:0; background:none; color:var(--accent); font:inherit; text-align:left; cursor:pointer; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }}
+    .paper-title:hover {{ color:var(--accent2); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px; }}
+    .paper-title:focus-visible {{ outline:2px solid var(--accent); outline-offset:2px; border-radius:2px; }}
     .download-rankings summary {{ color:var(--accent); cursor:pointer; font-weight:700; margin-top:10px; transition: color .15s ease; }}
     .download-rankings summary:hover {{ color:var(--accent2); }}
+    .record-dialog {{ width:min(520px, calc(100% - 32px)); max-height:calc(100vh - 32px); padding:0; border:1px solid var(--line); border-radius:var(--radius); color:var(--text); background:#fff; box-shadow:var(--shadow2); }}
+    .record-dialog::backdrop, .dialog-fallback-backdrop {{ background:rgba(18,26,40,.46); }}
+    .record-dialog[open] {{ position:fixed; inset:0; margin:auto; }}
+    .dialog-fallback-backdrop {{ position:fixed; inset:0; z-index:9; }} .record-dialog.dialog-fallback {{ z-index:10; }}
+    .dialog-inner {{ padding:18px; }} .dialog-header {{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }}
+    .dialog-title {{ margin:0; font-size:19px; line-height:1.35; overflow-wrap:anywhere; }}
+    .dialog-close {{ flex:0 0 auto; border:0; border-radius:999px; background:#eef2ff; color:var(--accent2); font:inherit; font-size:20px; line-height:1; cursor:pointer; padding:7px 10px; }}
+    .dialog-meta {{ margin:8px 0 14px; color:var(--muted); font-size:14px; }}
+    .dialog-stats {{ display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; margin:0; }}
+    .dialog-stats div {{ border-top:1px solid var(--line); padding-top:7px; }} .dialog-stats dt {{ color:var(--muted); font-size:12px; }} .dialog-stats dd {{ margin:0; font-weight:700; }}
+    .dialog-actions {{ display:flex; justify-content:flex-end; margin-top:16px; }} .zenodo-link {{ color:#fff; background:var(--accent); border-radius:8px; padding:7px 12px; text-decoration:none; font-weight:700; }}
     footer {{ color:var(--muted); font-size:13px; margin-top:18px; }}
     @media (max-width: 980px) {{ .metrics {{ grid-template-columns:repeat(2, 1fr); }} }}
     @media (max-width: 820px) {{ header {{ align-items:flex-start; flex-direction:column; }} .hero {{ padding:16px; }} .card {{ padding:14px; }} table {{ min-width:720px; }} th,td {{ padding:7px 6px; }} }}
+    @media (max-width: 560px) {{ .record-dialog {{ width:calc(100% - 24px); max-height:calc(100vh - 24px); }} .dialog-inner {{ padding:16px; }} }}
   </style>
 </head>
 <body>
@@ -552,6 +584,56 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     <section class=\"card\"><h2>Category Totals</h2><div class=\"table-wrap\"><table><thead><tr><th>Category</th><th>Records</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody>{category_rows(categories)}</tbody></table></div></section>
     <footer>Generated automatically from Zenodo public records. DOI category mappings are maintained in <code>data/zenodo/paper_categories.json</code>; fallback rules are maintained in <code>data/zenodo/categories.json</code>.</footer>
   </main>
+  <dialog class="record-dialog" id="record-dialog" aria-labelledby="record-dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-header"><h2 class="dialog-title" id="record-dialog-title"></h2><button class="dialog-close" type="button" aria-label="Close paper statistics">&times;</button></div>
+      <p class="dialog-meta"><span data-detail="category"></span> · <time data-detail="publication_date"></time></p>
+      <dl class="dialog-stats">
+        <div><dt>Views</dt><dd data-detail="views"></dd></div><div><dt>Views delta</dt><dd data-detail="views_delta"></dd></div>
+        <div><dt>Unique Views</dt><dd data-detail="unique_views"></dd></div><div><dt>Unique Views delta</dt><dd data-detail="unique_views_delta"></dd></div>
+        <div><dt>Downloads</dt><dd data-detail="downloads"></dd></div><div><dt>Downloads delta</dt><dd data-detail="downloads_delta"></dd></div>
+        <div><dt>Unique Downloads</dt><dd data-detail="unique_downloads"></dd></div><div><dt>Unique Downloads delta</dt><dd data-detail="unique_downloads_delta"></dd></div>
+      </dl>
+      <div class="dialog-actions"><a class="zenodo-link" data-detail="record_url" target="_blank" rel="noopener noreferrer">Open on Zenodo</a></div>
+    </div>
+  </dialog>
+  <script type="application/json" id="record-details">{modal_record_data(records)}</script>
+  <script>
+    (() => {{
+      const dialog = document.getElementById('record-dialog');
+      const details = JSON.parse(document.getElementById('record-details').textContent);
+      const closeButton = dialog.querySelector('.dialog-close');
+      let opener = null;
+      let fallbackBackdrop = null;
+      const closeDialog = () => {{
+        if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
+        dialog.classList.remove('dialog-fallback');
+        if (fallbackBackdrop) fallbackBackdrop.remove();
+        fallbackBackdrop = null;
+        if (opener) opener.focus();
+      }};
+      document.querySelectorAll('.paper-title').forEach((button) => button.addEventListener('click', () => {{
+        const record = details[button.dataset.recordId];
+        if (!record) return;
+        opener = button;
+        dialog.querySelector('#record-dialog-title').textContent = record.title;
+        ['category','publication_date','views','unique_views','downloads','unique_downloads'].forEach((field) => {{ dialog.querySelector(`[data-detail="${{field}}"]`).textContent = record[field]; }});
+        ['views_delta','unique_views_delta','downloads_delta','unique_downloads_delta'].forEach((field) => {{ const value = record[field]; dialog.querySelector(`[data-detail="${{field}}"]`).textContent = `${{value >= 0 ? '+' : ''}}${{value}}`; }});
+        dialog.querySelector('[data-detail="record_url"]').href = record.record_url;
+        if (typeof dialog.showModal === 'function') dialog.showModal();
+        else {{
+          fallbackBackdrop = document.createElement('div'); fallbackBackdrop.className = 'dialog-fallback-backdrop';
+          fallbackBackdrop.addEventListener('click', closeDialog); document.body.append(fallbackBackdrop);
+          dialog.classList.add('dialog-fallback'); dialog.setAttribute('open', ''); dialog.setAttribute('aria-modal', 'true');
+        }}
+        closeButton.focus();
+      }}));
+      closeButton.addEventListener('click', closeDialog);
+      dialog.addEventListener('click', (event) => {{ if (event.target === dialog) closeDialog(); }});
+      dialog.addEventListener('cancel', (event) => {{ event.preventDefault(); closeDialog(); }});
+      document.addEventListener('keydown', (event) => {{ if (event.key === 'Escape' && dialog.hasAttribute('open')) closeDialog(); }});
+    }})();
+  </script>
 </body>
 </html>
 """
