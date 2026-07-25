@@ -13,7 +13,7 @@ from unittest.mock import patch
 
 import pytest
 
-from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, ZenodoRecord, apply_categories, build_url, category_totals, download_ranking, is_author_record, iter_records, load_category_rules, request_json, write_dashboard
+from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, ZenodoRecord, apply_categories, build_url, category_totals, download_ranking, is_author_record, iter_records, load_category_rules, load_paper_categories, request_json, write_dashboard
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures"
@@ -111,14 +111,15 @@ def test_dashboard_download_ranking_replaces_all_records(tmp_path: Path):
     assert html.count('Record ') == len(records) * 2
 
 
-def test_policy_titles_classify_as_social_systems_and_not_other():
+def test_policy_papers_classify_as_social_design():
     rules = load_category_rules(ROOT / "data" / "zenodo" / "categories.json")
+    paper_categories = load_paper_categories(ROOT / "data" / "zenodo" / "paper_categories.json")
     records = [
         ZenodoRecord(
             record_id=str(index),
             conceptrecid=f"policy-{index}",
             title=title,
-            doi=f"10.5281/zenodo.policy{index}",
+            doi=doi,
             publication_date="2026-01-01",
             views=1,
             unique_views=1,
@@ -127,24 +128,52 @@ def test_policy_titles_classify_as_social_systems_and_not_other():
             version="v1.0",
             record_url=f"https://zenodo.org/records/policy{index}",
         )
-        for index, title in enumerate(
+        for index, (title, doi) in enumerate(
             [
-                "A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0",
-                "Selective Tax System / 選択税制",
-                "A national model for fostering peace of mind through a selective tax system",
-                "New aviation safety model / 新航空安全モデル",
+                ("A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0", "10.5281/zenodo.18850250"),
+                ("Selective Tax System / 選択税制", "10.5281/zenodo.19363781"),
+                ("A national model for fostering peace of mind through a selective tax system", "10.5281/zenodo.18160163"),
+                ("New aviation safety model / 新航空安全モデル", "10.5281/zenodo.18186447"),
             ],
             start=1,
         )
     ]
 
-    categorized = apply_categories(records, rules)
+    categorized = apply_categories(records, rules, paper_categories)
     categories = category_totals(categorized, rules)
 
-    assert {record.category for record in categorized} == {"Social Systems and Public Policy"}
-    assert next(category for category in categories if category["category"] == "Social Systems and Public Policy")["records"] == 4
-    assert next(category for category in categories if category["category"] == "Other")["records"] == 0
+    assert {record.category for record in categorized} == {"Social Design / Institutional Structures"}
+    assert next(category for category in categories if category["category"] == "Social Design / Institutional Structures")["records"] == 4
+    assert next(category for category in categories if category["category"] == "Unclassified")["records"] == 0
 
+
+def test_mapped_research_categories_cover_expected_sections_once():
+    mapping = load_paper_categories(ROOT / "data" / "zenodo" / "paper_categories.json")
+    records_payload = json.loads((ROOT / "data" / "zenodo" / "zenodo_records.json").read_text(encoding="utf-8"))
+    record_dois = {record["doi"].lower() for record in records_payload["records"]}
+
+    assert len(mapping) == len(set(mapping))
+    assert record_dois == set(mapping)
+    assert mapping["10.5281/zenodo.18159902"] == "Co-Intelligence / Methodology"
+    assert mapping["10.5281/zenodo.19053422"] == "Co-Intelligence / Methodology"
+    assert mapping["10.5281/zenodo.18512529"] == "Cognitive Science / Structural Cognition"
+    assert mapping["10.5281/zenodo.19583310"] == "Cognitive Science / Structural Cognition"
+    assert mapping["10.5281/zenodo.18271759"] == "Thought Experiments / Structural Theory"
+    assert mapping["10.5281/zenodo.18327352"] == "Thought Experiments / Structural Theory"
+
+
+def test_category_counts_sum_to_total_paper_count():
+    rules = load_category_rules(ROOT / "data" / "zenodo" / "categories.json")
+    paper_categories = load_paper_categories(ROOT / "data" / "zenodo" / "paper_categories.json")
+    records_payload = json.loads((ROOT / "data" / "zenodo" / "zenodo_records.json").read_text(encoding="utf-8"))
+    records = [ZenodoRecord(**record) for record in records_payload["records"]]
+
+    categorized = apply_categories(records, rules, paper_categories)
+    categories = category_totals(categorized, rules)
+
+    assert len(categorized) == 37
+    assert sum(category["records"] for category in categories) == len(categorized)
+    assert all(record.category != "Other" for record in categorized)
 
 def test_default_author_uses_verified_zenodo_creator_name():
     assert DEFAULT_AUTHOR == "Matsuoka, Takafumi"
@@ -279,10 +308,10 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
     co = next(row for row in records if row["conceptrecid"] == "c-co")
     assert dmf["views_delta"] == "2"
     assert dmf["downloads_delta"] == "2"
-    assert dmf["category"] == "BFSSU / DMF Cosmology"
+    assert dmf["category"] == "Cosmology / BFSSU & DMF"
     assert co["views_delta"] == "0"
     assert co["downloads_delta"] == "0"
-    assert co["category"] == "Co-Intelligence"
+    assert co["category"] == "Co-Intelligence / Methodology"
 
     history = read_csv(output_dir / "history.csv")
     assert len(history) == 2
