@@ -1,19 +1,19 @@
 {
   "author": "Matsuoka, Takafumi",
-  "generated_at": "2026-07-25T03:22:10+00:00",
+  "generated_at": "2026-07-25T05:43:50+00:00",
   "stats_scope": "Zenodo default record statistics: aggregated across all versions of each concept record",
   "totals": {
-    "records": 37,
-    "views": 6690,
-    "unique_views": 5145,
-    "downloads": 5201,
-    "unique_downloads": 4157
+    "records": 38,
+    "views": 6753,
+    "unique_views": 5197,
+    "downloads": 5240,
+    "unique_downloads": 4189
   },
   "deltas": {
-    "views_delta": 0,
-    "unique_views_delta": 0,
-    "downloads_delta": 0,
-    "unique_downloads_delta": 0
+    "views_delta": 63,
+    "unique_views_delta": 52,
+    "downloads_delta": 39,
+    "unique_downloads_delta": 32
   },
   "categories": [
     {
@@ -50,11 +50,11 @@
     },
     {
       "category": "Thought Experiments / Structural Theory",
-      "records": 5,
-      "views": 598,
-      "unique_views": 474,
-      "downloads": 487,
-      "unique_downloads": 385
+      "records": 6,
+      "views": 661,
+      "unique_views": 526,
+      "downloads": 526,
+      "unique_downloads": 417
     },
     {
       "category": "Unclassified",
@@ -553,6 +553,24 @@
       "record_url": "https://zenodo.org/api/records/19066989"
     },
     {
+      "record_id": "20151731",
+      "conceptrecid": "20151730",
+      "category": "Thought Experiments / Structural Theory",
+      "title": "What Is Personality? / 人格とは何か",
+      "doi": "10.5281/zenodo.20151731",
+      "publication_date": "2026-05-13",
+      "views": 63,
+      "unique_views": 52,
+      "downloads": 39,
+      "unique_downloads": 32,
+      "views_delta": 63,
+      "unique_views_delta": 52,
+      "downloads_delta": 39,
+      "unique_downloads_delta": 32,
+      "version": "v1.0",
+      "record_url": "https://zenodo.org/api/records/20151731"
+    },
+    {
       "record_id": "20551471",
       "conceptrecid": "20551470",
       "category": "Thought Experiments / Structural Theory",
@@ -734,6 +752,24 @@
     }
   ],
   "recent_growth_ranking": [
+    {
+      "record_id": "20151731",
+      "conceptrecid": "20151730",
+      "category": "Thought Experiments / Structural Theory",
+      "title": "What Is Personality? / 人格とは何か",
+      "doi": "10.5281/zenodo.20151731",
+      "publication_date": "2026-05-13",
+      "views": 63,
+      "unique_views": 52,
+      "downloads": 39,
+      "unique_downloads": 32,
+      "views_delta": 63,
+      "unique_views_delta": 52,
+      "downloads_delta": 39,
+      "unique_downloads_delta": 32,
+      "version": "v1.0",
+      "record_url": "https://zenodo.org/api/records/20151731"
+    },
     {
       "record_id": "21522012",
       "conceptrecid": "21522011",
@@ -1545,6 +1581,24 @@
       "unique_downloads_delta": 0,
       "version": "v1.0",
       "record_url": "https://zenodo.org/api/records/20551471"
+    },
+    {
+      "record_id": "20151731",
+      "conceptrecid": "20151730",
+      "category": "Thought Experiments / Structural Theory",
+      "title": "What Is Personality? / 人格とは何か",
+      "doi": "10.5281/zenodo.20151731",
+      "publication_date": "2026-05-13",
+      "views": 63,
+      "unique_views": 52,
+      "downloads": 39,
+      "unique_downloads": 32,
+      "views_delta": 63,
+      "unique_views_delta": 52,
+      "downloads_delta": 39,
+      "unique_downloads_delta": 32,
+      "version": "v1.0",
+      "record_url": "https://zenodo.org/api/records/20151731"
     },
     {
       "record_id": "20110638",
