@@ -26,19 +26,19 @@
     },
     {
       "category": "Social Design / Institutional Structures",
-      "records": 6,
-      "views": 1323,
-      "unique_views": 1123,
-      "downloads": 1016,
-      "unique_downloads": 887
+      "records": 5,
+      "views": 1120,
+      "unique_views": 959,
+      "downloads": 816,
+      "unique_downloads": 721
     },
     {
       "category": "Co-Intelligence / Methodology",
-      "records": 4,
-      "views": 537,
-      "unique_views": 375,
-      "downloads": 414,
-      "unique_downloads": 341
+      "records": 5,
+      "views": 605,
+      "unique_views": 426,
+      "downloads": 416,
+      "unique_downloads": 343
     },
     {
       "category": "Cognitive Science / Structural Cognition",
@@ -50,19 +50,19 @@
     },
     {
       "category": "Thought Experiments / Structural Theory",
-      "records": 4,
-      "views": 395,
-      "unique_views": 310,
-      "downloads": 287,
-      "unique_downloads": 219
+      "records": 5,
+      "views": 598,
+      "unique_views": 474,
+      "downloads": 487,
+      "unique_downloads": 385
     },
     {
       "category": "Unclassified",
-      "records": 1,
-      "views": 68,
-      "unique_views": 51,
-      "downloads": 2,
-      "unique_downloads": 2
+      "records": 0,
+      "views": 0,
+      "unique_views": 0,
+      "downloads": 0,
+      "unique_downloads": 0
     }
   ],
   "download_ranking": [
@@ -159,7 +159,7 @@
     {
       "record_id": "18186447",
       "conceptrecid": "18186446",
-      "category": "Social Design / Institutional Structures",
+      "category": "Thought Experiments / Structural Theory",
       "title": "New aviation safety model / 新航空安全モデル",
       "doi": "10.5281/zenodo.18186447",
       "publication_date": "2026-01-08",
@@ -609,7 +609,7 @@
     {
       "record_id": "18739136",
       "conceptrecid": "18739135",
-      "category": "Unclassified",
+      "category": "Co-Intelligence / Methodology",
       "title": "Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0)",
       "doi": "10.5281/zenodo.18739136",
       "publication_date": "2026-02-23",
@@ -1079,7 +1079,7 @@
     {
       "record_id": "18739136",
       "conceptrecid": "18739135",
-      "category": "Unclassified",
+      "category": "Co-Intelligence / Methodology",
       "title": "Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0)",
       "doi": "10.5281/zenodo.18739136",
       "publication_date": "2026-02-23",
@@ -1277,7 +1277,7 @@
     {
       "record_id": "18186447",
       "conceptrecid": "18186446",
-      "category": "Social Design / Institutional Structures",
+      "category": "Thought Experiments / Structural Theory",
       "title": "New aviation safety model / 新航空安全モデル",
       "doi": "10.5281/zenodo.18186447",
       "publication_date": "2026-01-08",
@@ -1747,7 +1747,7 @@
     {
       "record_id": "18739136",
       "conceptrecid": "18739135",
-      "category": "Unclassified",
+      "category": "Co-Intelligence / Methodology",
       "title": "Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0)",
       "doi": "10.5281/zenodo.18739136",
       "publication_date": "2026-02-23",
@@ -1945,7 +1945,7 @@
     {
       "record_id": "18186447",
       "conceptrecid": "18186446",
-      "category": "Social Design / Institutional Structures",
+      "category": "Thought Experiments / Structural Theory",
       "title": "New aviation safety model / 新航空安全モデル",
       "doi": "10.5281/zenodo.18186447",
       "publication_date": "2026-01-08",

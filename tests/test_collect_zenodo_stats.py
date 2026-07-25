@@ -14,7 +14,7 @@ from unittest.mock import patch
 
 import pytest
 
-from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, METRIC_FIELDS, ZenodoRecord, apply_categories, apply_record_deltas, assert_delta_integrity, build_url, category_totals, download_ranking, is_author_record, iter_records, load_category_rules, load_paper_categories, previous_history_row, record_delta_totals, request_json, update_history, write_dashboard
+from scripts.collect_zenodo_stats import DEFAULT_API_URL, DEFAULT_AUTHOR, DEFAULT_PAGE_SIZE, METRIC_FIELDS, ZenodoRecord, apply_categories, apply_record_deltas, assert_delta_integrity, build_url, category_totals, download_ranking, fetch_missing_mapped_records, is_author_record, iter_records, load_category_rules, load_paper_categories, previous_history_row, record_delta_totals, request_json, update_history, write_dashboard
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures"
@@ -211,7 +211,7 @@ def test_ranking_titles_have_compact_modal_details(tmp_path: Path):
     assert 'target="_blank"' in page
 
 
-def test_policy_papers_classify_as_social_design():
+def test_policy_papers_classify_as_homepage_categories():
     rules = load_category_rules(ROOT / "data" / "zenodo" / "categories.json")
     paper_categories = load_paper_categories(ROOT / "data" / "zenodo" / "paper_categories.json")
     records = [
@@ -242,8 +242,9 @@ def test_policy_papers_classify_as_social_design():
     categorized = apply_categories(records, rules, paper_categories)
     categories = category_totals(categorized, rules)
 
-    assert {record.category for record in categorized} == {"Social Design / Institutional Structures"}
-    assert next(category for category in categories if category["category"] == "Social Design / Institutional Structures")["records"] == 4
+    assert [record.category for record in categorized].count("Social Design / Institutional Structures") == 3
+    assert categorized[-1].category == "Thought Experiments / Structural Theory"
+    assert next(category for category in categories if category["category"] == "Social Design / Institutional Structures")["records"] == 3
     assert next(category for category in categories if category["category"] == "Unclassified")["records"] == 0
 
 
@@ -253,13 +254,50 @@ def test_mapped_research_categories_cover_expected_sections_once():
     record_dois = {record["doi"].lower() for record in records_payload["records"]}
 
     assert len(mapping) == len(set(mapping))
-    assert record_dois == set(mapping)
+    assert record_dois < set(mapping)
+    assert set(mapping) - record_dois == {"10.5281/zenodo.20151731"}
     assert mapping["10.5281/zenodo.18159902"] == "Co-Intelligence / Methodology"
     assert mapping["10.5281/zenodo.19053422"] == "Co-Intelligence / Methodology"
     assert mapping["10.5281/zenodo.18512529"] == "Cognitive Science / Structural Cognition"
     assert mapping["10.5281/zenodo.19583310"] == "Cognitive Science / Structural Cognition"
     assert mapping["10.5281/zenodo.18271759"] == "Thought Experiments / Structural Theory"
     assert mapping["10.5281/zenodo.18327352"] == "Thought Experiments / Structural Theory"
+    assert mapping["10.5281/zenodo.18186447"] == "Thought Experiments / Structural Theory"
+    assert mapping["10.5281/zenodo.20151731"] == "Thought Experiments / Structural Theory"
+    assert mapping["10.5281/zenodo.18739136"] == "Co-Intelligence / Methodology"
+
+
+def test_fetch_missing_mapped_records_supplements_author_search():
+    existing = ZenodoRecord(
+        record_id="1", conceptrecid="1", title="Existing", doi="10.5281/zenodo.1",
+        publication_date="2026-01-01", views=1, unique_views=1, downloads=1,
+        unique_downloads=1, version="1.0", record_url="https://zenodo.org/records/1",
+    )
+    payload = {
+        "id": 20151731,
+        "conceptrecid": "20151730",
+        "metadata": {
+            "title": "What Is Personality? / 人格とは何か",
+            "doi": "10.5281/zenodo.20151731",
+            "publication_date": "2026-05-12",
+            "version": "1.0",
+        },
+        "stats": {},
+        "links": {"html": "https://zenodo.org/records/20151731"},
+    }
+
+    with patch("scripts.collect_zenodo_stats.request_json", return_value=payload) as mocked:
+        records = fetch_missing_mapped_records(
+            [existing],
+            {
+                "10.5281/zenodo.1": "Existing category",
+                "10.5281/zenodo.20151731": "Thought Experiments / Structural Theory",
+            },
+            DEFAULT_API_URL,
+        )
+
+    assert [record.doi for record in records] == ["10.5281/zenodo.1", "10.5281/zenodo.20151731"]
+    mocked.assert_called_once_with("https://zenodo.org/api/records/20151731")
 
 
 def test_category_counts_sum_to_total_paper_count():
@@ -363,6 +401,8 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
     output_dir = tmp_path / "data" / "zenodo"
     dashboard = tmp_path / "zenodo-stats.html"
     api_url = f"http://127.0.0.1:{server.server_port}/api/records"
+    paper_categories = tmp_path / "paper_categories.json"
+    paper_categories.write_text('{"papers": {}}', encoding="utf-8")
 
     previous_records = output_dir / "zenodo_records.csv"
     output_dir.mkdir(parents=True)
@@ -389,6 +429,8 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
             str(dashboard),
             "--categories",
             str(ROOT / "data" / "zenodo" / "categories.json"),
+            "--paper-categories",
+            str(paper_categories),
             "--generated-at",
             "2026-07-24T00:00:00+00:00",
         ],
@@ -443,6 +485,8 @@ def test_collect_zenodo_stats_dashboard(tmp_path: Path):
             str(dashboard),
             "--categories",
             str(ROOT / "data" / "zenodo" / "categories.json"),
+            "--paper-categories",
+            str(paper_categories),
             "--generated-at",
             "2026-07-24T12:00:00+00:00",
         ],
