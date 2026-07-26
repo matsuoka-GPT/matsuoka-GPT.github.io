@@ -22,55 +22,106 @@
   <link rel="stylesheet" href="styles/home.css" />
   <link rel="stylesheet" href="styles/home-en.css" />
 
-  <!-- ============================= -->
-<!-- Structured Data: Organization -->
-<!-- ============================= -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ResearchProject",
-  "name": "Matsuoka × GPT Thought Experiment Lab",
-  "url": "https://matsuoka-gpt.github.io/",
-  "description": "A public research lab that tests and publishes structural thought experiments combining human hypotheses and AI verification.",
-  "founder": {
-    "@type": "Person",
-    "name": "Takafumi Matsuoka",
-    "url": "https://orcid.org/0009-0003-1530-4234",
-    "sameAs": [
-      "https://orcid.org/0009-0003-1530-4234"
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://matsuoka-gpt.github.io/#webpage",
+        "url": "https://matsuoka-gpt.github.io/",
+        "name": "Matsuoka × GPT Co-Intelligence Lab | Collaborative Research",
+        "description": "A public lab that tests and publishes how intelligence is used: human hypotheses (structure) × AI verification (consistency).",
+        "inLanguage": "en",
+        "isPartOf": {
+          "@id": "https://matsuoka-gpt.github.io/#website"
+        },
+        "about": {
+          "@id": "https://matsuoka-gpt.github.io/#organization"
+        },
+        "author": {
+          "@id": "https://matsuoka-gpt.github.io/members.html#takafumi-matsuoka"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://matsuoka-gpt.github.io/#website",
+        "url": "https://matsuoka-gpt.github.io/",
+        "name": [
+          {
+            "@value": "Matsuoka × GPT Co-Intelligence Lab",
+            "@language": "en"
+          },
+          {
+            "@value": "松岡×GPT思考実験ラボ",
+            "@language": "ja"
+          }
+        ],
+        "alternateName": "Matsuoka × GPT Thought Experiment Lab",
+        "inLanguage": [
+          "en",
+          "ja"
+        ],
+        "publisher": {
+          "@id": "https://matsuoka-gpt.github.io/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://matsuoka-gpt.github.io/#organization",
+        "name": [
+          {
+            "@value": "Matsuoka × GPT Co-Intelligence Lab",
+            "@language": "en"
+          },
+          {
+            "@value": "松岡×GPT思考実験ラボ",
+            "@language": "ja"
+          }
+        ],
+        "alternateName": "Matsuoka × GPT Thought Experiment Lab",
+        "url": "https://matsuoka-gpt.github.io/",
+        "founder": {
+          "@id": "https://matsuoka-gpt.github.io/members.html#takafumi-matsuoka"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://matsuoka-gpt.github.io/members.html#takafumi-matsuoka",
+        "name": [
+          {
+            "@value": "Takafumi Matsuoka",
+            "@language": "en"
+          },
+          {
+            "@value": "松岡孝文",
+            "@language": "ja"
+          }
+        ],
+        "url": "https://matsuoka-gpt.github.io/members.html",
+        "jobTitle": [
+          {
+            "@value": "Concept Architect",
+            "@language": "en"
+          },
+          {
+            "@value": "コンセプトアーキテクト",
+            "@language": "ja"
+          }
+        ],
+        "sameAs": [
+          "https://orcid.org/0009-0003-1530-4234",
+          "https://github.com/matsuoka-GPT",
+          "https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Matsuoka%2C%20Takafumi%22"
+        ],
+        "affiliation": {
+          "@id": "https://matsuoka-gpt.github.io/#organization"
+        }
+      }
     ]
-  },
-  "areaOfFocus": [
-    "Cosmology",
-    "Structural Theory",
-    "Co-Intelligence",
-    "Cross-disciplinary Research",
-    "Governance Models",
-    "Cognitive Science",
-    "Structural Cognition"
-  ]
-}
-</script>
-
-<!-- ============================= -->
-<!-- Structured Data: Author -->
-<!-- ============================= -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Takafumi Matsuoka",
-  "url": "https://matsuoka-gpt.github.io/",
-  "sameAs": [
-    "https://orcid.org/0009-0003-1530-4234"
-  ],
-  "jobTitle": "Concept Architect",
-  "affiliation": {
-    "@type": "Organization",
-    "name": "Matsuoka × GPT Thought Experiment Lab"
   }
-}
-</script>
+  </script>
   <link rel="stylesheet" href="/styles/zenodo-summary.css">
   <script src="/scripts/zenodo-summary.js" defer></script>
 </head>
