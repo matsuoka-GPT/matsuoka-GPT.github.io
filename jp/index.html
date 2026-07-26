@@ -21,39 +21,104 @@
   <link rel="stylesheet" href="../styles/home-jp.css" />
 
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ResearchProject",
-  "name": "松岡 × GPT 思考実験ラボ",
-  "url": "https://matsuoka-gpt.github.io/jp/",
-  "inLanguage": "ja",
-  "description": "人間の仮説（構造）とAIの整合性検証を組み合わせた思考実験型の公開研究ラボ。",
- "founder": {
-  "@type": "Person",
-  "name": "Takafumi Matsuoka",
-  "url": "https://orcid.org/0009-0003-1530-4234",
-  "affiliation": {
-    "@type": "Organization",
-    "name": "松岡 × GPT 思考実験ラボ"
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://matsuoka-gpt.github.io/jp/#webpage",
+        "url": "https://matsuoka-gpt.github.io/jp/",
+        "name": "松岡×GPT 思考実験ラボ",
+        "description": "松岡×GPT思考実験ラボは、特定分野の研究所ではなく、人間の直観と複数AIの知識処理を組み合わせ、宇宙論、社会理論、生命論などを横断しながら知性の使い方そのものを検証・公開する研究サイトです。",
+        "inLanguage": "ja",
+        "isPartOf": {
+          "@id": "https://matsuoka-gpt.github.io/#website"
+        },
+        "about": {
+          "@id": "https://matsuoka-gpt.github.io/#organization"
+        },
+        "author": {
+          "@id": "https://matsuoka-gpt.github.io/members.html#takafumi-matsuoka"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://matsuoka-gpt.github.io/#website",
+        "url": "https://matsuoka-gpt.github.io/",
+        "name": [
+          {
+            "@value": "Matsuoka × GPT Co-Intelligence Lab",
+            "@language": "en"
+          },
+          {
+            "@value": "松岡×GPT思考実験ラボ",
+            "@language": "ja"
+          }
+        ],
+        "alternateName": "Matsuoka × GPT Thought Experiment Lab",
+        "inLanguage": [
+          "en",
+          "ja"
+        ],
+        "publisher": {
+          "@id": "https://matsuoka-gpt.github.io/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://matsuoka-gpt.github.io/#organization",
+        "name": [
+          {
+            "@value": "Matsuoka × GPT Co-Intelligence Lab",
+            "@language": "en"
+          },
+          {
+            "@value": "松岡×GPT思考実験ラボ",
+            "@language": "ja"
+          }
+        ],
+        "alternateName": "Matsuoka × GPT Thought Experiment Lab",
+        "url": "https://matsuoka-gpt.github.io/",
+        "founder": {
+          "@id": "https://matsuoka-gpt.github.io/members.html#takafumi-matsuoka"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://matsuoka-gpt.github.io/members.html#takafumi-matsuoka",
+        "name": [
+          {
+            "@value": "Takafumi Matsuoka",
+            "@language": "en"
+          },
+          {
+            "@value": "松岡孝文",
+            "@language": "ja"
+          }
+        ],
+        "url": "https://matsuoka-gpt.github.io/members.html",
+        "jobTitle": [
+          {
+            "@value": "Concept Architect",
+            "@language": "en"
+          },
+          {
+            "@value": "コンセプトアーキテクト",
+            "@language": "ja"
+          }
+        ],
+        "sameAs": [
+          "https://orcid.org/0009-0003-1530-4234",
+          "https://github.com/matsuoka-GPT",
+          "https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Matsuoka%2C%20Takafumi%22"
+        ],
+        "affiliation": {
+          "@id": "https://matsuoka-gpt.github.io/#organization"
+        }
+      }
+    ]
   }
-},
-  "areaOfFocus": [
-    "宇宙論",
-    "構造理論",
-    "協働知性",
-    "分野横断研究",
-    "統治モデル",
-    "認知科学",
-    "構造的認知モデル"
-  ],
- "publisher": {
-  "@type": "Organization",
-  "name": "松岡 × GPT 思考実験ラボ",
-  "url": "https://matsuoka-gpt.github.io/jp/"
-}
-}
-</script>
-  
+  </script>
   <link rel="stylesheet" href="/styles/zenodo-summary.css">
   <script src="/scripts/zenodo-summary.js" defer></script>
 </head>
