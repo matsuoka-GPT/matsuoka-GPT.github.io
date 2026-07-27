@@ -14,15 +14,15 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg-color: #0d1117;
-  --text-color: #e6edf3;
-  --card-color: #161b22;
-  --surface-color: #21262d;
-  --muted-color: #9da7b3;
-  --border-color: #30363d;
-  --link-color: #58a6ff;
-  --button-bg: rgba(22, 27, 34, 0.94);
-  --shadow-color: rgba(0, 0, 0, 0.35);
+  --bg-color: #081220;
+  --text-color: #e6edf7;
+  --card-color: #111a2b;
+  --surface-color: #16233a;
+  --muted-color: #a8b4c7;
+  --border-color: #2b4055;
+  --link-color: #6ea8fe;
+  --button-bg: rgba(16, 27, 44, 0.94);
+  --shadow-color: rgba(0, 5, 14, 0.5);
 }
 
 .theme-toggle {
@@ -35,7 +35,7 @@
   min-height: 36px;
   padding: 7px 12px;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--button-bg);
   box-shadow: 0 2px 8px var(--shadow-color);
   color: var(--text-color);
@@ -45,21 +45,37 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
-.theme-toggle:hover { border-color: var(--link-color); }
+.theme-toggle:hover {
+  border-color: var(--link-color);
+  color: var(--link-color);
+  box-shadow: 0 5px 18px var(--shadow-color);
+}
 .theme-toggle:focus-visible { outline: 2px solid var(--link-color); outline-offset: 2px; }
 
 /* This final shared layer translates legacy page colors without changing layout. */
 [data-theme="dark"] body {
-  background: var(--bg-color) !important;
+  background:
+    radial-gradient(900px 560px at 12% -8%, rgba(55, 116, 181, .13), transparent 62%),
+    radial-gradient(800px 500px at 88% 4%, rgba(43, 86, 143, .10), transparent 60%),
+    linear-gradient(180deg, #08111e 0%, var(--bg-color) 52%, #07101c 100%) !important;
   background-color: var(--bg-color) !important;
   color: var(--text-color) !important;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.72;
+  letter-spacing: .003em;
 }
-[data-theme="dark"] :is(article, section, header, footer, main, aside, details, .card, .panel, .section, .hero, .profile, .profile-card, .art-card, .research-notice, .stat-card, .faq-item) {
+[data-theme="dark"] body::before {
+  opacity: .2;
+  mix-blend-mode: screen;
+}
+[data-theme="dark"] :is(article, section, header, footer, main, aside, details, .card, .box, .panel, .section, .hero, .profile, .profile-card, .art-card, .assistant-card, .outputs-grid li, .research-notice, .stat-card, .metric-card, .output-stat, .faq-item) {
   border-color: var(--border-color) !important;
 }
-[data-theme="dark"] :is(article, .hero, .card, .panel, .section, .profile, .profile-card, .art-card, .research-notice, .stat-card, details) {
-  background-color: var(--card-color) !important;
+[data-theme="dark"] :is(article, .hero, .card, .box, .panel, .section, .profile, .profile-card, .art-card, .assistant-card, .outputs-grid li, .research-notice, .stat-card, .metric-card, .output-stat, details) {
+  background-color: rgba(17, 26, 43, .9) !important;
+  background-image: linear-gradient(145deg, rgba(24, 38, 61, .88), rgba(12, 23, 39, .94)) !important;
   color: var(--text-color) !important;
+  box-shadow: 0 12px 34px rgba(0, 5, 14, .26), inset 0 1px rgba(255, 255, 255, .025) !important;
 }
 [data-theme="dark"] :is(h1, h2, h3, h4, h5, h6, p, li, dt, dd, th, td, label, summary, figcaption, .lead, .art-title, .profile-body, .notes li, .philosophy-hero) {
   color: inherit !important;
@@ -67,8 +83,68 @@
 }
 [data-theme="dark"] :is(.muted, .meta, .subtitle, .note, .updated, .metric-card span, .dialog-meta, .dialog-stats dt, footer, .footer, small) { color: var(--muted-color) !important; }
 [data-theme="dark"] a { color: var(--link-color) !important; }
+[data-theme="dark"] a:not(.btn):hover {
+  color: #9bc3ff !important;
+  text-decoration-color: currentColor;
+}
+[data-theme="dark"] :is(h1, h2, h3, h4, summary, strong) {
+  color: #f0f5fc !important;
+  letter-spacing: .01em;
+}
+[data-theme="dark"] :is(.topnav a, .tag, .pill, .profile-links a, .btn, .assistant-button) {
+  border-color: #31475e !important;
+  background: rgba(18, 32, 51, .82) !important;
+  color: #dce8f7 !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .035), 0 5px 16px rgba(0, 5, 14, .18);
+}
+[data-theme="dark"] :is(.topnav a, .tag, .profile-links a, .btn, .assistant-button):hover {
+  border-color: #5684b6 !important;
+  background: #172941 !important;
+  color: #82b5ff !important;
+  box-shadow: 0 8px 22px rgba(0, 7, 18, .34), 0 0 0 1px rgba(110, 168, 254, .06);
+}
+[data-theme="dark"] .pill {
+  background: rgba(82, 139, 207, .2) !important;
+  color: #8bb9f5 !important;
+}
+[data-theme="dark"] :is(.card, .outputs-grid li, .profile-card) {
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+[data-theme="dark"] :is(.card, .outputs-grid li, .profile-card):hover {
+  border-color: #466b91 !important;
+  box-shadow: 0 16px 38px rgba(0, 5, 14, .38), inset 0 1px rgba(255, 255, 255, .04) !important;
+}
+[data-theme="dark"] .lab-hero-image {
+  opacity: 1;
+  border: 1px solid #49637c;
+  box-shadow: 0 12px 30px rgba(0, 5, 14, .34);
+}
+[data-theme="dark"] .hero::after { opacity: .18; }
+[data-theme="dark"] :is(.philosophy-hero, .lead, .profile-body, .card p) { color: #c2ccda !important; }
+[data-theme="dark"] .lead strong {
+  color: #8dbdff !important;
+  border-color: rgba(110, 168, 254, .5);
+}
+[data-theme="dark"] details > summary {
+  padding-block: 2px;
+  color: #edf4fd !important;
+}
+[data-theme="dark"] hr { border-color: var(--border-color); }
+[data-theme="dark"] ::selection { background: #28568d; color: #fff; }
+[data-theme="dark"] :focus-visible { outline: 2px solid #79aff5 !important; outline-offset: 3px; }
 [data-theme="dark"] :is(input, select, textarea, button:not(.theme-toggle)) {
   background-color: var(--surface-color) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+[data-theme="dark"] :is(.research-statement, .contact-policy, .faq-grid > div, details > div) {
+  background-color: transparent !important;
+  color: var(--text-color) !important;
+}
+[data-theme="dark"] [style*="background:#fafafa"],
+[data-theme="dark"] [style*="background-color:#f5f7fb"],
+[data-theme="dark"] [style*="background:#eef4ff"] {
+  background: rgba(13, 25, 42, .76) !important;
   border-color: var(--border-color) !important;
   color: var(--text-color) !important;
 }
