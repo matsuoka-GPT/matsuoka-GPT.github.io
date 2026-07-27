@@ -35,6 +35,40 @@ Static GitHub Pages site for publishing the Matsuoka × GPT Thought Experiment L
 6. Update `sitemap.xml` when adding or moving public pages.
 7. Before committing, run a local link check over internal `href`/`src` references.
 
+## 共通テーマ（Dark / Light）
+
+全HTMLページは、フレームワークに依存しない共通テーマを利用します。右上の
+`◐ System` / `☀ Light` / `🌙 Dark` ボタンで3モードを順番に切り替えられ、選択内容は
+`localStorage` の `site-theme` に保存されます。初回アクセスは`System`モードとなり、
+`prefers-color-scheme`に従います。System選択中はOS設定の変更にもリアルタイムで追従します。
+
+### 新規追加ファイル
+
+- `styles/theme.css` — ライト／ダーク両テーマのCSS変数、研究コンテンツ向け配色、切替時のトランジション、切替ボタンのレスポンシブ表示を管理します。
+- `scripts/theme.js` — 初期テーマの早期適用、切替ボタンの生成、設定保存、OS設定変更への追従を管理します。
+
+### 変更したファイル一覧
+
+- ルートHTML: `index.html`、`members.html`、`structure-art-gallery.html`、`zenodo-stats.html`
+- 日本語・英語ページ: `jp/*.html`、`en/*.html`
+- 徒然小論文: `essays/*.html`、`essays/*.htm`（日本語・英語の全ページ）
+- 構造アートビューア: `viewer/*.html`
+- ドキュメント: `README.md`
+
+各HTMLの`head`末尾で共通CSSとJavaScriptを読み込みます。相対パスはページの
+階層に合わせて設定しているため、GitHub Pages上でもビルド処理なしで動作します。
+
+### 修正内容と今後拡張しやすい構成
+
+- 色は`--bg-color`、`--text-color`、`--card-color`、`--surface-color`、
+  `--muted-color`、`--border-color`、`--link-color`などの役割別変数に集約しました。
+- ダーク配色は`[data-theme="dark"]`に限定しているため、既存のライトテーマの
+  レイアウト、余白、フォント、文章構成には影響しません。
+- 配色変更は原則として`styles/theme.css`の変数だけで行えます。テーマ処理や
+  保存キーを変更する場合は`scripts/theme.js`だけを編集します。
+- 新規HTMLを追加するときは、閉じ`head`タグの直前で階層に応じたパスの
+  `styles/theme.css`と`scripts/theme.js`を読み込むだけでテーマ対応できます。
+
 
 ## IndexNow automatic submission
 
