@@ -574,6 +574,8 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
   <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />
   <title>Zenodo Analytics Dashboard | Matsuoka x GPT Thought Experiment Lab</title>
   <meta name=\"description\" content=\"Daily Zenodo analytics for {safe(author)}.\" />
+  <link rel=\"stylesheet\" href=\"styles/theme.css\" />
+  <script src=\"scripts/theme.js\"></script>
   <style>
     :root {{
       --w: 980px; --bg0:#ffffff; --bg1:#fbfcff; --text:#111; --muted:#475069;
@@ -585,7 +587,7 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     body {{ margin:0; font-family: system-ui, -apple-system, \"Segoe UI\", \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif; line-height:1.7; color:var(--text); background: radial-gradient(1100px 600px at 15% -8%, rgba(43,100,255,.18), transparent 60%), radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%), linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff); }}
     a {{ color: inherit; }} a:hover {{ color: var(--accent2); }}
     .wrap {{ max-width:var(--w); margin:0 auto; padding: 24px 16px 36px; }}
-    header {{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding: 6px 0 16px; }}
+    header {{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding: 6px 108px 16px 0; }}
     .brand {{ color:var(--accent); font-weight:900; letter-spacing:-.02em; }} .brand span {{ color:var(--accent); }}
     .home-link {{ text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:8px 12px; background:rgba(255,255,255,.72); }}
     .hero, .card {{ border:1px solid var(--line); border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow); backdrop-filter: blur(10px); }}
@@ -613,6 +615,7 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     .dialog-stats {{ display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; margin:0; }}
     .dialog-stats div {{ border-top:1px solid var(--line); padding-top:7px; }} .dialog-stats dt {{ color:var(--muted); font-size:12px; }} .dialog-stats dd {{ margin:0; font-weight:700; }}
     .dialog-actions {{ display:flex; justify-content:flex-end; margin-top:16px; }} .zenodo-link {{ color:#fff; background:var(--accent); border-radius:8px; padding:7px 12px; text-decoration:none; font-weight:700; }}
+    [data-theme=\"dark\"] .record-dialog {{ background:var(--card-color); }}
     footer {{ color:var(--muted); font-size:13px; margin-top:18px; }}
     @media (max-width: 980px) {{ .metrics {{ grid-template-columns:repeat(2, 1fr); }} }}
     @media (max-width: 820px) {{ header {{ align-items:flex-start; flex-direction:column; }} .hero {{ padding:16px; }} .card {{ padding:14px; }} table {{ min-width:720px; }} th,td {{ padding:7px 6px; }} }}

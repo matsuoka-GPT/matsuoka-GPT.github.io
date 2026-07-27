@@ -174,6 +174,33 @@ def test_dashboard_download_ranking_replaces_all_records(tmp_path: Path):
     assert html.count('Record ') == len(records) * 3
 
 
+def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
+    dashboard = tmp_path / "zenodo-stats.html"
+
+    write_dashboard(
+        dashboard,
+        DEFAULT_AUTHOR,
+        [make_record(1, downloads=1)],
+        "2026-07-24T00:00:00+00:00",
+        {"views_delta": 0, "unique_views_delta": 0, "downloads_delta": 0, "unique_downloads_delta": 0},
+        [],
+        [],
+    )
+
+    html = dashboard.read_text(encoding="utf-8")
+
+    assert '<link rel="stylesheet" href="styles/theme.css" />' in html
+    assert '<script src="scripts/theme.js"></script>' in html
+    assert '[data-theme="dark"] .record-dialog' in html
+    assert html.index('scripts/theme.js') < html.index('</head>')
+
+    theme_script = (ROOT / "scripts" / "theme.js").read_text(encoding="utf-8")
+    assert "localStorage.getItem(storageKey)" in theme_script
+    assert "localStorage.setItem(storageKey, next)" in theme_script
+    assert "prefers-color-scheme: dark" in theme_script
+    assert "root.setAttribute('data-theme'" in theme_script
+
+
 def test_ranking_titles_have_compact_modal_details(tmp_path: Path):
     records = [make_record(index, downloads=100 - index) for index in range(1, 14)]
     # The public link must not trust an API URL supplied by collected data.
