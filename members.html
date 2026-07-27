@@ -106,8 +106,15 @@
   --accent:#2563eb;
   --accent2:#7c3aed;
   --shadow:0 10px 30px rgba(0,0,0,.08);
+  --feature-surface:linear-gradient(135deg, rgba(255,255,255,.56), rgba(255,255,255,.03));
+  --feature-border:rgba(255,255,255,.10);
   --max:1100px;
   --radius:20px;
+}
+
+[data-theme="dark"]{
+  --feature-surface:linear-gradient(145deg, rgba(24,38,61,.88), rgba(12,23,39,.94));
+  --feature-border:var(--border-color);
 }
 
     *{box-sizing:border-box}
@@ -162,13 +169,16 @@
       padding:54px 0 26px;
     }
 
+    .feature-surface{
+      background:var(--feature-surface);
+      border:1px solid var(--feature-border);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(8px);
+    }
+
     .hero-box{
-      background:linear-gradient(135deg, rgba(255,255,255,.56), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.10);
       border-radius:28px;
       padding:38px 28px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(8px);
     }
 
     .eyebrow{
@@ -206,12 +216,11 @@
     }
 
     .intro-card{
-      background:rgba(255,255,255,.72);
-      border:1px solid var(--line);
       border-radius:var(--radius);
       padding:24px;
-      box-shadow:var(--shadow);
     }
+
+    .workflow-card{border-radius:var(--radius); padding:24px;}
 
     .intro-card p{
       margin:0 0 14px;
@@ -366,7 +375,7 @@
 
   <main>
     <section class="hero container">
-      <div class="hero-box">
+      <div class="hero-box feature-surface">
         <div class="eyebrow">Members</div>
         <h1>Meet the Lab Members</h1>
         <p class="lead">
@@ -378,7 +387,7 @@
 
     <section class="section container">
       <h2 class="section-title">About the Lab</h2>
-      <div class="intro-card">
+      <div class="intro-card feature-surface">
         <p>
           This lab is a practical hub for co-intelligence, combining Matsuoka’s structural intuition with the logical, analytical, and technical capabilities of multiple AI systems.
         </p>
@@ -465,15 +474,17 @@
 
     <section class="section container">
       <h2 class="section-title">Research Workflow</h2>
-      <div class="flow">
-        <div class="flow-item">Concept<br>Matsuoka</div>
-        <div class="flow-item">Acceleration<br>Gemini</div>
-        <div class="flow-item">Structuring<br>ChatGPT</div>
-        <div class="flow-item">Technical Support<br>Copilot</div>
+      <div class="workflow-card feature-surface">
+        <div class="flow">
+          <div class="flow-item">Concept<br>Matsuoka</div>
+          <div class="flow-item">Acceleration<br>Gemini</div>
+          <div class="flow-item">Structuring<br>ChatGPT</div>
+          <div class="flow-item">Technical Support<br>Copilot</div>
+        </div>
+        <p class="note">
+          Through this division of roles, Matsuoka × GPT Thought Experiment Lab operates as a co-intelligence research system built on one human and four AI collaborators.
+        </p>
       </div>
-      <p class="note">
-        Through this division of roles, Matsuoka × GPT Thought Experiment Lab operates as a co-intelligence research system built on one human and four AI collaborators.
-      </p>
     </section>
   </main>
 
