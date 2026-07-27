@@ -193,6 +193,11 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
     assert '<script src="scripts/theme.js"></script>' in html
     assert '[data-theme="dark"] .record-dialog' in html
     assert html.index('scripts/theme.js') < html.index('</head>')
+    assert '<a class="brand-link" href="./"' in html
+    assert 'aria-label="Matsuoka × GPT Thought Experiment Lab — home"' in html
+    assert 'class="home-link"' not in html
+    assert '.brand-link:focus-visible' in html
+    assert '@media (max-width: 420px)' in html
 
     theme_script = (ROOT / "scripts" / "theme.js").read_text(encoding="utf-8")
     assert "localStorage.getItem(storageKey)" in theme_script
