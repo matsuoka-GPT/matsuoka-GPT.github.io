@@ -1,72 +1,111 @@
 (function () {
   'use strict';
 
-  var storageKey = 'site-theme';
+  var STORAGE_KEY = 'site-theme';
+  var PREFERENCES = ['system', 'light', 'dark'];
+  var LABELS = { system: '◐ System', light: '☀ Light', dark: '🌙 Dark' };
   var root = document.documentElement;
   var media = window.matchMedia('(prefers-color-scheme: dark)');
+  var preference = readPreference();
+  var toggle;
 
-  function storedPreference() {
+  function isPreference(value) {
+    return PREFERENCES.indexOf(value) !== -1;
+  }
+
+  function readPreference() {
     try {
-      var value = localStorage.getItem(storageKey);
-      return value === 'dark' || value === 'light' || value === 'system' ? value : null;
+      var value = localStorage.getItem(STORAGE_KEY);
+      return isPreference(value) ? value : 'system';
     } catch (error) {
-      return null;
+      return 'system';
     }
   }
 
-  function currentPreference() {
-    return storedPreference() || 'system';
+  function resolveTheme(value) {
+    return value === 'system' ? (media.matches ? 'dark' : 'light') : value;
   }
 
-  function resolvedTheme(preference) {
-    return preference === 'system' ? (media.matches ? 'dark' : 'light') : preference;
+  function nextPreference(value) {
+    return PREFERENCES[(PREFERENCES.indexOf(value) + 1) % PREFERENCES.length];
   }
 
-  function nextPreference(preference) {
-    return preference === 'system' ? 'light' : preference === 'light' ? 'dark' : 'system';
-  }
-
-  function updateButton(button, preference) {
-    var labels = { system: '◐ System', light: '☀ Light', dark: '🌙 Dark' };
+  function updateToggle() {
+    if (!toggle) return;
     var next = nextPreference(preference);
-    button.textContent = labels[preference];
-    button.dataset.mode = preference;
-    button.setAttribute('aria-label', 'Theme: ' + preference + '. Switch to ' + next + ' theme');
-    button.title = 'Theme: ' + preference + ' · Next: ' + next;
+    toggle.textContent = LABELS[preference];
+    toggle.dataset.mode = preference;
+    toggle.setAttribute('aria-label', 'Theme: ' + preference + '. Switch to ' + next + ' theme');
+    toggle.title = 'Theme: ' + preference + ' · Next: ' + next;
   }
 
-  function applyPreference(preference, button) {
-    root.setAttribute('data-theme-preference', preference);
-    root.setAttribute('data-theme', resolvedTheme(preference));
-    if (button) updateButton(button, preference);
+  function applyTheme(value, options) {
+    options = options || {};
+    if (!isPreference(value)) value = 'system';
+
+    var previousTheme = root.dataset.theme;
+    preference = value;
+    // Both attributes are committed in the same JavaScript task, so every CSS variable
+    // and component observes one coherent theme before the browser can paint again.
+    root.dataset.themePreference = preference;
+    root.dataset.theme = resolveTheme(preference);
+    updateToggle();
+
+    if (options.persist) {
+      try { localStorage.setItem(STORAGE_KEY, preference); } catch (error) { /* In-memory mode still works. */ }
+    }
+
+    if (previousTheme && (previousTheme !== root.dataset.theme || options.forceEvent)) {
+      document.dispatchEvent(new CustomEvent('themechange', {
+        detail: { theme: root.dataset.theme, preference: preference }
+      }));
+    }
+    return root.dataset.theme;
   }
 
-  // Runs in <head>, before the page is painted, to prevent a theme flash.
-  applyPreference(currentPreference());
+  // Public API for components that need to react to a theme without implementing
+  // their own storage, media-query, or DOM-attribute logic.
+  window.siteTheme = Object.freeze({
+    getPreference: function () { return preference; },
+    getTheme: function () { return root.dataset.theme; },
+    setPreference: function (value) { return applyTheme(value, { persist: true }); }
+  });
+
+  // This script is loaded in <head>; applying synchronously prevents a first-paint flash.
+  applyTheme(preference);
 
   function mountToggle() {
-    var button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'theme-toggle';
-    updateButton(button, currentPreference());
-    button.addEventListener('click', function () {
-      var next = nextPreference(root.getAttribute('data-theme-preference'));
-      try { localStorage.setItem(storageKey, next); } catch (error) { /* Theme still works for this page. */ }
-      applyPreference(next, button);
+    toggle = document.querySelector('.theme-toggle');
+    if (!toggle) {
+      toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'theme-toggle';
+      document.body.appendChild(toggle);
+    }
+    updateToggle();
+    toggle.addEventListener('click', function () {
+      applyTheme(nextPreference(preference), { persist: true });
     });
-    document.body.appendChild(button);
 
-    // Enable transitions only after the initial theme has painted, avoiding a flash on load.
+    // Initial rendering never transitions. Subsequent changes use the shared CSS timing.
     window.requestAnimationFrame(function () {
       window.requestAnimationFrame(function () { root.classList.add('theme-ready'); });
     });
-
-    media.addEventListener('change', function (event) {
-      if (root.getAttribute('data-theme-preference') === 'system') {
-        root.setAttribute('data-theme', event.matches ? 'dark' : 'light');
-      }
-    });
   }
+
+  function handleSystemChange() {
+    if (preference === 'system') applyTheme('system');
+  }
+  if (media.addEventListener) media.addEventListener('change', handleSystemChange);
+  else if (media.addListener) media.addListener(handleSystemChange);
+
+  // Keep tabs/windows consistent and restore the current value from the back-forward cache.
+  window.addEventListener('storage', function (event) {
+    if (event.key === STORAGE_KEY || event.key === null) applyTheme(readPreference());
+  });
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) applyTheme(readPreference());
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', mountToggle, { once: true });

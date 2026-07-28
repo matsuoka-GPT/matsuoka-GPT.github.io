@@ -66,6 +66,13 @@ Static GitHub Pages site for publishing the Matsuoka × GPT Thought Experiment L
   レイアウト、余白、フォント、文章構成には影響しません。
 - 配色変更は原則として`styles/theme.css`の変数だけで行えます。テーマ処理や
   保存キーを変更する場合は`scripts/theme.js`だけを編集します。
+- コンポーネントからテーマを変更・参照する場合は、共通の`window.siteTheme`
+  (`getTheme()` / `getPreference()` / `setPreference()`)を利用します。独自に
+  `localStorage`や`data-theme`を操作しないでください。テーマ確定後に通知が必要な
+  Canvasなどは、`document`の`themechange`イベントを購読できます。
+- 同じサイトを開いている別タブでの変更、OSテーマの変更、back-forward cacheからの
+  復元も共通処理が同期します。初回描画にはトランジションを付けず、操作後のみ共通の
+  タイミング変数で色・SVG・アイコンをまとめて切り替えます。
 - 新規HTMLを追加するときは、閉じ`head`タグの直前で階層に応じたパスの
   `styles/theme.css`と`scripts/theme.js`を読み込むだけでテーマ対応できます。
 

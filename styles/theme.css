@@ -10,6 +10,28 @@
   --link-color: #0969da;
   --button-bg: rgba(255, 255, 255, 0.94);
   --shadow-color: rgba(31, 35, 40, 0.12);
+  --heading-color: #111827;
+  --link-hover-color: #0757b9;
+  --control-border-color: #d0d7de;
+  --control-surface-color: rgba(255, 255, 255, 0.82);
+  --control-text-color: #24292f;
+  --focus-color: #0969da;
+  --selection-bg: #b6d7ff;
+  --selection-text: #111827;
+  --theme-transition-duration: .2s;
+  --theme-transition-easing: ease;
+  --members-ink: #0f172a;
+  --members-muted: #56627a;
+  --members-line: #dce4f4;
+  --members-panel: rgba(255, 255, 255, .88);
+  --members-page-bg: transparent;
+  --members-card-bg: linear-gradient(145deg, rgba(255,255,255,.98), rgba(242,246,255,.94));
+  --members-tag-bg: #f1f5ff;
+  --members-tag-text: #3f5d9e;
+  --members-tag-border: #dee6fb;
+  --members-workflow-bg: linear-gradient(110deg, rgba(237,244,255,.94), rgba(249,245,255,.96));
+  --members-icon-bg: #ffffff;
+  --members-icon-border: #d6e0fb;
   /* Canonical Members-page pale blue feature-card treatment (light mode only). */
   --pale-blue-card-color: #e8f0ff;
   --pale-blue-card-surface: linear-gradient(180deg, #e8f0ff 0%, #dde6ff 100%);
@@ -31,6 +53,26 @@
   --link-color: #6ea8fe;
   --button-bg: rgba(16, 27, 44, 0.94);
   --shadow-color: rgba(0, 5, 14, 0.5);
+  --heading-color: #f0f5fc;
+  --link-hover-color: #9bc3ff;
+  --control-border-color: #31475e;
+  --control-surface-color: rgba(18, 32, 51, .82);
+  --control-text-color: #dce8f7;
+  --focus-color: #79aff5;
+  --selection-bg: #28568d;
+  --selection-text: #ffffff;
+  --members-ink: #edf4ff;
+  --members-muted: #b0bed2;
+  --members-line: #293d5d;
+  --members-panel: rgba(14, 26, 45, .9);
+  --members-page-bg: #07101c;
+  --members-card-bg: linear-gradient(145deg, #15243b, #0c1728);
+  --members-tag-bg: #122947;
+  --members-tag-text: #a9c8ff;
+  --members-tag-border: #294668;
+  --members-workflow-bg: linear-gradient(110deg, #101e34, #251d3f);
+  --members-icon-bg: #172943;
+  --members-icon-border: #365172;
   /* Canonical metallic silver treatment shared with the Members feature cards. */
   --metallic-card-color: #1d2635;
   --metallic-card-surface:
@@ -103,17 +145,17 @@
 [data-theme="dark"] :is(.muted, .meta, .subtitle, .note, .updated, .metric-card span, .dialog-meta, .dialog-stats dt, footer, .footer, small) { color: var(--muted-color) !important; }
 [data-theme="dark"] a { color: var(--link-color) !important; }
 [data-theme="dark"] a:not(.btn):hover {
-  color: #9bc3ff !important;
+  color: var(--link-hover-color) !important;
   text-decoration-color: currentColor;
 }
 [data-theme="dark"] :is(h1, h2, h3, h4, summary, strong) {
-  color: #f0f5fc !important;
+  color: var(--heading-color) !important;
   letter-spacing: .01em;
 }
 [data-theme="dark"] :is(.topnav a, .tag, .pill, .profile-links a, .btn, .assistant-button) {
-  border-color: #31475e !important;
-  background: rgba(18, 32, 51, .82) !important;
-  color: #dce8f7 !important;
+  border-color: var(--control-border-color) !important;
+  background: var(--control-surface-color) !important;
+  color: var(--control-text-color) !important;
   box-shadow: inset 0 1px rgba(255, 255, 255, .035), 0 5px 16px rgba(0, 5, 14, .18);
 }
 [data-theme="dark"] :is(.topnav a, .tag, .profile-links a, .btn, .assistant-button):hover {
@@ -149,8 +191,8 @@
   color: #edf4fd !important;
 }
 [data-theme="dark"] hr { border-color: var(--border-color); }
-[data-theme="dark"] ::selection { background: #28568d; color: #fff; }
-[data-theme="dark"] :focus-visible { outline: 2px solid #79aff5 !important; outline-offset: 3px; }
+::selection { background: var(--selection-bg); color: var(--selection-text); }
+[data-theme="dark"] :focus-visible { outline: 2px solid var(--focus-color) !important; outline-offset: 3px; }
 [data-theme="dark"] :is(input, select, textarea, button:not(.theme-toggle)) {
   background-color: var(--surface-color) !important;
   border-color: var(--border-color) !important;
@@ -199,13 +241,48 @@
 [data-theme="dark"] img { opacity: 0.92; }
 [data-theme="dark"] :is(.github-logo, .synapse-logo) { filter: brightness(0) invert(1); }
 
+/* Reusable themed surfaces (dashboard and future feature cards). */
+.pale-blue-surface {
+  background-color: var(--pale-blue-card-color);
+  background-image: var(--pale-blue-card-surface);
+  border: 1px solid var(--pale-blue-card-border);
+  box-shadow: var(--pale-blue-card-shadow);
+  color: var(--pale-blue-card-text);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.pale-blue-surface :is(h1, strong) { color: var(--pale-blue-card-text); }
+.pale-blue-surface :is(.muted, .updated, span) { color: var(--pale-blue-card-muted); }
+.pale-blue-surface .delta { color: var(--pale-blue-card-accent) !important; }
+[data-theme="dark"] .metallic-surface {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--metallic-card-color) !important;
+  background-image: var(--metallic-card-surface) !important;
+  border-color: var(--metallic-card-border) !important;
+  box-shadow: var(--metallic-card-shadow) !important;
+  color: var(--metallic-card-text) !important;
+}
+[data-theme="dark"] .metallic-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--metallic-card-highlight);
+}
+[data-theme="dark"] .metallic-surface > * { position: relative; z-index: 1; }
+[data-theme="dark"] .metallic-surface :is(h1, strong) { color: var(--metallic-card-text) !important; }
+[data-theme="dark"] .metallic-surface :is(.muted, .updated, span) { color: var(--metallic-card-muted) !important; }
+[data-theme="dark"] .metallic-surface .delta { color: var(--metallic-card-accent) !important; }
+
 /* Theme changes animate; initial page rendering does not. */
 .theme-ready body,
-.theme-ready :is(article, section, header, footer, main, aside, details, .card, .panel, .hero, .profile-card, .art-card, .research-notice, table, thead, tbody, tr, th, td, pre, code, blockquote, input, select, textarea, button) {
-  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+.theme-ready :is(article, section, header, footer, main, aside, details, .card, .box, .panel, .hero, .profile, .profile-card, .art-card, .assistant-card, .outputs-grid li, .research-notice, .stat-card, .metric-card, .output-stat, .faq-item, .architecture-card, .member-card, .workflow-panel, .workflow-step .icon, .about-panel, .tag, .pill, table, thead, tbody, tr, th, td, pre, code, blockquote, input, select, textarea, button) {
+  transition: background-color var(--theme-transition-duration) var(--theme-transition-easing), color var(--theme-transition-duration) var(--theme-transition-easing), border-color var(--theme-transition-duration) var(--theme-transition-easing), box-shadow var(--theme-transition-duration) var(--theme-transition-easing);
 }
-.theme-ready :is(.math, .MathJax, mjx-container, svg) {
-  transition: color .25s ease, fill .25s ease, stroke .25s ease;
+.theme-ready :is(.math, .MathJax, mjx-container, svg, svg *, img) {
+  transition: color var(--theme-transition-duration) var(--theme-transition-easing), fill var(--theme-transition-duration) var(--theme-transition-easing), stroke var(--theme-transition-duration) var(--theme-transition-easing), filter var(--theme-transition-duration) var(--theme-transition-easing), opacity var(--theme-transition-duration) var(--theme-transition-easing);
 }
 
 @media (max-width: 600px) {
