@@ -4,3 +4,78 @@
 @media(max-width:1020px){.members-grid{grid-template-columns:repeat(2,1fr)}.member-card{min-height:350px}.workflow{grid-template-columns:repeat(3,1fr);row-gap:38px}.workflow-step:nth-child(3)::after{display:none}.hero-copy{width:64%;padding:48px}}
 @media(max-width:760px){.container{width:min(calc(100% - 28px),var(--max))}.site-header{padding:16px 0}.topbar{align-items:flex-start;flex-direction:column;padding-right:76px;gap:10px}.brand span{display:none}.nav{width:calc(100vw - 28px);gap:18px;overflow-x:auto}.hero{padding-top:12px}.hero-panel{min-height:560px;border-radius:22px;background-position:68% center}.hero-panel::after{background:linear-gradient(90deg,rgba(3,13,37,.97) 0%,rgba(3,16,44,.91) 58%,rgba(3,16,44,.28) 100%)}.hero-copy{width:76%;min-height:560px;padding:38px 28px}.hero h1{font-size:clamp(2.6rem,11vw,3.65rem)}.hero-subtitle{font-size:.95rem}.hero-lead{font-size:.82rem}.section{padding:38px 0}.section-heading{display:block}.section-heading p{margin-top:8px}.about-panel{grid-template-columns:1fr;gap:12px;padding:28px}.lab-mark{width:82px}.architecture{padding:0}.architect{margin-bottom:20px}.architect::after,.ai-row::before,.ai-row .architecture-card::before{display:none}.ai-row{grid-template-columns:1fr 1fr;gap:12px}.workflow{grid-template-columns:1fr;gap:18px}.workflow-step{display:grid;grid-template-columns:76px 1fr;text-align:left;align-items:center}.workflow-step .icon{grid-row:span 2;margin:0}.workflow-step::before{left:0}.workflow-step:not(:last-child)::after,.workflow-step:nth-child(3)::after{display:block;content:"";left:35px;top:calc(100% + 9px);width:14px;height:18px;clip-path:polygon(32% 0,68% 0,68% 58%,100% 58%,50% 100%,0 58%,32% 58%)}.closing-panel{align-items:flex-start;padding:32px 26px;gap:14px}.closing-panel .lab-mark{width:55px}}
 @media(max-width:540px){.members-grid,.ai-row{grid-template-columns:1fr}.member-card{min-height:0}.hero-panel{background-position:72% center}.hero-copy{width:88%}.hero-lead{font-size:.8rem}.workflow-panel{padding:30px 20px}.closing-panel h2{font-size:1.05rem}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.brain-network{animation:none}*{transition-duration:.01ms!important}}
+
+/* Japanese members page: retain Japanese readability at the English page's compact rhythm. */
+html[lang="ja"] .hero{padding-top:18px;padding-bottom:38px}
+html[lang="ja"] .hero-panel,
+html[lang="ja"] .hero-copy{min-height:520px}
+html[lang="ja"] .hero-panel{background-image:url("/images/hero-members.webp")}
+html[lang="ja"] .hero-panel::after{background:linear-gradient(90deg,rgba(2,12,35,.995) 0%,rgba(3,16,45,.99) 38%,rgba(4,18,48,.86) 58%,rgba(4,18,48,.08) 78%)}
+html[lang="ja"] .hero-copy{width:64%;padding:42px 68px}
+html[lang="ja"] .hero h1{font-size:clamp(2.65rem,4.2vw,4rem);line-height:1.08;letter-spacing:-.045em;white-space:nowrap}
+html[lang="ja"] .hero-subtitle{margin-top:20px}
+html[lang="ja"] .hero-lead{max-width:680px;line-height:1.6}
+html[lang="ja"] .hero-statement{max-width:680px}
+html[lang="ja"] .section{padding:38px 0}
+html[lang="ja"] .section-heading{align-items:center;margin-bottom:22px;padding-bottom:13px}
+html[lang="ja"] .section-heading p{max-width:640px}
+html[lang="ja"] .about-panel{grid-template-columns:105px 1fr;gap:28px;padding:28px 42px}
+html[lang="ja"] .about-panel p{margin-top:5px;line-height:1.6}
+html[lang="ja"] .architecture{padding-top:4px;padding-bottom:2px}
+html[lang="ja"] .architect{margin-bottom:62px}
+html[lang="ja"] .architect::after{height:62px}
+html[lang="ja"] .ai-row::before{top:-31px}
+html[lang="ja"] .ai-row .architecture-card::before{height:31px}
+html[lang="ja"] .architecture-card{padding:17px 20px}
+html[lang="ja"] .architecture-card .icon{display:flex;align-items:center;justify-content:center;margin:0 auto 5px;color:var(--blue);font-size:2rem;line-height:1}
+html[lang="ja"] .member-card{min-height:365px;padding:20px 19px}
+html[lang="ja"] .member-type{margin-bottom:11px;font-size:.65rem}
+html[lang="ja"] .member-card .icon{display:flex;align-items:center;justify-content:center;width:58px;height:58px;margin-bottom:4px;color:var(--blue);font-size:2rem;line-height:1}
+html[lang="ja"] .member-card h3{margin-top:1px}
+html[lang="ja"] .role{margin-bottom:11px;font-size:.76rem}
+html[lang="ja"] .description{margin-bottom:14px;font-size:.76rem;line-height:1.55}
+html[lang="ja"] .tags{gap:5px}
+html[lang="ja"] .tag{padding:4px 8px;font-size:.64rem;line-height:1.35}
+html[lang="ja"] .workflow-panel{padding:32px 28px}
+html[lang="ja"] .workflow-step .icon{display:inline-flex;align-items:center;justify-content:center;margin-bottom:6px;color:var(--blue);font-size:1.65rem;line-height:1}
+html[lang="ja"] .workflow-step strong{line-height:1.25}
+html[lang="ja"] .workflow-step small{display:block;margin-top:2px}
+html[lang="ja"] .closing-panel{padding:36px 48px}
+html[lang="ja"] .site-footer{padding-bottom:30px}
+
+@media(max-width:1020px){
+  html[lang="ja"] .hero-copy{width:70%;padding-inline:46px}
+  html[lang="ja"] .member-card{min-height:330px}
+}
+@media(max-width:760px){
+  html[lang="ja"] .hero{padding-top:8px;padding-bottom:28px}
+  html[lang="ja"] .hero-panel,html[lang="ja"] .hero-copy{min-height:510px}
+  html[lang="ja"] .hero-panel{background-position:70% center}
+  html[lang="ja"] .hero-panel::after{background:linear-gradient(90deg,rgba(3,13,37,.98) 0%,rgba(3,16,44,.93) 58%,rgba(3,16,44,.25) 100%)}
+  html[lang="ja"] .hero-copy{width:88%;padding:32px 26px}
+  html[lang="ja"] .hero h1{font-size:clamp(2.25rem,10vw,3rem);white-space:normal}
+  html[lang="ja"] .hero-lead{line-height:1.55}
+  html[lang="ja"] .section{padding:29px 0}
+  html[lang="ja"] .section-heading{margin-bottom:17px;padding-bottom:11px}
+  html[lang="ja"] .section-heading p{margin-top:5px}
+  html[lang="ja"] .about-panel{gap:8px;padding:22px 24px}
+  html[lang="ja"] .about-panel .lab-mark{height:50px}
+  html[lang="ja"] .architect{margin-bottom:14px}
+  html[lang="ja"] .architecture-card{padding:15px}
+  html[lang="ja"] .member-card{min-height:0;padding:18px 20px}
+  html[lang="ja"] .member-type{margin-bottom:8px}
+  html[lang="ja"] .workflow-panel{padding:24px 18px}
+  html[lang="ja"] .workflow-step .icon{margin:0}
+  html[lang="ja"] .closing-panel{padding:26px 22px}
+  html[lang="ja"] .site-footer{padding-bottom:24px}
+}
+@media(max-width:540px){
+  html[lang="ja"] .hero-copy{width:92%}
+  html[lang="ja"] .hero h1{font-size:2.25rem;line-height:1.16}
+  html[lang="ja"] .hero-subtitle{margin-top:17px}
+  html[lang="ja"] .workflow-panel{padding:22px 16px}
+}
+@media(max-width:760px){
+  html[lang="ja"] .about-panel{grid-template-columns:52px minmax(0,1fr)}
+  html[lang="ja"] .about-panel .lab-mark{width:44px}
+}
