@@ -194,12 +194,8 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
     assert '[data-theme="dark"] .record-dialog' in html
     assert '<section class="hero pale-blue-surface metallic-surface">' in html
     assert html.count('class="metric-card pale-blue-surface metallic-surface"') == 5
-    assert '.pale-blue-surface {' in html
-    assert 'background-image:var(--pale-blue-card-surface)' in html
-    assert '.pale-blue-surface .delta' in html
-    assert '[data-theme="dark"] .metallic-surface' in html
-    assert 'background-image:var(--metallic-card-surface)!important' in html
-    assert 'background:var(--metallic-card-highlight)' in html
+    assert '.pale-blue-surface {' not in html
+    assert '[data-theme="dark"] .metallic-surface' not in html
     assert html.index('scripts/theme.js') < html.index('</head>')
     assert '<a class="brand-link" href="./"' in html
     assert 'aria-label="Matsuoka × GPT Thought Experiment Lab — home"' in html
@@ -210,14 +206,20 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
     theme_css = (ROOT / "styles" / "theme.css").read_text(encoding="utf-8")
     members_html = (ROOT / "members.html").read_text(encoding="utf-8")
     assert '--pale-blue-card-surface: linear-gradient(180deg, #e8f0ff 0%, #dde6ff 100%)' in theme_css
+    assert '.pale-blue-surface {' in theme_css
+    assert '[data-theme="dark"] .metallic-surface {' in theme_css
+    assert 'background-image: var(--metallic-card-surface) !important' in theme_css
     assert '--feature-surface:var(--pale-blue-card-surface)' in members_html
-    assert '--pale-blue-card-surface' not in theme_css[theme_css.index('[data-theme="dark"]'):]
+    assert theme_css.count('--pale-blue-card-surface:') == 1
 
     theme_script = (ROOT / "scripts" / "theme.js").read_text(encoding="utf-8")
-    assert "localStorage.getItem(storageKey)" in theme_script
-    assert "localStorage.setItem(storageKey, next)" in theme_script
+    assert "localStorage.getItem(STORAGE_KEY)" in theme_script
+    assert "localStorage.setItem(STORAGE_KEY, preference)" in theme_script
     assert "prefers-color-scheme: dark" in theme_script
-    assert "root.setAttribute('data-theme'" in theme_script
+    assert "root.dataset.theme = resolveTheme(preference)" in theme_script
+    assert "window.siteTheme = Object.freeze" in theme_script
+    assert "document.dispatchEvent(new CustomEvent('themechange'" in theme_script
+    assert "window.addEventListener('storage'" in theme_script
 
 
 def test_ranking_titles_have_compact_modal_details(tmp_path: Path):

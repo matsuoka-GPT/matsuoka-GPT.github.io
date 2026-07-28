@@ -31,16 +31,6 @@
     .metrics { display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin:14px 0; }
     .metric-card { border-radius:var(--radius2); padding:12px; }
     .metric-card span { display:block; color:var(--muted); font-size:13px; } .metric-card strong { display:block; font-size:28px; line-height:1.2; } .delta { color:var(--accent2)!important; font-size:12px!important; }
-    .pale-blue-surface { background-color:var(--pale-blue-card-color); background-image:var(--pale-blue-card-surface); border:1px solid var(--pale-blue-card-border); box-shadow:var(--pale-blue-card-shadow); color:var(--pale-blue-card-text); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
-    .pale-blue-surface :is(h1, strong) { color:var(--pale-blue-card-text); }
-    .pale-blue-surface :is(.muted, .updated, span) { color:var(--pale-blue-card-muted); }
-    .pale-blue-surface .delta { color:var(--pale-blue-card-accent)!important; }
-    [data-theme="dark"] .metallic-surface { position:relative; overflow:hidden; background-color:var(--metallic-card-color)!important; background-image:var(--metallic-card-surface)!important; border-color:var(--metallic-card-border)!important; box-shadow:var(--metallic-card-shadow)!important; color:var(--metallic-card-text)!important; }
-    [data-theme="dark"] .metallic-surface::before { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; background:var(--metallic-card-highlight); }
-    [data-theme="dark"] .metallic-surface > * { position:relative; z-index:1; }
-    [data-theme="dark"] .metallic-surface :is(h1, strong) { color:var(--metallic-card-text)!important; }
-    [data-theme="dark"] .metallic-surface :is(.muted, .updated, span) { color:var(--metallic-card-muted)!important; }
-    [data-theme="dark"] .metallic-surface .delta { color:var(--metallic-card-accent)!important; }
     .grid { display:grid; grid-template-columns: 1fr; gap:14px; } .card { padding:16px; margin-bottom:14px; overflow:hidden; }
     h2 { margin:0 0 10px; font-size:21px; letter-spacing:-.02em; }
     .table-wrap { overflow-x:auto; } table { width:100%; border-collapse:collapse; min-width:680px; } th,td { border-bottom:1px solid var(--line); padding:8px 7px; text-align:left; vertical-align:top; } th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; } td small { display:block; color:var(--muted); margin-top:2px; }
