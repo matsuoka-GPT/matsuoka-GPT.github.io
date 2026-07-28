@@ -717,7 +717,7 @@
 
 .research-identifiers {
   display: grid;
-  grid-template-columns: minmax(105px, 1fr) minmax(140px, 1.35fr) auto;
+  grid-template-columns: minmax(105px, 1fr) minmax(140px, 1.35fr);
   align-items: center;
   column-gap: 25px;
   row-gap: 13px;
@@ -738,17 +738,17 @@
 .research-identifiers > a:nth-of-type(5) { grid-area: 3 / 1; }
 .research-identifiers > a:nth-of-type(6) { grid-area: 3 / 2; }
 
+.research-identifiers .synapse-logo {
+  height: 26px !important;
+}
+
 .research-identifiers .doi-badge {
-  grid-area: 3 / 3;
+  grid-area: 4 / 1;
 }
 
 @media (max-width: 520px) {
   .research-identifiers {
     grid-template-columns: minmax(105px, 1fr) minmax(130px, 1.35fr);
-  }
-
-  .research-identifiers .doi-badge {
-    grid-area: 4 / 1 / auto / -1;
   }
 }
     
