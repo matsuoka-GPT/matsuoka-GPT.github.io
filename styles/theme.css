@@ -197,6 +197,7 @@
   color-scheme: light dark;
 }
 [data-theme="dark"] img { opacity: 0.92; }
+[data-theme="dark"] .github-logo { filter: brightness(0) invert(1); }
 
 /* Theme changes animate; initial page rendering does not. */
 .theme-ready body,
