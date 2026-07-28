@@ -41,6 +41,20 @@ html[lang="ja"] .workflow-step strong{line-height:1.25}
 html[lang="ja"] .workflow-step small{display:block;margin-top:2px}
 html[lang="ja"] .site-footer{padding-bottom:30px}
 
+/* Keep the members-page identity consistent with the pine crest on the home page. */
+.brand img{width:36px;height:36px;border-radius:50%;object-fit:contain}
+.lab-mark{width:100px;height:100px;border-radius:50%;object-fit:contain}
+.closing-panel .lab-mark{filter:none}
+
+/* The source SVG includes generous whitespace, so enlarge its visible mark. */
+.chatgpt-logo{transform:scale(1.65)}
+[data-theme=dark] .chatgpt-logo{filter:brightness(0) invert(1)}
+
+@media(max-width:760px){
+  .lab-mark{width:82px;height:82px}
+  .closing-panel .lab-mark{width:55px;height:55px}
+}
+
 @media(max-width:1020px){
   html[lang="ja"] .hero-copy{width:70%;padding-inline:46px}
   html[lang="ja"] .member-card{min-height:330px}
