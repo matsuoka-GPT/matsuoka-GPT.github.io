@@ -746,6 +746,40 @@
   grid-area: 4 / 1;
 }
 
+/* Compact only the phone header so the hero artwork enters the first view.
+   Tablet and desktop spacing remains unchanged. */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-block: 4px;
+  }
+
+  .tags {
+    gap: 6px;
+  }
+
+  .tag {
+    gap: 6px;
+    padding: 5px 10px;
+  }
+
+  .topnav {
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .topnav a {
+    padding: 5px 7px;
+  }
+
+  .hero {
+    margin-top: 2px;
+    padding: 12px 14px;
+  }
+}
+
 @media (max-width: 520px) {
   /* Keep the phone layout inside the viewport without masking overflow. */
   .wrap {
@@ -754,9 +788,7 @@
   }
 
   header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
+    gap: 8px;
   }
 
   .tags,
@@ -776,7 +808,7 @@
   }
 
   .hero {
-    padding: 18px 14px;
+    padding: 12px 14px;
   }
 
   .hero-inner,
