@@ -608,18 +608,19 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     .paper-title:focus-visible {{ outline:2px solid var(--accent); outline-offset:2px; border-radius:2px; }}
     .download-rankings summary {{ color:var(--accent); cursor:pointer; font-weight:700; margin-top:10px; transition: color .15s ease; }}
     .download-rankings summary:hover {{ color:var(--accent2); }}
-    .record-dialog {{ width:min(520px, calc(100% - 32px)); max-height:calc(100vh - 32px); padding:0; border:1px solid var(--line); border-radius:var(--radius); color:var(--text); background:#fff; box-shadow:var(--shadow2); }}
+    .record-dialog {{ width:min(520px, calc(100% - 32px)); max-height:calc(100vh - 32px); padding:0; border:1px solid var(--border-color); border-radius:var(--radius); color:var(--text-color); background:var(--card-color); box-shadow:var(--shadow2); }}
     .record-dialog::backdrop, .dialog-fallback-backdrop {{ background:rgba(18,26,40,.46); }}
     .record-dialog[open] {{ position:fixed; inset:0; margin:auto; }}
     .dialog-fallback-backdrop {{ position:fixed; inset:0; z-index:9; }} .record-dialog.dialog-fallback {{ z-index:10; }}
     .dialog-inner {{ padding:18px; }} .dialog-header {{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }}
-    .dialog-title {{ margin:0; font-size:19px; line-height:1.35; overflow-wrap:anywhere; }}
-    .dialog-close {{ flex:0 0 auto; border:0; border-radius:999px; background:#eef2ff; color:var(--accent2); font:inherit; font-size:20px; line-height:1; cursor:pointer; padding:7px 10px; }}
-    .dialog-meta {{ margin:8px 0 14px; color:var(--muted); font-size:14px; }}
+    .dialog-title {{ margin:0; color:var(--heading-color); font-size:19px; line-height:1.35; overflow-wrap:anywhere; }}
+    .dialog-close {{ flex:0 0 auto; border:0; border-radius:999px; background:var(--control-surface-color); color:var(--link-color); font:inherit; font-size:20px; line-height:1; cursor:pointer; padding:7px 10px; }}
+    .dialog-meta {{ margin:8px 0 14px; color:var(--muted-color); font-size:14px; }}
     .dialog-stats {{ display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; margin:0; }}
-    .dialog-stats div {{ border-top:1px solid var(--line); padding-top:7px; }} .dialog-stats dt {{ color:var(--muted); font-size:12px; }} .dialog-stats dd {{ margin:0; font-weight:700; }}
-    .dialog-actions {{ display:flex; justify-content:flex-end; margin-top:16px; }} .zenodo-link {{ color:#fff; background:var(--accent); border-radius:8px; padding:7px 12px; text-decoration:none; font-weight:700; }}
-    [data-theme=\"dark\"] .record-dialog {{ background:var(--card-color); }}
+    .dialog-stats div {{ border-top:1px solid var(--border-color); padding-top:7px; }} .dialog-stats dt {{ color:var(--muted-color); font-size:12px; }} .dialog-stats dd {{ margin:0; color:var(--text-color); font-weight:700; }}
+    .dialog-stats dd[data-detail$="_delta"] {{ color:var(--link-color); }}
+    .dialog-actions {{ display:flex; justify-content:flex-end; margin-top:16px; }} .zenodo-link {{ color:var(--bg-color); background:var(--link-color); border-radius:8px; padding:7px 12px; text-decoration:none; font-weight:700; }}
+    [data-theme=\"dark\"] .record-dialog .zenodo-link {{ color:var(--bg-color)!important; background:var(--link-color)!important; }}
     footer {{ color:var(--muted); font-size:13px; margin-top:18px; }}
     @media (max-width: 980px) {{ .metrics {{ grid-template-columns:repeat(2, 1fr); }} }}
     @media (max-width: 820px) {{ header {{ padding-right:96px; }} .hero {{ padding:16px; }} .card {{ padding:14px; }} table {{ min-width:720px; }} th,td {{ padding:7px 6px; }} }}
