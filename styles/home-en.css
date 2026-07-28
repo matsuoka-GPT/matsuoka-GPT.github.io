@@ -6,7 +6,3 @@ body {
   z-index: 10000;
   position: relative;
 }
-
-#backToTop {
-  transition: opacity 0.3s ease;
-}

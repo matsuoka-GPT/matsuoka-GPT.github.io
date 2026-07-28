@@ -575,7 +575,9 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
   <title>Zenodo Analytics Dashboard | Matsuoka x GPT Thought Experiment Lab</title>
   <meta name=\"description\" content=\"Daily Zenodo analytics for {safe(author)}.\" />
   <link rel=\"stylesheet\" href=\"styles/theme.css\" />
+  <link rel=\"stylesheet\" href=\"styles/back-to-top.css\" />
   <script src=\"scripts/theme.js\"></script>
+  <script src=\"scripts/back-to-top.js\" defer></script>
   <style>
     :root {{
       --w: 980px; --bg0:#ffffff; --bg1:#fbfcff; --text:#111; --muted:#475069;
