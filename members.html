@@ -170,6 +170,7 @@
     .feature-surface{
       background:var(--feature-surface);
       border:1px solid var(--feature-border);
+      border-radius:28px;
       box-shadow:var(--shadow);
       color:var(--feature-text);
       backdrop-filter:blur(8px);
@@ -181,7 +182,6 @@
     .feature-surface .eyebrow{color:var(--feature-accent);}
 
     .hero-box{
-      border-radius:28px;
       padding:38px 28px;
     }
 
@@ -220,7 +220,6 @@
     }
 
     .intro-card{
-      border-radius:var(--radius);
       padding:24px;
     }
 
@@ -311,14 +310,9 @@
     }
 
     .flow-item{
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      border-radius:16px;
       padding:16px 12px;
       text-align:center;
       font-weight:700;
-      color:#1e293b;
-      box-shadow:var(--shadow);
       font-size:.95rem;
     }
 
@@ -478,12 +472,12 @@
 
     <section class="section container">
       <h2 class="section-title">Research Workflow</h2>
-      <div class="workflow-card feature-surface">
+      <div class="workflow-card">
         <div class="flow">
-          <div class="flow-item">Concept<br>Matsuoka</div>
-          <div class="flow-item">Acceleration<br>Gemini</div>
-          <div class="flow-item">Structuring<br>ChatGPT</div>
-          <div class="flow-item">Technical Support<br>Copilot</div>
+          <div class="flow-item feature-surface">Concept<br>Matsuoka</div>
+          <div class="flow-item feature-surface">Acceleration<br>Gemini</div>
+          <div class="flow-item feature-surface">Structuring<br>ChatGPT</div>
+          <div class="flow-item feature-surface">Technical Support<br>Copilot</div>
         </div>
         <p class="note">
           Through this division of roles, Matsuoka × GPT Thought Experiment Lab operates as a co-intelligence research system built on one human and four AI collaborators.
