@@ -50,9 +50,9 @@ html[lang="ja"] .site-footer{padding-bottom:30px}
 img[src$="matu.png"]{border-radius:50%;object-fit:cover;aspect-ratio:1}
 
 /* The ChatGPT SVG uses a tighter viewBox so its mark retains the former green
-   logo's visual size without scaling the workflow circle. Keep it white on
-   dark surfaces. */
-.workflow-step .chatgpt-logo{background:#172943}
+   logo's visual size without scaling the workflow circle. Preserve its colors
+   here so the shared workflow-icon background matches Gemini in both themes. */
+[data-theme=dark] .workflow-step .chatgpt-logo{filter:none}
 [data-theme=dark] .chatgpt-logo{filter:brightness(0) invert(1)}
 
 @media(max-width:760px){
