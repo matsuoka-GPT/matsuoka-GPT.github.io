@@ -19,7 +19,6 @@ html[lang="ja"] .hero-statement{max-width:680px}
 html[lang="ja"] .section{padding:38px 0}
 html[lang="ja"] .section-heading{align-items:center;margin-bottom:22px;padding-bottom:13px}
 html[lang="ja"] .section-heading p{max-width:640px}
-html[lang="ja"] .about-panel{grid-template-columns:105px 1fr;gap:28px;padding:28px 42px}
 html[lang="ja"] .about-panel p{margin-top:5px;line-height:1.6}
 html[lang="ja"] .architecture{padding-top:4px;padding-bottom:2px}
 html[lang="ja"] .architect{margin-bottom:62px}
@@ -40,7 +39,6 @@ html[lang="ja"] .workflow-panel{padding:32px 28px}
 html[lang="ja"] .workflow-step .icon{display:inline-flex;align-items:center;justify-content:center;margin-bottom:6px;color:var(--blue);font-size:1.65rem;line-height:1}
 html[lang="ja"] .workflow-step strong{line-height:1.25}
 html[lang="ja"] .workflow-step small{display:block;margin-top:2px}
-html[lang="ja"] .closing-panel{padding:36px 48px}
 html[lang="ja"] .site-footer{padding-bottom:30px}
 
 @media(max-width:1020px){
@@ -58,15 +56,12 @@ html[lang="ja"] .site-footer{padding-bottom:30px}
   html[lang="ja"] .section{padding:29px 0}
   html[lang="ja"] .section-heading{margin-bottom:17px;padding-bottom:11px}
   html[lang="ja"] .section-heading p{margin-top:5px}
-  html[lang="ja"] .about-panel{gap:8px;padding:22px 24px}
-  html[lang="ja"] .about-panel .lab-mark{height:50px}
   html[lang="ja"] .architect{margin-bottom:14px}
   html[lang="ja"] .architecture-card{padding:15px}
   html[lang="ja"] .member-card{min-height:0;padding:18px 20px}
   html[lang="ja"] .member-type{margin-bottom:8px}
   html[lang="ja"] .workflow-panel{padding:24px 18px}
   html[lang="ja"] .workflow-step .icon{margin:0}
-  html[lang="ja"] .closing-panel{padding:26px 22px}
   html[lang="ja"] .site-footer{padding-bottom:24px}
 }
 @media(max-width:540px){
@@ -74,8 +69,4 @@ html[lang="ja"] .site-footer{padding-bottom:30px}
   html[lang="ja"] .hero h1{font-size:2.25rem;line-height:1.16}
   html[lang="ja"] .hero-subtitle{margin-top:17px}
   html[lang="ja"] .workflow-panel{padding:22px 16px}
-}
-@media(max-width:760px){
-  html[lang="ja"] .about-panel{grid-template-columns:52px minmax(0,1fr)}
-  html[lang="ja"] .about-panel .lab-mark{width:44px}
 }
