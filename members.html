@@ -27,10 +27,7 @@
       content="Matsuoka × GPT Co-Intelligence Lab"
     />
     <meta property="og:locale" content="en_US" />
-    <meta
-      property="og:image"
-      content="https://matsuoka-gpt.github.io/images/lab-hero-en.png"
-    />
+    <meta property="og:image" content="https://matsuoka-gpt.github.io/images/members-hero-network.svg" />
     <meta
       property="og:image:alt"
       content="Matsuoka × GPT Co-Intelligence Lab — Collaborative Research, AI × Human"
@@ -128,19 +125,16 @@
         ]
       }
     </script>
-    <style>
-      :root {
-        --feature-surface:var(--pale-blue-card-surface);
-      }
-    </style>
+    <style>:root { --feature-surface:var(--pale-blue-card-surface); }</style>
     <link rel="stylesheet" href="styles/members.css" />
     <link rel="stylesheet" href="styles/theme.css" />
     <script src="scripts/theme.js"></script>
+    <script src="scripts/members.js" defer></script>
   </head>
-  <body>
+  <body class="members-page">
     <header class="site-header container">
       <div class="topbar">
-        <a class="brand" href="./">Matsuoka × GPT Thought Experiment Lab</a>
+        <a class="brand" href="./"><img src="images/logo-symbol.svg" alt="" />Matsuoka × GPT <span>Thought Experiment Lab</span></a>
         <nav class="nav" aria-label="Primary navigation">
           <a href="./">Home</a><a href="./#projects">Projects</a
           ><a href="./#outputs">Publications</a
@@ -149,28 +143,23 @@
       </div>
     </header>
     <main>
-      <section class="hero container">
+      <section class="hero container reveal">
         <div class="hero-panel">
-          <div class="hero-art" aria-hidden="true"></div>
+          <div class="hero-visual" aria-hidden="true"><img class="network-lines" src="images/bg-network-lines.svg" alt="" /><img class="brain-network" src="images/bg-brain-network.svg" alt="" /><img class="earth-horizon" src="images/bg-earth-horizon.svg" alt="" /></div>
           <div class="hero-copy">
-            <p class="eyebrow">Members</p>
-            <h1>Meet the Lab Members</h1>
+            <p class="eyebrow"><span></span> Co-Intelligence Research Unit</p>
+            <h1>Meet the<br /><em>Lab Members</em></h1>
             <p class="hero-subtitle">
               One Concept Architect × Four Specialized AI Members
             </p>
-            <p class="hero-lead">
-              Matsuoka × GPT Thought Experiment Lab is an experimental research
-              unit where a human and multiple AI systems share conceptual
-              design, theory structuring, verification, review, and technical
-              support. We build co-intelligence by dividing roles—not by mixing
-              capabilities.
-            </p>
+            <p class="hero-lead">A professional research unit where human intuition and specialized AI systems work as one coherent intelligence.</p>
+            <a class="hero-cta" href="#members-list">Explore the team <span aria-hidden="true">↓</span></a>
           </div>
         </div>
       </section>
-      <section class="section container" aria-labelledby="about-title">
+      <section class="section container reveal" aria-labelledby="about-title">
         <div class="about-panel">
-          <div class="lab-mark" aria-hidden="true">∞</div>
+          <img class="lab-mark" src="images/logo-symbol.svg" alt="" />
           <div>
             <h2 id="about-title">About the Lab</h2>
             <p>
@@ -183,7 +172,7 @@
           </div>
         </div>
       </section>
-      <section class="section container" aria-labelledby="architecture-title">
+      <section class="section container reveal" aria-labelledby="architecture-title">
         <div class="section-heading">
           <h2 id="architecture-title">Team Architecture</h2>
           <p>
@@ -194,33 +183,33 @@
         <div class="architecture">
           <div class="architect">
             <div class="architecture-card">
-              <span class="icon icon-human" aria-hidden="true">●</span
-              ><strong>Matsuoka</strong><span>Concept Architect</span>
+              <img class="icon" src="images/icon-human.svg" alt="" />
+              <strong>Matsuoka</strong><span>Concept Architect</span>
               <small>“Structure before Knowledge”</small>
             </div>
           </div>
           <div class="ai-row">
             <div class="architecture-card">
-              <span class="icon" aria-hidden="true">◎</span
-              ><strong>ChatGPT</strong><span>Core Reasoning</span>
+              <img class="icon" src="images/icon-chatgpt.svg" alt="" />
+              <strong>ChatGPT</strong><span>Core Reasoning</span>
             </div>
             <div class="architecture-card">
-              <span class="icon" aria-hidden="true">✦</span
-              ><strong>Gemini</strong><span>Hypothesis Accelerator</span>
+              <img class="icon" src="images/icon-gemini.svg" alt="" />
+              <strong>Gemini</strong><span>Hypothesis Accelerator</span>
             </div>
             <div class="architecture-card">
-              <span class="icon icon-code" aria-hidden="true">&lt;/&gt;</span
-              ><strong>Codex</strong><span>Implementation Engineer</span>
+              <img class="icon" src="images/icon-codex.svg" alt="" />
+              <strong>Codex</strong><span>Implementation Engineer</span>
             </div>
             <div class="architecture-card">
-              <span class="icon" aria-hidden="true">⌁</span
-              ><strong>Copilot</strong><span>Technical Support</span>
+              <img class="icon" src="images/icon-copilot.svg" alt="" />
+              <strong>Copilot</strong><span>Technical Support</span>
             </div>
           </div>
         </div>
       </section>
       <section
-        class="section container"
+        class="section container reveal"
         id="members-list"
         aria-labelledby="members-title"
       >
@@ -230,7 +219,7 @@
         <div class="members-grid">
           <article class="member-card">
             <span class="member-type">Human</span
-            ><span class="icon" aria-hidden="true">◉</span>
+            ><img class="icon" src="images/icon-human.svg" alt="" />
             <h3>Matsuoka</h3>
             <p class="role">Concept Architect</p>
             <p class="description">
@@ -246,7 +235,7 @@
           </article>
           <article class="member-card">
             <span class="member-type">AI Member</span
-            ><span class="icon" aria-hidden="true">◎</span>
+            ><img class="icon" src="images/icon-chatgpt.svg" alt="" />
             <h3>ChatGPT</h3>
             <p class="role">Core Reasoning</p>
             <p class="description">
@@ -263,7 +252,7 @@
           </article>
           <article class="member-card">
             <span class="member-type">AI Member</span
-            ><span class="icon" aria-hidden="true">✦</span>
+            ><img class="icon" src="images/icon-gemini.svg" alt="" />
             <h3>Gemini</h3>
             <p class="role">Hypothesis Accelerator</p>
             <p class="description">
@@ -279,7 +268,7 @@
           </article>
           <article class="member-card">
             <span class="member-type">AI Member</span
-            ><span class="icon icon-code" aria-hidden="true">&lt;/&gt;</span>
+            ><img class="icon" src="images/icon-codex.svg" alt="" />
             <h3>Codex</h3>
             <p class="role">Implementation Engineer</p>
             <p class="description">
@@ -295,7 +284,7 @@
           </article>
           <article class="member-card">
             <span class="member-type">AI Member</span
-            ><span class="icon" aria-hidden="true">⌁</span>
+            ><img class="icon" src="images/icon-copilot.svg" alt="" />
             <h3>Copilot</h3>
             <p class="role">Technical Support</p>
             <p class="description">
@@ -311,42 +300,42 @@
           </article>
         </div>
       </section>
-      <section class="section container" aria-labelledby="workflow-title">
+      <section class="section container reveal" aria-labelledby="workflow-title">
         <div class="section-heading">
           <h2 id="workflow-title">Research Workflow</h2>
         </div>
         <div class="workflow-panel">
           <div class="workflow">
             <div class="workflow-step">
-              <span class="icon" aria-hidden="true">◉</span
-              ><strong>Concept</strong><small>Matsuoka</small>
+              <img class="icon" src="images/wf-01-concept.svg" alt="" />
+              <strong>Concept</strong><small>Matsuoka</small>
             </div>
             <div class="workflow-step">
-              <span class="icon" aria-hidden="true">✦</span
-              ><strong>Hypothesis Expansion</strong><small>Gemini</small>
+              <img class="icon" src="images/wf-02-hypothesis.svg" alt="" />
+              <strong>Hypothesis Expansion</strong><small>Gemini</small>
             </div>
             <div class="workflow-step">
-              <span class="icon" aria-hidden="true">◎</span
-              ><strong>Theory Structuring</strong><small>ChatGPT</small>
+              <img class="icon" src="images/wf-03-theory.svg" alt="" />
+              <strong>Theory Structuring</strong><small>ChatGPT</small>
             </div>
             <div class="workflow-step">
-              <span class="icon icon-code" aria-hidden="true">&lt;/&gt;</span
-              ><strong>Implementation</strong><small>Codex</small>
+              <img class="icon" src="images/wf-04-implementation.svg" alt="" />
+              <strong>Implementation</strong><small>Codex</small>
             </div>
             <div class="workflow-step">
-              <span class="icon" aria-hidden="true">✓</span
-              ><strong>Verification</strong><small>All Members</small>
+              <img class="icon" src="images/wf-05-verification.svg" alt="" />
+              <strong>Verification</strong><small>All Members</small>
             </div>
             <div class="workflow-step">
-              <span class="icon" aria-hidden="true">↑</span
-              ><strong>Publish</strong><small>Zenodo / GitHub Pages</small>
+              <img class="icon" src="images/wf-06-publish.svg" alt="" />
+              <strong>Publish</strong><small>Zenodo / GitHub Pages</small>
             </div>
           </div>
         </div>
       </section>
-      <section class="section container">
+      <section class="section container reveal">
         <div class="closing-panel">
-          <div class="lab-mark" aria-hidden="true">∞</div>
+          <img class="lab-mark" src="images/logo-symbol.svg" alt="" />
           <div>
             <h2>Co-Intelligence is not about replacing human intelligence.</h2>
             <p>
