@@ -11,7 +11,3 @@ body {
 @media (min-width: 860px) {
   .grid { grid-template-columns: 1fr 1fr; }
 }
-
-#backToTop {
-  transition: opacity 0.3s;
-}

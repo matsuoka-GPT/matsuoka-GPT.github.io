@@ -134,7 +134,9 @@
   <link rel="stylesheet" href="/styles/zenodo-summary.css">
   <script src="/scripts/zenodo-summary.js" defer></script>
   <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/back-to-top.css" />
   <script src="scripts/theme.js"></script>
+  <script src="scripts/back-to-top.js" defer></script>
 </head>
 
 <body>
@@ -785,10 +787,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
   <script>twemoji.parse(document.getElementById("language-flags"),{folder:"svg",ext:".svg"});</script>
-
-  <a href="#" id="backToTop"><span class="top-icon">🔝</span></a>
-  <script>document.getElementById('backToTop').onclick = function() {window.scrollTo({ top: 0, behavior: 'smooth' });return false;};</script>
-  <script>const btn = document.getElementById('backToTop');window.addEventListener('scroll', () => {if (window.scrollY > 200) btn.classList.add('show');else btn.classList.remove('show');});</script>
 
   <script>
 　　window.addEventListener("load", () => {if (!location.hash) return;const target = document.querySelector(location.hash);
