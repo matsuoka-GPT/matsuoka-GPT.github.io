@@ -496,7 +496,7 @@ def fmt_delta(value: int) -> str:
 
 def metric_card(label: str, value: int, delta: int | None = None) -> str:
     delta_html = f'<span class="delta">{safe(fmt_delta(delta))} since previous run</span>' if delta is not None else ""
-    return f'<article class="metric-card"><span>{safe(label)}</span><strong>{value:,}</strong>{delta_html}</article>'
+    return f'<article class="metric-card metallic-surface"><span>{safe(label)}</span><strong>{value:,}</strong>{delta_html}</article>'
 
 
 
@@ -598,6 +598,12 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     .metrics {{ display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin:14px 0; }}
     .metric-card {{ border:1px solid var(--line); border-radius:var(--radius2); background:rgba(255,255,255,.75); box-shadow:var(--shadow); padding:12px; }}
     .metric-card span {{ display:block; color:var(--muted); font-size:13px; }} .metric-card strong {{ display:block; font-size:28px; line-height:1.2; }} .delta {{ color:var(--accent2)!important; font-size:12px!important; }}
+    [data-theme="dark"] .metallic-surface {{ position:relative; overflow:hidden; background-color:var(--metallic-card-color)!important; background-image:var(--metallic-card-surface)!important; border-color:var(--metallic-card-border)!important; box-shadow:var(--metallic-card-shadow)!important; color:var(--metallic-card-text)!important; }}
+    [data-theme="dark"] .metallic-surface::before {{ content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; background:var(--metallic-card-highlight); }}
+    [data-theme="dark"] .metallic-surface > * {{ position:relative; z-index:1; }}
+    [data-theme="dark"] .metallic-surface :is(h1, strong) {{ color:var(--metallic-card-text)!important; }}
+    [data-theme="dark"] .metallic-surface :is(.muted, .updated, span) {{ color:var(--metallic-card-muted)!important; }}
+    [data-theme="dark"] .metallic-surface .delta {{ color:var(--metallic-card-accent)!important; }}
     .grid {{ display:grid; grid-template-columns: 1fr; gap:14px; }} .card {{ padding:16px; margin-bottom:14px; overflow:hidden; }}
     h2 {{ margin:0 0 10px; font-size:21px; letter-spacing:-.02em; }}
     .table-wrap {{ overflow-x:auto; }} table {{ width:100%; border-collapse:collapse; min-width:680px; }} th,td {{ border-bottom:1px solid var(--line); padding:8px 7px; text-align:left; vertical-align:top; }} th {{ color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }} td small {{ display:block; color:var(--muted); margin-top:2px; }}
@@ -628,7 +634,7 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
 <body>
   <main class=\"wrap\">
     <header><a class=\"brand-link\" href=\"./\" aria-label=\"Matsuoka × GPT Thought Experiment Lab — home\">Matsuoka × GPT <span>Thought Experiment Lab</span></a></header>
-    <section class=\"hero\">
+    <section class=\"hero metallic-surface\">
       <h1>Zenodo Analytics Dashboard</h1>
       <p class=\"muted\">Public Zenodo record statistics collected via the Zenodo REST API for {safe(author)}.</p>
       <p class=\"muted\">Scope: {safe(STATS_SCOPE)}.</p>

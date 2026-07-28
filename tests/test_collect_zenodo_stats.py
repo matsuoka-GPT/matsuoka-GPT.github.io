@@ -192,6 +192,11 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
     assert '<link rel="stylesheet" href="styles/theme.css" />' in html
     assert '<script src="scripts/theme.js"></script>' in html
     assert '[data-theme="dark"] .record-dialog' in html
+    assert '<section class="hero metallic-surface">' in html
+    assert html.count('class="metric-card metallic-surface"') == 5
+    assert '[data-theme="dark"] .metallic-surface' in html
+    assert 'background-image:var(--metallic-card-surface)!important' in html
+    assert 'background:var(--metallic-card-highlight)' in html
     assert html.index('scripts/theme.js') < html.index('</head>')
     assert '<a class="brand-link" href="./"' in html
     assert 'aria-label="Matsuoka × GPT Thought Experiment Lab — home"' in html

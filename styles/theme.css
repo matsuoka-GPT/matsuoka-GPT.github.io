@@ -23,6 +23,17 @@
   --link-color: #6ea8fe;
   --button-bg: rgba(16, 27, 44, 0.94);
   --shadow-color: rgba(0, 5, 14, 0.5);
+  /* Canonical metallic silver treatment shared with the Members feature cards. */
+  --metallic-card-color: #1d2635;
+  --metallic-card-surface:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.04) 22%, rgba(0,0,0,.28) 100%),
+    linear-gradient(115deg, #a7adb6 0%, #8f98a5 24%, #707c8b 48%, #4c596b 74%, #1d2635 100%);
+  --metallic-card-border: rgba(255,255,255,.18);
+  --metallic-card-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -1px 0 rgba(0,0,0,.28), 0 12px 28px rgba(0,0,0,.45);
+  --metallic-card-highlight: linear-gradient(115deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.06) 30%, rgba(255,255,255,0) 58%);
+  --metallic-card-text: #e6ebf4;
+  --metallic-card-muted: #c8cfda;
+  --metallic-card-accent: #4f7dff;
 }
 
 .theme-toggle {
