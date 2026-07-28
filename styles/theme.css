@@ -10,6 +10,14 @@
   --link-color: #0969da;
   --button-bg: rgba(255, 255, 255, 0.94);
   --shadow-color: rgba(31, 35, 40, 0.12);
+  /* Canonical Members-page pale blue feature-card treatment (light mode only). */
+  --pale-blue-card-color: #e8f0ff;
+  --pale-blue-card-surface: linear-gradient(180deg, #e8f0ff 0%, #dde6ff 100%);
+  --pale-blue-card-border: #c6d6ff;
+  --pale-blue-card-shadow: 0 10px 30px rgba(66,133,244,.08);
+  --pale-blue-card-text: #0f172a;
+  --pale-blue-card-muted: #334155;
+  --pale-blue-card-accent: #3b82f6;
 }
 
 [data-theme="dark"] {

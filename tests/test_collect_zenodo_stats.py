@@ -192,8 +192,11 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
     assert '<link rel="stylesheet" href="styles/theme.css" />' in html
     assert '<script src="scripts/theme.js"></script>' in html
     assert '[data-theme="dark"] .record-dialog' in html
-    assert '<section class="hero metallic-surface">' in html
-    assert html.count('class="metric-card metallic-surface"') == 5
+    assert '<section class="hero pale-blue-surface metallic-surface">' in html
+    assert html.count('class="metric-card pale-blue-surface metallic-surface"') == 5
+    assert '.pale-blue-surface {' in html
+    assert 'background-image:var(--pale-blue-card-surface)' in html
+    assert '.pale-blue-surface .delta' in html
     assert '[data-theme="dark"] .metallic-surface' in html
     assert 'background-image:var(--metallic-card-surface)!important' in html
     assert 'background:var(--metallic-card-highlight)' in html
@@ -203,6 +206,12 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
     assert 'class="home-link"' not in html
     assert '.brand-link:focus-visible' in html
     assert '@media (max-width: 420px)' in html
+
+    theme_css = (ROOT / "styles" / "theme.css").read_text(encoding="utf-8")
+    members_html = (ROOT / "members.html").read_text(encoding="utf-8")
+    assert '--pale-blue-card-surface: linear-gradient(180deg, #e8f0ff 0%, #dde6ff 100%)' in theme_css
+    assert '--feature-surface:var(--pale-blue-card-surface)' in members_html
+    assert '--pale-blue-card-surface' not in theme_css[theme_css.index('[data-theme="dark"]'):]
 
     theme_script = (ROOT / "scripts" / "theme.js").read_text(encoding="utf-8")
     assert "localStorage.getItem(storageKey)" in theme_script
