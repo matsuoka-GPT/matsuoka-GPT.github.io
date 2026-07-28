@@ -46,9 +46,11 @@ html[lang="ja"] .site-footer{padding-bottom:30px}
 .lab-mark{width:100px;height:100px;border-radius:50%;object-fit:contain}
 .closing-panel .lab-mark{filter:none}
 
+/* Crop every use of the member portrait consistently, without altering the source image. */
+img[src$="matu.png"]{border-radius:50%;object-fit:cover;aspect-ratio:1}
+
 /* The source SVG includes generous whitespace, so enlarge its visible mark. */
 .chatgpt-logo{transform:scale(1.65)}
-[data-theme=dark] .chatgpt-logo{filter:brightness(0) invert(1)}
 
 @media(max-width:760px){
   .lab-mark{width:82px;height:82px}
