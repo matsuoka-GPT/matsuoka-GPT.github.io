@@ -191,7 +191,12 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
 
     assert '<link rel="stylesheet" href="styles/theme.css" />' in html
     assert '<script src="scripts/theme.js"></script>' in html
-    assert '[data-theme="dark"] .record-dialog' in html
+    assert 'color:var(--text-color); background:var(--card-color)' in html
+    assert '.dialog-title { margin:0; color:var(--heading-color)' in html
+    assert '.dialog-stats dd { margin:0; color:var(--text-color)' in html
+    assert '.dialog-stats dd[data-detail$="_delta"] { color:var(--link-color); }' in html
+    assert 'background:var(--control-surface-color); color:var(--link-color)' in html
+    assert '.zenodo-link { color:var(--bg-color); background:var(--link-color)' in html
     assert '<section class="hero pale-blue-surface metallic-surface">' in html
     assert html.count('class="metric-card pale-blue-surface metallic-surface"') == 5
     assert '.pale-blue-surface {' not in html
