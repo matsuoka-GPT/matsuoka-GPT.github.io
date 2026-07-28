@@ -49,8 +49,9 @@ html[lang="ja"] .site-footer{padding-bottom:30px}
 /* Crop every use of the member portrait consistently, without altering the source image. */
 img[src$="matu.png"]{border-radius:50%;object-fit:cover;aspect-ratio:1}
 
-/* Keep the workflow circle aligned with the other steps and restore the white
-   ChatGPT mark on dark surfaces. */
+/* The ChatGPT SVG uses a tighter viewBox so its mark retains the former green
+   logo's visual size without scaling the workflow circle. Keep it white on
+   dark surfaces. */
 [data-theme=dark] .chatgpt-logo{filter:brightness(0) invert(1)}
 
 @media(max-width:760px){
