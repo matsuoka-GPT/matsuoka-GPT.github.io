@@ -2,6 +2,7 @@
   'use strict';
 
   var STORAGE_KEY = 'site-theme';
+  var IOS_RELOAD_KEY = 'site-theme-ios-reload';
   var PREFERENCES = ['system', 'light', 'dark'];
   var LABELS = { system: '◐ System', light: '☀ Light', dark: '🌙 Dark' };
   var root = document.documentElement;
@@ -21,6 +22,45 @@
     } catch (error) {
       return 'system';
     }
+  }
+
+  function isIOSSafari() {
+    var userAgent = navigator.userAgent || '';
+    var isIOS = /iPad|iPhone|iPod/.test(userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var isSafari = /Safari/.test(userAgent) &&
+      !/(CriOS|FxiOS|EdgiOS|OPiOS|DuckDuckGo)/.test(userAgent);
+    return isIOS && isSafari;
+  }
+
+  function reloadIOSSafariAfterUserChange() {
+    if (!isIOSSafari()) return;
+    try {
+      // This one-shot reload is an iOS Safari repaint fallback.
+      if (sessionStorage.getItem(IOS_RELOAD_KEY)) return;
+      sessionStorage.setItem(IOS_RELOAD_KEY, JSON.stringify({
+        x: window.scrollX || 0,
+        y: window.scrollY || 0
+      }));
+      window.location.reload();
+    } catch (error) {
+      // Without a session guard, reloading could loop, so leave the repaint optimization in place.
+    }
+  }
+
+  function restoreReloadScroll() {
+    var saved;
+    try {
+      saved = sessionStorage.getItem(IOS_RELOAD_KEY);
+      if (!saved) return;
+      sessionStorage.removeItem(IOS_RELOAD_KEY);
+      saved = JSON.parse(saved);
+    } catch (error) {
+      return;
+    }
+    window.requestAnimationFrame(function () {
+      window.scrollTo(saved.x || 0, saved.y || 0);
+    });
   }
 
   function resolveTheme(value) {
@@ -76,7 +116,10 @@
     }
 
     if (options.persist) {
-      try { localStorage.setItem(STORAGE_KEY, preference); } catch (error) { /* In-memory mode still works. */ }
+      try {
+        localStorage.setItem(STORAGE_KEY, preference);
+        options.persisted = true;
+      } catch (error) { /* In-memory mode still works. */ }
     }
 
     if (previousTheme && (previousTheme !== root.dataset.theme || options.forceEvent)) {
@@ -108,7 +151,9 @@
     }
     updateToggle();
     toggle.addEventListener('click', function () {
-      applyTheme(nextPreference(preference), { persist: true });
+      var options = { persist: true };
+      applyTheme(nextPreference(preference), options);
+      if (options.persisted) reloadIOSSafariAfterUserChange();
     });
 
     // Initial rendering never transitions. Subsequent changes use the shared CSS timing.
@@ -136,4 +181,5 @@
   } else {
     mountToggle();
   }
+  restoreReloadScroll();
 }());
