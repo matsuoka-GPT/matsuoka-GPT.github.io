@@ -217,6 +217,12 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
     assert "localStorage.setItem(STORAGE_KEY, preference)" in theme_script
     assert "prefers-color-scheme: dark" in theme_script
     assert "root.dataset.theme = resolveTheme(preference)" in theme_script
+    assert "root.classList.add('theme-switching')" in theme_script
+    assert "void root.offsetWidth" in theme_script
+    assert "root.classList.remove('theme-switching')" in theme_script
+
+    assert ".theme-switching *::before" in theme_css
+    assert "transition: none !important" in theme_css
     assert "window.siteTheme = Object.freeze" in theme_script
     assert "document.dispatchEvent(new CustomEvent('themechange'" in theme_script
     assert "window.addEventListener('storage'" in theme_script
