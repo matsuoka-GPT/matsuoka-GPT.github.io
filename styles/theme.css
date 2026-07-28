@@ -42,6 +42,19 @@
   --pale-blue-card-accent: #3b82f6;
 }
 
+/* Paint the viewport and document canvas from the same theme variables. This is
+   especially important for iOS overscroll areas, which Safari paints from html. */
+html {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 [data-theme="dark"] {
   color-scheme: dark;
   --bg-color: #081220;
@@ -283,6 +296,17 @@
 }
 .theme-ready :is(.math, .MathJax, mjx-container, svg, svg *, img) {
   transition: color var(--theme-transition-duration) var(--theme-transition-easing), fill var(--theme-transition-duration) var(--theme-transition-easing), stroke var(--theme-transition-duration) var(--theme-transition-easing), filter var(--theme-transition-duration) var(--theme-transition-easing), opacity var(--theme-transition-duration) var(--theme-transition-easing);
+}
+
+/* Safari can schedule transitions for composited descendants independently,
+   exposing the old theme underneath new gradients for a frame. theme.js applies
+   this before changing data-theme and removes it only after the unified paint. */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+  transition-delay: 0s !important;
 }
 
 @media (max-width: 600px) {

@@ -8,6 +8,7 @@
   var media = window.matchMedia('(prefers-color-scheme: dark)');
   var preference = readPreference();
   var toggle;
+  var switchFrame;
 
   function isPreference(value) {
     return PREFERENCES.indexOf(value) !== -1;
@@ -44,12 +45,35 @@
     if (!isPreference(value)) value = 'system';
 
     var previousTheme = root.dataset.theme;
+    var nextTheme = resolveTheme(value);
+    var isThemeChange = previousTheme && previousTheme !== nextTheme;
+
+    // WebKit may repaint separately composited backgrounds, shadows and filtered
+    // surfaces on different frames.  Put every element in a no-transition state
+    // before changing the theme, then retain it through the first themed paint.
+    if (isThemeChange) {
+      if (switchFrame) window.cancelAnimationFrame(switchFrame);
+      root.classList.add('theme-switching');
+      // Force WebKit to commit the transition override before variables change.
+      void root.offsetWidth;
+    }
     preference = value;
     // Both attributes are committed in the same JavaScript task, so every CSS variable
     // and component observes one coherent theme before the browser can paint again.
     root.dataset.themePreference = preference;
     root.dataset.theme = resolveTheme(preference);
     updateToggle();
+
+    if (isThemeChange) {
+      // Force all theme-dependent styles into the same layout/repaint batch.
+      void root.offsetWidth;
+      switchFrame = window.requestAnimationFrame(function () {
+        switchFrame = window.requestAnimationFrame(function () {
+          root.classList.remove('theme-switching');
+          switchFrame = null;
+        });
+      });
+    }
 
     if (options.persist) {
       try { localStorage.setItem(STORAGE_KEY, preference); } catch (error) { /* In-memory mode still works. */ }
