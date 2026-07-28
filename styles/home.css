@@ -155,7 +155,6 @@
         radial-gradient(1200px 720px at 85% 85%, rgba(43,100,255,.10), transparent 65%),
         linear-gradient(180deg, #ffffff, #f6f8ff 55%, #ffffff);
 
-      overflow-x:hidden;
     }
 
     body:before{
@@ -748,8 +747,78 @@
 }
 
 @media (max-width: 520px) {
+  /* Keep the phone layout inside the viewport without masking overflow. */
+  .wrap {
+    width: 100%;
+    padding: 56px 16px 36px;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .tags,
+  .topnav {
+    min-width: 0;
+  }
+
+  /* A backdrop-filter makes fixed tooltip panels use each tag as their
+     containing block, so their viewport-sized width spills off-screen. */
+  .tags .tag.tooltip {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .topnav {
+    justify-content: flex-start;
+  }
+
+  .hero {
+    padding: 18px 14px;
+  }
+
+  .hero-inner,
+  .hero-inner > *,
+  .profile-card,
+  .cta,
+  .box,
+  .card,
+  details,
+  details > div {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  img,
+  svg,
+  video,
+  iframe {
+    max-width: 100%;
+  }
+
+  .btn,
+  .assistant-button,
+  details.fold > summary {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .outputs-heading {
+    flex-direction: column;
+  }
+
   .research-identifiers {
-    grid-template-columns: minmax(105px, 1fr) minmax(130px, 1.35fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    column-gap: 12px;
+  }
+
+  .research-identifiers img {
+    width: auto;
+    height: auto;
+    object-fit: contain;
   }
 }
     
