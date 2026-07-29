@@ -2,10 +2,11 @@
 #backToTop {
   position: fixed;
   bottom: max(18px, env(safe-area-inset-bottom));
-  right: max(
+  right: auto;
+  left: clamp(
     var(--control-card-inset, 18px),
-    calc((100vw - var(--control-card-width, 980px)) / 2 + var(--control-card-inset, 18px)),
-    env(safe-area-inset-right)
+    calc(50% + var(--control-card-width, 980px) / 2 + var(--control-card-gap, 12px)),
+    calc(100vw - 72px - max(var(--control-card-inset, 18px), env(safe-area-inset-right)))
   );
   z-index: 9999;
   background: rgba(110, 201, 255, 0.5);
