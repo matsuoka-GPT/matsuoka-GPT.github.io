@@ -17,6 +17,7 @@ test('each language places one dynamic status beside the skip control', () => {
   for (const html of [english, japanese]) {
     assert.equal((html.match(/data-status/g) || []).length, 1);
     assert.equal((html.match(/class="step-label"/g) || []).length, 0);
+    assert.equal((html.match(/class="step-eyebrow"/g) || []).length, 0);
     assert.match(html, /<div class="tour-exit">\s*<p data-status[^>]*>[^<]+<\/p>\s*<button class="skip"[^>]*data-skip>/);
   }
   assert.match(styles, /\.tour-exit\s*\{[^}]*display:\s*flex;[^}]*flex-wrap:\s*wrap;/);

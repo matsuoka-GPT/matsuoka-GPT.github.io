@@ -292,7 +292,6 @@
 #workflow .research-map-callout strong { color: #fff; }
 #workflow .research-map-callout section { margin-top: .5rem; padding-left: .75rem; border-left: 2px solid rgba(86,168,255,.55); }
 #workflow .research-map-callout h3 { margin: 0 0 .12rem; color: #fff; font-size: clamp(.9rem, .96vw, 1rem); }
-#workflow .research-map-callout .step-eyebrow { color: #91c8ff; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 #workflow .research-map-callout .research-map-question { margin-bottom: .45rem; color: #91c8ff; font-weight: 800; }
 #workflow .research-map-callout .orientation-invitation { margin-top: .65rem; color: #fff; font-weight: 750; }
 
