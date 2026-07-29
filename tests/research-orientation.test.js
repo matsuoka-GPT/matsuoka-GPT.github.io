@@ -29,7 +29,23 @@ function load(hash = '') {
   const steps = ['welcome','hub','workflow','method','outputs','zenodo','assistant','explore'].map(id => {
     const heading = { focus() { heading.focused = true; } };
     const back = { disabled: false };
-    return { id, hidden: false, querySelector: s => s === 'h2' ? heading : back, heading, back };
+    const preview = { scrollTop: 0 };
+    const guide = { scrollTop: 0 };
+    return {
+      id,
+      hidden: false,
+      querySelector(selector) {
+        if (selector === 'h2') return heading;
+        if (selector === '[data-back]') return back;
+        if (selector === '.tour-stage > :first-child') return preview;
+        if (selector === '.callout') return guide;
+        return null;
+      },
+      heading,
+      back,
+      preview,
+      guide
+    };
   });
   const dots = steps.map(() => ({ attrs: {}, setAttribute(k,v){this.attrs[k]=v;}, removeAttribute(k){delete this.attrs[k];} }));
   const status = { textContent: '' };
@@ -86,6 +102,30 @@ test('next, back, skip, restart, and keyboard navigation change steps', () => {
   assert.equal(app.location.hash, '#hub');
   app.docListeners.keydown({ target: { closest: () => null }, key: 'Escape', preventDefault() {} });
   assert.equal(app.location.hash, '#explore');
+});
+
+test('every step navigation resets the active preview and guide panels independently', () => {
+  const app = load('#welcome');
+  for (let index = 1; index < app.steps.length; index += 1) {
+    app.steps[index].preview.scrollTop = 120 + index;
+    app.steps[index].guide.scrollTop = 240 + index;
+    app.listeners.click({ target: app.target('[data-next]') });
+    assert.equal(app.steps[index].preview.scrollTop, 0);
+    assert.equal(app.steps[index].guide.scrollTop, 0);
+  }
+
+  app.steps[0].preview.scrollTop = 360;
+  app.steps[0].guide.scrollTop = 480;
+  app.listeners.click({ target: app.target('[data-restart]') });
+  assert.equal(app.steps[0].preview.scrollTop, 0);
+  assert.equal(app.steps[0].guide.scrollTop, 0);
+
+  app.steps[3].preview.scrollTop = 600;
+  app.steps[3].guide.scrollTop = 720;
+  app.location.hash = '#method';
+  app.listeners.hashchange();
+  assert.equal(app.steps[3].preview.scrollTop, 0);
+  assert.equal(app.steps[3].guide.scrollTop, 0);
 });
 
 test('arrow keys do not override interactive controls', () => {
