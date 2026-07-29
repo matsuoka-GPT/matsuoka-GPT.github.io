@@ -212,8 +212,6 @@
       font-size:13px;
       color: #1a2133;
       box-shadow: 0 6px 18px rgba(18,26,40,.05);
-      justify-content:center;
-      text-align:center;
     }
 
     .pill{
@@ -246,7 +244,6 @@
       -webkit-backdrop-filter: blur(8px);
       color: #1a2133;
       opacity:.9;
-      text-align:center;
     }
     .topnav a:hover{
       border-color: var(--line);
@@ -532,6 +529,11 @@
     .tags .tag.tooltip{
       position: relative;
       cursor: pointer;
+    }
+
+    .tags .tag.tooltip:hover,
+    .tags .tag.tooltip.active{
+      z-index: 10000;
     }
 
     .tags .tag.tooltip .tip{
