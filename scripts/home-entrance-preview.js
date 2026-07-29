@@ -84,12 +84,40 @@
       link.classList.add('preview-link');
     });
 
+    var stage = document.createElement('div');
+    stage.className = 'research-hub-preview-stage';
+    stage.appendChild(content);
+
+    var stageSizer = document.createElement('div');
+    stageSizer.className = 'research-hub-preview-sizer';
+    stageSizer.appendChild(stage);
+
+    // Tour labels belong to the viewport rather than the scaled homepage card,
+    // so they remain legible at every preview size.
+    var markers = document.createElement('div');
+    markers.className = 'hub-preview-markers';
     var japanese = container.ownerDocument.documentElement.lang === 'ja';
-    addMarker(content, 'hub-marker hub-marker-architect', '📍 Concept Architect');
-    addMarker(content, 'hub-marker hub-marker-profiles', japanese ? '📍 研究プロフィール' : '📍 Research Profiles');
-    addMarker(content, 'hub-marker hub-marker-assistant', '📍 Assistant GPT');
-    addMarker(content, 'hub-marker hub-marker-explore', japanese ? '📍 ハブを探索' : '📍 Explore the Hub');
-    container.replaceChildren(content);
+    addMarker(markers, 'hub-marker hub-marker-architect', '📍 Concept Architect');
+    addMarker(markers, 'hub-marker hub-marker-profiles', japanese ? '📍 研究プロフィール' : '📍 Research Profiles');
+    addMarker(markers, 'hub-marker hub-marker-assistant', '📍 Assistant GPT');
+    addMarker(markers, 'hub-marker hub-marker-explore', japanese ? '📍 ハブを探索' : '📍 Explore the Hub');
+    container.replaceChildren(stageSizer, markers);
+
+    function sizeStage() {
+      var availableWidth = stageSizer.clientWidth;
+      var naturalWidth = stage.offsetWidth;
+      var scale = Math.min(1, availableWidth / naturalWidth);
+      stage.style.setProperty('--hub-preview-scale', scale);
+      stageSizer.style.height = (content.offsetHeight * scale) + 'px';
+    }
+    sizeStage();
+    if ('ResizeObserver' in window) {
+      var observer = new ResizeObserver(sizeStage);
+      observer.observe(stageSizer);
+      observer.observe(content);
+    } else {
+      window.addEventListener('resize', sizeStage);
+    }
     container.setAttribute('aria-busy', 'false');
   }
 
