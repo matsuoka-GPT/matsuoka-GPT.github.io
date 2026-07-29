@@ -22,6 +22,7 @@
 </script>
 <script src="../scripts/research-orientation.js" defer>
 </script>
+<script src="../scripts/home-entrance-preview.js" defer></script>
 </head>
 <body class="orientation-page">
 <header class="orientation-header container">
@@ -81,23 +82,9 @@
 </div>
 <article class="tour-step" id="welcome" data-step tabindex="-1" aria-labelledby="welcome-title">
 <div class="tour-stage">
-<div class="welcome-overview">
-<div class="entrance-map">
-<img src="../images/lab-hero-ja.png" alt="松岡×GPT思考実験ラボ — 人間とAIによる共同研究">
-<span class="entrance-map-label guide-marker">📍 ここからスタート</span>
-</div>
-<div class="map-point map-point-philosophy">
-<span class="guide-marker">📍 研究哲学</span>
-<p class="orientation-topic">▣ はじめに — 私たちの研究哲学</p>
-</div>
-<div class="map-point map-point-tour">
-<span class="guide-marker">📍 ツアーを始める</span>
-<p class="orientation-action">◇ Research Orientationを始める</p>
-</div>
-<blockquote>本質を理解するとは、構造を把握すること。構造なき理解は、単なる知識にすぎない。</blockquote>
-<p><strong>このラボは単一分野の研究所ではなく、知性がどのように使われるかを検証し、公開するためのパブリックラボです。</strong></p>
-<p>人間の仮説（構造）とAIによる検証（整合性）を組み合わせ、分野横断的な思考実験を再現可能な成果物として整理し、公開します。</p>
-<details><summary>研究プロフィール</summary><p>このオリエンテーションでは、ラボの構造と研究原記録への経路を紹介します。</p></details>
+<div class="welcome-overview" data-home-entrance-preview data-home-url="index.html" data-orientation-label="現在、研究オリエンテーション内にいます" aria-label="ラボホームページ入口のインタラクティブプレビュー" aria-busy="true">
+<p class="preview-loading" role="status">ホームページ入口のライブプレビューを読み込んでいます…</p>
+<noscript><p>インタラクティブプレビューにはJavaScriptが必要です。「ラボホームへ戻る」リンクから入口をご覧ください。</p></noscript>
 </div>
 <div class="callout">
 <h2 id="welcome-title" tabindex="-1">ラボへようこそ</h2>
@@ -105,6 +92,7 @@
 <p>ようこそ。ここが探索のスタート地点です。</p>
 <p>左のマップが、現在地とルートの始まりを示しています。</p>
 <p class="map-message">これはレッスンではなく、探索のためのマップです。</p>
+<p class="preview-guidance">プレビューをお試しください：強調表示されたリンクは新しいタブで開くため、実際のサイトを探索していつでもツアーに戻れます。</p>
 <p>これから各エリアを一緒に巡ります。今すべてを理解する必要はありません。現在地と次の行き先がわかれば十分です。</p>
 <aside class="assistant-note" aria-labelledby="welcome-help-title">
 <strong id="welcome-help-title">お困りですか？</strong>

@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="styles/research-orientation.css">
 <script src="scripts/research-orientation.js" defer>
 </script>
+<script src="scripts/home-entrance-preview.js" defer></script>
 </head>
 <body class="orientation-page">
 <header class="orientation-header container">
@@ -78,23 +79,9 @@
 </div>
 <article class="tour-step" id="welcome" data-step tabindex="-1" aria-labelledby="welcome-title">
 <div class="tour-stage">
-<div class="welcome-overview">
-<div class="entrance-map">
-<img src="images/lab-hero-en.png" alt="Matsuoka × GPT Co-Intelligence Lab — Collaborative Research, AI × Human">
-<span class="entrance-map-label guide-marker">📍 Start Here</span>
-</div>
-<div class="map-point map-point-philosophy">
-<span class="guide-marker">📍 Research Philosophy</span>
-<p class="orientation-topic"><span aria-hidden="true">📖</span> Introduction – Our Research Philosophy</p>
-</div>
-<div class="map-point map-point-tour">
-<span class="guide-marker">📍 Begin the Tour</span>
-<p class="orientation-action"><span aria-hidden="true">◇</span> Take the Research Orientation</p>
-</div>
-<p class="entrance-quote">To understand essence is to grasp structure. Understanding without structure is merely knowledge.</p>
-<p class="entrance-languages" aria-label="Language selector shown on the laboratory homepage"><span>EN 🇺🇸</span><span aria-hidden="true">|</span><span>JP 🇯🇵</span></p>
-<p class="entrance-introduction">This is not a lab for a single domain, but a public lab that tests and publishes <strong>how intelligence is used.</strong></p>
-<details><summary>Research Profile</summary></details>
+<div class="welcome-overview" data-home-entrance-preview data-home-url="index.html" data-orientation-label="You are already in the Research Orientation" aria-label="Interactive preview of the laboratory homepage entrance" aria-busy="true">
+<p class="preview-loading" role="status">Loading the live homepage entrance…</p>
+<noscript><p>The interactive homepage preview requires JavaScript. Use the Back to Lab Home link to visit the entrance.</p></noscript>
 </div>
 <div class="callout">
 <h2 id="welcome-title" tabindex="-1">Welcome to the Lab</h2>
@@ -102,6 +89,7 @@
 <p>Welcome. This is your starting point.</p>
 <p>The map on the left shows where you are and where the route begins.</p>
 <p class="map-message">Think of it as a map, not a lesson.</p>
+<p class="preview-guidance">Try the preview: Highlighted links open in a new tab, so you can explore the real website and return to the tour at any time.</p>
 <p>We'll visit each area together. You don't need to understand everything yet—only where you are and where to go next.</p>
 <aside class="assistant-note" aria-labelledby="welcome-help-title">
 <strong id="welcome-help-title">Need Help?</strong>
