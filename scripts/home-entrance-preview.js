@@ -121,6 +121,61 @@
     container.setAttribute('aria-busy', 'false');
   }
 
+  function buildResearchPreview(container, source, homeUrl) {
+    var projects = source.querySelector('#projects');
+    var method = source.querySelector('#method');
+    if (!projects || !method) throw new Error('Homepage Projects or Method section was not found');
+
+    var content = document.createElement('div');
+    content.className = 'research-map-preview-content light-preview';
+    [projects, method].forEach(function (section) {
+      var clone = section.cloneNode(true);
+      // The Orientation document owns its own navigation IDs. The homepage IDs
+      // are intentionally omitted from the live copy to keep every ID unique.
+      clone.removeAttribute('id');
+      clone.classList.add('research-map-section');
+      content.appendChild(clone);
+    });
+
+    content.querySelectorAll('[src]').forEach(function (element) {
+      element.setAttribute('src', absoluteUrl(element.getAttribute('src'), homeUrl));
+    });
+    content.querySelectorAll('a[href]').forEach(function (link) {
+      link.setAttribute('href', absoluteUrl(link.getAttribute('href'), homeUrl));
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.classList.add('preview-link');
+    });
+
+    var headings = content.querySelectorAll('h2');
+    var japanese = container.ownerDocument.documentElement.lang === 'ja';
+    if (headings[0]) addMarker(headings[0], 'research-marker research-marker-projects', japanese ? '📍 プロジェクト' : '📍 Projects');
+    if (headings[1]) addMarker(headings[1], 'research-marker research-marker-method', japanese ? '📍 方法論' : '📍 Method');
+
+    var stage = document.createElement('div');
+    stage.className = 'research-map-preview-stage';
+    stage.appendChild(content);
+    var sizer = document.createElement('div');
+    sizer.className = 'research-map-preview-sizer';
+    sizer.appendChild(stage);
+    container.replaceChildren(sizer);
+
+    function sizeStage() {
+      var scale = Math.min(1, sizer.clientWidth / stage.offsetWidth);
+      stage.style.setProperty('--research-preview-scale', scale);
+      sizer.style.height = (content.offsetHeight * scale) + 'px';
+    }
+    sizeStage();
+    if ('ResizeObserver' in window) {
+      var observer = new ResizeObserver(sizeStage);
+      observer.observe(sizer);
+      observer.observe(content);
+    } else {
+      window.addEventListener('resize', sizeStage);
+    }
+    container.setAttribute('aria-busy', 'false');
+  }
+
   function showError(container) {
     var message = document.createElement('p');
     message.className = 'preview-error';
@@ -142,6 +197,8 @@
         var source = new DOMParser().parseFromString(html, 'text/html');
         if (container.hasAttribute('data-home-hub-preview')) {
           buildHubPreview(container, source, homeUrl);
+        } else if (container.hasAttribute('data-home-research-preview')) {
+          buildResearchPreview(container, source, homeUrl);
         } else {
           buildPreview(container, source, homeUrl);
         }
@@ -151,4 +208,5 @@
 
   document.querySelectorAll('[data-home-entrance-preview]').forEach(mount);
   document.querySelectorAll('[data-home-hub-preview]').forEach(mount);
+  document.querySelectorAll('[data-home-research-preview]').forEach(mount);
 }());

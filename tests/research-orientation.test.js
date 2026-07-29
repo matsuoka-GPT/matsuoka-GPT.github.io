@@ -186,3 +186,25 @@ test('step two mounts the shared homepage Research Hub as an interactive light p
   assert.match(styles, /\.orientation-preview--light \.hub-preview-content img\s*\{[^}]*filter:\s*none !important;[^}]*opacity:\s*1 !important;/s);
   assert.match(styles, /\.hub-preview-content \.preview-link:focus-visible\s*\{[^}]*outline:\s*3px solid #155ed0;/s);
 });
+
+test('step three mounts only the shared homepage Projects and Method research map', () => {
+  for (const html of [english, japanese]) {
+    assert.match(html, /id="workflow"[^>]*data-step/);
+    assert.match(html, /data-home-research-preview/);
+    assert.match(html, /class="research-map-overview orientation-preview--light"/);
+    assert.doesNotMatch(html, /<div class="visual visual-flow"/);
+  }
+  const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
+  assert.match(previewSource, /source\.querySelector\('#projects'\)/);
+  assert.match(previewSource, /source\.querySelector\('#method'\)/);
+  assert.match(previewSource, /clone\.removeAttribute\('id'\)/);
+  assert.match(previewSource, /document\.querySelectorAll\('\[data-home-research-preview\]'\)\.forEach\(mount\)/);
+  assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
+  assert.match(previewSource, /setAttribute\('rel', 'noopener noreferrer'\)/);
+  assert.match(previewSource, /addMarker\(headings\[0\], 'research-marker research-marker-projects'/);
+  assert.match(previewSource, /addMarker\(headings\[1\], 'research-marker research-marker-method'/);
+  assert.match(styles, /\.research-map-preview-stage\s*\{[^}]*width:\s*980px;[^}]*transform:\s*scale\(var\(--research-preview-scale, 1\)\);[^}]*transform-origin:\s*top left;/s);
+  assert.match(styles, /\.research-map-preview-content \.cards\s*\{[^}]*grid-template-columns:\s*repeat\(4, 1fr\);/s);
+  assert.match(styles, /\.research-map-preview-content \.card\s*\{[^}]*min-height:\s*132px;[^}]*padding:\s*14px 14px 12px;/s);
+  assert.match(styles, /\.research-map-preview-content \.guide-marker\.research-marker\s*\{[^}]*background:\s*rgba\(255,255,255,\.97\);[^}]*color:\s*#1f2937 !important;/s);
+});

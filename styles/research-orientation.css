@@ -260,6 +260,52 @@
 .hub-preview-markers .hub-marker-assistant { top: 326px; right: 20px; }
 .hub-preview-markers .hub-marker-explore { right: 20px; bottom: 82px; }
 
+/* Step 3: the homepage Projects and Method sections at their original scale. */
+.research-map-overview { min-width: 0; padding: clamp(18px, 2vw, 30px); overflow: auto; border-radius: 22px; background: #f8fafc; box-shadow: 0 20px 55px rgba(0,5,14,.28); }
+.research-map-preview-sizer { position: relative; width: 100%; }
+.research-map-preview-stage { width: 980px; max-width: none; transform: scale(var(--research-preview-scale, 1)); transform-origin: top left; }
+.research-map-preview-content { padding: 1px 0 24px; color: #111; }
+.research-map-preview-content .research-map-section { margin-top: 26px; }
+.research-map-preview-content h2 { position: relative; margin: 0 0 10px; color: #111827 !important; font-size: 20px; line-height: 1.7; letter-spacing: .02em; }
+.research-map-preview-content .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.research-map-preview-content .card { position: relative; min-height: 132px; padding: 14px 14px 12px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.82); color: #111; box-shadow: var(--shadow); }
+.research-map-preview-content .card .ico { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; margin-bottom: 10px; border: 1px solid rgba(43,100,255,.18); border-radius: 12px; background: rgba(43,100,255,.08); }
+.research-map-preview-content .card svg { width: 20px; height: 20px; stroke: var(--accent2); }
+.research-map-preview-content .card strong { display: block; margin-bottom: 6px; color: #111827 !important; font-size: 14px; }
+.research-map-preview-content .card p { margin: 0; color: #475569 !important; font-size: 12.8px; line-height: 1.7; }
+.research-map-preview-content .box { padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.62); color: #111; box-shadow: var(--shadow); }
+.research-map-preview-content .box li { color: #111 !important; }
+.orientation-page[data-theme="dark"] .research-map-preview-content .card,
+[data-theme="dark"] .research-map-preview-content .card { border-color: var(--line) !important; background: rgba(255,255,255,.82) !important; box-shadow: var(--shadow) !important; }
+.orientation-page[data-theme="dark"] .research-map-preview-content .box,
+[data-theme="dark"] .research-map-preview-content .box { border-color: var(--line) !important; background: rgba(255,255,255,.62) !important; color: #111 !important; box-shadow: var(--shadow) !important; }
+.orientation-page[data-theme="dark"] .research-map-preview-content .box > div,
+[data-theme="dark"] .research-map-preview-content .box > div { border-color: #e6e6e6 !important; background: #fafafa !important; color: #555 !important; }
+.research-map-preview-content .preview-link:focus-visible { outline: 3px solid #155ed0; outline-offset: 3px; }
+.research-map-preview-content .guide-marker.research-marker { position: absolute; top: -2px; left: 145px; padding: .35rem .7rem; border: 1px solid #cbd5e1; border-radius: 999px; background: rgba(255,255,255,.97); color: #1f2937 !important; box-shadow: 0 4px 12px rgba(15,23,42,.12); font-size: .8rem; white-space: nowrap; pointer-events: none; }
+.research-map-preview-content .research-marker-method { left: 125px; }
+#workflow .research-map-callout { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-start; max-height: none; margin: 0; padding: clamp(22px, 2.2vw, 34px) clamp(26px, 3vw, 42px); overflow: auto; border-radius: 22px; background: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97)); color: #eef5ff; box-shadow: inset 0 1px rgba(255,255,255,.05); }
+#workflow .research-map-callout h2 { margin: 0 0 .6rem; color: #f6f9ff; font-size: clamp(1.75rem, 2vw, 2.25rem); }
+#workflow .research-map-callout .title-rule { display: block; width: 80px; height: 4px; margin: 0 0 .6rem; border-radius: 3px; background: #2f6eff; }
+#workflow .research-map-callout :is(p, h3) { color: #e6edf7; }
+#workflow .research-map-callout p { margin: .28rem 0; font-size: clamp(.82rem, .9vw, .96rem); line-height: 1.48; }
+#workflow .research-map-callout strong { color: #fff; }
+#workflow .research-map-callout section { margin-top: .5rem; padding-left: .75rem; border-left: 2px solid rgba(86,168,255,.55); }
+#workflow .research-map-callout h3 { margin: 0 0 .12rem; color: #fff; font-size: clamp(.9rem, .96vw, 1rem); }
+#workflow .research-map-callout .step-eyebrow { color: #91c8ff; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+#workflow .research-map-callout .research-map-question { margin-bottom: .45rem; color: #91c8ff; font-weight: 800; }
+#workflow .research-map-callout .orientation-invitation { margin-top: .65rem; color: #fff; font-weight: 750; }
+
+@media (max-width: 900px) {
+  .research-map-overview { max-height: 690px; }
+  #workflow .research-map-callout { min-height: 0; overflow: visible; }
+}
+@media (max-width: 600px) {
+  .research-map-overview { padding: 15px; border-radius: 16px; }
+  #workflow .research-map-callout { padding: 28px 22px; border-radius: 16px; }
+  #workflow .research-map-callout p, #workflow .research-map-callout h3 { font-size: 1rem; line-height: 1.65; }
+}
+
 @media (max-width: 600px) {
   .hub-preview-markers .hub-marker-architect { top: 20px; left: 20px; right: auto; }
   .hub-preview-markers .hub-marker-profiles { top: 105px; }
