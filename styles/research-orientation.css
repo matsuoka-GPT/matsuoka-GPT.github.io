@@ -71,3 +71,55 @@
 @media (max-width: 460px) { .tour-intro { padding-top: 2.5rem; }.orientation-header { padding-right: 7.5rem; align-items:flex-start; flex-direction:column; }.step-actions { display:grid; grid-template-columns:1fr 1.4fr; }.tour-button { padding-inline:.6rem; font-size:.85rem; }.visual { min-height:230px; padding:1rem; }.visual-sections > span { width:48%; padding:.8rem; }.visual-network .node { min-width:75px; font-size:.72rem; }.visual-network .core { min-width:105px; }.callout { padding:1.25rem; }.tour-status > p { min-width:0; font-size:.85rem; }.skip { font-size:.82rem; }.progress a { width:12px; height:12px; } }
 @media (prefers-reduced-motion: reduce) { .orientation-page *, .orientation-page *::before, .orientation-page *::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; animation-iteration-count:1!important; } }
 #explore .callout { max-height: none; }
+
+/* Lab-tour presentation: the first step follows the supplied orientation mockup. */
+.orientation-page .container { max-width: 1500px; padding-inline: clamp(18px, 2vw, 30px); }
+.orientation-page { min-height: 100vh; background: radial-gradient(circle at 50% 35%, rgba(25,72,126,.16), transparent 45%), #061525; }
+.orientation-header { position: relative; min-height: 62px; border-bottom: 1px solid var(--border-color); }
+.orientation-header h1 { position: absolute; left: 50%; margin: 0; transform: translateX(-50%); color: var(--heading-color); font-size: clamp(1.2rem, 2vw, 1.85rem); line-height: 1.2; white-space: nowrap; }
+.orientation-header a { color: var(--text-color); }
+.orientation-header .home-link { display: inline-flex; gap: .5rem; align-items: center; }
+.language-link { display: inline-flex; align-items: center; gap: .45rem; min-height: 42px; margin-left: auto; margin-right: 130px; padding: .45rem .85rem; border: 1px solid var(--border-color); border-radius: 11px; background: var(--control-surface-color); }
+.orientation-page .theme-toggle { top: 10px; right: 18px; left: auto; min-height: 42px; }
+.tour { padding-top: 20px; }
+.tour-status { margin-top: 1rem; }
+.tour-stage { grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr); min-height: min(71vh, 720px); border: 0; border-radius: 0; background: transparent; box-shadow: none; gap: 22px; overflow: visible; }
+.welcome-overview { min-width: 0; padding: clamp(20px, 2.5vw, 38px); overflow: auto; border-radius: 22px; background: #f8fafc; color: #101827; box-shadow: 0 20px 55px rgba(0,5,14,.28); }
+.welcome-overview img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.welcome-overview p { margin: .75rem 0; }
+.welcome-overview .orientation-topic { display: table; margin: 1.15rem auto; padding: .45rem 1.2rem; border-radius: 999px; background: #e9f1ff; color: #155ed0; font-weight: 800; }
+.welcome-overview .orientation-action { display: table; padding: .55rem 1.1rem; border: 1px solid #cbd5e1; border-radius: 999px; color: #155ed0; font-weight: 800; }
+.welcome-overview blockquote { margin: 1rem 0; padding: 0; border: 0; background: transparent; color: #4b5563; font-style: italic; }
+.welcome-overview details { margin-top: .8rem; padding: .65rem 1rem; border-radius: 10px; background: #e9edf3; }
+.welcome-overview summary { cursor: pointer; font-weight: 750; }
+.orientation-page .welcome-overview :is(p, blockquote, summary, details, strong) { color: #101827 !important; }
+.orientation-page .welcome-overview blockquote { background: transparent !important; box-shadow: none !important; color: #4b5563 !important; }
+.orientation-page .welcome-overview details { background: #e9edf3 !important; background-image: none !important; box-shadow: none !important; }
+#welcome .callout { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-start; max-height: none; margin: 0; padding: clamp(36px, 4vw, 60px) clamp(30px, 4vw, 56px); border-radius: 22px; background: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97)); color: #eef5ff; box-shadow: inset 0 1px rgba(255,255,255,.05); }
+#welcome .step-label { align-self: flex-start; padding: .45rem 1rem; border-radius: 999px; background: linear-gradient(120deg,#155ed0,#284ad4); color: #fff; letter-spacing: 0; text-transform: none; font-size: .95rem; }
+#welcome .callout h2 { margin-top: 1.4rem; color: #f6f9ff; font-size: clamp(2rem, 3.1vw, 3rem); line-height: 1.35; }
+#welcome .callout p:not(.step-label) { color: #e6edf7; font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 2; }
+#welcome .title-rule { display: block; width: 80px; height: 4px; margin: 0 0 1rem; border-radius: 3px; background: #2f6eff; }
+.step-actions { padding-top: 14px; }
+.tour-button { min-height: 48px; }
+
+@media (max-width: 900px) {
+  .orientation-header h1 { position: static; order: -1; width: 100%; transform: none; text-align: center; }
+  .orientation-header { flex-wrap: wrap; }
+  .language-link { margin-right: 120px; }
+  .tour-stage { display: flex; flex-direction: column; }
+  #welcome .callout { min-height: 410px; }
+}
+@media (max-width: 600px) {
+  .orientation-header { display: grid; grid-template-columns: 1fr auto; padding-right: 16px; }
+  .orientation-header h1 { grid-column: 1 / -1; font-size: 1.1rem; }
+  .orientation-header h1 span { display: none; }
+  .language-link { margin: 0 108px 0 0; padding-inline: .65rem; }
+  .orientation-page .theme-toggle { right: 12px; min-height: 40px; }
+  .tour { padding-top: 12px; }
+  .welcome-overview { padding: 15px; border-radius: 16px; }
+  .welcome-overview .orientation-topic { border-radius: 12px; text-align: center; }
+  #welcome .callout { min-height: 0; padding: 28px 22px; border-radius: 16px; }
+  #welcome .callout h2 { font-size: 1.75rem; }
+  #welcome .callout p:not(.step-label) { font-size: 1rem; line-height: 1.8; }
+}

@@ -42,7 +42,7 @@
     });
     var initial = indexFromHash();
     if (window.location.hash && initial === 0 && window.location.hash !== '#welcome') window.history.replaceState(null, '', '#welcome');
-    show(initial, { hash: !window.location.hash, focus: false });
+    show(initial, { hash: false, focus: false });
   }
   function init() { document.querySelectorAll('[data-tour]').forEach(mount); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
