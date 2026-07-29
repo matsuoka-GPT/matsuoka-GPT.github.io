@@ -4,6 +4,12 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 
 const source = fs.readFileSync(new URL('../scripts/research-orientation.js', `file://${__filename}`), 'utf8');
+const styles = fs.readFileSync(new URL('../styles/research-orientation.css', `file://${__filename}`), 'utf8');
+
+test('interactive steps share the same top edge while the no-script fallback remains spaced', () => {
+  assert.match(styles, /\.tour-step \+ \.tour-step\s*\{\s*margin-top:\s*4rem;/);
+  assert.match(styles, /\.tour-js \.tour-step\s*\{\s*margin-top:\s*0;/);
+});
 
 function load(hash = '') {
   const listeners = {};

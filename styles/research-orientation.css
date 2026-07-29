@@ -18,6 +18,9 @@
 .tour-step { scroll-margin-top: 1rem; }
 .tour-step + .tour-step { margin-top: 4rem; }
 .tour-js .tour-step[hidden] { display: none; }
+/* In the interactive tour every exhibit occupies the same frame. The spacing
+   above later steps is only needed by the no-JavaScript, all-steps fallback. */
+.tour-js .tour-step { margin-top: 0; }
 .tour-stage { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(310px, .88fr); min-height: 530px; overflow: hidden; border: 1px solid var(--border-color); border-radius: 26px; background: linear-gradient(135deg, color-mix(in srgb, var(--surface-color) 90%, #2563eb 10%), var(--card-color)); box-shadow: 0 22px 60px var(--shadow-color); }
 .visual { position: relative; display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 310px; padding: 2rem; overflow: hidden; background: radial-gradient(circle at 50% 45%, rgba(34,211,238,.15), transparent 32%), linear-gradient(145deg, rgba(37,99,235,.11), rgba(124,58,237,.12)); color: var(--heading-color); }
 .visual::before { content: ""; position: absolute; inset: 0; opacity: .3; background-image: linear-gradient(rgba(80,120,180,.25) 1px, transparent 1px), linear-gradient(90deg, rgba(80,120,180,.25) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to bottom, black, transparent); }
