@@ -710,4 +710,22 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-jp.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/essays/is-it-rational-to-live-in-space-en.html" />
   </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/research-orientation.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/research-orientation.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/research-orientation.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/research-orientation.html" />
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/jp/research-orientation.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/research-orientation.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/research-orientation.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/research-orientation.html" />
+  </url>
 </urlset>

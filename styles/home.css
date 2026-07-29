@@ -830,3 +830,8 @@
   }
 }
     
+
+.orientation-entry { margin: 0 0 18px; }
+.orientation-entry a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--border-color, #d0d7de); border-radius: 999px; background: var(--surface-color, #f6f8fa); color: var(--link-color, #1d4ed8); text-decoration: none; font-weight: 700; font-size: .95rem; }
+.orientation-entry a:hover { border-color: currentColor; }
+.orientation-entry a:focus-visible { outline: 2px solid var(--focus-color, #0969da); outline-offset: 3px; }
