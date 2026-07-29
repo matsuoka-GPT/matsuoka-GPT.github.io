@@ -141,7 +141,7 @@
   #welcome .callout p:not(.step-label) { font-size: 1rem; line-height: 1.8; }
 }
 
-/* Step 2: a faithful, non-interactive view of the homepage information desk. */
+/* Step 2: a faithful, non-interactive view of the homepage research hub. */
 .hub-overview { position: relative; min-width: 0; padding: clamp(18px, 2vw, 30px); overflow: auto; border-radius: 22px; background: #f8fafc; color: #182033; box-shadow: 0 20px 55px rgba(0,5,14,.28); }
 .hub-overview :is(p, h3, li, strong, span) { color: inherit; }
 .hub-profile-head { position: relative; display: flex; align-items: center; gap: 20px; padding-bottom: 22px; }
@@ -174,20 +174,23 @@
 .hub-marker-profiles { top: 1px; right: 0; }
 .hub-marker-assistant { top: 10px; right: 12px; }
 .hub-marker-explore { right: 0; bottom: 4px; }
-#hub .callout { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-start; max-height: none; margin: 0; padding: clamp(22px, 2.2vw, 34px) clamp(26px, 3vw, 42px); border-radius: 22px; background: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97)); color: #eef5ff; box-shadow: inset 0 1px rgba(255,255,255,.05); }
+#hub .callout { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-start; max-height: none; margin: 0; padding: clamp(22px, 2.2vw, 34px) clamp(26px, 3vw, 42px); overflow: auto; border-radius: 22px; background: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97)); color: #eef5ff; box-shadow: inset 0 1px rgba(255,255,255,.05); }
 #hub .step-label { align-self: flex-start; padding: .45rem 1rem; border-radius: 999px; background: linear-gradient(120deg,#155ed0,#284ad4); color: #fff; letter-spacing: 0; text-transform: none; font-size: .95rem; }
 #hub .callout h2 { margin: .65rem 0 .6rem; color: #f6f9ff; font-size: clamp(1.75rem, 2vw, 2.25rem); line-height: 1.2; }
 #hub .title-rule { display: block; width: 80px; height: 4px; margin: 0 0 .6rem; border-radius: 3px; background: #2f6eff; }
 #hub .callout p { margin: .28rem 0; color: #e6edf7; font-size: clamp(.86rem, .92vw, .98rem); line-height: 1.48; }
 #hub .callout strong { color: #fff; }
-.hub-options { display: grid; gap: .25rem; margin: .1rem 0 .45rem; padding: 0; list-style: none; }
-.hub-options li { color: #e6edf7; font-size: clamp(.84rem, .9vw, .96rem); line-height: 1.42; }
-.hub-options li span { display: inline-block; width: 1.7rem; }
+.hub-guide { display: grid; gap: .42rem; margin: .55rem 0; }
+.hub-guide div { padding-left: .75rem; border-left: 2px solid rgba(86,168,255,.55); }
+.hub-guide dt { color: #fff; font-size: clamp(.84rem, .9vw, .96rem); font-weight: 800; line-height: 1.3; }
+.hub-guide dd { margin: .08rem 0 0; color: #d7e2ef; font-size: clamp(.78rem, .84vw, .9rem); line-height: 1.38; }
+#hub .callout .hub-members-path { margin-top: .4rem; color: #d7e2ef; font-size: clamp(.78rem, .84vw, .9rem); }
+#hub .hub-members-path a { color: #91c8ff; font-weight: 750; text-underline-offset: .15em; }
 #hub .callout .orientation-invitation { margin-top: .65rem; color: #fff; font-weight: 750; }
 
 @media (max-width: 900px) {
   .hub-overview { max-height: 690px; }
-  #hub .callout { min-height: 0; }
+  #hub .callout { min-height: 0; overflow: visible; }
 }
 @media (max-width: 600px) {
   .hub-overview { padding: 15px; border-radius: 16px; }
@@ -200,7 +203,7 @@
   .hub-marker-explore { bottom: -30px; }
   .hub-note { margin-top: 42px; }
   #hub .callout { padding: 28px 22px; border-radius: 16px; }
-  #hub .callout p, .hub-options li { font-size: 1rem; line-height: 1.65; }
+  #hub .callout p, .hub-guide dt, .hub-guide dd { font-size: 1rem; line-height: 1.65; }
 }
 .hub-overview .guide-marker { color: #fff !important; }
 #hub .callout .hub-question { margin-bottom: .45rem; color: #91c8ff; font-weight: 800; }
