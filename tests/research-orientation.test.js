@@ -225,5 +225,8 @@ test('step four mounts the shared homepage Outputs archive as a live light previ
   assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
   assert.match(previewSource, /noopener noreferrer/);
   assert.match(styles, /\.outputs-preview-stage\s*\{[^}]*width:\s*980px;[^}]*transform:\s*scale\(var\(--outputs-preview-scale, 1\)\)/s);
+  assert.match(styles, /\.outputs-preview-content \.fold-body\s*\{[^}]*background:\s*#fff !important;[^}]*background-image:\s*none !important;[^}]*color:\s*#111827 !important;/s);
+  assert.match(styles, /\[data-theme="dark"\] \.orientation-preview--light \.outputs-preview-content details\.fold\s*\{[^}]*background:\s*#fff !important;[^}]*background-image:\s*none !important;/s);
+  assert.match(styles, /\[data-theme="dark"\] \.orientation-preview--light \.outputs-preview-content \.outputs-grid li\s*\{[^}]*background:\s*#fff !important;[^}]*background-image:\s*none !important;[^}]*color:\s*#111827 !important;/s);
   assert.match(styles, /#outputs \.outputs-callout/);
 });
