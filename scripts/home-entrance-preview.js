@@ -241,8 +241,12 @@
     if (headings[1]) addMarker(headings[1], 'outputs-marker outputs-marker-categories', japanese ? '📍 研究カテゴリー' : '📍 Research Categories');
     var analytics = content.querySelector('.analytics-link');
     if (analytics) addMarker(content, 'outputs-marker outputs-marker-analytics', japanese ? '📍 分析ダッシュボード' : '📍 Analytics Dashboard');
-    var paper = content.querySelector('.outputs-grid a[href]');
-    if (paper) addMarker(paper.closest('li'), 'outputs-marker outputs-marker-archive', japanese ? '📍 Zenodoアーカイブ' : '📍 Zenodo Archive');
+    if (summary) {
+      var archiveMarkerRow = document.createElement('div');
+      archiveMarkerRow.className = 'outputs-archive-marker-row';
+      addMarker(archiveMarkerRow, 'outputs-marker outputs-marker-archive', japanese ? '📍 Zenodoアーカイブ' : '📍 Zenodo Archive');
+      summary.querySelector('.outputs-heading').after(archiveMarkerRow);
+    }
     var media = content.querySelector('summary a[href*="cosmic-phase"]');
     if (media) addMarker(media.parentElement, 'outputs-marker outputs-marker-media', japanese ? '📍 研究メディア' : '📍 Research Media');
 

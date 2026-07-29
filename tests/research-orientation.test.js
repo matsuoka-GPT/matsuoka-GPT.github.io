@@ -224,7 +224,11 @@ test('step four mounts the shared homepage Outputs archive as a live light previ
   assert.match(previewSource, /zenodo_records\.json/);
   assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
   assert.match(previewSource, /noopener noreferrer/);
+  assert.match(previewSource, /archiveMarkerRow\.className = 'outputs-archive-marker-row'/);
+  assert.match(previewSource, /summary\.querySelector\('\.outputs-heading'\)\.after\(archiveMarkerRow\)/);
+  assert.doesNotMatch(previewSource, /addMarker\(paper\.closest\('li'\), 'outputs-marker outputs-marker-archive'/);
   assert.match(styles, /\.outputs-preview-stage\s*\{[^}]*width:\s*980px;[^}]*transform:\s*scale\(var\(--outputs-preview-scale, 1\)\)/s);
+  assert.match(styles, /\.outputs-preview-content \.guide-marker\.outputs-marker-archive\s*\{[^}]*position:\s*static;[^}]*display:\s*inline-flex;/s);
   assert.match(styles, /\.outputs-preview-content \.fold-body\s*\{[^}]*background:\s*#fff !important;[^}]*background-image:\s*none !important;[^}]*color:\s*#111827 !important;/s);
   assert.match(styles, /\[data-theme="dark"\] \.orientation-preview--light \.outputs-preview-content details\.fold\s*\{[^}]*background:\s*#fff !important;[^}]*background-image:\s*none !important;/s);
   assert.match(styles, /\[data-theme="dark"\] \.orientation-preview--light \.outputs-preview-content \.outputs-grid li\s*\{[^}]*background:\s*#fff !important;[^}]*background-image:\s*none !important;[^}]*color:\s*#111827 !important;/s);
