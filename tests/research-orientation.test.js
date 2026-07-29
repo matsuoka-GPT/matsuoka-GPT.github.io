@@ -8,7 +8,7 @@ const source = fs.readFileSync(new URL('../scripts/research-orientation.js', `fi
 function load(hash = '') {
   const listeners = {};
   const docListeners = {};
-  const steps = ['welcome','network','workflow','method','outputs','zenodo','assistant','explore'].map(id => {
+  const steps = ['welcome','hub','workflow','method','outputs','zenodo','assistant','explore'].map(id => {
     const heading = { focus() { heading.focused = true; } };
     const back = { disabled: false };
     return { id, hidden: false, querySelector: s => s === 'h2' ? heading : back, heading, back };
@@ -57,7 +57,7 @@ test('invalid hash safely resolves to welcome', () => {
 test('next, back, skip, restart, and keyboard navigation change steps', () => {
   const app = load('#welcome');
   app.listeners.click({ target: app.target('[data-next]') });
-  assert.equal(app.location.hash, '#network');
+  assert.equal(app.location.hash, '#hub');
   app.listeners.click({ target: app.target('[data-back]') });
   assert.equal(app.location.hash, '#welcome');
   app.listeners.click({ target: app.target('[data-skip]') });
@@ -65,7 +65,7 @@ test('next, back, skip, restart, and keyboard navigation change steps', () => {
   app.listeners.click({ target: app.target('[data-restart]') });
   assert.equal(app.location.hash, '#welcome');
   app.docListeners.keydown({ target: { closest: () => null }, key: 'ArrowRight', preventDefault() {} });
-  assert.equal(app.location.hash, '#network');
+  assert.equal(app.location.hash, '#hub');
   app.docListeners.keydown({ target: { closest: () => null }, key: 'Escape', preventDefault() {} });
   assert.equal(app.location.hash, '#explore');
 });
