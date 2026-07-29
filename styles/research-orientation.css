@@ -83,7 +83,9 @@
 .tour-status { margin: .5rem 0 .65rem; }
 .tour-stage { grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr); min-height: 0; height: clamp(500px, calc(100dvh - 235px), 680px); border: 0; border-radius: 0; background: transparent; box-shadow: none; gap: 20px; overflow: visible; }
 .welcome-overview { min-width: 0; padding: clamp(18px, 2vw, 30px); overflow: auto; border-radius: 22px; background: #f8fafc; color: #101827; box-shadow: 0 20px 55px rgba(0,5,14,.28); }
+.entrance-map { position: relative; }
 .welcome-overview img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.entrance-map-label { position: absolute; top: clamp(8px, 1.4vw, 14px); left: clamp(8px, 1.4vw, 14px); padding: .28rem .65rem; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; background: rgba(6,21,37,.82); color: #fff; box-shadow: 0 4px 14px rgba(0,5,14,.22); font-size: clamp(.72rem, 1vw, .84rem); font-weight: 800; line-height: 1.35; letter-spacing: .01em; backdrop-filter: blur(6px); }
 .welcome-overview p { margin: .6rem 0; }
 .welcome-overview .orientation-topic { display: table; margin: .8rem auto; padding: .4rem 1.1rem; border-radius: 999px; background: #e9f1ff; color: #155ed0; font-weight: 800; }
 .welcome-overview .orientation-action { display: table; padding: .55rem 1.1rem; border: 1px solid #cbd5e1; border-radius: 999px; color: #155ed0; font-weight: 800; }
