@@ -176,6 +176,101 @@
     container.setAttribute('aria-busy', 'false');
   }
 
+  function buildOutputsPreview(container, source, homeUrl) {
+    var outputs = source.querySelector('#outputs');
+    if (!outputs) throw new Error('Homepage Outputs section was not found');
+
+    var content = outputs.cloneNode(true);
+    content.removeAttribute('id');
+    content.className = 'outputs-preview-content light-preview';
+    content.querySelectorAll('[id]').forEach(function (element) { element.removeAttribute('id'); });
+    content.querySelectorAll('[src]').forEach(function (element) {
+      element.setAttribute('src', absoluteUrl(element.getAttribute('src'), homeUrl));
+    });
+    content.querySelectorAll('a[href]').forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (href === '#') {
+        link.removeAttribute('href');
+        link.setAttribute('aria-disabled', 'true');
+        return;
+      }
+      link.setAttribute('href', absoluteUrl(href, homeUrl));
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.classList.add('preview-link');
+    });
+
+    var summary = content.querySelector('[data-zenodo-summary]');
+    if (summary) {
+      var heading = document.createElement('div');
+      heading.className = 'outputs-heading';
+      heading.innerHTML = '<h2>' + summary.dataset.title + '</h2>';
+      var dashboard = document.createElement('a');
+      dashboard.className = 'analytics-link preview-link';
+      dashboard.href = absoluteUrl('/zenodo-stats.html', homeUrl);
+      dashboard.target = '_blank';
+      dashboard.rel = 'noopener noreferrer';
+      dashboard.textContent = 'Zenodo Analytics Dashboard ↗';
+      heading.appendChild(dashboard);
+      var stats = document.createElement('div');
+      stats.className = 'outputs-stats';
+      stats.setAttribute('aria-live', 'polite');
+      stats.setAttribute('aria-label', summary.dataset.ariaLabel);
+      [['records', summary.dataset.recordsLabel], ['views', summary.dataset.viewsLabel], ['downloads', summary.dataset.downloadsLabel]].forEach(function (item) {
+        var card = document.createElement('div');
+        card.className = 'output-stat';
+        card.innerHTML = '<span>' + item[1] + '</span><strong data-zenodo-stat="' + item[0] + '">—</strong>';
+        stats.appendChild(card);
+      });
+      summary.replaceChildren(heading, stats);
+      fetch(absoluteUrl('/data/zenodo/zenodo_records.json', homeUrl)).then(function (response) {
+        if (!response.ok) throw new Error('Zenodo summary request failed');
+        return response.json();
+      }).then(function (data) {
+        var aggregate = data.totals || data.aggregate || data;
+        ['records', 'views', 'downloads'].forEach(function (metric) {
+          var target = stats.querySelector('[data-zenodo-stat="' + metric + '"]');
+          if (target && Number.isFinite(aggregate[metric])) target.textContent = new Intl.NumberFormat(summary.dataset.locale || 'en-US').format(aggregate[metric]);
+        });
+      }).catch(function (error) { console.warn('Unable to load Zenodo statistics.', error); });
+    }
+
+    var japanese = container.ownerDocument.documentElement.lang === 'ja';
+    var headings = content.querySelectorAll('.outputs-heading, details.fold');
+    addMarker(content, 'outputs-marker outputs-marker-title', '📍 Outputs');
+    if (headings[1]) addMarker(headings[1], 'outputs-marker outputs-marker-categories', japanese ? '📍 研究カテゴリー' : '📍 Research Categories');
+    var analytics = content.querySelector('.analytics-link');
+    if (analytics) addMarker(content, 'outputs-marker outputs-marker-analytics', japanese ? '📍 分析ダッシュボード' : '📍 Analytics Dashboard');
+    var paper = content.querySelector('.outputs-grid a[href]');
+    if (paper) addMarker(paper.closest('li'), 'outputs-marker outputs-marker-archive', japanese ? '📍 Zenodoアーカイブ' : '📍 Zenodo Archive');
+    var media = content.querySelector('summary a[href*="cosmic-phase"]');
+    if (media) addMarker(media.parentElement, 'outputs-marker outputs-marker-media', japanese ? '📍 研究メディア' : '📍 Research Media');
+
+    var stage = document.createElement('div');
+    stage.className = 'outputs-preview-stage';
+    stage.appendChild(content);
+    var sizer = document.createElement('div');
+    sizer.className = 'outputs-preview-sizer';
+    sizer.appendChild(stage);
+    container.replaceChildren(sizer);
+
+    function sizeStage() {
+      var scale = Math.min(1, sizer.clientWidth / stage.offsetWidth);
+      stage.style.setProperty('--outputs-preview-scale', scale);
+      sizer.style.height = (content.offsetHeight * scale) + 'px';
+    }
+    sizeStage();
+    content.addEventListener('toggle', sizeStage, true);
+    if ('ResizeObserver' in window) {
+      var observer = new ResizeObserver(sizeStage);
+      observer.observe(sizer);
+      observer.observe(content);
+    } else {
+      window.addEventListener('resize', sizeStage);
+    }
+    container.setAttribute('aria-busy', 'false');
+  }
+
   function showError(container) {
     var message = document.createElement('p');
     message.className = 'preview-error';
@@ -199,6 +294,8 @@
           buildHubPreview(container, source, homeUrl);
         } else if (container.hasAttribute('data-home-research-preview')) {
           buildResearchPreview(container, source, homeUrl);
+        } else if (container.hasAttribute('data-home-outputs-preview')) {
+          buildOutputsPreview(container, source, homeUrl);
         } else {
           buildPreview(container, source, homeUrl);
         }
@@ -209,4 +306,5 @@
   document.querySelectorAll('[data-home-entrance-preview]').forEach(mount);
   document.querySelectorAll('[data-home-hub-preview]').forEach(mount);
   document.querySelectorAll('[data-home-research-preview]').forEach(mount);
+  document.querySelectorAll('[data-home-outputs-preview]').forEach(mount);
 }());
