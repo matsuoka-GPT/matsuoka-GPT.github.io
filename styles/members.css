@@ -75,6 +75,17 @@ img[src$="matu.png"]{border-radius:50%;object-fit:cover;aspect-ratio:1}
   html[lang="ja"] .workflow-panel{padding:22px 16px}
 }
 
+/* The apparent guide line is the panel's left border, not a hero ornament. */
+html[lang="en"] .members-page .hero-panel{
+  border-left-color:transparent;
+}
+
+/* The hero artwork contains the previous text layout. Keep the copy side fully
+   opaque so strokes from that baked-in text cannot show through as stray lines. */
+html[lang="en"] .members-page .hero-panel::after{
+  background:linear-gradient(90deg,#020c23 0%,#03102d 48%,rgba(4,18,48,.9) 56%,rgba(4,18,48,.08) 76%);
+}
+
 /* The members hero no longer uses the guide-line ornaments from its old layout. */
 html[lang="en"] .members-page .hero::before,
 html[lang="en"] .members-page .hero::after{
