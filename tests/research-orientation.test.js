@@ -103,8 +103,12 @@ test('step one mounts the shared homepage entrance as an interactive preview', (
   }
   const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
   assert.match(previewSource, /source\.querySelector\('\.hero-inner > div:first-child'\)/);
+  assert.match(previewSource, /className = 'home-entrance-preview-content light-preview'/);
+  assert.match(previewSource, /researchProfile = entrance\.querySelector\('details'\)/);
+  assert.match(previewSource, /content\.appendChild\(researchProfile\.cloneNode\(true\)\)/);
   assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
   assert.match(previewSource, /setAttribute\('rel', 'noopener noreferrer'\)/);
   assert.match(previewSource, /disabled\.disabled = true/);
   assert.doesNotMatch(previewSource, /iframe/i);
+  assert.match(styles, /\.home-entrance-preview-content\.light-preview\s*\{[^}]*color-scheme:\s*light;/s);
 });

@@ -18,11 +18,18 @@
     if (!entrance) throw new Error('Homepage entrance was not found');
 
     var content = document.createElement('div');
-    content.className = 'home-entrance-preview-content';
-    ['.title-row', '.lead', 'details'].forEach(function (selector) {
+    content.className = 'home-entrance-preview-content light-preview';
+    ['.title-row', '.lead'].forEach(function (selector) {
       var item = entrance.querySelector(selector);
       if (item) content.appendChild(item.cloneNode(true));
     });
+
+    // Keep this section tied to the homepage source rather than maintaining a
+    // second Orientation-specific copy. cloneNode(true) is intentional: the
+    // complete expanded content (and any links added later) must remain live.
+    var researchProfile = entrance.querySelector('details');
+    if (!researchProfile) throw new Error('Homepage Research Profile was not found');
+    content.appendChild(researchProfile.cloneNode(true));
 
     content.querySelectorAll('[src]').forEach(function (element) {
       element.setAttribute('src', absoluteUrl(element.getAttribute('src'), homeUrl));

@@ -212,6 +212,24 @@
 
 /* Step 1: controlled live rendering of the homepage entrance source. */
 .home-entrance-preview-content { position: relative; min-height: 100%; }
+/* The tour retains its dark chrome while the live homepage exhibit always uses
+   the homepage's light presentation, independently of the document theme. */
+.home-entrance-preview-content.light-preview {
+  color-scheme: light;
+  --bg-color: #ffffff;
+  --text-color: #24292f;
+  --card-color: #ffffff;
+  --surface-color: #f6f8fa;
+  --muted-color: #57606a;
+  --border-color: #d0d7de;
+  --link-color: #0969da;
+  --link-hover-color: #0757b9;
+  --focus-color: #0969da;
+  color: var(--text-color) !important;
+}
+.orientation-page .light-preview :is(h1, h2, h3, h4, h5, h6, p, div, span, li, summary, strong) { color: inherit !important; }
+.orientation-page .light-preview a { color: var(--link-color) !important; }
+.orientation-page .light-preview a:hover { color: var(--link-hover-color) !important; }
 .home-entrance-preview-content .title-row { position: relative; }
 .home-entrance-preview-content .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .home-entrance-preview-content .lab-hero-image { display: block; width: 100%; height: auto; border-radius: 14px; }
@@ -222,6 +240,7 @@
 .home-entrance-preview-content details { margin-top: 20px !important; padding: 15px !important; border: 1px solid transparent; border-radius: 10px !important; background: #f5f7fb !important; }
 .home-entrance-preview-content details[open] { border-color: #cbd5e1; }
 .home-entrance-preview-content summary { cursor: pointer; }
+.home-entrance-preview-content details > div { color: #24292f !important; }
 .home-entrance-preview-content .orientation-entry { margin: 0 0 18px; }
 .home-entrance-preview-content .preview-link { border-radius: 6px; box-shadow: 0 0 0 2px rgba(29,78,216,.14); text-underline-offset: .15em; }
 .home-entrance-preview-content .preview-link:hover { box-shadow: 0 0 0 3px rgba(29,78,216,.3); }
