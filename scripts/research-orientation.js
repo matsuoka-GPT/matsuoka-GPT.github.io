@@ -13,10 +13,17 @@
       var found = steps.findIndex(function (step) { return step.id === id; });
       return found < 0 ? 0 : found;
     }
+    function resetPanelScroll(step) {
+      var previewScroller = step.querySelector('.tour-stage > :first-child');
+      var guideScroller = step.querySelector('.callout');
+      if (previewScroller) previewScroller.scrollTop = 0;
+      if (guideScroller) guideScroller.scrollTop = 0;
+    }
     function show(index, options) {
       options = options || {};
       current = Math.max(0, Math.min(steps.length - 1, index));
       steps.forEach(function (step, i) { step.hidden = i !== current; });
+      resetPanelScroll(steps[current]);
       dots.forEach(function (dot, i) {
         if (i === current) dot.setAttribute('aria-current', 'step');
         else dot.removeAttribute('aria-current');
