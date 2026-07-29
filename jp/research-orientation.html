@@ -32,7 +32,6 @@
 <main class="container">
 <section class="tour" data-tour data-step-word="ステップ" data-of-word="／" aria-label="研究オリエンテーション">
 <div class="tour-status">
-<p data-status aria-live="polite">ステップ 1 ／ 8</p>
 <ol class="progress" aria-label="ツアーの進行状況">
 <li>
 <a href="#welcome" title="ラボへようこそ">
@@ -75,7 +74,10 @@
 </a>
 </li>
 </ol>
+<div class="tour-exit">
+<p data-status aria-live="polite">ステップ 1 ／ 8</p>
 <button class="skip" type="button" data-skip>探索方法へスキップ</button>
+</div>
 </div>
 <article class="tour-step" id="welcome" data-step tabindex="-1" aria-labelledby="welcome-title">
 <div class="tour-stage">
@@ -98,7 +100,6 @@
 <details><summary>研究プロフィール</summary><p>このオリエンテーションでは、ラボの構造と研究原記録への経路を紹介します。</p></details>
 </div>
 <div class="callout">
-<p class="step-label">ステップ 1 ／ 8</p>
 <h2 id="welcome-title" tabindex="-1">ラボへようこそ</h2>
 <span class="title-rule" aria-hidden="true"></span>
 <p>ようこそ。ここが探索のスタート地点です。</p>
@@ -138,7 +139,6 @@
 <p class="hub-note" aria-hidden="true">このサイトは「公開ハブ」です。<br>PDFやDOIは主にZenodoなどの外部リポジトリに集約しています。<br><span>GitHub Pages</span>による軽量ホスティング。</p>
 </div>
 <div class="callout hub-callout">
-<p class="step-label">ステップ 2 ／ 8</p>
 <h2 id="hub-title" tabindex="-1">研究ハブ</h2><span class="title-rule" aria-hidden="true"></span>
 <p class="hub-question">情報やガイダンスはどこで見つけられますか？</p>
 <p>左のパネルには、ラボと外部世界をつなぐ人、プロフィール、研究リポジトリ、サポートツールが集められています。</p>
@@ -170,7 +170,6 @@
 <span>Publication</span>
 </div>
 <div class="callout">
-<p class="step-label">ステップ 3 ／ 8</p>
 <h2 id="workflow-title" tabindex="-1">研究ワークフロー</h2>
 <p>研究は、構想、仮説拡張、理論構造化、実装、検証、公開の流れで進みます。</p>これは常に一方向ではありません。矛盾や新しい知見が見つかれば、前段階へ戻る反復的なプロセスです。</div>
 </div>
@@ -202,7 +201,6 @@
 </span>
 </div>
 <div class="callout">
-<p class="step-label">ステップ 4 ／ 8</p>
 <h2 id="method-title" tabindex="-1">プロジェクトと方法論</h2>
 <p>
 <strong>Projects</strong>では主要な研究領域と方向性を確認し、<strong>Method</strong>では仮説構築、整合性確認、文章化、公開までの方法を確認します。</p>研究成果を読む前に、研究上の前提と方法を確認したい場合の入口です。</div>
@@ -222,7 +220,6 @@
 <span>Institutional Design</span>
 </div>
 <div class="callout">
-<p class="step-label">ステップ 5 ／ 8</p>
 <h2 id="outputs-title" tabindex="-1">研究成果</h2>
 <p>公開成果は研究領域別に整理されています。研究分野や論文名が分かっている場合は直接探索できます。公開済み研究と研究中テーマは同じステータスではありません。</p>
 <ul>
@@ -253,7 +250,6 @@
 </span>
 </div>
 <div class="callout">
-<p class="step-label">ステップ 6 ／ 8</p>
 <h2 id="zenodo-title" tabindex="-1">Zenodo原記録</h2>
 <p>Zenodoは公開済み研究成果の一次的な公的記録です。DOI、PDF、Version、正確な引用、数式、数値、正式な研究上の主張はZenodoで確認してください。</p>GitHub Pagesは研究を整理し入口を提供しますが、原論文を置き換えません。DOI、Zenodoでの公開、閲覧数は、それ自体では科学的妥当性の証明になりません。</div>
 </div>
@@ -273,7 +269,6 @@
 </div>
 </div>
 <div class="callout">
-<p class="step-label">ステップ 7 ／ 8</p>
 <h2 id="assistant-title" tabindex="-1">Research Navigator & Knowledge Concierge</h2>
 <p>Assistant GPTはラボ公式のAI Research Navigator &amp; Theory Explainerです。関連論文の特定、用語と前提の説明、研究モデル間の関係追跡、読書順の提案、予備的要約、批判的検討の論点抽出、Zenodo原記録とサイト内の案内を支援します。</p>
 <div class="boundary">
@@ -307,7 +302,6 @@
 </span>
 </div>
 <div class="callout">
-<p class="step-label">ステップ 8 ／ 8</p>
 <h2 id="explore-title" tabindex="-1">探索方法を選ぶ</h2>
 <p>研究分野、論文、DOIが分かっている場合は直接探索を、質問、研究上の関心、理論間の関係から始める場合はAI支援探索を選んでください。</p>
 <div class="choice-grid">

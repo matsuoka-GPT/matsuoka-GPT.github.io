@@ -5,10 +5,22 @@ const vm = require('node:vm');
 
 const source = fs.readFileSync(new URL('../scripts/research-orientation.js', `file://${__filename}`), 'utf8');
 const styles = fs.readFileSync(new URL('../styles/research-orientation.css', `file://${__filename}`), 'utf8');
+const english = fs.readFileSync(new URL('../research-orientation.html', `file://${__filename}`), 'utf8');
+const japanese = fs.readFileSync(new URL('../jp/research-orientation.html', `file://${__filename}`), 'utf8');
 
 test('interactive steps share the same top edge while the no-script fallback remains spaced', () => {
   assert.match(styles, /\.tour-step \+ \.tour-step\s*\{\s*margin-top:\s*4rem;/);
   assert.match(styles, /\.tour-js \.tour-step\s*\{\s*margin-top:\s*0;/);
+});
+
+test('each language places one dynamic status beside the skip control', () => {
+  for (const html of [english, japanese]) {
+    assert.equal((html.match(/data-status/g) || []).length, 1);
+    assert.equal((html.match(/class="step-label"/g) || []).length, 0);
+    assert.match(html, /<div class="tour-exit">\s*<p data-status[^>]*>[^<]+<\/p>\s*<button class="skip"[^>]*data-skip>/);
+  }
+  assert.match(styles, /\.tour-exit\s*\{[^}]*display:\s*flex;[^}]*flex-wrap:\s*wrap;/);
+  assert.match(styles, /\.progress\s*\{[^}]*grid-column:\s*2;/);
 });
 
 function load(hash = '') {
