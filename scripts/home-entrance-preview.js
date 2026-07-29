@@ -293,6 +293,54 @@
     container.setAttribute('aria-busy', 'false');
   }
 
+  function buildContactPreview(container, source, homeUrl) {
+    var contact = source.querySelector('#collab');
+    if (!contact) throw new Error('Homepage Contact section was not found');
+
+    var content = contact.cloneNode(true);
+    content.removeAttribute('id');
+    content.className = 'contact-preview-content light-preview';
+    content.querySelectorAll('[id]').forEach(function (element) { element.removeAttribute('id'); });
+    content.querySelectorAll('a[href]').forEach(function (link) {
+      link.setAttribute('href', absoluteUrl(link.getAttribute('href'), homeUrl));
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.classList.add('preview-link');
+    });
+
+    var japanese = container.ownerDocument.documentElement.lang === 'ja';
+    var policy = content.querySelector('.muted');
+    var paragraphs = content.querySelectorAll('.box > p');
+    var email = content.querySelector('a[href^="mailto:"]');
+    addMarker(policy || content, 'contact-marker contact-marker-policy', japanese ? '📍 連絡方針' : '📍 Contact Policy');
+    if (paragraphs[1]) addMarker(paragraphs[1], 'contact-marker contact-marker-style', japanese ? '📍 協働スタイル' : '📍 Collaboration Style');
+    addMarker(content.querySelector('.collab-title') || content, 'contact-marker contact-marker-language', japanese ? '📍 多言語対応' : '📍 Multilingual Support');
+    if (email) addMarker(email.parentElement, 'contact-marker contact-marker-email', japanese ? '📍 連絡先メール' : '📍 Contact Email');
+
+    var stage = document.createElement('div');
+    stage.className = 'contact-preview-stage';
+    stage.appendChild(content);
+    var sizer = document.createElement('div');
+    sizer.className = 'contact-preview-sizer';
+    sizer.appendChild(stage);
+    container.replaceChildren(sizer);
+
+    function sizeStage() {
+      var scale = Math.min(1, sizer.clientWidth / stage.offsetWidth);
+      stage.style.setProperty('--contact-preview-scale', scale);
+      sizer.style.height = (content.offsetHeight * scale) + 'px';
+    }
+    sizeStage();
+    if ('ResizeObserver' in window) {
+      var observer = new ResizeObserver(sizeStage);
+      observer.observe(sizer);
+      observer.observe(content);
+    } else {
+      window.addEventListener('resize', sizeStage);
+    }
+    container.setAttribute('aria-busy', 'false');
+  }
+
   function showError(container) {
     var message = document.createElement('p');
     message.className = 'preview-error';
@@ -318,6 +366,8 @@
           buildResearchPreview(container, source, homeUrl);
         } else if (container.hasAttribute('data-home-outputs-preview')) {
           buildOutputsPreview(container, source, homeUrl);
+        } else if (container.hasAttribute('data-home-contact-preview')) {
+          buildContactPreview(container, source, homeUrl);
         } else {
           buildPreview(container, source, homeUrl);
         }
@@ -329,4 +379,5 @@
   document.querySelectorAll('[data-home-hub-preview]').forEach(mount);
   document.querySelectorAll('[data-home-research-preview]').forEach(mount);
   document.querySelectorAll('[data-home-outputs-preview]').forEach(mount);
+  document.querySelectorAll('[data-home-contact-preview]').forEach(mount);
 }());

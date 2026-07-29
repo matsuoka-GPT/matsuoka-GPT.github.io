@@ -29,7 +29,7 @@ test('each language places one dynamic status beside the skip control', () => {
 function load(hash = '') {
   const listeners = {};
   const docListeners = {};
-  const steps = ['welcome','hub','workflow','outputs','zenodo','assistant','explore'].map(id => {
+  const steps = ['welcome','hub','workflow','outputs','contact','assistant','explore'].map(id => {
     const heading = { focus() { heading.focused = true; } };
     const back = { disabled: false };
     const preview = { scrollTop: 0 };
@@ -248,4 +248,25 @@ test('step four mounts the shared homepage Outputs archive as a live light previ
   assert.match(styles, /\[data-theme="dark"\] \.orientation-preview--light \.outputs-preview-content details\.fold\s*\{[^}]*background:\s*#fff !important;[^}]*background-image:\s*none !important;/s);
   assert.match(styles, /\[data-theme="dark"\] \.orientation-preview--light \.outputs-preview-content \.outputs-grid li\s*\{[^}]*background:\s*#fff !important;[^}]*background-image:\s*none !important;[^}]*color:\s*#111827 !important;/s);
   assert.match(styles, /#outputs \.outputs-callout/);
+});
+
+test('step five mounts the shared homepage Contact section as a live light preview', () => {
+  for (const html of [english, japanese]) {
+    assert.match(html, /id="contact"[^>]*data-step/);
+    assert.match(html, /data-home-contact-preview/);
+    assert.match(html, /class="contact-overview orientation-preview--light"/);
+    assert.match(html, /Next: Assistant GPT|次へ：Assistant GPT/);
+    assert.doesNotMatch(html, /id="zenodo"[^>]*data-step/);
+  }
+  const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
+  assert.match(previewSource, /source\.querySelector\('#collab'\)/);
+  assert.match(previewSource, /document\.querySelectorAll\('\[data-home-contact-preview\]'\)\.forEach\(mount\)/);
+  assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
+  assert.match(previewSource, /addMarker\(policy \|\| content, 'contact-marker contact-marker-policy'/);
+  assert.match(previewSource, /'contact-marker contact-marker-style'/);
+  assert.match(previewSource, /'contact-marker contact-marker-language'/);
+  assert.match(previewSource, /'contact-marker contact-marker-email'/);
+  assert.match(styles, /\.contact-preview-stage\s*\{[^}]*width:\s*760px;[^}]*transform:\s*scale\(var\(--contact-preview-scale, 1\)\)/s);
+  assert.match(styles, /\.contact-preview-content \.guide-marker\.contact-marker\s*\{[^}]*background:\s*rgba\(255,255,255,\.97\);[^}]*color:\s*#1f2937 !important;/s);
+  assert.match(styles, /#contact \.contact-callout/);
 });
