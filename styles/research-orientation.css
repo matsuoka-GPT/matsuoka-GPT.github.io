@@ -158,9 +158,9 @@
 .outputs-preview-content .output-stat strong { color: #111827 !important; font-size: 16px; font-variant-numeric: tabular-nums; line-height: 1; }
 .outputs-preview-content details.fold { position: relative; margin: 12px 0; border: 1px solid #e3e8f0 !important; border-radius: 14px; background: #fff !important; color: #111 !important; box-shadow: 0 8px 22px rgba(18,26,40,.06) !important; }
 .outputs-preview-content details.fold > summary { padding: 14px 16px; color: #111827 !important; font-weight: 750; cursor: pointer; }
-.outputs-preview-content .fold-body { padding: 0 16px 16px; }
-.outputs-preview-content .box { padding: 0; background: transparent !important; box-shadow: none !important; }
-.outputs-preview-content .outputs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.outputs-preview-content .fold-body { margin-top: 10px; padding: 0 16px 16px; background: #fff !important; background-image: none !important; color: #111827 !important; }
+.outputs-preview-content .box { padding: 0; border-color: transparent !important; background: transparent !important; background-image: none !important; color: #111827 !important; box-shadow: none !important; }
+.outputs-preview-content .outputs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0; padding: 0; background: transparent !important; background-image: none !important; color: #111827 !important; list-style: none; }
 .outputs-preview-content .outputs-grid li { position: relative; min-width: 0; padding: 14px; border: 1px solid #e3e8f0 !important; border-radius: 12px; background: #fff !important; color: #111 !important; box-shadow: 0 5px 15px rgba(18,26,40,.05) !important; }
 .outputs-preview-content a { color: #155ed0 !important; }
 .outputs-preview-content a[aria-disabled="true"] { color: #64748b !important; cursor: default; }
@@ -405,6 +405,18 @@
 }
 
 /* Keep the archive preview light even when the surrounding Orientation is dark. */
+.orientation-page[data-theme="dark"] .orientation-preview--light .outputs-preview-content details.fold,
+[data-theme="dark"] .orientation-preview--light .outputs-preview-content details.fold { border-color: #e3e8f0 !important; background: #fff !important; background-image: none !important; color: #111827 !important; box-shadow: 0 8px 22px rgba(18,26,40,.06) !important; }
+.orientation-page[data-theme="dark"] .orientation-preview--light .outputs-preview-content details.fold > summary,
+[data-theme="dark"] .orientation-preview--light .outputs-preview-content details.fold > summary { border-color: #e3e8f0 !important; background: transparent !important; background-image: none !important; color: #111827 !important; }
+.orientation-page[data-theme="dark"] .orientation-preview--light .outputs-preview-content :is(.fold-body, .box, .outputs-grid),
+[data-theme="dark"] .orientation-preview--light .outputs-preview-content :is(.fold-body, .box, .outputs-grid) { background-image: none !important; color: #111827 !important; }
+.orientation-page[data-theme="dark"] .orientation-preview--light .outputs-preview-content .fold-body,
+[data-theme="dark"] .orientation-preview--light .outputs-preview-content .fold-body { background-color: #fff !important; }
+.orientation-page[data-theme="dark"] .orientation-preview--light .outputs-preview-content :is(.box, .outputs-grid),
+[data-theme="dark"] .orientation-preview--light .outputs-preview-content :is(.box, .outputs-grid) { background-color: transparent !important; box-shadow: none !important; }
+.orientation-page[data-theme="dark"] .orientation-preview--light .outputs-preview-content .outputs-grid li,
+[data-theme="dark"] .orientation-preview--light .outputs-preview-content .outputs-grid li { border-color: #e3e8f0 !important; background: #fff !important; background-image: none !important; color: #111827 !important; box-shadow: 0 5px 15px rgba(18,26,40,.05) !important; }
 .orientation-page[data-theme="dark"] .outputs-preview-content .output-stat,
 [data-theme="dark"] .outputs-preview-content .output-stat { border-color: #e3e8f0 !important; background: rgba(255,255,255,.75) !important; color: #111827 !important; box-shadow: 0 6px 18px rgba(18,26,40,.05) !important; }
 .orientation-page[data-theme="dark"] .outputs-preview-content .output-stat span,
