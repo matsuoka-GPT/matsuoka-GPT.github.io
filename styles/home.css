@@ -193,9 +193,10 @@
     }
 
     .tags{
-      display:flex;
-      flex-wrap:wrap;
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap:8px;
+      width:100%;
     }
 
     .tag{
@@ -211,6 +212,8 @@
       font-size:13px;
       color: #1a2133;
       box-shadow: 0 6px 18px rgba(18,26,40,.05);
+      justify-content:center;
+      text-align:center;
     }
 
     .pill{
@@ -227,10 +230,10 @@
     }
 
     .topnav{
-      display:flex;
+      display:grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-start;
+      width:100%;
     }
     .topnav a{
       text-decoration:none;
@@ -243,6 +246,7 @@
       -webkit-backdrop-filter: blur(8px);
       color: #1a2133;
       opacity:.9;
+      text-align:center;
     }
     .topnav a:hover{
       border-color: var(--line);
@@ -729,6 +733,7 @@
   }
 
   .tags {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
   }
 
@@ -738,7 +743,7 @@
   }
 
   .topnav {
-    justify-content: flex-start;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4px;
   }
 
@@ -775,7 +780,7 @@
   }
 
   .topnav {
-    justify-content: flex-start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero {
