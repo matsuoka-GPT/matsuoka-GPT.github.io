@@ -8,45 +8,29 @@
     env(safe-area-inset-right)
   );
   z-index: 9999;
-  display: inline-grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--border-color, rgba(110, 201,255,.7));
-  border-radius: 12px;
-  background: var(--button-bg, rgba(110, 201,255,.75));
-  color: var(--text-color, #fff);
+  background: rgba(110, 201, 255, 0.5);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-size: 24px;
   text-decoration: none;
-  box-shadow: 0 2px 8px var(--shadow-color, rgba(0,0,0,.2));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px);
-  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  transition: opacity 0.3s ease;
 }
 
 #backToTop.show {
   opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-#backToTop:hover {
-  border-color: var(--link-color, #2b64ff);
-  color: var(--link-color, #2b64ff);
 }
 
 .top-icon {
   display: inline-block;
-  font-size: 22px;
+  font-size: 36px;
   line-height: 1;
 }
 
 @media (max-width: 600px) {
   #backToTop {
     bottom: max(8px, env(safe-area-inset-bottom));
-    width: 40px;
-    height: 40px;
   }
 }
