@@ -140,3 +140,67 @@
   #welcome .callout h2 { font-size: 1.75rem; }
   #welcome .callout p:not(.step-label) { font-size: 1rem; line-height: 1.8; }
 }
+
+/* Step 2: a faithful, non-interactive view of the homepage information desk. */
+.hub-overview { position: relative; min-width: 0; padding: clamp(18px, 2vw, 30px); overflow: auto; border-radius: 22px; background: #f8fafc; color: #182033; box-shadow: 0 20px 55px rgba(0,5,14,.28); }
+.hub-overview :is(p, h3, li, strong, span) { color: inherit; }
+.hub-profile-head { position: relative; display: flex; align-items: center; gap: 20px; padding-bottom: 22px; }
+.hub-avatar { flex: 0 0 74px; display: grid; place-items: center; width: 74px; height: 74px; border: 2px solid #c8d8ff; border-radius: 25px; background: #fff; }
+.hub-avatar img { width: 58px; height: 58px; object-fit: contain; }
+.hub-profile-head p { margin: 0; line-height: 1.25; }
+.hub-role { color: #52617d !important; font-size: clamp(.95rem, 1.4vw, 1.28rem); }
+.hub-name { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 800; }
+.hub-members { margin-top: .18rem !important; font-size: clamp(1rem, 1.6vw, 1.35rem); text-decoration: underline; text-underline-offset: .12em; }
+.hub-identifiers { position: relative; }
+.hub-identifiers h3, .hub-focus h3 { margin: 0 0 14px; color: #5c5c5c; font-size: clamp(1rem, 1.4vw, 1.22rem); font-weight: 500; }
+.hub-logo-grid { display: grid; grid-template-columns: 1fr 1.25fr; align-items: center; gap: 19px 30px; padding: 8px 0 17px; }
+.hub-logo-grid img { display: block; max-width: 100%; max-height: 38px; width: auto; object-fit: contain; object-position: left center; }
+.hub-doi { display: inline-flex; overflow: hidden; border-radius: 6px; background: #087bb7; color: white; font-size: clamp(.75rem, 1.2vw, 1rem); line-height: 1.8; }
+.hub-doi span { padding: 0 .55rem; background: #4b4b4b; }
+.hub-doi strong { padding: 0 .6rem; font-family: ui-monospace, monospace; font-weight: 500; }
+.hub-assistant { position: relative; margin: 18px 0 12px; padding: 17px 20px; border: 1px solid #d9dce2; border-radius: 18px; background: #fff; box-shadow: 0 12px 30px rgba(40,55,85,.08); }
+.hub-assistant h3 { margin: 0; color: #e11 !important; font-size: clamp(1.1rem, 1.5vw, 1.35rem); }
+.hub-assistant p { margin: .45rem 0 0; }
+.hub-assistant-button { font-size: clamp(.95rem, 1.3vw, 1.2rem); text-decoration: underline; text-underline-offset: .12em; }
+.hub-focus { position: relative; }
+.hub-focus ul { margin: 0 0 15px; padding-left: 1.65rem; }
+.hub-focus li { margin: .35rem 0; font-size: clamp(.78rem, 1vw, .95rem); }
+.hub-links { display: flex; gap: 12px; }
+.hub-links span { padding: .5rem 1rem; border: 1px solid #d9dce2; border-radius: 999px; background: #fff; box-shadow: 0 8px 20px rgba(40,55,85,.07); }
+.hub-note { margin: 18px 0 0; color: #52617d !important; font-size: clamp(.78rem, 1vw, .94rem); }
+.hub-note span { padding: 0 .35rem; border: 1px solid #d4d8df; border-radius: 6px; background: #fff; font-family: ui-monospace, monospace; }
+.hub-marker { position: absolute; }
+.hub-marker-architect { top: 2px; right: 0; }
+.hub-marker-profiles { top: 1px; right: 0; }
+.hub-marker-assistant { top: 10px; right: 12px; }
+.hub-marker-explore { right: 0; bottom: 4px; }
+#hub .callout { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-start; max-height: none; margin: 0; padding: clamp(22px, 2.2vw, 34px) clamp(26px, 3vw, 42px); border-radius: 22px; background: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97)); color: #eef5ff; box-shadow: inset 0 1px rgba(255,255,255,.05); }
+#hub .step-label { align-self: flex-start; padding: .45rem 1rem; border-radius: 999px; background: linear-gradient(120deg,#155ed0,#284ad4); color: #fff; letter-spacing: 0; text-transform: none; font-size: .95rem; }
+#hub .callout h2 { margin: .65rem 0 .6rem; color: #f6f9ff; font-size: clamp(1.75rem, 2vw, 2.25rem); line-height: 1.2; }
+#hub .title-rule { display: block; width: 80px; height: 4px; margin: 0 0 .6rem; border-radius: 3px; background: #2f6eff; }
+#hub .callout p { margin: .28rem 0; color: #e6edf7; font-size: clamp(.86rem, .92vw, .98rem); line-height: 1.48; }
+#hub .callout strong { color: #fff; }
+.hub-options { display: grid; gap: .25rem; margin: .1rem 0 .45rem; padding: 0; list-style: none; }
+.hub-options li { color: #e6edf7; font-size: clamp(.84rem, .9vw, .96rem); line-height: 1.42; }
+.hub-options li span { display: inline-block; width: 1.7rem; }
+#hub .callout .orientation-invitation { margin-top: .65rem; color: #fff; font-weight: 750; }
+
+@media (max-width: 900px) {
+  .hub-overview { max-height: 690px; }
+  #hub .callout { min-height: 0; }
+}
+@media (max-width: 600px) {
+  .hub-overview { padding: 15px; border-radius: 16px; }
+  .hub-profile-head { gap: 12px; padding-top: 30px; }
+  .hub-avatar { flex-basis: 62px; width: 62px; height: 62px; border-radius: 20px; }
+  .hub-avatar img { width: 48px; height: 48px; }
+  .hub-logo-grid { gap: 17px 22px; }
+  .hub-marker-architect { top: 0; left: 0; right: auto; }
+  .hub-marker-profiles { top: -4px; }
+  .hub-marker-explore { bottom: -30px; }
+  .hub-note { margin-top: 42px; }
+  #hub .callout { padding: 28px 22px; border-radius: 16px; }
+  #hub .callout p, .hub-options li { font-size: 1rem; line-height: 1.65; }
+}
+.hub-overview .guide-marker { color: #fff !important; }
+#hub .callout .hub-question { margin-bottom: .45rem; color: #91c8ff; font-weight: 800; }
