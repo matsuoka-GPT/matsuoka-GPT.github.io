@@ -236,9 +236,7 @@
     }
 
     var japanese = container.ownerDocument.documentElement.lang === 'ja';
-    var headings = content.querySelectorAll('.outputs-heading, details.fold');
     addMarker(content, 'outputs-marker outputs-marker-title', '📍 Outputs');
-    if (headings[1]) addMarker(headings[1], 'outputs-marker outputs-marker-categories', japanese ? '📍 研究カテゴリー' : '📍 Research Categories');
     var analytics = content.querySelector('.analytics-link');
     if (analytics) addMarker(content, 'outputs-marker outputs-marker-analytics', japanese ? '📍 分析ダッシュボード' : '📍 Analytics Dashboard');
     if (summary) {
@@ -246,6 +244,13 @@
       archiveMarkerRow.className = 'outputs-archive-marker-row';
       addMarker(archiveMarkerRow, 'outputs-marker outputs-marker-archive', japanese ? '📍 Zenodoアーカイブ' : '📍 Zenodo Archive');
       summary.querySelector('.outputs-heading').after(archiveMarkerRow);
+    }
+    var firstCategory = content.querySelector('details.fold');
+    if (firstCategory) {
+      var categoriesMarkerRow = document.createElement('div');
+      categoriesMarkerRow.className = 'outputs-categories-marker-row';
+      addMarker(categoriesMarkerRow, 'outputs-marker outputs-marker-categories', japanese ? '📍 研究カテゴリー' : '📍 Research Categories');
+      firstCategory.before(categoriesMarkerRow);
     }
     var media = content.querySelector('summary a[href*="cosmic-phase"]');
     if (media) addMarker(media.parentElement, 'outputs-marker outputs-marker-media', japanese ? '📍 研究メディア' : '📍 Research Media');
