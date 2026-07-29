@@ -27,7 +27,7 @@ test('each language places one dynamic status beside the skip control', () => {
 function load(hash = '') {
   const listeners = {};
   const docListeners = {};
-  const steps = ['welcome','hub','workflow','method','outputs','zenodo','assistant','explore'].map(id => {
+  const steps = ['welcome','hub','workflow','outputs','zenodo','assistant','explore'].map(id => {
     const heading = { focus() { heading.focused = true; } };
     const back = { disabled: false };
     const preview = { scrollTop: 0 };
@@ -76,10 +76,10 @@ function load(hash = '') {
 
 test('opens a valid shared step hash and updates accessible progress', () => {
   const app = load('#assistant');
-  assert.equal(app.steps[6].hidden, false);
+  assert.equal(app.steps[5].hidden, false);
   assert.equal(app.steps.filter(step => !step.hidden).length, 1);
-  assert.equal(app.dots[6].attrs['aria-current'], 'step');
-  assert.equal(app.status.textContent, 'Step 7 of 8');
+  assert.equal(app.dots[5].attrs['aria-current'], 'step');
+  assert.equal(app.status.textContent, 'Step 6 of 7');
 });
 
 test('invalid hash safely resolves to welcome', () => {
@@ -123,7 +123,7 @@ test('every step navigation resets the active preview and guide panels independe
 
   app.steps[3].preview.scrollTop = 600;
   app.steps[3].guide.scrollTop = 720;
-  app.location.hash = '#method';
+  app.location.hash = '#outputs';
   app.listeners.hashchange();
   assert.equal(app.steps[3].preview.scrollTop, 0);
   assert.equal(app.steps[3].guide.scrollTop, 0);
@@ -208,4 +208,22 @@ test('step three mounts only the shared homepage Projects and Method research ma
   assert.match(styles, /\.research-map-preview-content \.cards\s*\{[^}]*grid-template-columns:\s*repeat\(4, 1fr\);/s);
   assert.match(styles, /\.research-map-preview-content \.card\s*\{[^}]*min-height:\s*132px;[^}]*padding:\s*14px 14px 12px;/s);
   assert.match(styles, /\.research-map-preview-content \.guide-marker\.research-marker\s*\{[^}]*background:\s*rgba\(255,255,255,\.97\);[^}]*color:\s*#1f2937 !important;/s);
+});
+
+
+test('step four mounts the shared homepage Outputs archive as a live light preview', () => {
+  for (const html of [english, japanese]) {
+    assert.match(html, /id="outputs"[^>]*data-step/);
+    assert.match(html, /data-home-outputs-preview/);
+    assert.match(html, /class="outputs-overview orientation-preview--light"/);
+    assert.equal((html.match(/id="outputs"/g) || []).length, 1);
+  }
+  const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
+  assert.match(previewSource, /source\.querySelector\('#outputs'\)/);
+  assert.match(previewSource, /document\.querySelectorAll\('\[data-home-outputs-preview\]'\)\.forEach\(mount\)/);
+  assert.match(previewSource, /zenodo_records\.json/);
+  assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
+  assert.match(previewSource, /noopener noreferrer/);
+  assert.match(styles, /\.outputs-preview-stage\s*\{[^}]*width:\s*980px;[^}]*transform:\s*scale\(var\(--outputs-preview-scale, 1\)\)/s);
+  assert.match(styles, /#outputs \.outputs-callout/);
 });
