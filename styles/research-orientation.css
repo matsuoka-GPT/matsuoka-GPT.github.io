@@ -85,7 +85,12 @@
 .welcome-overview { min-width: 0; padding: clamp(18px, 2vw, 30px); overflow: auto; border-radius: 22px; background: #f8fafc; color: #101827; box-shadow: 0 20px 55px rgba(0,5,14,.28); }
 .entrance-map { position: relative; }
 .welcome-overview img { display: block; width: 100%; height: auto; border-radius: 14px; }
-.entrance-map-label { position: absolute; top: clamp(8px, 1.4vw, 14px); left: clamp(8px, 1.4vw, 14px); padding: .28rem .65rem; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; background: rgba(6,21,37,.82); color: #fff; box-shadow: 0 4px 14px rgba(0,5,14,.22); font-size: clamp(.72rem, 1vw, .84rem); font-weight: 800; line-height: 1.35; letter-spacing: .01em; backdrop-filter: blur(6px); }
+.guide-marker { z-index: 1; padding: .28rem .65rem; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; background: rgba(6,21,37,.82); color: #fff; box-shadow: 0 4px 14px rgba(0,5,14,.22); font-size: clamp(.68rem, .9vw, .8rem); font-weight: 800; line-height: 1.35; letter-spacing: .01em; backdrop-filter: blur(6px); }
+.entrance-map-label { position: absolute; top: clamp(8px, 1.4vw, 14px); left: clamp(8px, 1.4vw, 14px); }
+.map-point { position: relative; display: flow-root; }
+.map-point .guide-marker { position: absolute; top: -.35rem; }
+.map-point-philosophy .guide-marker { left: clamp(8px, 2vw, 22px); }
+.map-point-tour .guide-marker { right: clamp(8px, 2vw, 22px); }
 .welcome-overview p { margin: .6rem 0; }
 .welcome-overview .orientation-topic { display: table; margin: .8rem auto; padding: .4rem 1.1rem; border-radius: 999px; background: #e9f1ff; color: #155ed0; font-weight: 800; }
 .welcome-overview .orientation-action { display: table; padding: .55rem 1.1rem; border: 1px solid #cbd5e1; border-radius: 999px; color: #155ed0; font-weight: 800; }
@@ -107,7 +112,9 @@
 .entrance-options { display: grid; gap: .32rem; margin: .15rem 0 .45rem; padding: 0; list-style: none; }
 .entrance-options li { color: #e6edf7; font-size: clamp(.86rem, .92vw, .98rem); line-height: 1.4; }
 .entrance-options li span { display: inline-block; width: 1.7rem; }
-#welcome .callout .assistant-note { margin-top: .65rem; padding: .55rem .7rem; border-left: 3px solid #56a8ff; background: rgba(86,168,255,.1); color: #d9ecff; font-size: .86rem; }
+#welcome .callout .assistant-note { display: grid; gap: .2rem; margin-top: .8rem; padding: .65rem .8rem; border: 1px solid rgba(86,168,255,.28); border-left: 3px solid #56a8ff; border-radius: 0 8px 8px 0; background: rgba(86,168,255,.1); color: #d9ecff; font-size: .86rem; line-height: 1.45; }
+#welcome .callout .assistant-note strong { color: #fff; font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; }
+#welcome .callout .orientation-invitation { margin-top: .8rem; color: #fff; font-weight: 750; }
 .step-actions { padding-top: 10px; }
 .tour-button { min-height: 48px; }
 
