@@ -88,10 +88,55 @@ html[lang="en"] .members-page .hero::after{
   display:none;
 }
 
-/* Keep the Japanese page on the shared measure while letting its artwork use
-   the complete measure instead of being inset a second time by the container. */
-html[lang="ja"] .members-page .hero.container{
+/* Let both localized heroes use the complete shared measure so the English
+   artwork has the same width and crop as the Japanese artwork. */
+html:is([lang="en"],[lang="ja"]) .members-page .hero.container{
   padding-inline:0;
+}
+
+/* Keep the localized hero artwork at identical dimensions and focal positions;
+   only the copy layered over it changes with the page language. */
+html[lang="en"] .members-page .hero{
+  padding-top:18px;
+  padding-bottom:38px;
+}
+html[lang="en"] .members-page .hero-copy{
+  width:64%;
+  padding:42px 68px;
+}
+html[lang="en"] .members-page .hero h1{
+  font-size:clamp(2.65rem,4.2vw,4rem);
+}
+
+@media(max-width:1020px){
+  html[lang="en"] .members-page .hero-copy{
+    width:70%;
+    padding-inline:46px;
+  }
+}
+
+@media(max-width:760px){
+  html[lang="en"] .members-page .hero{
+    padding-top:8px;
+    padding-bottom:28px;
+  }
+  html[lang="en"] .members-page .hero-panel,
+  html[lang="en"] .members-page .hero-copy{
+    min-height:510px;
+  }
+  html[lang="en"] .members-page .hero-copy{
+    width:88%;
+    padding:32px 26px;
+  }
+  html[lang="en"] .members-page .hero-panel{
+    background-position:70% center;
+  }
+}
+
+@media(max-width:540px){
+  html[lang="en"] .members-page .hero-copy{
+    width:92%;
+  }
 }
 
 /* Match the English member cards' horizontal inset to the Japanese cards. */
