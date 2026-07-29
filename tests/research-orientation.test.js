@@ -93,3 +93,18 @@ test('arrow keys do not override interactive controls', () => {
   app.docListeners.keydown({ target: { closest: () => ({}) }, key: 'ArrowRight', preventDefault() { throw Error('should not prevent'); } });
   assert.equal(app.location.hash, '#welcome');
 });
+
+test('step one mounts the shared homepage entrance as an interactive preview', () => {
+  for (const html of [english, japanese]) {
+    assert.match(html, /data-home-entrance-preview/);
+    assert.match(html, /home-entrance-preview\.js/);
+    assert.doesNotMatch(html, /class="entrance-map"/);
+    assert.match(html, /class="preview-guidance"/);
+  }
+  const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
+  assert.match(previewSource, /source\.querySelector\('\.hero-inner > div:first-child'\)/);
+  assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
+  assert.match(previewSource, /setAttribute\('rel', 'noopener noreferrer'\)/);
+  assert.match(previewSource, /disabled\.disabled = true/);
+  assert.doesNotMatch(previewSource, /iframe/i);
+});
