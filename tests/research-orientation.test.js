@@ -109,6 +109,9 @@ test('step one mounts the shared homepage entrance as an interactive preview', (
   assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
   assert.match(previewSource, /setAttribute\('rel', 'noopener noreferrer'\)/);
   assert.match(previewSource, /disabled\.disabled = true/);
+  assert.match(previewSource, /setAttribute\('aria-disabled', 'true'\)/);
   assert.doesNotMatch(previewSource, /iframe/i);
   assert.match(styles, /\.home-entrance-preview-content\.light-preview\s*\{[^}]*color-scheme:\s*light;/s);
+  assert.match(styles, /\.light-preview \.guide-marker\.preview-marker\s*\{[^}]*background:\s*rgba\(255,255,255,\.96\);[^}]*color:\s*#1f2937 !important;/s);
+  assert.match(styles, /\.light-preview \.preview-orientation-control\s*\{[^}]*background:\s*#f1f5f9;[^}]*color:\s*#475569;/s);
 });
