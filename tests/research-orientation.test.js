@@ -122,6 +122,7 @@ test('step one mounts the shared homepage entrance as an interactive preview', (
 test('step two mounts the shared homepage Research Hub as an interactive light preview', () => {
   for (const html of [english, japanese]) {
     assert.match(html, /data-home-hub-preview/);
+    assert.match(html, /class="hub-overview orientation-preview--light"/);
     assert.match(html, /class="preview-guidance"/);
     assert.doesNotMatch(html, /class="hub-logo-grid"/);
   }
@@ -135,5 +136,7 @@ test('step two mounts the shared homepage Research Hub as an interactive light p
   assert.match(previewSource, /addMarker\(content, 'hub-marker hub-marker-explore'/);
   assert.match(styles, /\.hub-preview-content\s*\{[^}]*position:\s*relative;[^}]*background:\s*rgba\(255,255,255,\.96\);/s);
   assert.match(styles, /\.hub-preview-content\.light-preview \.guide-marker\s*\{[^}]*background:\s*rgba\(255,255,255,\.96\);[^}]*color:\s*#1f2937 !important;/s);
+  assert.match(styles, /\.orientation-preview--light\s*\{[^}]*color-scheme:\s*light;[^}]*--card-color:\s*#ffffff;[^}]*--text:\s*#111827;/s);
+  assert.match(styles, /\.orientation-preview--light \.hub-preview-content img\s*\{[^}]*filter:\s*none !important;[^}]*opacity:\s*1 !important;/s);
   assert.match(styles, /\.hub-preview-content \.preview-link:focus-visible\s*\{[^}]*outline:\s*3px solid #155ed0;/s);
 });

@@ -146,6 +146,29 @@
 
 /* Step 2: a live, light-theme rendering of the homepage Research Hub. */
 .hub-overview { position: relative; min-width: 0; padding: clamp(18px, 2vw, 30px); overflow: auto; border-radius: 22px; background: #f8fafc; color: #182033; box-shadow: 0 20px 55px rgba(0,5,14,.28); }
+.orientation-preview--light {
+  color-scheme: light;
+  --bg-color: #ffffff;
+  --text-color: #24292f;
+  --card-color: #ffffff;
+  --surface-color: #f6f8fa;
+  --muted-color: #57606a;
+  --border-color: #d0d7de;
+  --link-color: #0969da;
+  --link-hover-color: #0757b9;
+  --focus-color: #0969da;
+  --shadow-color: rgba(31, 35, 40, .12);
+  /* Legacy homepage tokens consumed by the cloned Research Hub. */
+  --text: #111827;
+  --muted: #475569;
+  --line: rgba(18, 26, 40, .12);
+  --card: #ffffff;
+  --accent2: #1b46c9;
+  --shadow: 0 10px 30px rgba(18, 26, 40, .08);
+  --shadow2: 0 12px 34px rgba(18, 26, 40, .12);
+  color: var(--text-color);
+  scrollbar-color: #a8b4c5 #eef2f7;
+}
 .hub-overview :is(p, h3, li, strong, span) { color: inherit; }
 .hub-marker { position: absolute; }
 .hub-marker-architect { top: 2px; right: 0; }
@@ -181,7 +204,7 @@
 #hub .callout .hub-question { margin-bottom: .45rem; color: #91c8ff; font-weight: 800; }
 #hub .callout .preview-guidance { margin: .45rem 0; padding: .55rem .65rem; border: 1px solid rgba(86,168,255,.3); border-radius: 8px; background: rgba(86,168,255,.08); color: #d9ecff; font-size: clamp(.76rem, .82vw, .88rem); }
 
-.hub-preview-content { position: relative; min-height: 100%; padding: 14px; border: 1px solid #d0d7de; border-radius: 14px; background: rgba(255,255,255,.96); box-shadow: 0 12px 30px rgba(40,55,85,.08); color: #1a2133 !important; }
+.hub-preview-content { position: relative; min-height: 100%; padding: 14px; border: 1px solid var(--border-color); border-radius: 14px; background: rgba(255,255,255,.96); box-shadow: 0 12px 30px rgba(40,55,85,.08); color: #1a2133 !important; }
 .hub-preview-content .profile-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; padding-right: 150px; }
 .hub-preview-content .avatar { flex: 0 0 48px; width: 48px; height: 48px; overflow: hidden; border: 1px solid rgba(43,100,255,.22); border-radius: 14px; background: #fff; }
 .hub-preview-content .avatar img { width: 100%; height: 100%; object-fit: contain; }
@@ -212,6 +235,27 @@
 .hub-preview-content .preview-link { border-radius: 6px; box-shadow: 0 0 0 2px rgba(29,78,216,.14); text-underline-offset: .15em; }
 .hub-preview-content .preview-link:hover { box-shadow: 0 0 0 3px rgba(29,78,216,.3); }
 .hub-preview-content .preview-link:focus-visible { outline: 3px solid #155ed0; outline-offset: 3px; }
+.orientation-preview--light .hub-preview-content,
+.orientation-preview--light .hub-preview-content .assistant-card,
+.orientation-preview--light .hub-preview-content .profile-links a {
+  border-color: var(--border-color) !important;
+  background-color: var(--card-color) !important;
+  background-image: none !important;
+  color: var(--text-color) !important;
+  box-shadow: var(--shadow) !important;
+}
+.orientation-preview--light .hub-preview-content :is(.profile-role, .research-identifiers-title, .muted, .note) { color: var(--muted-color) !important; }
+.orientation-preview--light .hub-preview-content :is(a, .assistant-button) { color: var(--link-color) !important; }
+.orientation-preview--light .hub-preview-content :is(a, .assistant-button):hover { color: var(--link-hover-color) !important; }
+.orientation-preview--light .hub-preview-content .profile-links a:hover { border-color: #8ab4f8 !important; background: #f0f7ff !important; box-shadow: var(--shadow2) !important; }
+.orientation-preview--light .hub-preview-content .kbd { border-color: var(--border-color) !important; background: var(--surface-color) !important; color: var(--text-color) !important; }
+.orientation-preview--light .hub-preview-content img { filter: none !important; opacity: 1 !important; }
+/* The tour document is deliberately dark. Counter its shared, important card
+   translation only inside this exhibit so the cloned homepage card stays light. */
+[data-theme="dark"] .orientation-preview--light .hub-preview-content { background: var(--card-color) !important; }
+.orientation-preview--light::-webkit-scrollbar { width: 11px; height: 11px; }
+.orientation-preview--light::-webkit-scrollbar-track { background: #eef2f7; }
+.orientation-preview--light::-webkit-scrollbar-thumb { border: 3px solid #eef2f7; border-radius: 999px; background: #a8b4c5; }
 .orientation-page .hub-preview-content.light-preview .guide-marker { z-index: 3; padding: .42rem .7rem; border: 1px solid #cbd5e1; border-radius: 999px; background: rgba(255,255,255,.96); color: #1f2937 !important; box-shadow: 0 4px 12px rgba(15,23,42,.12); pointer-events: none; }
 .hub-preview-content .hub-marker-architect { top: 18px; right: 14px; }
 .hub-preview-content .hub-marker-profiles { top: 105px; right: 14px; }
