@@ -183,9 +183,10 @@
 
     header{
       display:flex;
+      flex-direction:column;
       justify-content:space-between;
-      align-items:center;
-      gap:14px;
+      align-items:flex-start;
+      gap:16px;
       padding: 8px 0 10px;
       position: relative;
       z-index: 1000;
@@ -229,14 +230,17 @@
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      justify-content:flex-end;
+      justify-content:flex-start;
     }
     .topnav a{
       text-decoration:none;
       font-size:13px;
       padding:8px 10px;
       border-radius:999px;
-      border:1px solid transparent;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.42);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #1a2133;
       opacity:.9;
     }
