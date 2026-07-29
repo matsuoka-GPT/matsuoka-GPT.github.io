@@ -63,6 +63,36 @@
     container.setAttribute('aria-busy', 'false');
   }
 
+  function buildHubPreview(container, source, homeUrl) {
+    var hub = source.querySelector('.profile-card');
+    if (!hub) throw new Error('Homepage Research Hub was not found');
+
+    // The homepage remains the single source for the hub's copy, destinations,
+    // image alternatives, and expandable behavior. Only tour annotations are
+    // added here.
+    var content = hub.cloneNode(true);
+    content.classList.add('hub-preview-content', 'light-preview');
+    content.removeAttribute('aria-label');
+
+    content.querySelectorAll('[src]').forEach(function (element) {
+      element.setAttribute('src', absoluteUrl(element.getAttribute('src'), homeUrl));
+    });
+    content.querySelectorAll('a[href]').forEach(function (link) {
+      link.setAttribute('href', absoluteUrl(link.getAttribute('href'), homeUrl));
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.classList.add('preview-link');
+    });
+
+    var japanese = container.ownerDocument.documentElement.lang === 'ja';
+    addMarker(content, 'hub-marker hub-marker-architect', '📍 Concept Architect');
+    addMarker(content, 'hub-marker hub-marker-profiles', japanese ? '📍 研究プロフィール' : '📍 Research Profiles');
+    addMarker(content, 'hub-marker hub-marker-assistant', '📍 Assistant GPT');
+    addMarker(content, 'hub-marker hub-marker-explore', japanese ? '📍 ハブを探索' : '📍 Explore the Hub');
+    container.replaceChildren(content);
+    container.setAttribute('aria-busy', 'false');
+  }
+
   function showError(container) {
     var message = document.createElement('p');
     message.className = 'preview-error';
@@ -81,10 +111,16 @@
         return response.text();
       })
       .then(function (html) {
-        buildPreview(container, new DOMParser().parseFromString(html, 'text/html'), homeUrl);
+        var source = new DOMParser().parseFromString(html, 'text/html');
+        if (container.hasAttribute('data-home-hub-preview')) {
+          buildHubPreview(container, source, homeUrl);
+        } else {
+          buildPreview(container, source, homeUrl);
+        }
       })
       .catch(function () { showError(container); });
   }
 
   document.querySelectorAll('[data-home-entrance-preview]').forEach(mount);
+  document.querySelectorAll('[data-home-hub-preview]').forEach(mount);
 }());
