@@ -47,6 +47,7 @@
       disabled.type = 'button';
       disabled.className = 'preview-orientation-control';
       disabled.disabled = true;
+      disabled.setAttribute('aria-disabled', 'true');
       disabled.textContent = '◇ ' + container.dataset.orientationLabel;
       orientationLink.replaceWith(disabled);
     }
