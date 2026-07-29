@@ -1,10 +1,12 @@
 /* Shared color system for every page. Light values mirror the existing site. */
 :root {
   color-scheme: light;
-  /* Keep fixed utilities visually attached to the site's content card instead
-     of the browser edge. Individual layouts refine this shared card width. */
+  /* Keep fixed utilities immediately outside the site's content card when the
+     viewport has room. Individual layouts refine this shared card width. */
   --control-card-width: 980px;
   --control-card-inset: 18px;
+  --control-card-gap: 12px;
+  --theme-control-width: 104px;
   --bg-color: #ffffff;
   --text-color: #24292f;
   --card-color: #ffffff;
@@ -107,10 +109,11 @@ body {
   position: fixed;
   z-index: 10000;
   top: max(12px, env(safe-area-inset-top));
-  right: max(
+  right: auto;
+  left: clamp(
     var(--control-card-inset),
-    calc((100vw - var(--control-card-width)) / 2 + var(--control-card-inset)),
-    env(safe-area-inset-right)
+    calc(50% + var(--control-card-width) / 2 + var(--control-card-gap)),
+    calc(100vw - var(--theme-control-width) - max(var(--control-card-inset), env(safe-area-inset-right)))
   );
   display: inline-flex;
   align-items: center;
