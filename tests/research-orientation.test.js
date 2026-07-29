@@ -7,6 +7,8 @@ const source = fs.readFileSync(new URL('../scripts/research-orientation.js', `fi
 const styles = fs.readFileSync(new URL('../styles/research-orientation.css', `file://${__filename}`), 'utf8');
 const english = fs.readFileSync(new URL('../research-orientation.html', `file://${__filename}`), 'utf8');
 const japanese = fs.readFileSync(new URL('../jp/research-orientation.html', `file://${__filename}`), 'utf8');
+const englishHome = fs.readFileSync(new URL('../index.html', `file://${__filename}`), 'utf8');
+const japaneseHome = fs.readFileSync(new URL('../jp/index.html', `file://${__filename}`), 'utf8');
 
 test('interactive steps share the same top edge while the no-script fallback remains spaced', () => {
   assert.match(styles, /\.tour-step \+ \.tour-step\s*\{\s*margin-top:\s*4rem;/);
@@ -224,6 +226,14 @@ test('step four mounts the shared homepage Outputs archive as a live light previ
   assert.match(previewSource, /zenodo_records\.json/);
   assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
   assert.match(previewSource, /noopener noreferrer/);
+  assert.match(previewSource, /content\.querySelector\('summary a\[href\*="cosmic-phase"\]'\)/);
+  assert.match(previewSource, /media = document\.createElement\('span'\)/);
+  assert.match(previewSource, /media\.classList\.add\('preview-disabled-media'\)/);
+  assert.match(previewSource, /media\.setAttribute\('aria-disabled', 'true'\)/);
+  assert.match(previewSource, /Available on the main site/);
+  assert.match(styles, /\.outputs-preview-content \.preview-disabled-media\s*\{[^}]*cursor:\s*default;/s);
+  assert.match(englishHome, /href="[^"]*Structure Art Viewer-cosmic-phase\.html"[^>]*target="_blank"/);
+  assert.match(japaneseHome, /href="[^"]*Structure Art Viewer-cosmic-phase\.html"[^>]*target="_blank"/);
   assert.match(previewSource, /archiveMarkerRow\.className = 'outputs-archive-marker-row'/);
   assert.match(previewSource, /summary\.querySelector\('\.outputs-heading'\)\.after\(archiveMarkerRow\)/);
   assert.doesNotMatch(previewSource, /addMarker\(paper\.closest\('li'\), 'outputs-marker outputs-marker-archive'/);

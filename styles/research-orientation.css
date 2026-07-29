@@ -148,6 +148,7 @@
 .outputs-overview { position: relative; min-width: 0; padding: clamp(18px, 2vw, 30px); overflow: auto; border-radius: 22px; background: #f8fafc; color: #111827; box-shadow: 0 20px 55px rgba(0,5,14,.28); }
 .outputs-preview-sizer { position: relative; width: 100%; }
 .outputs-preview-stage { width: 980px; max-width: none; transform: scale(var(--outputs-preview-scale, 1)); transform-origin: top left; }
+.outputs-preview-content .preview-disabled-media { cursor: default; }
 .outputs-preview-content { position: relative; padding: 1px 0 30px; color: #111; --accent2: #2b64ff; --line: #e3e8f0; --radius2: 14px; --muted: #5f6b7a; --shadow: 0 12px 30px rgba(18,26,40,.08); --focus: 0 0 0 3px rgba(43,100,255,.3); }
 .outputs-preview-content .outputs-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
 .outputs-preview-content .outputs-heading h2 { margin: 0; color: #111827 !important; font-size: 1.5em; }
