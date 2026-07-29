@@ -41,6 +41,9 @@
       link.classList.add('preview-link');
     });
 
+    var philosophyLink = content.querySelector('.title-row a[href*="/essays/welcome-"]');
+    if (philosophyLink) philosophyLink.classList.add('intro-philosophy-link');
+
     var orientationLink = content.querySelector('.orientation-entry a');
     if (orientationLink) {
       var disabled = document.createElement('button');
