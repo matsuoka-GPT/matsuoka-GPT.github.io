@@ -194,15 +194,12 @@
 
     .tags{
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:8px;
-      width:100%;
+      flex-wrap:wrap;
+      gap:16px;
     }
 
     .tag{
       display:inline-flex;
-      flex:0 0 auto;
       align-items:center;
       gap:8px;
       border:1px solid var(--line);
@@ -230,10 +227,10 @@
     }
 
     .topnav{
-      display:grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap:10px;
-      width:100%;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
     }
     .topnav a{
       text-decoration:none;
@@ -737,10 +734,7 @@
   }
 
   .tags {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    justify-content: space-evenly;
-    gap: 6px;
+    gap: 12px;
   }
 
   .tag {
@@ -749,8 +743,8 @@
   }
 
   .topnav {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 4px;
+    justify-content: flex-start;
+    gap: 8px;
   }
 
   .topnav a {
@@ -786,7 +780,7 @@
   }
 
   .topnav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: flex-start;
   }
 
   .hero {
