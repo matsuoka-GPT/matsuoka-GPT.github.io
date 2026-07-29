@@ -14,7 +14,7 @@ function storage(initial = {}) {
   };
 }
 
-function loadTheme(userAgent, platform = 'iPhone', maxTouchPoints = 5, session = storage()) {
+function loadTheme(userAgent, platform = 'iPhone', maxTouchPoints = 5, session = storage(), initial = {}) {
   let click;
   let reloads = 0;
   const toggle = {
@@ -23,7 +23,16 @@ function loadTheme(userAgent, platform = 'iPhone', maxTouchPoints = 5, session =
   };
   const classList = { add() {}, remove() {} };
   const root = { dataset: {}, classList, offsetWidth: 0 };
-  const local = storage();
+  const local = storage(initial);
+  const attributes = new Map([
+    ['src', 'images/icons/chatgpt.svg'],
+    ['data-theme-src-light', 'images/icons/chatgpt.svg'],
+    ['data-theme-src-dark', 'images/icons/chatgpt-white.svg']
+  ]);
+  const themedAsset = {
+    getAttribute: name => attributes.get(name) || null,
+    setAttribute: (name, value) => attributes.set(name, value)
+  };
   const window = {
     matchMedia: () => ({ matches: false, addEventListener() {} }),
     requestAnimationFrame: callback => { callback(); return 1; },
@@ -33,7 +42,9 @@ function loadTheme(userAgent, platform = 'iPhone', maxTouchPoints = 5, session =
   };
   const document = {
     documentElement: root, readyState: 'complete',
-    querySelector: () => toggle, createElement: () => toggle,
+    querySelector: () => toggle,
+    querySelectorAll: selector => selector.includes('data-theme-src') ? [themedAsset] : [],
+    createElement: () => toggle,
     body: { appendChild() {} }, dispatchEvent() {}
   };
   const context = {
@@ -42,7 +53,7 @@ function loadTheme(userAgent, platform = 'iPhone', maxTouchPoints = 5, session =
     CustomEvent: function () {}
   };
   vm.runInNewContext(source, context);
-  return { click, local, session, reloads: () => reloads };
+  return { click, local, session, themedAsset, reloads: () => reloads };
 }
 
 test('reloads only iOS Safari after a direct toggle and persists first', () => {
@@ -73,4 +84,15 @@ test('session marker prevents a reload loop and is consumed on load', () => {
   );
   assert.equal(safari.reloads(), 0);
   assert.equal(session.getItem('site-theme-ios-reload'), null);
+});
+
+test('theme-aware assets follow the resolved shared theme', () => {
+  const browser = loadTheme(
+    'Mozilla/5.0 (Macintosh) AppleWebKit/605.1.15 Version/17.0 Safari/605.1.15',
+    'MacIntel', 0, storage(), { 'site-theme': 'dark' }
+  );
+  assert.equal(browser.themedAsset.getAttribute('src'), 'images/icons/chatgpt-white.svg');
+
+  browser.click();
+  assert.equal(browser.themedAsset.getAttribute('src'), 'images/icons/chatgpt.svg');
 });

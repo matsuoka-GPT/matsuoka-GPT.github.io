@@ -49,11 +49,6 @@ html[lang="ja"] .site-footer{padding-bottom:30px}
 /* Crop every use of the member portrait consistently, without altering the source image. */
 img[src$="matu.png"]{border-radius:50%;object-fit:cover;aspect-ratio:1}
 
-/* Keep the white workflow variant unchanged while whitening the standard mark in dark mode. */
-.workflow-step .chatgpt-logo{filter:none}
-[data-theme=dark] .chatgpt-logo{filter:brightness(0) invert(1)}
-[data-theme=dark] .workflow-step .chatgpt-logo{filter:none}
-
 @media(max-width:760px){
   .lab-mark{width:82px;height:82px}
   .closing-panel .lab-mark{width:55px;height:55px}

@@ -80,6 +80,13 @@
     toggle.title = 'Theme: ' + preference + ' · Next: ' + next;
   }
 
+  function updateThemeAssets(theme) {
+    document.querySelectorAll('[data-theme-src-light][data-theme-src-dark]').forEach(function (asset) {
+      var source = asset.getAttribute('data-theme-src-' + theme);
+      if (source && asset.getAttribute('src') !== source) asset.setAttribute('src', source);
+    });
+  }
+
   function applyTheme(value, options) {
     options = options || {};
     if (!isPreference(value)) value = 'system';
@@ -102,6 +109,7 @@
     // and component observes one coherent theme before the browser can paint again.
     root.dataset.themePreference = preference;
     root.dataset.theme = resolveTheme(preference);
+    updateThemeAssets(root.dataset.theme);
     updateToggle();
 
     if (isThemeChange) {
@@ -142,6 +150,7 @@
   applyTheme(preference);
 
   function mountToggle() {
+    updateThemeAssets(root.dataset.theme);
     toggle = document.querySelector('.theme-toggle');
     if (!toggle) {
       toggle = document.createElement('button');
