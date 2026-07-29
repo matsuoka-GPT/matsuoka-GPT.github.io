@@ -87,3 +87,14 @@ html[lang="en"] .members-page .hero::after{
 html[lang="ja"] .members-page .hero.container{
   padding-inline:0;
 }
+
+/* Match the English member cards' horizontal inset to the Japanese cards. */
+html[lang="en"] .member-card{
+  padding-inline:19px;
+}
+
+@media(max-width:760px){
+  html[lang="en"] .member-card{
+    padding-inline:20px;
+  }
+}
