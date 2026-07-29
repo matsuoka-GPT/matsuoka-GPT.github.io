@@ -236,6 +236,20 @@
     }
 
     var japanese = container.ownerDocument.documentElement.lang === 'ja';
+    var mediaLink = content.querySelector('summary a[href*="cosmic-phase"]');
+    var media = null;
+    if (mediaLink) {
+      media = document.createElement('span');
+      Array.prototype.slice.call(mediaLink.attributes).forEach(function (attribute) {
+        if (!['href', 'target', 'rel'].includes(attribute.name)) media.setAttribute(attribute.name, attribute.value);
+      });
+      media.classList.remove('preview-link');
+      media.classList.add('preview-disabled-media');
+      media.setAttribute('aria-disabled', 'true');
+      media.setAttribute('title', japanese ? 'メインサイトで利用できます' : 'Available on the main site');
+      media.replaceChildren.apply(media, Array.prototype.slice.call(mediaLink.childNodes));
+      mediaLink.replaceWith(media);
+    }
     addMarker(content, 'outputs-marker outputs-marker-title', '📍 Outputs');
     var analytics = content.querySelector('.analytics-link');
     if (analytics) addMarker(content, 'outputs-marker outputs-marker-analytics', japanese ? '📍 分析ダッシュボード' : '📍 Analytics Dashboard');
@@ -252,7 +266,6 @@
       addMarker(categoriesMarkerRow, 'outputs-marker outputs-marker-categories', japanese ? '📍 研究カテゴリー' : '📍 Research Categories');
       firstCategory.before(categoriesMarkerRow);
     }
-    var media = content.querySelector('summary a[href*="cosmic-phase"]');
     if (media) addMarker(media.parentElement, 'outputs-marker outputs-marker-media', japanese ? '📍 研究メディア' : '📍 Research Media');
 
     var stage = document.createElement('div');
