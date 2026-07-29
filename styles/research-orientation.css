@@ -87,17 +87,25 @@
 .welcome-overview p { margin: .6rem 0; }
 .welcome-overview .orientation-topic { display: table; margin: .8rem auto; padding: .4rem 1.1rem; border-radius: 999px; background: #e9f1ff; color: #155ed0; font-weight: 800; }
 .welcome-overview .orientation-action { display: table; padding: .55rem 1.1rem; border: 1px solid #cbd5e1; border-radius: 999px; color: #155ed0; font-weight: 800; }
-.welcome-overview blockquote { margin: .75rem 0; padding: 0; border: 0; background: transparent; color: #4b5563; font-style: italic; }
+.welcome-overview .entrance-quote { color: #4b5563; font-style: italic; }
+.welcome-overview .entrance-languages { display: flex; gap: .75rem; align-items: center; font-size: 1.15rem; font-weight: 800; text-decoration: underline; text-underline-offset: .18em; }
+.welcome-overview .entrance-introduction { font-size: 1.02rem; line-height: 1.55; }
 .welcome-overview details { margin-top: .8rem; padding: .65rem 1rem; border-radius: 10px; background: #e9edf3; }
 .welcome-overview summary { cursor: pointer; font-weight: 750; }
-.orientation-page .welcome-overview :is(p, blockquote, summary, details, strong) { color: #101827 !important; }
-.orientation-page .welcome-overview blockquote { background: transparent !important; box-shadow: none !important; color: #4b5563 !important; }
+.orientation-page .welcome-overview :is(p, summary, details, strong) { color: #101827 !important; }
+.orientation-page .welcome-overview .entrance-quote { color: #4b5563 !important; }
 .orientation-page .welcome-overview details { background: #e9edf3 !important; background-image: none !important; box-shadow: none !important; }
-#welcome .callout { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-start; max-height: none; margin: 0; padding: clamp(30px, 3vw, 44px) clamp(28px, 3.5vw, 48px); border-radius: 22px; background: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97)); color: #eef5ff; box-shadow: inset 0 1px rgba(255,255,255,.05); }
+#welcome .callout { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-start; max-height: none; margin: 0; padding: clamp(22px, 2.2vw, 34px) clamp(26px, 3vw, 42px); border-radius: 22px; background: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97)); color: #eef5ff; box-shadow: inset 0 1px rgba(255,255,255,.05); }
 #welcome .step-label { align-self: flex-start; padding: .45rem 1rem; border-radius: 999px; background: linear-gradient(120deg,#155ed0,#284ad4); color: #fff; letter-spacing: 0; text-transform: none; font-size: .95rem; }
-#welcome .callout h2 { margin-top: 1rem; color: #f6f9ff; font-size: clamp(2rem, 2.2vw, 2.5rem); line-height: 1.25; }
-#welcome .callout p:not(.step-label) { color: #e6edf7; font-size: clamp(1rem, 1.1vw, 1.12rem); line-height: 1.75; }
-#welcome .title-rule { display: block; width: 80px; height: 4px; margin: 0 0 1rem; border-radius: 3px; background: #2f6eff; }
+#welcome .callout h2 { margin: .65rem 0 .6rem; color: #f6f9ff; font-size: clamp(1.75rem, 2vw, 2.25rem); line-height: 1.2; }
+#welcome .callout p:not(.step-label) { margin: .3rem 0; color: #e6edf7; font-size: clamp(.88rem, .95vw, 1rem); line-height: 1.5; }
+#welcome .title-rule { display: block; width: 80px; height: 4px; margin: 0 0 .6rem; border-radius: 3px; background: #2f6eff; }
+#welcome .callout .map-message { color: #fff; font-weight: 800; }
+#welcome .callout .from-here { margin-top: .55rem; font-weight: 750; }
+.entrance-options { display: grid; gap: .32rem; margin: .15rem 0 .45rem; padding: 0; list-style: none; }
+.entrance-options li { color: #e6edf7; font-size: clamp(.86rem, .92vw, .98rem); line-height: 1.4; }
+.entrance-options li span { display: inline-block; width: 1.7rem; }
+#welcome .callout .assistant-note { margin-top: .65rem; padding: .55rem .7rem; border-left: 3px solid #56a8ff; background: rgba(86,168,255,.1); color: #d9ecff; font-size: .86rem; }
 .step-actions { padding-top: 10px; }
 .tour-button { min-height: 48px; }
 
