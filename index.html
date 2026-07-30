@@ -139,6 +139,7 @@
   <script src="scripts/theme.js"></script>
   <script src="scripts/back-to-top.js" defer></script>
   <script src="scripts/home-tooltips.js" defer></script>
+  <script src="scripts/research-orientation-hint.js" defer></script>
 </head>
 
 <body>
@@ -181,7 +182,16 @@
       </div>
 
       <nav class="topnav" aria-label="navigation">
-        <a class="orientation-link" href="research-orientation.html">🧭 Take the Research Orientation</a>
+        <span class="orientation-entry">
+          <span
+            class="orientation-hint"
+            id="research-orientation-hint"
+            role="note"
+            aria-label="First-time visitor? Start with the Research Orientation."
+            hidden
+          >First-time visitor? Start here. <span aria-hidden="true">👉</span></span>
+          <a class="orientation-link" href="research-orientation.html">🧭 Take the Research Orientation</a>
+        </span>
         <a href="#projects">Projects</a>
         <a href="#method">Method</a>
         <a href="#outputs">Outputs</a>

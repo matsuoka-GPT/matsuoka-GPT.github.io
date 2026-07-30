@@ -136,6 +136,7 @@
   <script src="../scripts/theme.js"></script>
   <script src="../scripts/back-to-top.js" defer></script>
   <script src="../scripts/home-tooltips.js" defer></script>
+  <script src="../scripts/research-orientation-hint.js" defer></script>
 </head>
 
 <body>
@@ -179,7 +180,16 @@
 
 
 <nav class="topnav" aria-label="navigation">
-    <a class="orientation-link" href="research-orientation.html">🧭 研究オリエンテーションを見る</a>
+    <span class="orientation-entry">
+      <span
+        class="orientation-hint"
+        id="research-orientation-hint"
+        role="note"
+        aria-label="初めての方は、研究オリエンテーションからご覧ください。"
+        hidden
+      >初めての方はこちらから。<span aria-hidden="true">👉</span></span>
+      <a class="orientation-link" href="research-orientation.html">🧭 研究オリエンテーションを見る</a>
+    </span>
     <a href="#projects">プロジェクト</a>
     <a href="#method">方法論</a>
     <a href="#outputs">成果物</a>
