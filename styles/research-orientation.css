@@ -658,6 +658,7 @@ body.orientation-page { background: radial-gradient(circle at 50% 35%, color-mix
 @media (max-width: 600px) {
   .preview-marker-philosophy { top: 20%; }
   .preview-marker-tour { top: 48%; }
+  html[lang="ja"] .research-map-preview-content .research-marker-projects { left: 190px; }
 
   .hub-preview-markers .hub-marker-architect { top: 4px; }
   .hub-preview-markers .hub-marker-profiles { top: 82px; }
