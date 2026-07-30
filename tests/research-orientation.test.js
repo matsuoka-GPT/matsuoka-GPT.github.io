@@ -10,11 +10,21 @@ const japanese = fs.readFileSync(new URL('../jp/research-orientation.html', `fil
 const englishHome = fs.readFileSync(new URL('../index.html', `file://${__filename}`), 'utf8');
 const japaneseHome = fs.readFileSync(new URL('../jp/index.html', `file://${__filename}`), 'utf8');
 
-test('both orientation pages use the same fixed dark tour presentation', () => {
+test('both orientation pages keep the fixed tour presentation while matching the homepage background theme', () => {
   for (const html of [english, japanese]) {
     assert.match(html, /<html lang="(?:en|ja)" data-theme="dark">/);
     assert.doesNotMatch(html, /scripts\/theme\.js/);
+    assert.match(html, /scripts\/orientation-background-theme\.js/);
   }
+  assert.match(styles, /data-orientation-background-theme="light"/);
+});
+
+test('orientation headers have no language switch and finish in the matching language homepage', () => {
+  for (const html of [english, japanese]) {
+    assert.doesNotMatch(html, /class="language-link"/);
+  }
+  assert.match(english, /class="tour-button tour-finish" href="\/"/);
+  assert.match(japanese, /class="tour-button tour-finish" href="index\.html"/);
 });
 
 test('interactive steps share the same top edge while the no-script fallback remains spaced', () => {
@@ -416,7 +426,7 @@ test('step seven mounts the complete homepage FAQ and concludes the tour', () =>
     assert.match(html, /class="callout faq-callout"/);
     assert.equal((html.match(/data-status/g) || []).length, 1);
     assert.doesNotMatch(html, /STEP 7 OF 7/i);
-    assert.match(html, /class="tour-button tour-finish" href="\/"/);
+    assert.match(html, /class="tour-button tour-finish" href="(?:\/|index\.html)"/);
     assert.doesNotMatch(html, /tour-finish[^>]*target=/);
   }
   assert.match(english, /Still have questions\?/);
