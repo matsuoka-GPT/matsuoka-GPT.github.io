@@ -652,3 +652,15 @@ body.orientation-page { background: radial-gradient(circle at 50% 35%, color-mix
   color: var(--orientation-ink) !important;
 }
 [data-theme="dark"] .orientation-page .tour-button:disabled { opacity: .68; }
+
+
+/* Prevent guide labels from covering preview copy on narrow phone screens. */
+@media (max-width: 600px) {
+  .preview-marker-philosophy { top: 20%; }
+  .preview-marker-tour { top: 33%; }
+
+  .hub-preview-markers .hub-marker-architect { top: 4px; }
+  .hub-preview-markers .hub-marker-profiles { top: 82px; }
+  .hub-preview-markers .hub-marker-assistant { top: 270px; }
+  .hub-preview-markers .hub-marker-explore { bottom: 32px; }
+}
