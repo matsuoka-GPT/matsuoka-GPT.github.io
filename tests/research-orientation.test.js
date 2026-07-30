@@ -215,6 +215,7 @@ test('step two mounts the shared homepage Research Hub as an interactive light p
     assert.match(html, /data-home-hub-preview/);
     assert.match(html, /class="hub-overview orientation-preview--light"/);
     assert.match(html, /class="preview-guidance"/);
+    assert.match(html, /class="hub-members-path"[^>]*>.*<a href="members\.html" target="_blank" rel="noopener noreferrer">/);
     assert.doesNotMatch(html, /class="hub-logo-grid"/);
   }
   const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
