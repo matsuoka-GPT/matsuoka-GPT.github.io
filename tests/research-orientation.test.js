@@ -375,6 +375,10 @@ test('step six mounts only the homepage Essays and Great Minds areas as a live l
     assert.equal((html.match(/<article class="tour-step"/g) || []).length, 7);
     assert.doesNotMatch(html, /id="explore"[^>]*data-step/);
   }
+  for (const home of [englishHome, japaneseHome]) {
+    assert.equal((home.match(/<section id="essays"/g) || []).length, 1);
+    assert.equal((home.match(/<section id="great-minds"/g) || []).length, 1);
+  }
   const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
   assert.match(previewSource, /source\.querySelector\('#essays'\)/);
   assert.match(previewSource, /source\.querySelector\('#great-minds'\)/);
