@@ -78,11 +78,7 @@
 
 /* Lab-tour presentation: keep the tour centered at a comfortable reading width. */
 .orientation-page .container { max-width: 1328px; padding-inline: clamp(24px, 4.5vw, 64px); }
-.orientation-page { min-height: 100vh; background: radial-gradient(circle at 50% 35%, rgba(25,72,126,.16), transparent 45%), #081220; }
-html[data-orientation-background-theme="dark"] { background-color: #081220; }
-html[data-orientation-background-theme="light"] { background-color: #fff; }
-html[data-orientation-background-theme="dark"] body.orientation-page { background: radial-gradient(circle at 50% 35%, rgba(25,72,126,.16), transparent 45%), #081220 !important; }
-html[data-orientation-background-theme="light"] body.orientation-page { background: radial-gradient(circle at 50% 35%, rgba(37,99,235,.1), transparent 45%), #fff !important; }
+.orientation-page { min-height: 100vh; }
 .orientation-header { position: relative; min-height: 56px; padding-block: .65rem; border-bottom: 1px solid var(--border-color); }
 .orientation-header h1 { position: absolute; left: 50%; margin: 0; transform: translateX(-50%); color: var(--heading-color); font-size: clamp(1.2rem, 2vw, 1.85rem); line-height: 1.2; white-space: nowrap; }
 .orientation-header a { color: var(--text-color); }
@@ -548,3 +544,81 @@ html[data-orientation-background-theme="light"] body.orientation-page { backgrou
 #faq .completion-guidance { display: block; margin-top: .75rem; padding: .75rem .85rem; border: 1px solid rgba(244,114,182,.38); border-radius: 10px; background: rgba(244,114,182,.11); color: #fce7f3; font-size: clamp(.76rem, .8vw, .87rem); line-height: 1.48; }
 @media (max-width: 900px) { .faq-overview { max-height: 690px; } #faq .faq-callout { overflow: visible; } }
 @media (max-width: 600px) { .faq-overview { padding: 15px; border-radius: 16px; } .faq-preview-content .two { grid-template-columns: 1fr; } .faq-preview-content footer { flex-direction: column; } #faq .faq-callout { padding: 28px 22px; border-radius: 16px; } #faq .faq-callout p, #faq .faq-callout h3 { font-size: 1rem; line-height: 1.65; } }
+
+/* The orientation follows the same resolved light/dark mode as the homepage.
+   These tokens deliberately theme both halves of every exhibit together; the
+   preview-specific rules above remain responsible only for layout and scale. */
+:root {
+  --orientation-panel: #f8fafc;
+  --orientation-card: #ffffff;
+  --orientation-soft: #eef2f7;
+  --orientation-ink: #111827;
+  --orientation-muted: #475569;
+  --orientation-line: #dbe3ee;
+  --orientation-accent: #155ed0;
+  --orientation-guide: rgba(255, 255, 255, .97);
+  --orientation-guide-ink: #1f2937;
+  --orientation-callout: linear-gradient(145deg, rgba(255,255,255,.98), rgba(241,246,255,.98));
+}
+[data-theme="dark"] {
+  --orientation-panel: #101c2d;
+  --orientation-card: #16243a;
+  --orientation-soft: #1b2b43;
+  --orientation-ink: #eef5ff;
+  --orientation-muted: #b6c4d8;
+  --orientation-line: #31475e;
+  --orientation-accent: #79aff5;
+  --orientation-guide: rgba(18, 32, 51, .97);
+  --orientation-guide-ink: #eef5ff;
+  --orientation-callout: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97));
+}
+
+html,
+body.orientation-page { background-color: var(--bg-color); }
+body.orientation-page { background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--link-color) 12%, transparent), transparent 45%), var(--bg-color) !important; }
+
+.orientation-page :is(.welcome-overview, .hub-overview, .research-map-overview, .outputs-overview, .contact-overview, .ideas-overview, .faq-overview) {
+  color-scheme: normal;
+  background: var(--orientation-panel) !important;
+  color: var(--orientation-ink) !important;
+}
+.orientation-page :is(.home-entrance-preview-content, .hub-preview-content, .research-map-preview-content, .outputs-preview-content, .contact-preview-content, .ideas-preview-content, .faq-preview-content) {
+  color: var(--orientation-ink) !important;
+}
+.orientation-page :is(.home-entrance-preview-content, .hub-preview-content, .research-map-preview-content, .outputs-preview-content, .contact-preview-content, .ideas-preview-content, .faq-preview-content)
+  :is(h2, h3, p, li, strong, summary, dt, dd, footer, .lead, .philosophy-hero, .muted) {
+  color: inherit !important;
+}
+.orientation-page :is(.home-entrance-preview-content, .hub-preview-content, .research-map-preview-content, .outputs-preview-content, .contact-preview-content, .ideas-preview-content, .faq-preview-content)
+  :is(.card, .box, details, details.fold, .fold-body, .outputs-grid li, .output-stat) {
+  border-color: var(--orientation-line) !important;
+  background: var(--orientation-card) !important;
+  background-image: none !important;
+  color: var(--orientation-ink) !important;
+  box-shadow: 0 8px 22px var(--shadow-color) !important;
+}
+.orientation-page :is(.home-entrance-preview-content, .hub-preview-content, .research-map-preview-content, .outputs-preview-content, .contact-preview-content, .ideas-preview-content, .faq-preview-content)
+  :is(.muted, .philosophy-hero, .output-stat span, footer) { color: var(--orientation-muted) !important; }
+.orientation-page :is(.home-entrance-preview-content, .hub-preview-content, .research-map-preview-content, .outputs-preview-content, .contact-preview-content, .ideas-preview-content, .faq-preview-content) a { color: var(--orientation-accent) !important; }
+.orientation-page :is(.guide-marker, .intro-philosophy-link, .preview-orientation-control) {
+  border-color: var(--orientation-line) !important;
+  background: var(--orientation-guide) !important;
+  color: var(--orientation-guide-ink) !important;
+}
+.orientation-page .welcome-overview :is(p, summary, details, strong) { color: var(--orientation-ink) !important; }
+.orientation-page .welcome-overview .entrance-quote { color: var(--orientation-muted) !important; }
+.orientation-page .welcome-overview :is(details, .orientation-topic) { background: var(--orientation-soft) !important; }
+
+.orientation-page :is(#welcome, #hub, #workflow, #outputs, #contact, #ideas, #faq) .callout {
+  border-color: var(--orientation-line);
+  background: var(--orientation-callout) !important;
+  color: var(--orientation-ink) !important;
+}
+.orientation-page :is(#welcome, #hub, #workflow, #outputs, #contact, #ideas, #faq) .callout :is(h2, h3, p, li, strong, dt, dd) {
+  color: inherit !important;
+}
+.orientation-page .callout :is(.assistant-note, .preview-guidance, .completion-guidance) {
+  border-color: color-mix(in srgb, var(--orientation-accent) 38%, transparent) !important;
+  background: color-mix(in srgb, var(--orientation-accent) 10%, transparent) !important;
+  color: var(--orientation-ink) !important;
+}
