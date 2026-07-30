@@ -1,12 +1,13 @@
 (function () {
   'use strict';
 
+  var STORAGE_KEY = 'site-theme';
   var root = document.documentElement;
   var media = window.matchMedia('(prefers-color-scheme: dark)');
 
   function readPreference() {
     try {
-      var preference = localStorage.getItem('site-theme');
+      var preference = localStorage.getItem(STORAGE_KEY);
       return preference === 'light' || preference === 'dark' ? preference : 'system';
     } catch (error) {
       return 'system';
@@ -30,7 +31,7 @@
   else if (media.addListener) media.addListener(handleSystemChange);
 
   window.addEventListener('storage', function (event) {
-    if (event.key === 'site-theme' || event.key === null) applyBackgroundTheme();
+    if (event.key === STORAGE_KEY || event.key === null) applyBackgroundTheme();
   });
   window.addEventListener('pageshow', applyBackgroundTheme);
 }());

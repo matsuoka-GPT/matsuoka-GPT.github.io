@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 
 const source = fs.readFileSync(new URL('../scripts/research-orientation.js', `file://${__filename}`), 'utf8');
+const backgroundThemeSource = fs.readFileSync(new URL('../scripts/orientation-background-theme.js', `file://${__filename}`), 'utf8');
 const styles = fs.readFileSync(new URL('../styles/research-orientation.css', `file://${__filename}`), 'utf8');
 const english = fs.readFileSync(new URL('../research-orientation.html', `file://${__filename}`), 'utf8');
 const japanese = fs.readFileSync(new URL('../jp/research-orientation.html', `file://${__filename}`), 'utf8');
@@ -17,6 +18,62 @@ test('both orientation pages keep the fixed tour presentation while matching the
     assert.match(html, /scripts\/orientation-background-theme\.js/);
   }
   assert.match(styles, /data-orientation-background-theme="light"/);
+});
+
+function loadBackgroundTheme(preference, systemDark = false) {
+  const root = { dataset: {} };
+  const mediaListeners = {};
+  const windowListeners = {};
+  const media = {
+    matches: systemDark,
+    addEventListener(type, listener) { mediaListeners[type] = listener; }
+  };
+  const localStorage = {
+    getItem(key) {
+      assert.equal(key, 'site-theme');
+      return preference.value;
+    }
+  };
+  const window = {
+    matchMedia(query) {
+      assert.equal(query, '(prefers-color-scheme: dark)');
+      return media;
+    },
+    addEventListener(type, listener) { windowListeners[type] = listener; }
+  };
+
+  vm.runInNewContext(backgroundThemeSource, {
+    document: { documentElement: root },
+    localStorage,
+    window
+  });
+  return { root, media, mediaListeners, windowListeners };
+}
+
+test('orientation background follows explicit homepage light and dark preferences', () => {
+  const preference = { value: 'light' };
+  const app = loadBackgroundTheme(preference, true);
+  assert.equal(app.root.dataset.orientationBackgroundTheme, 'light');
+
+  preference.value = 'dark';
+  app.windowListeners.storage({ key: 'site-theme' });
+  assert.equal(app.root.dataset.orientationBackgroundTheme, 'dark');
+});
+
+test('orientation background resolves system mode and reacts only while system is selected', () => {
+  const preference = { value: 'system' };
+  const app = loadBackgroundTheme(preference, false);
+  assert.equal(app.root.dataset.orientationBackgroundTheme, 'light');
+
+  app.media.matches = true;
+  app.mediaListeners.change();
+  assert.equal(app.root.dataset.orientationBackgroundTheme, 'dark');
+
+  preference.value = 'light';
+  app.windowListeners.pageshow();
+  app.media.matches = false;
+  app.mediaListeners.change();
+  assert.equal(app.root.dataset.orientationBackgroundTheme, 'light');
 });
 
 test('orientation headers have no language switch and finish in the matching language homepage', () => {
