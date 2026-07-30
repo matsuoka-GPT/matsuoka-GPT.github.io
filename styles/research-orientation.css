@@ -78,7 +78,9 @@
 
 /* Lab-tour presentation: keep the tour centered at a comfortable reading width. */
 .orientation-page .container { max-width: 1328px; padding-inline: clamp(24px, 4.5vw, 64px); }
-.orientation-page { min-height: 100vh; background: radial-gradient(circle at 50% 35%, rgba(25,72,126,.16), transparent 45%), #061525; }
+.orientation-page { min-height: 100vh; background: radial-gradient(circle at 50% 35%, rgba(25,72,126,.16), transparent 45%), #081220; }
+html[data-orientation-background-theme="light"] { background-color: #fff; }
+html[data-orientation-background-theme="light"] .orientation-page { background: radial-gradient(circle at 50% 35%, rgba(37,99,235,.1), transparent 45%), #fff; }
 .orientation-header { position: relative; min-height: 56px; padding-block: .65rem; border-bottom: 1px solid var(--border-color); }
 .orientation-header h1 { position: absolute; left: 50%; margin: 0; transform: translateX(-50%); color: var(--heading-color); font-size: clamp(1.2rem, 2vw, 1.85rem); line-height: 1.2; white-space: nowrap; }
 .orientation-header a { color: var(--text-color); }
