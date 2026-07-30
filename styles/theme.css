@@ -194,6 +194,15 @@ body {
   color: #82b5ff !important;
   box-shadow: 0 8px 22px rgba(0, 7, 18, .34), 0 0 0 1px rgba(110, 168, 254, .06);
 }
+[data-theme="dark"] .topnav .orientation-link {
+  border-color: #5684b6 !important;
+  background: rgba(43, 100, 255, .2) !important;
+  color: #9cc5ff !important;
+}
+[data-theme="dark"] .topnav .orientation-link:hover {
+  border-color: #75a6dd !important;
+  background: rgba(43, 100, 255, .3) !important;
+}
 [data-theme="dark"] .pill {
   background: rgba(82, 139, 207, .2) !important;
   color: #8bb9f5 !important;
