@@ -228,9 +228,67 @@
 
     .topnav{
       display:flex;
+      align-items:flex-end;
       gap:20px;
       flex-wrap:wrap;
       justify-content:flex-start;
+    }
+    .orientation-entry{
+      display:inline-flex;
+      position:relative;
+    }
+    .orientation-entry.hint-active{
+      padding-top:44px;
+    }
+    .orientation-hint{
+      position:absolute;
+      top:0;
+      left:4px;
+      z-index:2;
+      width:max-content;
+      max-width:min(260px, calc(100vw - 48px));
+      padding:6px 10px;
+      border:1px solid rgba(18, 26, 40, .18);
+      border-radius:9px;
+      background:#fff;
+      box-shadow:0 6px 18px rgba(18, 26, 40, .14);
+      color:#1a2133;
+      font-size:12px;
+      font-weight:600;
+      line-height:1.45;
+      opacity:0;
+      transform:translateY(-4px);
+      pointer-events:none;
+      transition:opacity .18s ease, transform .18s ease;
+    }
+    .orientation-hint::after{
+      content:"";
+      position:absolute;
+      left:22px;
+      bottom:-6px;
+      width:10px;
+      height:10px;
+      border-right:1px solid rgba(18, 26, 40, .18);
+      border-bottom:1px solid rgba(18, 26, 40, .18);
+      background:inherit;
+      transform:rotate(45deg);
+    }
+    .orientation-hint.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .orientation-hint.is-dismissing{
+      opacity:0;
+      transform:translateY(-3px);
+    }
+    [data-theme="dark"] .orientation-hint{
+      border-color:#42566d;
+      background:#152238;
+      box-shadow:0 8px 22px rgba(0, 5, 14, .45);
+      color:#edf4ff;
+    }
+    [data-theme="dark"] .orientation-hint::after{
+      border-color:#42566d;
     }
     .topnav a{
       text-decoration:none;
@@ -794,6 +852,16 @@
     justify-content: flex-start;
   }
 
+  .orientation-entry.hint-active {
+    flex-basis: 100%;
+    padding-top: 42px;
+  }
+
+  .orientation-hint {
+    left: 2px;
+    white-space: normal;
+  }
+
   .hero {
     padding: 12px 14px;
   }
@@ -838,5 +906,16 @@
     width: auto;
     height: auto;
     object-fit: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orientation-hint {
+    transform: none;
+    transition: none;
+  }
+
+  .orientation-hint.is-dismissing {
+    transform: none;
   }
 }
