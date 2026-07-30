@@ -262,11 +262,15 @@ test('step five mounts the shared homepage Contact section as a live light previ
   assert.match(previewSource, /source\.querySelector\('#collab'\)/);
   assert.match(previewSource, /document\.querySelectorAll\('\[data-home-contact-preview\]'\)\.forEach\(mount\)/);
   assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
+  assert.match(previewSource, /languageFlags\.classList\.add\('language-flags'\)/);
+  assert.match(previewSource, /images\/twemoji\/.*flag\[1\].*\.svg/);
+  assert.equal((previewSource.match(/'1f1[a-f0-9]{2}-1f1[a-f0-9]{2}'/g) || []).length, 9);
   assert.match(previewSource, /addMarker\(policy \|\| content, 'contact-marker contact-marker-policy'/);
   assert.match(previewSource, /'contact-marker contact-marker-style'/);
   assert.match(previewSource, /'contact-marker contact-marker-language'/);
   assert.match(previewSource, /'contact-marker contact-marker-email'/);
   assert.match(styles, /\.contact-preview-stage\s*\{[^}]*width:\s*760px;[^}]*transform:\s*scale\(var\(--contact-preview-scale, 1\)\)/s);
+  assert.match(styles, /\.contact-preview-content \.language-flags img\.emoji\s*\{[^}]*width:\s*20px;[^}]*height:\s*20px;/s);
   assert.match(styles, /\.contact-preview-content \.guide-marker\.contact-marker\s*\{[^}]*background:\s*rgba\(255,255,255,\.97\);[^}]*color:\s*#1f2937 !important;/s);
   assert.match(styles, /#contact \.contact-callout/);
 });
