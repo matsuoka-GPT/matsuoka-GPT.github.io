@@ -63,7 +63,8 @@ test('both homepages provide the localized accessible hint beside the unchanged 
     assert.match(page, /class="orientation-link" href="research-orientation\.html"/);
     assert.match(page, /research-orientation-hint\.js/);
   }
-  assert.match(pages[0], /First-time visitor\? Start here\. <span aria-hidden="true">👉<\/span>/);
+  assert.match(pages[0], /First-time visitor\? Start here\. <span class="hint-pointer" aria-hidden="true">👇<\/span>/);
+  assert.match(pages[1], /初めての方はこちらから。<span class="hint-pointer" aria-hidden="true">👇<\/span>/);
 });
 
 test('the first visit appears after a delay and a page click dismisses and records it', () => {
@@ -106,4 +107,7 @@ test('hint styling includes dark, mobile, and reduced-motion treatments', () => 
   assert.match(styles, /\[data-theme="dark"\] \.orientation-hint/);
   assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.orientation-entry\.hint-active/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.orientation-hint/);
+  assert.match(styles, /\.orientation-hint \.hint-pointer\s*{[\s\S]*animation:hint-pointer-bounce \.7s ease-in-out \.4s 3;/);
+  assert.match(styles, /@keyframes hint-pointer-bounce[\s\S]*translateY\(3px\)/);
+  assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.orientation-hint \.hint-pointer\s*{\s*animation: none;/);
 });

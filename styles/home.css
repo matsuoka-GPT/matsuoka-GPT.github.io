@@ -281,6 +281,18 @@
       opacity:0;
       transform:translateY(-3px);
     }
+    .orientation-hint .hint-pointer{
+      display:inline-block;
+      animation:hint-pointer-bounce .7s ease-in-out .4s 3;
+    }
+    @keyframes hint-pointer-bounce{
+      0%, 100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(3px);
+      }
+    }
     [data-theme="dark"] .orientation-hint{
       border-color:#42566d;
       background:#152238;
@@ -913,6 +925,10 @@
   .orientation-hint {
     transform: none;
     transition: none;
+  }
+
+  .orientation-hint .hint-pointer {
+    animation: none;
   }
 
   .orientation-hint.is-dismissing {
