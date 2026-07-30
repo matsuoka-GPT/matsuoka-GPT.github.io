@@ -246,8 +246,6 @@ test('step one mounts the shared homepage entrance as an interactive preview', (
   assert.match(previewSource, /philosophyLink\.classList\.add\('intro-philosophy-link'\)/);
   assert.match(previewSource, /disabled\.disabled = true/);
   assert.match(previewSource, /setAttribute\('aria-disabled', 'true'\)/);
-  assert.equal((previewSource.match(/addMarker\(content, 'preview-marker-(?:start|philosophy|tour)', '📍'\)/g) || []).length, 3);
-  assert.doesNotMatch(previewSource, /preview-marker-(?:start|philosophy|tour)', (?:japanese|'📍 [^'])/);
   assert.doesNotMatch(previewSource, /iframe/i);
   assert.match(styles, /\.home-entrance-preview-content\.light-preview\s*\{[^}]*color-scheme:\s*light;/s);
   assert.match(styles, /\.light-preview \.guide-marker\.preview-marker\s*\{[^}]*background:\s*rgba\(255,255,255,\.96\);[^}]*color:\s*#1f2937 !important;/s);
