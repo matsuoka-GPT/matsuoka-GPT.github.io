@@ -29,7 +29,7 @@ test('each language places one dynamic status beside the skip control', () => {
 function load(hash = '') {
   const listeners = {};
   const docListeners = {};
-  const steps = ['welcome','hub','workflow','outputs','contact','ideas','assistant'].map(id => {
+  const steps = ['welcome','hub','workflow','outputs','contact','ideas','faq'].map(id => {
     const heading = { focus() { heading.focused = true; } };
     const back = { disabled: false };
     const preview = { scrollTop: 0 };
@@ -97,7 +97,7 @@ function load(hash = '') {
 }
 
 test('opens a valid shared step hash and updates accessible progress', () => {
-  const app = load('#assistant');
+  const app = load('#faq');
   assert.equal(app.steps[6].hidden, false);
   assert.equal(app.steps.filter(step => !step.hidden).length, 1);
   assert.equal(app.dots[6].attrs['aria-current'], 'step');
@@ -118,13 +118,13 @@ test('next, back, skip, restart, and keyboard navigation change steps', () => {
   app.listeners.click({ target: app.target('[data-back]') });
   assert.equal(app.location.hash, '#welcome');
   app.listeners.click({ target: app.target('[data-skip]') });
-  assert.equal(app.location.hash, '#assistant');
+  assert.equal(app.location.hash, '#faq');
   app.listeners.click({ target: app.target('[data-restart]') });
   assert.equal(app.location.hash, '#welcome');
   app.docListeners.keydown({ target: { closest: () => null }, key: 'ArrowRight', preventDefault() {} });
   assert.equal(app.location.hash, '#hub');
   app.docListeners.keydown({ target: { closest: () => null }, key: 'Escape', preventDefault() {} });
-  assert.equal(app.location.hash, '#assistant');
+  assert.equal(app.location.hash, '#faq');
 });
 
 test('every step navigation resets the active preview and guide panels independently', () => {
@@ -329,7 +329,7 @@ test('step six mounts only the homepage Essays and Great Minds areas as a live l
     assert.match(html, /id="ideas"[^>]*data-step/);
     assert.match(html, /data-home-ideas-preview/);
     assert.match(html, /class="ideas-overview orientation-preview--light"/);
-    assert.match(html, /Next: Assistant GPT|次へ：Assistant GPT/);
+    assert.match(html, /Next: Research FAQ|次へ：研究FAQ/);
     assert.equal((html.match(/<article class="tour-step"/g) || []).length, 7);
     assert.doesNotMatch(html, /id="explore"[^>]*data-step/);
   }
@@ -348,4 +348,41 @@ test('step six mounts only the homepage Essays and Great Minds areas as a live l
   assert.match(styles, /\[data-theme="dark"\] \.orientation-preview--light \.ideas-preview-content/);
   assert.match(styles, /\.ideas-preview-section \.outputs-grid a:focus-visible\s*\{[^}]*outline:\s*3px solid #155ed0;/s);
   assert.match(styles, /#ideas \.ideas-callout/);
+});
+
+
+test('step seven mounts the complete homepage FAQ and concludes the tour', () => {
+  for (const html of [english, japanese]) {
+    assert.match(html, /id="faq"[^>]*data-step/);
+    assert.match(html, /class="faq-overview orientation-preview--light"/);
+    assert.match(html, /data-home-faq-preview/);
+    assert.match(html, /class="callout faq-callout"/);
+    assert.equal((html.match(/data-status/g) || []).length, 1);
+    assert.doesNotMatch(html, /STEP 7 OF 7/i);
+    assert.match(html, /class="tour-button tour-finish" href="\/"/);
+    assert.doesNotMatch(html, /tour-finish[^>]*target=/);
+  }
+  assert.match(english, /Still have questions\?/);
+  assert.match(english, /You’re ready to explore:/);
+  const questions = [
+    'Is this a business activity?', 'Are the conclusions final?',
+    'Is this established theory?', 'Can I cite or examine this as research material?',
+    'Why emphasize “Matsuoka × GPT”?', 'Do you work across any domain?'
+  ];
+  questions.forEach(question => assert.match(englishHome, new RegExp(question.replace(/[?]/g, '\\?'))));
+  const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
+  assert.match(previewSource, /source\.querySelector\('#faq'\)/);
+  assert.match(previewSource, /source\.querySelector\('footer'\)/);
+  assert.match(previewSource, /document\.querySelectorAll\('\[data-home-faq-preview\]'\)\.forEach\(mount\)/);
+  assert.match(previewSource, /faqClone\.querySelectorAll\('\[id\]'\).*removeAttribute\('id'\)/);
+  assert.match(previewSource, /'faq-marker-philosophy'/);
+  assert.match(previewSource, /'faq-marker-verification'/);
+  assert.match(previewSource, /'faq-marker-collaboration'/);
+  assert.match(previewSource, /'faq-marker-scope'/);
+  assert.match(previewSource, /'faq-marker faq-marker-complete'/);
+  assert.match(styles, /\.faq-preview-stage\s*\{[^}]*width:\s*760px;[^}]*transform:\s*scale\(var\(--faq-preview-scale, 1\)\)/s);
+  assert.match(styles, /\.faq-preview-content \.two\s*\{[^}]*grid-template-columns:\s*repeat\(2,/s);
+  assert.match(styles, /\.faq-marker-row\s*\{[^}]*pointer-events:\s*none;/s);
+  assert.match(styles, /#faq \.faq-callout/);
+  assert.match(source, /skip\.hidden = current === steps\.length - 1/);
 });

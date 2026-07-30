@@ -442,6 +442,66 @@
     container.setAttribute('aria-busy', 'false');
   }
 
+  function buildFaqPreview(container, source) {
+    var faq = source.querySelector('#faq');
+    var footer = source.querySelector('footer');
+    if (!faq || !footer) throw new Error('Homepage FAQ or footer was not found');
+
+    var content = document.createElement('div');
+    content.className = 'faq-preview-content light-preview';
+    var faqClone = faq.cloneNode(true);
+    faqClone.removeAttribute('id');
+    faqClone.querySelectorAll('[id]').forEach(function (element) { element.removeAttribute('id'); });
+    var footerClone = footer.cloneNode(true);
+    footerClone.querySelectorAll('[id]').forEach(function (element) { element.removeAttribute('id'); });
+    var year = footerClone.querySelector('span');
+    if (year) year.textContent = new Date().getFullYear();
+    content.append(faqClone, footerClone);
+
+    var japanese = container.ownerDocument.documentElement.lang === 'ja';
+    var cards = faqClone.querySelectorAll('.box');
+    var leftQuestions = cards[0] && cards[0].querySelectorAll('p');
+    var rightQuestions = cards[1] && cards[1].querySelectorAll('p');
+    function markerBefore(question, className, label) {
+      if (!question) return;
+      var row = document.createElement('div');
+      row.className = 'faq-marker-row';
+      addMarker(row, 'faq-marker ' + className, label);
+      question.before(row);
+    }
+    markerBefore(leftQuestions && leftQuestions[0], 'faq-marker-collaboration', japanese ? '📍 協働' : '📍 Collaboration');
+    markerBefore(leftQuestions && leftQuestions[1], 'faq-marker-philosophy', japanese ? '📍 研究哲学' : '📍 Research Philosophy');
+    markerBefore(rightQuestions && rightQuestions[0], 'faq-marker-verification', japanese ? '📍 検証と引用' : '📍 Verification & Citation');
+    markerBefore(rightQuestions && rightQuestions[2], 'faq-marker-scope', japanese ? '📍 研究領域' : '📍 Research Scope');
+    var completionRow = document.createElement('div');
+    completionRow.className = 'faq-marker-row faq-completion-row';
+    addMarker(completionRow, 'faq-marker faq-marker-complete', japanese ? '📍 ツアー完了' : '📍 Tour Complete');
+    footerClone.before(completionRow);
+
+    var stage = document.createElement('div');
+    stage.className = 'faq-preview-stage';
+    stage.appendChild(content);
+    var sizer = document.createElement('div');
+    sizer.className = 'faq-preview-sizer';
+    sizer.appendChild(stage);
+    container.replaceChildren(sizer);
+
+    function sizeStage() {
+      var scale = Math.min(1, sizer.clientWidth / stage.offsetWidth);
+      stage.style.setProperty('--faq-preview-scale', scale);
+      sizer.style.height = (content.offsetHeight * scale) + 'px';
+    }
+    sizeStage();
+    if ('ResizeObserver' in window) {
+      var observer = new ResizeObserver(sizeStage);
+      observer.observe(sizer);
+      observer.observe(content);
+    } else {
+      window.addEventListener('resize', sizeStage);
+    }
+    container.setAttribute('aria-busy', 'false');
+  }
+
   function showError(container) {
     var message = document.createElement('p');
     message.className = 'preview-error';
@@ -471,6 +531,8 @@
           buildContactPreview(container, source, homeUrl);
         } else if (container.hasAttribute('data-home-ideas-preview')) {
           buildIdeasPreview(container, source, homeUrl);
+        } else if (container.hasAttribute('data-home-faq-preview')) {
+          buildFaqPreview(container, source);
         } else {
           buildPreview(container, source, homeUrl);
         }
@@ -484,4 +546,5 @@
   document.querySelectorAll('[data-home-outputs-preview]').forEach(mount);
   document.querySelectorAll('[data-home-contact-preview]').forEach(mount);
   document.querySelectorAll('[data-home-ideas-preview]').forEach(mount);
+  document.querySelectorAll('[data-home-faq-preview]').forEach(mount);
 }());
