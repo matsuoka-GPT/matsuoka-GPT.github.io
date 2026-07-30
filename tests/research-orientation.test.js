@@ -88,12 +88,20 @@ function load(hash = '') {
     getElementById: id => steps.find(step => id === step.id + '-panel')?.panel || null,
     addEventListener(type, fn) { docListeners[type] = fn; }
   };
-  const window = { location, history, addEventListener(type, fn) { listeners[type] = fn; } };
+  const pageScrolls = [];
+  const animationFrames = [];
+  const window = {
+    location,
+    history,
+    addEventListener(type, fn) { listeners[type] = fn; },
+    scrollTo(x, y) { pageScrolls.push([x, y]); },
+    requestAnimationFrame(fn) { animationFrames.push(fn); }
+  };
   vm.runInNewContext(source, { document, window, Array });
   function target(action) {
     return { closest(selector) { return selector === action ? {} : null; } };
   }
-  return { steps, dots, status, location, listeners, docListeners, target };
+  return { steps, dots, status, location, listeners, docListeners, pageScrolls, animationFrames, target };
 }
 
 test('opens a valid shared step hash and updates accessible progress', () => {
@@ -149,6 +157,19 @@ test('every step navigation resets the active preview and guide panels independe
   app.listeners.hashchange();
   assert.equal(app.steps[3].preview.scrollTop, 0);
   assert.equal(app.steps[3].guide.scrollTop, 0);
+});
+
+test('every step navigation resets the page scroll immediately and after fragment scrolling', () => {
+  const app = load('#welcome');
+  assert.deepEqual(app.pageScrolls, [[0, 0]]);
+
+  app.listeners.click({ target: app.target('[data-next]') });
+  assert.deepEqual(app.pageScrolls.at(-1), [0, 0]);
+  assert.equal(app.animationFrames.length, 2);
+
+  app.animationFrames.shift()();
+  app.animationFrames.shift()();
+  assert.deepEqual(app.pageScrolls.slice(-2), [[0, 0], [0, 0]]);
 });
 
 test('destination preview accordions reset before the step becomes visible', () => {
