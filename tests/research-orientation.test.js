@@ -29,7 +29,7 @@ test('each language places one dynamic status beside the skip control', () => {
 function load(hash = '') {
   const listeners = {};
   const docListeners = {};
-  const steps = ['welcome','hub','workflow','outputs','contact','assistant','explore'].map(id => {
+  const steps = ['welcome','hub','workflow','outputs','contact','ideas','assistant'].map(id => {
     const heading = { focus() { heading.focused = true; } };
     const back = { disabled: false };
     const preview = { scrollTop: 0 };
@@ -78,10 +78,10 @@ function load(hash = '') {
 
 test('opens a valid shared step hash and updates accessible progress', () => {
   const app = load('#assistant');
-  assert.equal(app.steps[5].hidden, false);
+  assert.equal(app.steps[6].hidden, false);
   assert.equal(app.steps.filter(step => !step.hidden).length, 1);
-  assert.equal(app.dots[5].attrs['aria-current'], 'step');
-  assert.equal(app.status.textContent, 'Step 6 of 7');
+  assert.equal(app.dots[6].attrs['aria-current'], 'step');
+  assert.equal(app.status.textContent, 'Step 7 of 7');
 });
 
 test('invalid hash safely resolves to welcome', () => {
@@ -98,13 +98,13 @@ test('next, back, skip, restart, and keyboard navigation change steps', () => {
   app.listeners.click({ target: app.target('[data-back]') });
   assert.equal(app.location.hash, '#welcome');
   app.listeners.click({ target: app.target('[data-skip]') });
-  assert.equal(app.location.hash, '#explore');
+  assert.equal(app.location.hash, '#assistant');
   app.listeners.click({ target: app.target('[data-restart]') });
   assert.equal(app.location.hash, '#welcome');
   app.docListeners.keydown({ target: { closest: () => null }, key: 'ArrowRight', preventDefault() {} });
   assert.equal(app.location.hash, '#hub');
   app.docListeners.keydown({ target: { closest: () => null }, key: 'Escape', preventDefault() {} });
-  assert.equal(app.location.hash, '#explore');
+  assert.equal(app.location.hash, '#assistant');
 });
 
 test('every step navigation resets the active preview and guide panels independently', () => {
@@ -255,7 +255,7 @@ test('step five mounts the shared homepage Contact section as a live light previ
     assert.match(html, /id="contact"[^>]*data-step/);
     assert.match(html, /data-home-contact-preview/);
     assert.match(html, /class="contact-overview orientation-preview--light"/);
-    assert.match(html, /Next: Assistant GPT|次へ：Assistant GPT/);
+    assert.match(html, /Next: Ideas &amp; Conversations|次へ：アイデアと対話/);
     assert.doesNotMatch(html, /id="zenodo"[^>]*data-step/);
   }
   const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
@@ -273,4 +273,31 @@ test('step five mounts the shared homepage Contact section as a live light previ
   assert.match(styles, /\.contact-preview-content \.language-flags img\.emoji\s*\{[^}]*width:\s*20px;[^}]*height:\s*20px;/s);
   assert.match(styles, /\.contact-preview-content \.guide-marker\.contact-marker\s*\{[^}]*background:\s*rgba\(255,255,255,\.97\);[^}]*color:\s*#1f2937 !important;/s);
   assert.match(styles, /#contact \.contact-callout/);
+});
+
+
+test('step six mounts only the homepage Essays and Great Minds areas as a live light preview', () => {
+  for (const html of [english, japanese]) {
+    assert.match(html, /id="ideas"[^>]*data-step/);
+    assert.match(html, /data-home-ideas-preview/);
+    assert.match(html, /class="ideas-overview orientation-preview--light"/);
+    assert.match(html, /Next: Assistant GPT|次へ：Assistant GPT/);
+    assert.equal((html.match(/<article class="tour-step"/g) || []).length, 7);
+    assert.doesNotMatch(html, /id="explore"[^>]*data-step/);
+  }
+  const previewSource = fs.readFileSync(new URL('../scripts/home-entrance-preview.js', `file://${__filename}`), 'utf8');
+  assert.match(previewSource, /source\.querySelector\('#essays'\)/);
+  assert.match(previewSource, /source\.querySelector\('#great-minds'\)/);
+  assert.match(previewSource, /document\.querySelectorAll\('\[data-home-ideas-preview\]'\)\.forEach\(mount\)/);
+  assert.match(previewSource, /clone\.querySelectorAll\('\[id\]'\).*removeAttribute\('id'\)/);
+  assert.match(previewSource, /setAttribute\('target', '_blank'\)/);
+  assert.match(previewSource, /setAttribute\('rel', 'noopener noreferrer'\)/);
+  assert.match(previewSource, /href === '#'/);
+  assert.match(previewSource, /'ideas-marker ideas-marker-heading'/);
+  assert.match(previewSource, /'ideas-marker ideas-marker-control'/);
+  assert.match(styles, /\.ideas-preview-stage\s*\{[^}]*width:\s*760px;[^}]*transform:\s*scale\(var\(--ideas-preview-scale, 1\)\)/s);
+  assert.match(styles, /\.ideas-preview-section details\.fold\s*\{[^}]*background:\s*#fff !important;[^}]*color:\s*#111827 !important;/s);
+  assert.match(styles, /\[data-theme="dark"\] \.orientation-preview--light \.ideas-preview-content/);
+  assert.match(styles, /\.ideas-preview-section \.outputs-grid a:focus-visible\s*\{[^}]*outline:\s*3px solid #155ed0;/s);
+  assert.match(styles, /#ideas \.ideas-callout/);
 });

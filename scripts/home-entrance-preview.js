@@ -367,6 +367,81 @@
     container.setAttribute('aria-busy', 'false');
   }
 
+  function buildIdeasPreview(container, source, homeUrl) {
+    var essays = source.querySelector('#essays');
+    var greatMinds = source.querySelector('#great-minds');
+    if (!essays || !greatMinds) throw new Error('Homepage Essays or Great Minds section was not found');
+
+    var content = document.createElement('div');
+    content.className = 'ideas-preview-content light-preview';
+    [essays, greatMinds].forEach(function (section) {
+      var clone = section.cloneNode(true);
+      clone.removeAttribute('id');
+      clone.classList.add('ideas-preview-section');
+      clone.querySelectorAll('[id]').forEach(function (element) { element.removeAttribute('id'); });
+      content.appendChild(clone);
+    });
+
+    content.querySelectorAll('[src]').forEach(function (element) {
+      element.setAttribute('src', absoluteUrl(element.getAttribute('src'), homeUrl));
+    });
+    content.querySelectorAll('a[href]').forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (href === '#') {
+        var unavailable = document.createElement('span');
+        unavailable.className = link.className + ' preview-unavailable';
+        unavailable.setAttribute('aria-disabled', 'true');
+        unavailable.replaceChildren.apply(unavailable, Array.prototype.slice.call(link.childNodes));
+        link.replaceWith(unavailable);
+        return;
+      }
+      link.setAttribute('href', absoluteUrl(href, homeUrl));
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.classList.add('preview-link');
+    });
+
+    var japanese = container.ownerDocument.documentElement.lang === 'ja';
+    var sections = content.querySelectorAll('.ideas-preview-section');
+    var labels = japanese
+      ? [['📍 ショートエッセイ', '📍 エッセイ一覧'], ['📍 偉人AI', '📍 対話を始める']]
+      : [['📍 Short Essays', '📍 List of Essays'], ['📍 Great Minds AI', '📍 Start a Conversation']];
+    sections.forEach(function (section, index) {
+      var headingRow = document.createElement('div');
+      headingRow.className = 'ideas-marker-row ideas-heading-marker-row';
+      addMarker(headingRow, 'ideas-marker ideas-marker-heading', labels[index][0]);
+      section.querySelector('h2').after(headingRow);
+      var controlRow = document.createElement('div');
+      controlRow.className = 'ideas-marker-row ideas-control-marker-row';
+      addMarker(controlRow, 'ideas-marker ideas-marker-control', labels[index][1]);
+      section.querySelector('details').before(controlRow);
+    });
+
+    var stage = document.createElement('div');
+    stage.className = 'ideas-preview-stage';
+    stage.appendChild(content);
+    var sizer = document.createElement('div');
+    sizer.className = 'ideas-preview-sizer';
+    sizer.appendChild(stage);
+    container.replaceChildren(sizer);
+
+    function sizeStage() {
+      var scale = Math.min(1, sizer.clientWidth / stage.offsetWidth);
+      stage.style.setProperty('--ideas-preview-scale', scale);
+      sizer.style.height = (content.offsetHeight * scale) + 'px';
+    }
+    sizeStage();
+    content.addEventListener('toggle', sizeStage, true);
+    if ('ResizeObserver' in window) {
+      var observer = new ResizeObserver(sizeStage);
+      observer.observe(sizer);
+      observer.observe(content);
+    } else {
+      window.addEventListener('resize', sizeStage);
+    }
+    container.setAttribute('aria-busy', 'false');
+  }
+
   function showError(container) {
     var message = document.createElement('p');
     message.className = 'preview-error';
@@ -394,6 +469,8 @@
           buildOutputsPreview(container, source, homeUrl);
         } else if (container.hasAttribute('data-home-contact-preview')) {
           buildContactPreview(container, source, homeUrl);
+        } else if (container.hasAttribute('data-home-ideas-preview')) {
+          buildIdeasPreview(container, source, homeUrl);
         } else {
           buildPreview(container, source, homeUrl);
         }
@@ -406,4 +483,5 @@
   document.querySelectorAll('[data-home-research-preview]').forEach(mount);
   document.querySelectorAll('[data-home-outputs-preview]').forEach(mount);
   document.querySelectorAll('[data-home-contact-preview]').forEach(mount);
+  document.querySelectorAll('[data-home-ideas-preview]').forEach(mount);
 }());
