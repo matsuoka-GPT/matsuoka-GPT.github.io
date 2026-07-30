@@ -582,7 +582,6 @@
       .tags .tag.tooltip:focus-within .tip{
         opacity: 1;
         visibility: visible;
-        pointer-events: auto;
         transform: translateX(-50%) translateY(4px);
       }
 

@@ -9,6 +9,12 @@
 
     const isMobile = () => mobileQuery.matches;
 
+    function containsPoint(tag, x, y) {
+      const bounds = tag.getBoundingClientRect();
+      return x >= bounds.left && x <= bounds.right &&
+        y >= bounds.top && y <= bounds.bottom;
+    }
+
     function closeAll() {
       tags.forEach((tag) => {
         tag.classList.remove("active", "hover-active");
@@ -23,14 +29,6 @@
     }
 
     tags.forEach((tag) => {
-      tag.addEventListener("pointerenter", () => {
-        if (!isMobile()) tag.classList.add("hover-active");
-      });
-
-      tag.addEventListener("pointerleave", () => {
-        tag.classList.remove("hover-active");
-      });
-
       tag.addEventListener("click", (event) => {
         if (!isMobile()) return;
 
@@ -46,8 +44,15 @@
       });
     });
 
-    document.addEventListener("pointerover", (event) => {
-      if (!isMobile() && !event.target.closest(".tags .tag.tooltip")) closeAll();
+    document.addEventListener("pointermove", (event) => {
+      if (isMobile()) return;
+
+      tags.forEach((tag) => {
+        tag.classList.toggle(
+          "hover-active",
+          containsPoint(tag, event.clientX, event.clientY)
+        );
+      });
     });
 
     document.addEventListener("click", () => {
@@ -60,6 +65,9 @@
 
     window.addEventListener("scroll", closeAll, { passive: true });
     window.addEventListener("blur", closeAll);
+    window.addEventListener("pagehide", closeAll);
+    document.addEventListener("pointerleave", closeAll);
+    document.addEventListener("pointercancel", closeAll);
     document.addEventListener("visibilitychange", closeAll);
     window.addEventListener("resize", syncMode);
     window.addEventListener("orientationchange", syncMode);
