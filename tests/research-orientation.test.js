@@ -15,6 +15,10 @@ test('interactive steps share the same top edge while the no-script fallback rem
   assert.match(styles, /\.tour-js \.tour-step\s*\{\s*margin-top:\s*0;/);
 });
 
+test('mobile contact preview keeps the collaboration marker above its paragraph', () => {
+  assert.match(styles, /@media \(max-width: 600px\)\s*\{[\s\S]*?\.contact-preview-content \.contact-marker-style\s*\{\s*top:\s*-31px;\s*\}/);
+});
+
 test('each language places one dynamic status beside the skip control', () => {
   for (const html of [english, japanese]) {
     assert.equal((html.match(/data-status/g) || []).length, 1);
