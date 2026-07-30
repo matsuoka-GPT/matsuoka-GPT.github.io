@@ -235,6 +235,7 @@ test('step two mounts the shared homepage Research Hub as an interactive light p
   assert.doesNotMatch(styles, /\.hub-preview-content \.preview-link[^}]*box-shadow/);
   assert.match(styles, /\.orientation-preview--light\s*\{[^}]*color-scheme:\s*light;[^}]*--card-color:\s*#ffffff;[^}]*--text:\s*#111827;/s);
   assert.match(styles, /\.orientation-preview--light \.hub-preview-content img\s*\{[^}]*filter:\s*none !important;[^}]*opacity:\s*1 !important;/s);
+  assert.match(styles, /\.orientation-preview--light \.hub-preview-content \.assistant-button:hover\s*\{[^}]*border-color:\s*transparent !important;[^}]*background:\s*transparent !important;[^}]*box-shadow:\s*none !important;/s);
   assert.match(styles, /\.hub-preview-content \.preview-link:focus-visible\s*\{[^}]*outline:\s*3px solid #155ed0;/s);
 });
 

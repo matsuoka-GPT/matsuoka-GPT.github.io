@@ -283,6 +283,7 @@
 .orientation-preview--light .hub-preview-content :is(a, .assistant-button) { color: var(--link-color) !important; }
 .orientation-preview--light .hub-preview-content :is(a, .assistant-button):hover { color: var(--link-hover-color) !important; }
 .orientation-preview--light .hub-preview-content .assistant-button { border: 0 !important; background: transparent !important; box-shadow: none !important; }
+.orientation-preview--light .hub-preview-content .assistant-button:hover { border-color: transparent !important; background: transparent !important; box-shadow: none !important; }
 .orientation-preview--light .hub-preview-content .profile-links a:hover { border-color: #8ab4f8 !important; background: #f0f7ff !important; box-shadow: var(--shadow2) !important; }
 .orientation-preview--light .hub-preview-content .kbd { border-color: var(--border-color) !important; background: var(--surface-color) !important; color: var(--text-color) !important; }
 .orientation-preview--light .hub-preview-content img { filter: none !important; opacity: 1 !important; }
