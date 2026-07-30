@@ -470,6 +470,7 @@
 }
 @media (max-width: 600px) {
   .contact-overview { padding: 15px; border-radius: 16px; }
+  .contact-preview-content .contact-marker-style { top: -31px; }
   #contact .contact-callout { padding: 28px 22px; border-radius: 16px; }
   #contact .contact-callout p, #contact .contact-callout h3 { font-size: 1rem; line-height: 1.65; }
 }
