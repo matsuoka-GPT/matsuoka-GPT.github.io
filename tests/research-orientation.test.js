@@ -17,7 +17,8 @@ test('both orientation pages keep the fixed tour presentation while matching the
     assert.doesNotMatch(html, /scripts\/theme\.js/);
     assert.match(html, /scripts\/orientation-background-theme\.js/);
   }
-  assert.match(styles, /data-orientation-background-theme="light"/);
+  assert.match(styles, /html\[data-orientation-background-theme="dark"\] body\.orientation-page\s*\{[^}]*background:[^;]*#081220 !important;/s);
+  assert.match(styles, /html\[data-orientation-background-theme="light"\] body\.orientation-page\s*\{[^}]*background:[^;]*#fff !important;/s);
 });
 
 function loadBackgroundTheme(preference, systemDark = false) {
