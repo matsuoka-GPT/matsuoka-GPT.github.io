@@ -55,10 +55,11 @@
       orientationLink.replaceWith(disabled);
     }
 
-    var japanese = container.ownerDocument.documentElement.lang === 'ja';
-    addMarker(content, 'preview-marker-start', japanese ? '📍 ここからスタート' : '📍 Start Here');
-    addMarker(content, 'preview-marker-philosophy', japanese ? '📍 研究哲学' : '📍 Research Philosophy');
-    addMarker(content, 'preview-marker-tour', japanese ? '📍 ツアーを始める' : '📍 Begin the Tour');
+    // The adjacent guide provides the explanations, so the preview only needs
+    // unobtrusive pins to identify the three corresponding locations.
+    addMarker(content, 'preview-marker-start', '📍');
+    addMarker(content, 'preview-marker-philosophy', '📍');
+    addMarker(content, 'preview-marker-tour', '📍');
     container.replaceChildren(content);
     container.setAttribute('aria-busy', 'false');
   }
