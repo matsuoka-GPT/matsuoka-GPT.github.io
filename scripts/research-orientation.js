@@ -20,6 +20,12 @@
       if (previewScroller) previewScroller.scrollTop = 0;
       if (guideScroller) guideScroller.scrollTop = 0;
     }
+    function resetPageScroll() {
+      window.scrollTo(0, 0);
+      if (window.requestAnimationFrame) {
+        window.requestAnimationFrame(function () { window.scrollTo(0, 0); });
+      }
+    }
     function resetPreviewState(step) {
       var preview = step.querySelector('.tour-stage > :first-child');
       if (!preview) return;
@@ -44,6 +50,7 @@
       resetPanelScroll(steps[destination]);
       current = destination;
       steps.forEach(function (step, i) { step.hidden = i !== current; });
+      resetPageScroll();
       dots.forEach(function (dot, i) {
         if (i === current) dot.setAttribute('aria-current', 'step');
         else dot.removeAttribute('aria-current');
