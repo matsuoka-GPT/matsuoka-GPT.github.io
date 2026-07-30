@@ -135,6 +135,7 @@
   <link rel="stylesheet" href="../styles/back-to-top.css" />
   <script src="../scripts/theme.js"></script>
   <script src="../scripts/back-to-top.js" defer></script>
+  <script src="../scripts/home-tooltips.js" defer></script>
 </head>
 
 <body>
@@ -729,67 +730,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("y");
   if (y) y.textContent = new Date().getFullYear();
 
-  const tags = Array.from(document.querySelectorAll(".tags .tag.tooltip"));
-
-  function setMode(){
-    const mobile = window.matchMedia("(max-width: 1024px)").matches;
-    document.body.classList.toggle("is-mobile", mobile);
-  }
-
-  function closeAll(){
-    tags.forEach(t => t.classList.remove("active"));
-  }
-
-  setMode();
-let lastMode = document.body.classList.contains("is-mobile");
-
-function handleResize() {
-  setMode();
-  const currentMode = document.body.classList.contains("is-mobile");
-  
-  if (currentMode !== lastMode) {
-    closeAll();
-    lastMode = currentMode;
-  }
-}
-
-window.addEventListener("resize", handleResize);
-window.addEventListener("orientationchange", () => {
-  setTimeout(handleResize, 100);
-});
-
-
-  tags.forEach(tag => {
-    tag.addEventListener("click", (e) => {
-      if(!document.body.classList.contains("is-mobile")) return;
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      const willOpen = !tag.classList.contains("active");
-  
-    tags.forEach(t => {
-      t.classList.remove("active");
-      t.style.zIndex = ""; 
-    });
-
-    if(willOpen) {
-      tag.classList.add("active");
-      tag.style.zIndex = "10002"; 
-    }
-  });
-});
-
-
-  document.addEventListener("click", () => {
-    if(!document.body.classList.contains("is-mobile")) return;
-    closeAll();
-  });
-
-  document.addEventListener("touchstart", (e) => {
-    if(!document.body.classList.contains("is-mobile")) return;
-    if(!e.target.closest(".tags .tag.tooltip")) closeAll();
-  }, {passive:true});
 });
 </script>
 
