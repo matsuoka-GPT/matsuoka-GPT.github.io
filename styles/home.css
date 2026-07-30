@@ -530,7 +530,7 @@
       cursor: pointer;
     }
 
-    .tags .tag.tooltip:hover,
+    .tags .tag.tooltip.hover-active,
     .tags .tag.tooltip.active{
       z-index: 10000;
     }
@@ -567,7 +567,8 @@
   
 
     @media (hover:hover) and (pointer:fine){
-      .tags .tag.tooltip:hover .tip{
+      .tags .tag.tooltip.hover-active .tip,
+      .tags .tag.tooltip:focus-within .tip{
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
