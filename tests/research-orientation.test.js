@@ -10,6 +10,13 @@ const japanese = fs.readFileSync(new URL('../jp/research-orientation.html', `fil
 const englishHome = fs.readFileSync(new URL('../index.html', `file://${__filename}`), 'utf8');
 const japaneseHome = fs.readFileSync(new URL('../jp/index.html', `file://${__filename}`), 'utf8');
 
+test('both orientation pages use the same fixed dark tour presentation', () => {
+  for (const html of [english, japanese]) {
+    assert.match(html, /<html lang="(?:en|ja)" data-theme="dark">/);
+    assert.doesNotMatch(html, /scripts\/theme\.js/);
+  }
+});
+
 test('interactive steps share the same top edge while the no-script fallback remains spaced', () => {
   assert.match(styles, /\.tour-step \+ \.tour-step\s*\{\s*margin-top:\s*4rem;/);
   assert.match(styles, /\.tour-js \.tour-step\s*\{\s*margin-top:\s*0;/);
