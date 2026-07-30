@@ -34,6 +34,22 @@ function load(hash = '') {
     const back = { disabled: false };
     const preview = { scrollTop: 0 };
     const guide = { scrollTop: 0 };
+    const details = { open: false, attrs: {}, removeAttribute(name) { delete this.attrs[name]; } };
+    const panel = { hidden: false };
+    const accordion = {
+      attrs: { 'aria-expanded': 'false', 'aria-controls': id + '-panel' },
+      classes: new Set(),
+      setAttribute(name, value) { this.attrs[name] = value; },
+      getAttribute(name) { return this.attrs[name] || null; },
+      classList: { remove(...names) { names.forEach(name => accordion.classes.delete(name)); } }
+    };
+    preview.contains = element => element === panel;
+    preview.querySelectorAll = selector => {
+      if (selector === 'details') return [details];
+      if (selector === '[aria-expanded="true"]') return accordion.attrs['aria-expanded'] === 'true' ? [accordion] : [];
+      if (selector.includes('.expanded')) return accordion.classes.size ? [accordion] : [];
+      return [];
+    };
     return {
       id,
       hidden: false,
@@ -47,7 +63,10 @@ function load(hash = '') {
       heading,
       back,
       preview,
-      guide
+      guide,
+      details,
+      accordion,
+      panel
     };
   });
   const dots = steps.map(() => ({ attrs: {}, setAttribute(k,v){this.attrs[k]=v;}, removeAttribute(k){delete this.attrs[k];} }));
@@ -66,6 +85,7 @@ function load(hash = '') {
   const document = {
     documentElement: { classList: { add() {} } }, readyState: 'complete',
     querySelectorAll: () => [tour],
+    getElementById: id => steps.find(step => id === step.id + '-panel')?.panel || null,
     addEventListener(type, fn) { docListeners[type] = fn; }
   };
   const window = { location, history, addEventListener(type, fn) { listeners[type] = fn; } };
@@ -129,6 +149,34 @@ test('every step navigation resets the active preview and guide panels independe
   app.listeners.hashchange();
   assert.equal(app.steps[3].preview.scrollTop, 0);
   assert.equal(app.steps[3].guide.scrollTop, 0);
+});
+
+test('destination preview accordions reset before the step becomes visible', () => {
+  const app = load('#welcome');
+  const destination = app.steps[1];
+  destination.details.open = true;
+  destination.details.attrs.open = '';
+  destination.accordion.attrs['aria-expanded'] = 'true';
+  destination.accordion.classes.add('expanded');
+  destination.accordion.classes.add('is-open');
+  destination.panel.hidden = false;
+
+  let resetBeforeReveal = false;
+  Object.defineProperty(destination, 'hidden', {
+    configurable: true,
+    set(value) {
+      if (!value) {
+        resetBeforeReveal = !destination.details.open &&
+          destination.accordion.attrs['aria-expanded'] === 'false' &&
+          destination.accordion.classes.size === 0 &&
+          destination.panel.hidden;
+      }
+    }
+  });
+  app.listeners.click({ target: app.target('[data-next]') });
+
+  assert.equal(resetBeforeReveal, true);
+  assert.equal(destination.details.attrs.open, undefined);
 });
 
 test('arrow keys do not override interactive controls', () => {

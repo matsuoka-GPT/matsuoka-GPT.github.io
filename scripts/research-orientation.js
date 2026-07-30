@@ -19,11 +19,30 @@
       if (previewScroller) previewScroller.scrollTop = 0;
       if (guideScroller) guideScroller.scrollTop = 0;
     }
+    function resetPreviewState(step) {
+      var preview = step.querySelector('.tour-stage > :first-child');
+      if (!preview) return;
+      preview.querySelectorAll('details').forEach(function (details) {
+        details.open = false;
+        details.removeAttribute('open');
+      });
+      preview.querySelectorAll('[aria-expanded="true"]').forEach(function (control) {
+        control.setAttribute('aria-expanded', 'false');
+        var panelId = control.getAttribute('aria-controls');
+        var panel = panelId && document.getElementById(panelId);
+        if (panel && preview.contains(panel)) panel.hidden = true;
+      });
+      preview.querySelectorAll('.expanded, .is-expanded, .accordion-expanded, .open, .is-open, .accordion-open').forEach(function (element) {
+        element.classList.remove('expanded', 'is-expanded', 'accordion-expanded', 'open', 'is-open', 'accordion-open');
+      });
+    }
     function show(index, options) {
       options = options || {};
-      current = Math.max(0, Math.min(steps.length - 1, index));
+      var destination = Math.max(0, Math.min(steps.length - 1, index));
+      resetPreviewState(steps[destination]);
+      resetPanelScroll(steps[destination]);
+      current = destination;
       steps.forEach(function (step, i) { step.hidden = i !== current; });
-      resetPanelScroll(steps[current]);
       dots.forEach(function (dot, i) {
         if (i === current) dot.setAttribute('aria-current', 'step');
         else dot.removeAttribute('aria-current');
