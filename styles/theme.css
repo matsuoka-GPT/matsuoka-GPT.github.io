@@ -271,6 +271,16 @@ body {
 [data-theme="dark"] img { opacity: 0.92; }
 [data-theme="dark"] :is(.github-logo, .synapse-logo) { filter: brightness(0) invert(1); }
 
+/* Keep linked artwork visually stable while preserving the text-link hover treatment. */
+a img { cursor: pointer; }
+a:hover img {
+  filter: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+[data-theme="dark"] a:hover img { opacity: 0.92 !important; }
+[data-theme="dark"] a:hover :is(.github-logo, .synapse-logo) { filter: brightness(0) invert(1) !important; }
+
 /* Reusable themed surfaces (dashboard and future feature cards). */
 .pale-blue-surface {
   background-color: var(--pale-blue-card-color);
