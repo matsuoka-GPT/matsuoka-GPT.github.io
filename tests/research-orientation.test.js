@@ -21,11 +21,11 @@ test('both orientation pages use the complete shared homepage theme', () => {
   assert.match(styles, /body\.orientation-page\s*\{[^}]*var\(--bg-color\)/s);
 });
 
-test('all tour previews rebind cloned light-page colors to accessible dark tokens', () => {
+test('all tour previews retain the light homepage presentation in dark mode', () => {
   assert.match(styles, /\[data-theme="dark"\] \{[^}]*--orientation-ink: #f4f8ff;[^}]*--orientation-muted: #c3cfe0;[^}]*--orientation-line: #45617f;[^}]*--orientation-accent: #9ac5ff;/s);
-  assert.match(styles, /\[data-theme="dark"\] \.orientation-page \.orientation-preview--light,\s*\[data-theme="dark"\] \.orientation-page \.light-preview\s*\{[^}]*color-scheme: dark;[^}]*--text-color: var\(--orientation-ink\);[^}]*--muted-color: var\(--orientation-muted\);[^}]*--link-color: var\(--orientation-accent\);[^}]*--text: var\(--orientation-ink\);[^}]*--line: var\(--orientation-line\);[^}]*--card: var\(--orientation-card\);/s);
-  assert.match(styles, /\[data-theme="dark"\] \.orientation-page \.hub-preview-content\.metallic-surface\s*\{[^}]*background-color: #16243a !important;[^}]*background-image: none !important;[^}]*color: var\(--orientation-ink\) !important;/s);
-  assert.match(styles, /\[data-theme="dark"\] \.orientation-page :is\(\.hub-preview-markers, \.light-preview\) \.guide-marker\s*\{[^}]*background: var\(--orientation-guide\) !important;[^}]*color: var\(--orientation-guide-ink\) !important;/s);
+  assert.match(styles, /\.orientation-page \.orientation-preview--light,\s*\.orientation-page \.light-preview\s*\{[^}]*color-scheme: light;[^}]*--text-color: #24292f;[^}]*--muted-color: #57606a;[^}]*--link-color: #0969da;[^}]*--text: #24292f;[^}]*--line: #dbe3ee;[^}]*--card: #ffffff;/s);
+  assert.match(styles, /\.orientation-page :is\(\.welcome-overview,[^}]+\)\s*\{[^}]*color-scheme: light;[^}]*--orientation-panel: #f8fafc;[^}]*--orientation-card: #ffffff;[^}]*--orientation-ink: #111827;[^}]*--orientation-guide: rgba\(255, 255, 255, \.97\);/s);
+  assert.doesNotMatch(styles, /\[data-theme="dark"\] \.orientation-page \.hub-preview-content\.metallic-surface/);
   assert.match(styles, /\[data-theme="dark"\] \.orientation-page \.tour-button:disabled\s*\{\s*opacity:\s*\.68;/);
 });
 
