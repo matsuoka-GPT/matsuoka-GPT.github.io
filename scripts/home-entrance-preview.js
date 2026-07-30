@@ -300,6 +300,33 @@
     var content = contact.cloneNode(true);
     content.removeAttribute('id');
     content.className = 'contact-preview-content light-preview';
+    var japanese = container.ownerDocument.documentElement.lang === 'ja';
+    var languageFlags = content.querySelector('#language-flags');
+    if (languageFlags) {
+      languageFlags.classList.add('language-flags');
+      var flags = [
+        ['🇯🇵', '1f1ef-1f1f5'],
+        ['🇺🇸', '1f1fa-1f1f8'],
+        ['🇬🇧', '1f1ec-1f1e7'],
+        ['🇨🇳', '1f1e8-1f1f3'],
+        ['🇰🇷', '1f1f0-1f1f7'],
+        ['🇫🇷', '1f1eb-1f1f7'],
+        ['🇩🇪', '1f1e9-1f1ea'],
+        ['🇪🇸', '1f1ea-1f1f8'],
+        ['🇵🇹', '1f1f5-1f1f9']
+      ];
+      languageFlags.textContent = '';
+      flags.forEach(function (flag) {
+        var image = content.ownerDocument.createElement('img');
+        image.className = 'emoji';
+        image.src = absoluteUrl((japanese ? '../' : '') + 'images/twemoji/' + flag[1] + '.svg', homeUrl);
+        image.alt = flag[0];
+        image.width = 20;
+        image.height = 20;
+        languageFlags.appendChild(image);
+      });
+      languageFlags.appendChild(content.ownerDocument.createTextNode(' +100 Languages'));
+    }
     content.querySelectorAll('[id]').forEach(function (element) { element.removeAttribute('id'); });
     content.querySelectorAll('a[href]').forEach(function (link) {
       link.setAttribute('href', absoluteUrl(link.getAttribute('href'), homeUrl));
@@ -308,7 +335,6 @@
       link.classList.add('preview-link');
     });
 
-    var japanese = container.ownerDocument.documentElement.lang === 'ja';
     var policy = content.querySelector('.muted');
     var paragraphs = content.querySelectorAll('.box > p');
     var email = content.querySelector('a[href^="mailto:"]');
