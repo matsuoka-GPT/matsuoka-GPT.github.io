@@ -281,16 +281,17 @@
       opacity:0;
       transform:translateY(-3px);
     }
-    .orientation-hint .hint-pointer{
+    .hint-pointer{
       display:inline-block;
-      animation:hint-pointer-bounce .7s ease-in-out .4s 3;
+      will-change:transform;
+      animation:hint-pointer-bounce .65s ease-in-out .4s 3;
     }
     @keyframes hint-pointer-bounce{
       0%, 100%{
         transform:translateY(0);
       }
       50%{
-        transform:translateY(3px);
+        transform:translateY(4px);
       }
     }
     [data-theme="dark"] .orientation-hint{
@@ -927,7 +928,7 @@
     transition: none;
   }
 
-  .orientation-hint .hint-pointer {
+  .hint-pointer {
     animation: none;
   }
 
