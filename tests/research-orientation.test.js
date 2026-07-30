@@ -246,7 +246,7 @@ test('steps one and two match every preview pin with a right-panel guide label',
     ['Begin the Tour', 'ツアーを始める'],
     ['Concept Architect', 'Concept Architect'],
     ['Research Profiles', '研究プロフィール'],
-    ['Assistant GPT', 'Assistant GPT'],
+    ['Assistant GPT🤖', 'Assistant GPT🤖'],
     ['Explore the Hub', 'ハブを探索']
   ];
 
