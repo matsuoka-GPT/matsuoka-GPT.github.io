@@ -6,6 +6,7 @@
     var steps = Array.prototype.slice.call(tour.querySelectorAll('[data-step]'));
     var dots = Array.prototype.slice.call(tour.querySelectorAll('.progress a'));
     var status = tour.querySelector('[data-status]');
+    var skip = tour.querySelector('[data-skip]');
     var current = 0;
     function indexFromHash() {
       var id = window.location.hash.slice(1);
@@ -48,6 +49,7 @@
         else dot.removeAttribute('aria-current');
       });
       status.textContent = tour.dataset.stepWord + ' ' + (current + 1) + ' ' + tour.dataset.ofWord + ' ' + steps.length;
+      if (skip) skip.hidden = current === steps.length - 1;
       steps[current].querySelector('[data-back]').disabled = current === 0;
       if (options.hash !== false) window.history.pushState(null, '', '#' + steps[current].id);
       if (options.focus) steps[current].querySelector('h2').focus({ preventScroll: true });
