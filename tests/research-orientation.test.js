@@ -239,6 +239,25 @@ test('step two mounts the shared homepage Research Hub as an interactive light p
   assert.match(styles, /\.hub-preview-content \.preview-link:focus-visible\s*\{[^}]*outline:\s*3px solid #155ed0;/s);
 });
 
+test('steps one and two match every preview pin with a right-panel guide label', () => {
+  const labels = [
+    ['Start Here', 'ここからスタート'],
+    ['Research Philosophy', '研究哲学'],
+    ['Begin the Tour', 'ツアーを始める'],
+    ['Concept Architect', 'Concept Architect'],
+    ['Research Profiles', '研究プロフィール'],
+    ['Assistant GPT', 'Assistant GPT'],
+    ['Explore the Hub', 'ハブを探索']
+  ];
+
+  for (const [englishLabel, japaneseLabel] of labels) {
+    assert.match(english, new RegExp(`<(?:h3|dt)(?: [^>]*)?>📍 ${englishLabel}</(?:h3|dt)>`));
+    assert.match(japanese, new RegExp(`<(?:h3|dt)(?: [^>]*)?>📍 ${japaneseLabel}</(?:h3|dt)>`));
+  }
+  assert.match(styles, /#welcome \.callout section\s*\{[^}]*border-left:\s*2px solid rgba\(244,114,182,\.65\);/s);
+  assert.match(styles, /\.hub-guide div\s*\{[^}]*border-left:\s*2px solid rgba\(244,114,182,\.65\);/s);
+});
+
 test('step three mounts only the shared homepage Projects and Method research map', () => {
   for (const html of [english, japanese]) {
     assert.match(html, /id="workflow"[^>]*data-step/);
