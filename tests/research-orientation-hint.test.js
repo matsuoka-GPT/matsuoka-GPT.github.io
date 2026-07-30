@@ -63,8 +63,17 @@ test('both homepages provide the localized accessible hint beside the unchanged 
     assert.match(page, /class="orientation-link" href="research-orientation\.html"/);
     assert.match(page, /research-orientation-hint\.js/);
   }
-  assert.match(pages[0], /First-time visitor\? Start here\. <span class="hint-pointer" aria-hidden="true">👇<\/span>/);
-  assert.match(pages[1], /初めての方はこちらから。<span class="hint-pointer" aria-hidden="true">👇<\/span>/);
+  assert.match(pages[0], /<span class="first-visit-hint">\s*First-time visitor\? Start here\.\s*<span class="hint-pointer" aria-hidden="true">👇<\/span>\s*<\/span>/);
+  assert.match(pages[1], /<span class="first-visit-hint">\s*初めての方はこちらから。<span class="hint-pointer" aria-hidden="true">👇<\/span>\s*<\/span>/);
+});
+
+test('Twemoji can replace the pointer glyph without replacing its animated wrapper', () => {
+  const twemojiRendered = pages[0].replace(
+    '👇',
+    '<img class="emoji" src="images/twemoji/1f447.svg" alt="">'
+  );
+
+  assert.match(twemojiRendered, /<span class="hint-pointer" aria-hidden="true">\s*<img class="emoji"[^>]* alt="">\s*<\/span>/);
 });
 
 test('the first visit appears after a delay and a page click dismisses and records it', () => {
@@ -107,7 +116,7 @@ test('hint styling includes dark, mobile, and reduced-motion treatments', () => 
   assert.match(styles, /\[data-theme="dark"\] \.orientation-hint/);
   assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.orientation-entry\.hint-active/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.orientation-hint/);
-  assert.match(styles, /\.orientation-hint \.hint-pointer\s*{[\s\S]*animation:hint-pointer-bounce \.7s ease-in-out \.4s 3;/);
-  assert.match(styles, /@keyframes hint-pointer-bounce[\s\S]*translateY\(3px\)/);
-  assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.orientation-hint \.hint-pointer\s*{\s*animation: none;/);
+  assert.match(styles, /\.hint-pointer\s*{\s*display:inline-block;\s*will-change:transform;\s*animation:hint-pointer-bounce \.65s ease-in-out \.4s 3;/);
+  assert.match(styles, /@keyframes hint-pointer-bounce[\s\S]*translateY\(4px\)/);
+  assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.hint-pointer\s*{\s*animation: none;/);
 });
