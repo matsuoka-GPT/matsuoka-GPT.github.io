@@ -21,6 +21,14 @@ test('both orientation pages use the complete shared homepage theme', () => {
   assert.match(styles, /body\.orientation-page\s*\{[^}]*var\(--bg-color\)/s);
 });
 
+test('all tour previews rebind cloned light-page colors to accessible dark tokens', () => {
+  assert.match(styles, /\[data-theme="dark"\] \{[^}]*--orientation-ink: #f4f8ff;[^}]*--orientation-muted: #c3cfe0;[^}]*--orientation-line: #45617f;[^}]*--orientation-accent: #9ac5ff;/s);
+  assert.match(styles, /\[data-theme="dark"\] \.orientation-page \.orientation-preview--light,\s*\[data-theme="dark"\] \.orientation-page \.light-preview\s*\{[^}]*color-scheme: dark;[^}]*--text-color: var\(--orientation-ink\);[^}]*--muted-color: var\(--orientation-muted\);[^}]*--link-color: var\(--orientation-accent\);[^}]*--text: var\(--orientation-ink\);[^}]*--line: var\(--orientation-line\);[^}]*--card: var\(--orientation-card\);/s);
+  assert.match(styles, /\[data-theme="dark"\] \.orientation-page \.hub-preview-content\.metallic-surface\s*\{[^}]*background-color: #16243a !important;[^}]*background-image: none !important;[^}]*color: var\(--orientation-ink\) !important;/s);
+  assert.match(styles, /\[data-theme="dark"\] \.orientation-page :is\(\.hub-preview-markers, \.light-preview\) \.guide-marker\s*\{[^}]*background: var\(--orientation-guide\) !important;[^}]*color: var\(--orientation-guide-ink\) !important;/s);
+  assert.match(styles, /\[data-theme="dark"\] \.orientation-page \.tour-button:disabled\s*\{\s*opacity:\s*\.68;/);
+});
+
 test('orientation headers have no language switch and finish in the matching language homepage', () => {
   for (const html of [english, japanese]) {
     assert.doesNotMatch(html, /class="language-link"/);

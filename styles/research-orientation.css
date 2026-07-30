@@ -564,10 +564,10 @@
   --orientation-panel: #101c2d;
   --orientation-card: #16243a;
   --orientation-soft: #1b2b43;
-  --orientation-ink: #eef5ff;
-  --orientation-muted: #b6c4d8;
-  --orientation-line: #31475e;
-  --orientation-accent: #79aff5;
+  --orientation-ink: #f4f8ff;
+  --orientation-muted: #c3cfe0;
+  --orientation-line: #45617f;
+  --orientation-accent: #9ac5ff;
   --orientation-guide: rgba(18, 32, 51, .97);
   --orientation-guide-ink: #eef5ff;
   --orientation-callout: linear-gradient(145deg, rgba(18,38,63,.97), rgba(10,29,49,.97));
@@ -576,6 +576,44 @@
 html,
 body.orientation-page { background-color: var(--bg-color); }
 body.orientation-page { background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--link-color) 12%, transparent), transparent 45%), var(--bg-color) !important; }
+
+/* Cloned homepage sections carry light-theme custom properties of their own.
+   Rebind every one of those legacy properties here so a dark tour never pairs
+   its dark preview panels with the cloned page's dark text. */
+[data-theme="dark"] .orientation-page .orientation-preview--light,
+[data-theme="dark"] .orientation-page .light-preview {
+  color-scheme: dark;
+  --text-color: var(--orientation-ink);
+  --heading-color: var(--orientation-ink);
+  --muted-color: var(--orientation-muted);
+  --border-color: var(--orientation-line);
+  --link-color: var(--orientation-accent);
+  --link-hover-color: #c8e0ff;
+  --card-color: var(--orientation-card);
+  --surface-color: var(--orientation-soft);
+  --text: var(--orientation-ink);
+  --muted: var(--orientation-muted);
+  --line: var(--orientation-line);
+  --card: var(--orientation-card);
+  --accent2: var(--orientation-accent);
+}
+[data-theme="dark"] .orientation-page .hub-preview-content.metallic-surface {
+  border-color: var(--orientation-line) !important;
+  background-color: #16243a !important;
+  background-image: none !important;
+  color: var(--orientation-ink) !important;
+  box-shadow: 0 8px 22px var(--shadow-color) !important;
+}
+[data-theme="dark"] .orientation-page .hub-preview-content.metallic-surface::before { display: none; }
+[data-theme="dark"] .orientation-page .hub-preview-content.metallic-surface
+  :is(h1, h2, h3, p, li, strong, span, .profile-body) { color: var(--orientation-ink) !important; }
+[data-theme="dark"] .orientation-page .hub-preview-content.metallic-surface
+  :is(.profile-role, .research-identifiers-title, .muted, .note) { color: var(--orientation-muted) !important; }
+[data-theme="dark"] .orientation-page :is(.hub-preview-markers, .light-preview) .guide-marker {
+  border-color: var(--orientation-line) !important;
+  background: var(--orientation-guide) !important;
+  color: var(--orientation-guide-ink) !important;
+}
 
 .orientation-page :is(.welcome-overview, .hub-overview, .research-map-overview, .outputs-overview, .contact-overview, .ideas-overview, .faq-overview) {
   color-scheme: normal;
@@ -622,3 +660,4 @@ body.orientation-page { background: radial-gradient(circle at 50% 35%, color-mix
   background: color-mix(in srgb, var(--orientation-accent) 10%, transparent) !important;
   color: var(--orientation-ink) !important;
 }
+[data-theme="dark"] .orientation-page .tour-button:disabled { opacity: .68; }
