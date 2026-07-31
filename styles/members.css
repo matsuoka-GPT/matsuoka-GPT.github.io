@@ -180,6 +180,5 @@ html[lang="en"] .member-card{
   }
 }
 @media (prefers-reduced-motion:reduce){
-  .member-card:hover{transform:none}
   .member-card::after{transition:none}
 }
