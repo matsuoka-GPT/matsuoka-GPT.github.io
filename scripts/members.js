@@ -22,12 +22,7 @@
   var cards = document.querySelectorAll('.member-card[data-greeting]');
   var greetingObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      greetingObserver.unobserve(entry.target);
-      entry.target.classList.add('is-mobile-greeting');
-      window.setTimeout(function () {
-        entry.target.classList.remove('is-mobile-greeting');
-      }, 1500);
+      entry.target.classList.toggle('is-mobile-greeting', entry.isIntersecting);
     });
   }, {
     threshold: 0.55,
