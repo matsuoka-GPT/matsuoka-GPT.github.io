@@ -284,7 +284,7 @@
     .hint-pointer{
       display:inline-block;
       will-change:transform;
-      animation:hint-pointer-bounce .65s ease-in-out .4s 3;
+      animation:hint-pointer-bounce .65s ease-in-out .4s infinite;
     }
     @keyframes hint-pointer-bounce{
       0%, 100%{
