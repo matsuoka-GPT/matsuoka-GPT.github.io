@@ -507,8 +507,8 @@ def download_ranking_rows(records: list[ZenodoRecord], start: int = 1, stop: int
         rows.append(
             "<tr>"
             f"<td>{rank}</td>"
-            f'<td><button class="paper-title" type="button" data-record-id="{safe(record.record_id)}" '
-            f'title="View statistics for {title}">{title}</button></td>'
+            f'<td><button class="paper-title" type="button" data-record-id="{safe(record.record_id)}">'
+            f'{title}</button></td>'
             f"<td>{record.downloads:,}</td>"
             f"<td>{fmt_delta(record.downloads_delta)}</td>"
             "</tr>"

@@ -171,7 +171,7 @@ def test_dashboard_download_ranking_replaces_all_records(tmp_path: Path):
     assert all(f"<td>{rank}</td>" not in default_html for rank in range(11, 14))
     assert all(f"<td>{rank}</td>" in details_html for rank in range(11, 14))
     assert all(f"<td>{rank}</td>" not in details_html for rank in range(1, 11))
-    assert html.count('Record ') == len(records) * 3
+    assert html.count('Record ') == len(records) * 2
 
 
 def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
@@ -257,6 +257,7 @@ def test_ranking_titles_have_compact_modal_details(tmp_path: Path):
 
     assert set(ranking_ids) == set(details)
     assert len(ranking_ids) == len(records)
+    assert 'title="View statistics for ' not in page
     assert all(
         {
             "views", "unique_views", "downloads", "unique_downloads",
