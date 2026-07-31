@@ -801,6 +801,19 @@
   height: 26px !important;
 }
 
+/* Preserve the official Google colors while keeping the black Scholar wordmark
+   legible against the dark profile panel. */
+[data-theme="dark"] .research-identifiers .scholar-link {
+  padding: 5px 9px;
+  border: 1px solid rgba(255,255,255,.78);
+  border-radius: 10px;
+  background: rgba(255,255,255,.96) !important;
+  box-shadow: 0 5px 16px rgba(0,5,14,.28);
+}
+[data-theme="dark"] .research-identifiers .scholar-link img {
+  opacity: 1 !important;
+}
+
 .research-identifiers .doi-badge {
   grid-area: 4 / 1;
 }
