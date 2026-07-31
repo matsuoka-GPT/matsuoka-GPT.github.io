@@ -154,7 +154,7 @@ html[lang="en"] .member-card{
 /* Member-card greeting interaction for precise pointing devices. */
 @media (hover:hover) and (pointer:fine){
   .member-card::after{
-    content:"Hi!";
+    content:attr(data-greeting);
     position:absolute;
     z-index:2;
     top:19px;
@@ -178,7 +178,25 @@ html[lang="en"] .member-card{
     opacity:1;
     transform:translateY(0) scale(1);
   }
+  .member-card:hover{
+    animation:member-card-glow 1.25s ease-in-out infinite alternate;
+  }
+}
+@keyframes member-card-glow{
+  from{
+    border-color:rgba(37,99,235,.72);
+    box-shadow:0 28px 64px rgba(37,99,235,.22),0 0 0 1px rgba(37,99,235,.42),0 0 18px rgba(6,182,212,.2);
+  }
+  to{
+    border-color:rgba(124,58,237,.88);
+    box-shadow:0 32px 72px rgba(76,81,191,.27),0 0 0 1px rgba(124,58,237,.62),0 0 34px rgba(124,58,237,.4);
+  }
 }
 @media (prefers-reduced-motion:reduce){
+  .member-card:hover{
+    animation:none;
+    border-color:rgba(124,58,237,.82);
+    box-shadow:0 28px 64px rgba(37,99,235,.22),0 0 0 1px rgba(124,58,237,.5),0 0 24px rgba(124,58,237,.3);
+  }
   .member-card::after{transition:none}
 }
