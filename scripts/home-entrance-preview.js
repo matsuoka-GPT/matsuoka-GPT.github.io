@@ -11,6 +11,7 @@
     marker.textContent = text;
     marker.setAttribute('aria-hidden', 'true');
     container.appendChild(marker);
+    return marker;
   }
 
   function buildPreview(container, source, homeUrl) {
@@ -57,7 +58,13 @@
 
     var japanese = container.ownerDocument.documentElement.lang === 'ja';
     addMarker(content, 'preview-marker-start', japanese ? '📍 ここからスタート' : '📍 Start Here');
-    addMarker(content, 'preview-marker-philosophy', japanese ? '📍 研究哲学' : '📍 Research Philosophy');
+    var philosophyMarker = addMarker(content, 'preview-marker-philosophy', japanese ? '📍 研究哲学' : '📍 Research Philosophy');
+    if (philosophyLink) {
+      var philosophyMarkerRow = document.createElement('div');
+      philosophyMarkerRow.className = 'preview-philosophy-marker-row';
+      philosophyMarkerRow.appendChild(philosophyMarker);
+      philosophyLink.parentElement.before(philosophyMarkerRow);
+    }
     addMarker(content, 'preview-marker-tour', japanese ? '📍 ツアーを始める' : '📍 Begin the Tour');
     container.replaceChildren(content);
     container.setAttribute('aria-busy', 'false');
