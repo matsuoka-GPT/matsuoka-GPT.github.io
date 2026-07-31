@@ -399,13 +399,13 @@
 .light-preview .guide-marker.preview-marker { border-color: #cbd5e1; background: rgba(255,255,255,.96); color: #1f2937 !important; box-shadow: 0 4px 12px rgba(15,23,42,.12); backdrop-filter: blur(6px); }
 .preview-marker { position: absolute; z-index: 3; pointer-events: none; }
 .preview-marker-start { top: 8px; left: 8px; }
-.preview-marker-philosophy { top: clamp(110px, 31%, 185px); right: 8px; }
+.preview-philosophy-marker-row { display: flex; justify-content: flex-start; min-height: 31px; margin: 4px 0 6px; pointer-events: none; }
+.preview-philosophy-marker-row .preview-marker-philosophy { position: static; }
 .preview-marker-tour { top: clamp(165px, 45%, 250px); right: 8px; }
 .preview-loading, .preview-error { margin: 0; padding: 2rem; text-align: center; }
 #welcome .callout .preview-guidance { margin: .55rem 0; padding: .6rem .7rem; border: 1px solid rgba(86,168,255,.3); border-radius: 8px; background: rgba(86,168,255,.08); color: #d9ecff; font-size: clamp(.78rem, .84vw, .9rem); }
 
 @media (max-width: 600px) {
-  .preview-marker-philosophy { top: 24%; }
   .preview-marker-tour { top: 39%; }
   .home-entrance-preview-content .preview-link { box-shadow: 0 0 0 1px rgba(29,78,216,.2); }
 }
@@ -656,7 +656,6 @@ body.orientation-page { background: radial-gradient(circle at 50% 35%, color-mix
 
 /* Prevent guide labels from covering preview copy on narrow phone screens. */
 @media (max-width: 600px) {
-  .preview-marker-philosophy { top: 20%; }
   .preview-marker-tour { top: 48%; }
   html[lang="ja"] .research-map-preview-content .research-marker-projects { left: 190px; }
 
