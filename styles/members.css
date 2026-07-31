@@ -151,35 +151,46 @@ html[lang="en"] .member-card{
 }
 
 
-/* Member-card greeting interaction for precise pointing devices. */
+/* Member-card greeting shared by mouse hover and the one-time mobile reveal. */
+.member-card::after{
+  content:attr(data-greeting);
+  position:absolute;
+  z-index:2;
+  top:19px;
+  right:18px;
+  padding:.38rem .72rem;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:999px 999px 999px 7px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:#fff;
+  box-shadow:0 9px 22px rgba(37,99,235,.24);
+  font-size:.72rem;
+  font-weight:850;
+  letter-spacing:.03em;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(8px) scale(.84);
+  transform-origin:bottom left;
+  transition:opacity .2s ease,transform .28s cubic-bezier(.2,.8,.2,1);
+}
 @media (hover:hover) and (pointer:fine){
-  .member-card::after{
-    content:attr(data-greeting);
-    position:absolute;
-    z-index:2;
-    top:19px;
-    right:18px;
-    padding:.38rem .72rem;
-    border:1px solid rgba(255,255,255,.72);
-    border-radius:999px 999px 999px 7px;
-    background:linear-gradient(135deg,var(--blue),var(--violet));
-    color:#fff;
-    box-shadow:0 9px 22px rgba(37,99,235,.24);
-    font-size:.72rem;
-    font-weight:850;
-    letter-spacing:.03em;
-    opacity:0;
-    pointer-events:none;
-    transform:translateY(8px) scale(.84);
-    transform-origin:bottom left;
-    transition:opacity .2s ease,transform .28s cubic-bezier(.2,.8,.2,1);
-  }
   .member-card:hover::after{
     opacity:1;
     transform:translateY(0) scale(1);
   }
   .member-card:hover{
     animation:member-card-glow 1.25s ease-in-out infinite alternate;
+  }
+}
+@media (hover:none), (pointer:coarse){
+  .member-card:hover{transform:none}
+  .member-card.is-mobile-greeting{
+    transform:translateY(-8px);
+    animation:member-card-glow 1.25s ease-in-out alternate;
+  }
+  .member-card.is-mobile-greeting::after{
+    opacity:1;
+    transform:translateY(0) scale(1);
   }
 }
 @keyframes member-card-glow{
@@ -194,16 +205,19 @@ html[lang="en"] .member-card{
     filter:drop-shadow(0 0 16px rgba(124,58,237,.62));
   }
 }
-[data-theme=dark] .member-card:hover{
+[data-theme=dark] .member-card:hover,
+[data-theme=dark] .member-card.is-mobile-greeting{
   border-color:#7dd3fc!important;
   box-shadow:0 28px 68px rgba(0,5,14,.5),0 0 0 1px rgba(125,211,252,.72),0 0 30px rgba(124,58,237,.48)!important;
 }
 @media (prefers-reduced-motion:reduce){
-  .member-card:hover{
+  .member-card:hover,
+  .member-card.is-mobile-greeting{
     animation:none;
     border-color:rgba(124,58,237,.82);
     box-shadow:0 28px 64px rgba(37,99,235,.22),0 0 0 1px rgba(124,58,237,.5),0 0 24px rgba(124,58,237,.3);
     filter:drop-shadow(0 0 12px rgba(124,58,237,.48));
   }
+  .member-card.is-mobile-greeting{transform:none}
   .member-card::after{transition:none}
 }
