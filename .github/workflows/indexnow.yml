@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: pages-indexnow
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy-and-submit:
