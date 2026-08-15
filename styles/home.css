@@ -92,7 +92,7 @@
       text-align: center;
     }
 
-    .outputs-grid a{
+    .outputs-grid :is(a, .output-draft){
       text-decoration: none;
       color: var(--accent2);
       font-size: 14px;
@@ -816,7 +816,7 @@
   letter-spacing: 0.04em;
 }
 
-.outputs-grid li a {
+.outputs-grid li :is(a, .output-draft) {
   display: block;      
   text-align: center;  
 }
