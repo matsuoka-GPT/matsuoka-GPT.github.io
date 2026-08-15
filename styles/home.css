@@ -606,6 +606,119 @@
     }
     details.fold .fold-body{ margin-top: 10px; }
 
+    /* Cosmology: second-level study groups */
+    .cosmos-fold-body{
+      display: grid;
+      gap: 10px;
+    }
+    .cosmos-fold > summary{ flex-wrap: wrap; }
+    .cosmos-media-link{
+      margin-left: 2px;
+      padding: 2px 7px;
+      border: 1px solid var(--accent2);
+      border-radius: 4px;
+      color: var(--accent2);
+      font-size: .8em;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    details.cosmos-study{
+      --cosmos-study-accent: #35c86f;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--cosmos-study-accent);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.48);
+    }
+    details.cosmos-study--modeling{ --cosmos-study-accent: #3d8cff; }
+    details.cosmos-study--observational{ --cosmos-study-accent: #8d5cf6; }
+    details.cosmos-study > summary{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 62px;
+      padding: 12px 16px;
+      cursor: pointer;
+      list-style: none;
+      color: var(--text);
+      font-weight: 800;
+      line-height: 1.45;
+    }
+    details.cosmos-study > summary::-webkit-details-marker{ display: none; }
+    details.cosmos-study > summary::after{
+      content: "›";
+      margin-left: auto;
+      color: var(--cosmos-study-accent);
+      font-size: 28px;
+      line-height: 1;
+      transform: rotate(0deg);
+      transition: transform .18s ease;
+    }
+    details.cosmos-study[open] > summary::after{ transform: rotate(90deg); }
+    .cosmos-study-index{
+      display: inline-grid;
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--cosmos-study-accent);
+      color: #071526;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .cosmos-study-title{ color: var(--cosmos-study-accent); }
+    .cosmos-study-body{
+      padding: 0 14px 14px;
+      border-top: 1px solid var(--line);
+    }
+    .cosmos-study-description{
+      margin: 12px 2px 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .cosmos-study-body .box.outputs{
+      padding-inline: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    @media (max-width: 520px){
+      .cosmos-fold > summary{
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+      .cosmos-fold-title{
+        flex: 1 1 calc(100% - 36px);
+        min-width: 0;
+      }
+      .cosmos-media-link{
+        margin-left: 30px;
+        font-size: 12px;
+      }
+      details.cosmos-study > summary{
+        align-items: flex-start;
+        gap: 10px;
+        min-height: 56px;
+        padding: 11px 10px;
+        font-size: 14px;
+      }
+      details.cosmos-study > summary::after{
+        margin-top: 2px;
+        font-size: 24px;
+      }
+      .cosmos-study-index{
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 11px;
+      }
+      .cosmos-study-body{ padding: 0 8px 10px; }
+      .cosmos-study-description{ font-size: 13px; }
+    }
+
     /* Tag Tooltip */
     .tags .tag.tooltip{
       position: relative;
