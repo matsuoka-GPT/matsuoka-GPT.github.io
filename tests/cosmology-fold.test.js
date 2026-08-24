@@ -22,7 +22,7 @@ function cosmologyGroups(file) {
 test('English and Japanese Cosmology outputs use the same two-level classification', () => {
   const expected = [
     { kind: 'conceptual', papers: 22 },
-    { kind: 'modeling', papers: 12 },
+    { kind: 'modeling', papers: 15 },
     { kind: 'observational', papers: 6 },
   ];
 
@@ -30,7 +30,7 @@ test('English and Japanese Cosmology outputs use the same two-level classificati
   assert.deepEqual(cosmologyGroups('jp/index.html'), expected);
 });
 
-test('the five new unpublished papers are non-linked drafts in both languages', () => {
+test('the unpublished Cosmology series papers are non-linked drafts in both languages', () => {
   const expectedTitles = {
     'index.html': [
       'The Grand Circulation Hypothesis in BFSSU/DMF Cosmology',
@@ -38,6 +38,9 @@ test('the five new unpublished papers are non-linked drafts in both languages', 
       'BFSSU/DMF Dynamics and Gravitational Theory, Part I: Foundations of DMF Kinematics',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part II: DMF Conservation Laws and Open-System Flow',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part III: DMF Gravitational Response and Equations of Motion',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part IV: DMF Linear Perturbations and Gravitational Instability',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part V: DMF Nonlinear Growth and Local Structure Formation',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part VI: DMF Density Structures and Newtonian Gravity',
     ],
     'jp/index.html': [
       'BFSSU/DMF宇宙論における大循環仮説',
@@ -45,6 +48,9 @@ test('the five new unpublished papers are non-linked drafts in both languages', 
       'BFSSU/DMF動力学・重力理論 第1部　DMF運動学の基礎',
       'BFSSU/DMF動力学・重力理論 第2部　DMF保存則と開放系流動',
       'BFSSU/DMF動力学・重力理論 第3部　DMF重力応答と運動方程式',
+      'BFSSU/DMF動力学・重力理論 第4部　DMF線形摂動と重力不安定性',
+      'BFSSU/DMF動力学・重力理論 第5部　DMF非線形成長と局所構造形成',
+      'BFSSU/DMF動力学・重力理論 第6部　DMF密度構造とニュートン重力',
     ],
   };
 
