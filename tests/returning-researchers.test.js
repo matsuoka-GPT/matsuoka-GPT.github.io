@@ -101,5 +101,14 @@ test('the first research message is a dated permanent record in both languages',
 test('research message styles cover dark theme and phone layout', () => {
   assert.match(css, /\[data-theme="dark"\] \.research-message/);
   assert.match(css, /\.research-message-body/);
+  assert.match(css, /\.research-message-section\s*\{[^}]*padding-inline:20px/s);
+  assert.match(css, /@media \(max-width:620px\)[\s\S]*\.research-message-section\s*\{\s*padding-inline:12px;/);
   assert.match(css, /@media \(max-width:620px\)[\s\S]*\.research-message > summary/);
+});
+
+test('research message duration wording matches the current project age', () => {
+  assert.doesNotMatch(japanesePage, /長期間にわたる概念研究/);
+  assert.doesNotMatch(englishPage, /sustained conceptual investigation/);
+  assert.match(japanesePage, /概念研究によって形成された宇宙像/);
+  assert.match(englishPage, /developed through conceptual investigation/);
 });
