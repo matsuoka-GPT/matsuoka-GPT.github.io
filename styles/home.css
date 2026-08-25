@@ -627,7 +627,11 @@
     [data-theme="dark"] .research-path-list a{ color:var(--text-color); }
     [data-theme="dark"] .research-path-list a:hover{ background:rgba(110,168,254,.09); }
 
-    .returning-page .wrap{ min-height:100%; }
+    .returning-page .wrap{
+      max-width:920px;
+      margin-inline:auto;
+      min-height:100%;
+    }
     .returning-page main{ min-width:0; }
     .returning-page-nav{ margin-bottom:4px; }
     .returning-page-panel{ margin-top:8px; }

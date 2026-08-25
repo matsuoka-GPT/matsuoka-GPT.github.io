@@ -60,6 +60,7 @@ test('sitemap contains reciprocal English and Japanese returning-researcher URLs
 });
 
 test('returning-researchers layout includes desktop, tablet, mobile, and dark-theme styles', () => {
+  assert.match(css, /\.returning-page \.wrap\s*\{[^}]*max-width:920px;[^}]*margin-inline:auto/s);
   assert.match(css, /\.returning-grid\s*\{[^}]*grid-template-columns:1\.05fr 1fr \.9fr/s);
   assert.match(css, /@media \(max-width:900px\)/);
   assert.match(css, /@media \(max-width:620px\)/);
