@@ -8,6 +8,7 @@ const englishPage = fs.readFileSync(new URL('../returning-researchers.html', `fi
 const japanesePage = fs.readFileSync(new URL('../jp/returning-researchers.html', `file://${__filename}`), 'utf8');
 const css = fs.readFileSync(new URL('../styles/home.css', `file://${__filename}`), 'utf8');
 const researchPath = fs.readFileSync(new URL('../scripts/research-path.js', `file://${__filename}`), 'utf8');
+const sitemap = fs.readFileSync(new URL('../sitemap.xml', `file://${__filename}`), 'utf8');
 
 for (const [language, source] of [['English', english], ['Japanese', japanese]]) {
   test(`${language} homepage links to the separate returning-researchers page`, () => {
@@ -44,6 +45,19 @@ for (const [language, source] of [['English', englishPage], ['Japanese', japanes
     assert.match(source, /mailto:matsuoka-gpt@technocratnet\.jp/);
   });
 }
+
+test('labels describe the currently cosmology-specific pathway', () => {
+  assert.match(english, /Continue Exploring Cosmology/);
+  assert.match(englishPage, /Continue Exploring Cosmology/);
+  assert.match(japanese, /継続して宇宙論を読む方へ/);
+  assert.match(japanesePage, /継続して宇宙論を読む方へ/);
+});
+
+test('sitemap contains reciprocal English and Japanese returning-researcher URLs', () => {
+  assert.equal((sitemap.match(/<loc>https:\/\/matsuoka-gpt\.github\.io\/returning-researchers\.html<\/loc>/g) || []).length, 1);
+  assert.equal((sitemap.match(/<loc>https:\/\/matsuoka-gpt\.github\.io\/jp\/returning-researchers\.html<\/loc>/g) || []).length, 1);
+  assert.match(sitemap, /hreflang="x-default" href="https:\/\/matsuoka-gpt\.github\.io\/returning-researchers\.html"/);
+});
 
 test('returning-researchers layout includes desktop, tablet, mobile, and dark-theme styles', () => {
   assert.match(css, /\.returning-grid\s*\{[^}]*grid-template-columns:1\.05fr 1fr \.9fr/s);
