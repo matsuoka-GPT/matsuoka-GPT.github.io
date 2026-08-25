@@ -4,13 +4,15 @@ const fs = require('node:fs');
 
 const english = fs.readFileSync(new URL('../index.html', `file://${__filename}`), 'utf8');
 const japanese = fs.readFileSync(new URL('../jp/index.html', `file://${__filename}`), 'utf8');
+const englishPage = fs.readFileSync(new URL('../returning-researchers.html', `file://${__filename}`), 'utf8');
+const japanesePage = fs.readFileSync(new URL('../jp/returning-researchers.html', `file://${__filename}`), 'utf8');
 const css = fs.readFileSync(new URL('../styles/home.css', `file://${__filename}`), 'utf8');
 const researchPath = fs.readFileSync(new URL('../scripts/research-path.js', `file://${__filename}`), 'utf8');
 
 for (const [language, source] of [['English', english], ['Japanese', japanese]]) {
-  test(`${language} homepage includes the returning-researchers entry and section`, () => {
-    assert.match(source, /href="#returning-researchers"/);
-    assert.match(source, /id="returning-researchers"/);
+  test(`${language} homepage links to the separate returning-researchers page`, () => {
+    assert.match(source, /href="returning-researchers\.html"/);
+    assert.match(source, /id="returning-researchers"[^>]*hidden/);
     assert.match(source, /class="returning-grid"/);
   });
 
@@ -31,6 +33,15 @@ for (const [language, source] of [['English', english], ['Japanese', japanese]])
 
   test(`${language} loads the research-path behavior`, () => {
     assert.match(source, /scripts\/research-path\.js/);
+  });
+}
+
+for (const [language, source] of [['English', englishPage], ['Japanese', japanesePage]]) {
+  test(`${language} separate page contains the returning researcher content`, () => {
+    assert.match(source, /id="returning-researchers-title"/);
+    assert.match(source, /zenodo\.22036921/);
+    assert.match(source, /#cosmology-modeling/);
+    assert.match(source, /mailto:matsuoka-gpt@technocratnet\.jp/);
   });
 }
 
