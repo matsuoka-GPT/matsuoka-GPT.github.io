@@ -71,3 +71,21 @@ test('research-path behavior opens its target and ancestor details', () => {
   assert.match(researchPath, /parent instanceof HTMLDetailsElement/);
   assert.match(researchPath, /a\[href\^="#"\]/);
 });
+
+test('both languages include the independent collapsible research message after the primary routes', () => {
+  for (const [language, source, heading, note] of [
+    ['English', englishPage, 'Research Message from the Lab', 'This research message is updated periodically as the project develops.'],
+    ['Japanese', japanesePage, 'ラボからの研究メッセージ', '本メッセージは研究の進展に応じて不定期に更新します。']
+  ]) {
+    assert.match(source, new RegExp(heading));
+    assert.match(source, new RegExp(note.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+    assert.match(source, /<details class="research-message">/);
+    assert.ok(source.indexOf('returning-grid') < source.indexOf('research-message-section'), `${language} message follows the primary routes`);
+  }
+});
+
+test('research message styles cover dark theme and phone layout', () => {
+  assert.match(css, /\[data-theme="dark"\] \.research-message/);
+  assert.match(css, /\.research-message-body/);
+  assert.match(css, /@media \(max-width:620px\)[\s\S]*\.research-message > summary/);
+});
