@@ -205,6 +205,7 @@
           </span></span>
           <a class="orientation-link" href="research-orientation.html">🧭 Take the Research Orientation</a>
         </span>
+        <a class="returning-nav-link" href="#returning-researchers">↻ For Returning Researchers</a>
         <a href="#projects">Projects</a>
         <a href="#method">Method</a>
         <a href="#outputs">Outputs</a>
@@ -388,6 +389,66 @@
       </div>
     </section>
 
+    <section id="returning-researchers" class="returning-researchers" aria-labelledby="returning-researchers-title">
+      <div class="returning-heading">
+        <div>
+          <p class="returning-eyebrow">Already following the research?</p>
+          <h2 id="returning-researchers-title">↻ For Returning Researchers</h2>
+          <p>Continue from your previous visit. Review recent publications, follow the BFSSU/DMF research pathway, or submit a question or verification proposal.</p>
+        </div>
+        <a class="returning-all-link" href="#outputs">View all outputs <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="returning-grid">
+        <article class="returning-card returning-updates">
+          <h3>📌 Latest Research Updates</h3>
+          <p class="returning-card-intro">The three most recent public records listed in the laboratory’s Zenodo data.</p>
+          <ol class="returning-update-list">
+            <li>
+              <time datetime="2026-08-21">Aug 21, 2026</time>
+              <span class="research-status">Published / DOI</span>
+              <a href="https://doi.org/10.5281/zenodo.22036921" target="_blank" rel="noopener noreferrer">The Determination Principle of the Maximum Cosmic Scale in Hierarchical Universes</a>
+              <span class="returning-category">Cosmology / BFSSU &amp; DMF</span>
+            </li>
+            <li>
+              <time datetime="2026-08-12">Aug 12, 2026</time>
+              <span class="research-status">Published / DOI</span>
+              <a href="https://doi.org/10.5281/zenodo.21897171" target="_blank" rel="noopener noreferrer">Reformulating the Solar Coronal Heating Problem</a>
+              <span class="returning-category">Cosmology / BFSSU &amp; DMF</span>
+            </li>
+            <li>
+              <time datetime="2026-07-24">Jul 24, 2026</time>
+              <span class="research-status">Published / DOI</span>
+              <a href="https://doi.org/10.5281/zenodo.21522012" target="_blank" rel="noopener noreferrer">Structural Isomorphism Between Living Systems and the Universe</a>
+              <span class="returning-category">Structural Theory</span>
+            </li>
+          </ol>
+        </article>
+
+        <article class="returning-card returning-path">
+          <h3>🧭 Continue by Research Path</h3>
+          <p class="returning-card-intro"><strong>BFSSU/DMF Cosmology</strong> — follow the model from its overview to current applications.</p>
+          <ol class="research-path-list">
+            <li><a href="https://doi.org/10.5281/zenodo.17720251" target="_blank" rel="noopener noreferrer"><span>Overview</span><small>Begin with the digest edition</small></a></li>
+            <li><a href="https://doi.org/10.5281/zenodo.18194511" target="_blank" rel="noopener noreferrer"><span>Core Concepts</span><small>Examine DMF as the ground flow</small></a></li>
+            <li><a href="#cosmology-modeling"><span>Mathematical Models</span><small>Review formulations and conservation structures</small></a></li>
+            <li><a href="#cosmology-observational"><span>Observational Studies</span><small>Consider applications and testability</small></a></li>
+            <li><a href="https://doi.org/10.5281/zenodo.22036921" target="_blank" rel="noopener noreferrer"><span>Latest Development</span><small>Continue to the newest public record</small></a></li>
+          </ol>
+        </article>
+
+        <article class="returning-card returning-verification">
+          <h3>✉ Questions &amp; Verification</h3>
+          <p>Questions, possible counterexamples, related research, mathematical concerns, and proposals for observational verification are welcome.</p>
+          <div class="returning-actions">
+            <a class="btn primary" href="https://chatgpt.com/g/g-6a3b6c40aab081919087c6d1e6aaabc9-matsuoka-x-gpt-thought-experiment-lab-gpt" target="_blank" rel="noopener noreferrer">Ask Assistant GPT</a>
+            <a class="btn" href="mailto:matsuoka-gpt@technocratnet.jp?subject=%5BResearch%20Verification%5D%20Paper%20or%20research%20topic&amp;body=Paper%20or%20research%20topic%3A%0ASection%20examined%3A%0AQuestion%20or%20possible%20counterexample%3A%0ARelated%20source%3A">Submit a Verification Note</a>
+          </div>
+          <p class="returning-original-note">Assistant GPT supports navigation and preliminary explanation. Verify exact claims, equations, and citations against the original Zenodo record.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="projects" aria-label="projects">
       <h2>💡Projects</h2>
 
@@ -505,7 +566,7 @@
         </div>
       </details>
       <details class="cosmos-study cosmos-study--modeling">
-        <summary class="cosmos-study-summary">
+        <summary id="cosmology-modeling" class="cosmos-study-summary">
           <span class="cosmos-study-index" aria-hidden="true">II</span>
           <span class="cosmos-study-title">Ⅱ. Mathematical &amp; Modeling Studies</span>
         </summary>
@@ -530,7 +591,7 @@
         </div>
       </details>
       <details class="cosmos-study cosmos-study--observational">
-        <summary class="cosmos-study-summary">
+        <summary id="cosmology-observational" class="cosmos-study-summary">
           <span class="cosmos-study-index" aria-hidden="true">III</span>
           <span class="cosmos-study-title">Ⅲ. Phenomenological &amp; Observational Studies</span>
         </summary>
@@ -793,6 +854,7 @@
     });
   </script>
 
+  <script src="scripts/research-path.js"></script>
   <script>
 　　window.addEventListener("load", () => {if (!location.hash) return;const target = document.querySelector(location.hash);
     if (!target) return;requestAnimationFrame(() => {requestAnimationFrame(() => {target.scrollIntoView({behavior: "smooth",block: "center",inline: "nearest"});
