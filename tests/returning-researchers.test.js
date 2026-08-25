@@ -84,6 +84,20 @@ test('both languages include the independent collapsible research message after 
   }
 });
 
+test('the first research message is a dated permanent record in both languages', () => {
+  for (const [language, source, title, date] of [
+    ['English', englishPage, 'From Conceptual Development to Mathematical Formulation and Observational Testability', 'August 2026'],
+    ['Japanese', japanesePage, '概念形成から数理化・観測可能性へ', '2026年8月']
+  ]) {
+    assert.match(source, /Research Message No\. 1/);
+    assert.match(source, new RegExp(title));
+    assert.match(source, new RegExp(date));
+    assert.match(source, /<time datetime="2026-08">/);
+    assert.match(source, /official record published in August 2026|2026年8月公開時点の公式記録/);
+    assert.ok(source.indexOf('research-message-meta') < source.indexOf('research-message-body'), `${language} metadata precedes the archived message body`);
+  }
+});
+
 test('research message styles cover dark theme and phone layout', () => {
   assert.match(css, /\[data-theme="dark"\] \.research-message/);
   assert.match(css, /\.research-message-body/);
