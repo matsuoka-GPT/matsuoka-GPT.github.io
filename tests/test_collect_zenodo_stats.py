@@ -269,6 +269,18 @@ def test_ranking_titles_have_compact_modal_details(tmp_path: Path):
     assert details["1"]["record_url"] == "https://zenodo.org/records/1"
     assert "/api/records/" not in page
     assert 'target="_blank"' in page
+    assert 'class="dialog-nav dialog-prev"' in page
+    assert 'class="dialog-nav dialog-next"' in page
+    assert '.dialog-prev { left:-56px; } .dialog-next { right:-56px; }' in page
+    assert '.dialog-nav { position:fixed; width:36px; height:44px; }' in page
+    assert 'data-detail="ranking_position"' in page
+    assert 'const rankingIds = rankingButtons.map((button) => button.dataset.recordId);' in page
+    assert 'showRankingRecord(currentRankingIndex - 1)' in page
+    assert 'showRankingRecord(currentRankingIndex + 1)' in page
+    assert "event.key === 'ArrowLeft'" in page
+    assert "event.key === 'ArrowRight'" in page
+    assert 'previousButton.disabled = index === 0;' in page
+    assert 'nextButton.disabled = index === rankingIds.length - 1;' in page
 
 
 def test_policy_papers_classify_as_homepage_categories():
