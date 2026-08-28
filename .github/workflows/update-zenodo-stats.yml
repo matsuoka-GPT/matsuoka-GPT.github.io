@@ -2,11 +2,18 @@ name: Update Zenodo statistics
 
 on:
   schedule:
+    # Three off-peak attempts in JST. Later attempts skip when today's data exists.
     - cron: "17 15 * * *"
+    - cron: "37 16 * * *"
+    - cron: "53 18 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: update-zenodo-statistics
+  cancel-in-progress: false
 
 jobs:
   update-zenodo-stats:
@@ -20,10 +27,16 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Check whether today's scheduled update is due
+        id: freshness
+        run: python scripts/check_zenodo_update_due.py >> "$GITHUB_OUTPUT"
+
       - name: Collect Zenodo statistics
+        if: github.event_name == 'workflow_dispatch' || steps.freshness.outputs.should_run == 'true'
         run: python scripts/collect_zenodo_stats.py
 
       - name: Commit updated Zenodo statistics
+        if: github.event_name == 'workflow_dispatch' || steps.freshness.outputs.should_run == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update Zenodo statistics"
