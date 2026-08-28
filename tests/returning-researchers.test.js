@@ -18,9 +18,9 @@ for (const [language, source] of [['English', english], ['Japanese', japanese]])
   });
 
   test(`${language} returning-researchers section exposes verified routes`, () => {
+    assert.match(source, /https:\/\/doi\.org\/10\.5281\/zenodo\.22135767/);
     assert.match(source, /https:\/\/doi\.org\/10\.5281\/zenodo\.22036921/);
     assert.match(source, /https:\/\/doi\.org\/10\.5281\/zenodo\.21897171/);
-    assert.match(source, /https:\/\/doi\.org\/10\.5281\/zenodo\.21522012/);
     assert.match(source, /href="#cosmology-modeling"/);
     assert.match(source, /href="#cosmology-observational"/);
     assert.match(source, /mailto:matsuoka-gpt@technocratnet\.jp\?subject=/);
@@ -40,6 +40,7 @@ for (const [language, source] of [['English', english], ['Japanese', japanese]])
 for (const [language, source] of [['English', englishPage], ['Japanese', japanesePage]]) {
   test(`${language} separate page contains the returning researcher content`, () => {
     assert.match(source, /id="returning-researchers-title"/);
+    assert.match(source, /zenodo\.22135767/);
     assert.match(source, /zenodo\.22036921/);
     assert.match(source, /#cosmology-modeling/);
     assert.match(source, /mailto:matsuoka-gpt@technocratnet\.jp/);
