@@ -86,3 +86,23 @@ test('the maximum cosmic scale paper has an explicit dashboard category', () => 
   const categories = JSON.parse(fs.readFileSync(path.join(root, 'data/zenodo/paper_categories.json'), 'utf8'));
   assert.equal(categories.papers['10.5281/zenodo.22036921'], 'Cosmology / BFSSU & DMF');
 });
+
+test('the energy discrepancy index paper links to its published Zenodo record', () => {
+  const titles = {
+    'index.html': 'Introduction of the Energy Discrepancy Index χ in a Hierarchical Universe and Multi-Scale Verification',
+    'jp/index.html': '階層宇宙におけるエネルギー不整合指標 χ の導入と多スケール検証',
+  };
+
+  for (const [file, title] of Object.entries(titles)) {
+    const source = fs.readFileSync(path.join(root, file), 'utf8');
+    const start = source.indexOf(`<li><a href="https://doi.org/10.5281/zenodo.22135767" target="_blank">${title}`);
+    assert.notEqual(start, -1, `${title} should link to the published Zenodo record`);
+    const end = source.indexOf('</li>', start);
+    assert.doesNotMatch(source.slice(start, end), /In editing|編集中/);
+  }
+});
+
+test('the energy discrepancy index paper has an explicit dashboard category', () => {
+  const categories = JSON.parse(fs.readFileSync(path.join(root, 'data/zenodo/paper_categories.json'), 'utf8'));
+  assert.equal(categories.papers['10.5281/zenodo.22135767'], 'Cosmology / BFSSU & DMF');
+});
