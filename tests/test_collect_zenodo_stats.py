@@ -329,6 +329,7 @@ def test_mapped_research_categories_cover_expected_sections_once():
     assert record_dois <= set(mapping)
     assert mapping["10.5281/zenodo.18159902"] == "Co-Intelligence / Methodology"
     assert mapping["10.5281/zenodo.19053422"] == "Co-Intelligence / Methodology"
+    assert mapping["10.5281/zenodo.22288840"] == "Co-Intelligence / Methodology"
     assert mapping["10.5281/zenodo.18512529"] == "Cognitive Science / Structural Cognition"
     assert mapping["10.5281/zenodo.19583310"] == "Cognitive Science / Structural Cognition"
     assert mapping["10.5281/zenodo.18271759"] == "Thought Experiments / Structural Theory"
