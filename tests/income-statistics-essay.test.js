@@ -31,6 +31,8 @@ test('essay pages expose reciprocal language and canonical metadata', () => {
 test('homepages list essay 41 first in their matching language', () => {
   assert.match(englishHome, /id="essay41" href="\/essays\/why-income-statistics-feel-wrong-en\.html"/);
   assert.match(japaneseHome, /id="essay41" href="\.\.\/essays\/why-income-statistics-feel-wrong-jp\.html"/);
+  assert.match(englishHome, /Structural Analysis × Google AI-Style Causal Modeling/);
+  assert.match(japaneseHome, /構造論 × Google AI的因果モデル/);
   assert.ok(englishHome.indexOf('id="essay41"') < englishHome.indexOf('id="essay40"'));
   assert.ok(japaneseHome.indexOf('id="essay41"') < japaneseHome.indexOf('id="essay40"'));
 });
