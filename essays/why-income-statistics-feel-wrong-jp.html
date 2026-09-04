@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2563eb">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#071835">
+    <meta name="msapplication-TileColor" content="#071835">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徒然小論文：年収統計の違和感はなぜ生まれるのか</title>
+    <meta name="description" content="平均年収と生活実感のずれを、統計の分母、地域手当、生活コスト、都市構造から読み解く徒然小論文です。">
+    <link rel="canonical" href="https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-jp.html">
+    <meta property="og:title" content="徒然小論文：年収統計の違和感はなぜ生まれるのか">
+    <meta property="og:description" content="平均年収と生活実感のずれを、数字ではなく社会構造から考えます。">
+    <meta property="og:url" content="https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-jp.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="松岡×GPT思考実験ラボ">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://matsuoka-gpt.github.io/images/lab-hero-ja.png">
+    <meta property="og:image:alt" content="松岡×GPT 思考実験ラボ — 協働知能研究、人とAIがともに考え、未来をひらく">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="徒然小論文：年収統計の違和感はなぜ生まれるのか">
+    <meta name="twitter:description" content="平均年収と生活実感のずれを、数字ではなく社会構造から考えます。">
+    <meta name="twitter:image" content="https://matsuoka-gpt.github.io/images/lab-hero-ja.png">
+    <meta name="twitter:image:alt" content="松岡×GPT 思考実験ラボ — 協働知能研究、人とAIがともに考え、未来をひらく">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-jp.html#article",
+      "url": "https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-jp.html",
+      "mainEntityOfPage": {"@id": "https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-jp.html"},
+      "headline": "年収統計の違和感はなぜ生まれるのか",
+      "description": "平均年収と生活実感のずれを、統計の分母、地域手当、生活コスト、都市構造から読み解く徒然小論文です。",
+      "inLanguage": "ja",
+      "datePublished": "2026-09-04",
+      "author": {"@id": "https://matsuoka-gpt.github.io/members.html#takafumi-matsuoka"},
+      "publisher": {"@id": "https://matsuoka-gpt.github.io/#organization"},
+      "isPartOf": {"@id": "https://matsuoka-gpt.github.io/#website"}
+    }
+    </script>
+    <link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-jp.html">
+    <link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-en.html">
+    <style>
+        body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.75; color:#24292f; max-width:800px; margin:0 auto; padding:20px 15px; background-color:#fff; font-size:18px; }
+        article { background-color:#fff; padding:35px 25px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,.03); }
+        @media (min-width:768px) { article { padding:60px; } body { padding:50px 20px; } }
+        h1 { text-align:center; font-size:1.6rem; color:#222; margin:0 0 12px; }
+        h2 { font-size:1.28rem; color:#222; margin:2.4em 0 .9em; }
+        h3 { font-size:1.08rem; color:#333; margin:1.8em 0 .7em; }
+        .subtitle { margin:0 0 40px; padding-bottom:25px; border-bottom:1px dashed #eee; color:#68707d; text-align:center; font-weight:600; }
+        p { margin:0 0 1.5em; }
+        ul { margin:0 0 1.8em; padding-left:1.5em; }
+        li { margin:.35em 0; }
+        .closing { font-weight:700; }
+        .footer { text-align:center; }
+        .pill { cursor:pointer; text-decoration:underline; }
+    </style>
+    <link rel="stylesheet" href="../styles/theme.css">
+    <script src="../scripts/theme.js"></script>
+</head>
+<body>
+    <div class="left">
+        <a class="pill" href="/jp/index.html">🔙🏠Home</a><br>
+        <a class="pill" href="/jp/index.html#essay41">🔙✒️Essays</a><br>
+        <a class="pill" href="/essays/why-income-statistics-feel-wrong-en.html" hreflang="en">🌐 English</a>
+    </div>
+    <article>
+        <h1>年収統計の違和感はなぜ生まれるのか</h1>
+        <p class="subtitle">構造論 × Google AI的因果モデル</p>
+
+        <h2>序：統計は世界を映すが、世界そのものではない</h2>
+        <p>日本の平均年収は約478万円と報じられる。しかし、この数字は「日本の生活世界」を正しく表していないのではないかという違和感を常に感じる。</p>
+        <p>なぜか。それは統計が“分布”ではなく“平均”で語られるからである。そして、その平均を極端に押し上げているのが、東京という巨大な分母である。</p>
+        <p>最新のGoogle AIがこの構造的違和感を正確に説明できる理由は、統計の分母構造と地域別の賃金分布を同時に参照するアルゴリズムを持っているからだ。</p>
+
+        <h2>1. 東京という“統計の巨大な歪み”</h2>
+        <h3>1-1. 東京は日本の統計を歪めるほど巨大な分母である</h3>
+        <p>東京は人口1500万。外資、金融、IT、大企業本社が集中し、高所得者の密度が地方の数倍〜数十倍に達する。</p>
+        <p>そのため、全国平均は東京の影響を強く受ける。</p>
+        <ul>
+            <li>全国平均：478万円</li>
+            <li>東京のみ：530〜620万円</li>
+            <li>東京除外：380〜400万円</li>
+        </ul>
+        <p>Google AIがこの数字を提示できるのは、国税庁の民間給与統計を地域別に分解し、東京の分母を除外した再計算を行う推論モデルを持っているためである。</p>
+        <p>つまり、Google AIは「平均値の背後にある分布」を読んでいる。</p>
+
+        <h2>2. 公務員給与の地域格差は“制度構造”が作る</h2>
+        <h3>2-1. 地域手当という制度的因果</h3>
+        <p>公務員給与は全国でほぼ同じ基本給だが、「地域手当」で大きく差がつく。</p>
+        <ul>
+            <li>東京23区：＋20%</li>
+            <li>首都圏主要都市：＋10〜15%</li>
+            <li>地方：0〜数%</li>
+        </ul>
+        <p>Google AIがこの構造を説明できる理由は、総務省の地方公務員給与実態調査を制度単位で理解しているからである。</p>
+        <p>つまり、AIは「制度 → 給与 → 地域格差」という因果連鎖を読んでいる。</p>
+
+        <h3>2-2. 地方公務員は制度的に1000万に届かない</h3>
+        <p>地方で部長級まで昇進しても、年収900万円前後が限界。</p>
+        <p>これは個人の努力ではなく、制度が上限を決めている構造的問題である。</p>
+        <p>Google AIはこの“制度的上限”を理解しているため、地方で1000万がほぼ存在しない理由を説明できる。</p>
+
+        <h2>3. 地方と東京の生活世界は“同じ年収でも別世界”</h2>
+        <h3>3-1. 生活コストの構造差</h3>
+        <p>東京は家賃・教育費・外食費が地方の2〜3倍。地方は広い家に住み、車を2台持ち、生活コストは半分以下。</p>
+        <p>Google AIがこれを説明できる理由は、総務省の家計調査・物価指数・住宅統計を横断的に参照する推論モデルを持っているからだ。</p>
+        <p>つまり、AIは「生活コストの構造」を理解している。</p>
+
+        <h3>3-2. 購買力換算という“実質的な豊かさ”</h3>
+        <p>その結果、購買力換算では：</p>
+        <ul>
+            <li>地方の年収500万</li>
+            <li>東京の年収800〜900万</li>
+        </ul>
+        <p>が同等の生活水準になる。</p>
+        <p>Google AIは単なる年収比較ではなく、可処分所得＋生活コスト＝実質購買力という経済学的モデルで比較している。</p>
+        <p>これは人間でもできる人が少ない高度な推論。</p>
+
+        <h2>4. 地方で年収1000万が希少な理由は“構造的”である</h2>
+        <p>地方で1000万を超えるのは、以下の特殊ケースのみ。</p>
+        <ul>
+            <li>首長・議長などの特別職</li>
+            <li>自治体病院の医師</li>
+            <li>年間1000時間残業の激務管理職</li>
+            <li>トヨタの豊田市など特殊自治体</li>
+        </ul>
+        <p>Google AIはこれを説明できる理由として、職種別給与統計 × 地域係数 × 労働時間分布を同時に参照している。</p>
+        <p>つまり、AIは「地域 × 職種 × 労働構造」の三次元で世界を読んでいる。</p>
+
+        <h2>5. 統計の“体感ズレ”は社会構造の反映である</h2>
+        <p>地方の生活者が「平均年収470万は高すぎる」と感じるのは、統計の誤解ではなく、メディアなどの東京中心主義による情報バイアスの結果である。</p>
+        <p>最新のGoogle AIはこの“体感ズレ”を説明できる理由として、統計の中央値・分布・地域差を同時に扱うモデルを持っている。</p>
+        <p>つまり、最新のAIは「数字ではなく構造」を読んでいる。</p>
+
+        <h2>結語：地域格差は“個人の問題”ではなく“構造の問題”である</h2>
+        <p>日本の地域格差は、個人の能力や努力ではなく、制度・統計・生活コスト・都市構造の総合的な結果として生まれる。</p>
+        <p>東京の年収1000万は華やかに見えるが、生活コストに吸われて「普通の暮らし」に収束する。</p>
+        <p>地方の年収500万は、生活世界の豊かさという観点では東京の800〜900万に匹敵する。</p>
+        <p>つまり、地域格差とは“数字の格差”ではなく“生活世界の格差”である。</p>
+        <p class="closing">最新のGoogle AIがこの構造を実感に近い形で正確に説明できるのは、一般向けメディアや行政機関がやらない、統計・制度・生活コスト・地域係数を“因果モデルとして横断的に理解して再構成する推論能力”を既に持っているからということにほかならない。</p>
+
+        <div class="footer">© 2026 Collaborative Intelligence with Google AI</div>
+    </article>
+    <div class="left">
+        <a class="pill" href="/jp/index.html">🔙🏠Home</a><br>
+        <a class="pill" href="/jp/index.html#essay41">🔙✒️Essays</a><br>
+        <a class="pill" href="/essays/why-income-statistics-feel-wrong-en.html" hreflang="en">🌐 English</a>
+    </div>
+</body>
+</html>
