@@ -22,7 +22,7 @@ function cosmologyGroups(file) {
 test('English and Japanese Cosmology outputs use the same two-level classification', () => {
   const expected = [
     { kind: 'conceptual', papers: 22 },
-    { kind: 'modeling', papers: 15 },
+    { kind: 'modeling', papers: 18 },
     { kind: 'observational', papers: 6 },
   ];
 
@@ -41,6 +41,9 @@ test('the unpublished Cosmology series papers are non-linked drafts in both lang
       'BFSSU/DMF Dynamics and Gravitational Theory, Part IV: DMF Linear Perturbations and Gravitational Instability',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part V: DMF Nonlinear Growth and Local Structure Formation',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part VI: DMF Density Structures and Newtonian Gravity',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part VII: Relativistic DMF Gravitational Theory',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part VIII: Critical DMF States and Ordinary Matter Emergence',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part IX: DMF–Matter Conversion Laws and Conservation Structure',
     ],
     'jp/index.html': [
       'BFSSU/DMF宇宙論における大循環仮説',
@@ -51,6 +54,9 @@ test('the unpublished Cosmology series papers are non-linked drafts in both lang
       'BFSSU/DMF動力学・重力理論 第4部　DMF線形摂動と重力不安定性',
       'BFSSU/DMF動力学・重力理論 第5部　DMF非線形成長と局所構造形成',
       'BFSSU/DMF動力学・重力理論 第6部　DMF密度構造とニュートン重力',
+      'BFSSU/DMF動力学・重力理論 第7部　相対論的DMF重力理論',
+      'BFSSU/DMF動力学・重力理論 第8部　臨界DMF状態と通常物質顕現',
+      'BFSSU/DMF動力学・重力理論 第9部　DMF–物質変換則と保存構造',
     ],
   };
 
