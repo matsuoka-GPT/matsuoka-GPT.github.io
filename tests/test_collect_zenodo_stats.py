@@ -332,6 +332,7 @@ def test_mapped_research_categories_cover_expected_sections_once():
     assert mapping["10.5281/zenodo.22288840"] == "Co-Intelligence / Methodology"
     assert mapping["10.5281/zenodo.18512529"] == "Cognitive Science / Structural Cognition"
     assert mapping["10.5281/zenodo.19583310"] == "Cognitive Science / Structural Cognition"
+    assert mapping["10.5281/zenodo.22670067"] == "Social Design / Institutional Structures"
     assert mapping["10.5281/zenodo.18271759"] == "Thought Experiments / Structural Theory"
     assert mapping["10.5281/zenodo.18327352"] == "Thought Experiments / Structural Theory"
     assert mapping["10.5281/zenodo.18186447"] == "Thought Experiments / Structural Theory"
