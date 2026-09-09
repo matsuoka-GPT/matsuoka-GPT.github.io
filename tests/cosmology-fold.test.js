@@ -30,7 +30,7 @@ test('English and Japanese Cosmology outputs use the same two-level classificati
   assert.deepEqual(cosmologyGroups('jp/index.html'), expected);
 });
 
-test('the unpublished Cosmology series papers are non-linked drafts in both languages', () => {
+test('the unpublished Cosmology series papers link to the page top in both languages', () => {
   const expectedTitles = {
     'index.html': [
       'The Grand Circulation Hypothesis in BFSSU/DMF Cosmology',
@@ -63,11 +63,11 @@ test('the unpublished Cosmology series papers are non-linked drafts in both lang
   for (const [file, titles] of Object.entries(expectedTitles)) {
     const source = fs.readFileSync(path.join(root, file), 'utf8');
     for (const title of titles) {
-      const start = source.indexOf(`<li><span class="output-draft">${title}`);
-      assert.notEqual(start, -1, `${title} should be rendered as a non-linked draft`);
+      const start = source.indexOf(`<li><a href="#">${title}`);
+      assert.notEqual(start, -1, `${title} should link to the page top while in editing`);
       const end = source.indexOf('</li>', start);
       const entry = source.slice(start, end);
-      assert.doesNotMatch(entry, /<a\b|href=/);
+      assert.match(entry, /^<li><a href="#">/);
       assert.match(entry, file === 'index.html' ? /\(In editing\)/ : /（編集中）/);
     }
   }

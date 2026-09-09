@@ -5,7 +5,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 
-test('all output titles use link or draft title elements in both languages', () => {
+test('all output titles remain clickable in both languages', () => {
   for (const file of ['index.html', 'jp/index.html']) {
     const source = fs.readFileSync(path.join(root, file), 'utf8');
     const start = source.indexOf('<section id="outputs"');
@@ -15,7 +15,7 @@ test('all output titles use link or draft title elements in both languages', () 
 
     assert.ok(entries.length > 0, `${file} should contain output titles`);
     for (const entry of entries) {
-      assert.match(entry, /^(?:<a\b|<span class="output-draft">)/);
+      assert.match(entry, /^<a\b/);
     }
   }
 });
