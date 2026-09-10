@@ -22,12 +22,20 @@ function cosmologyGroups(file) {
 test('English and Japanese Cosmology outputs use the same two-level classification', () => {
   const expected = [
     { kind: 'conceptual', papers: 22 },
-    { kind: 'modeling', papers: 18 },
+    { kind: 'modeling', papers: 17 },
     { kind: 'observational', papers: 6 },
   ];
 
   assert.deepEqual(cosmologyGroups('index.html'), expected);
   assert.deepEqual(cosmologyGroups('jp/index.html'), expected);
+});
+
+test('the removed BFSSU foundational equations draft is absent in both languages', () => {
+  const english = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const japanese = fs.readFileSync(path.join(root, 'jp/index.html'), 'utf8');
+
+  assert.doesNotMatch(english, /Foundational Equations of Dynamic\/Dual Mass Flow in the BFSSU Universe/);
+  assert.doesNotMatch(japanese, /BFSSU宇宙におけるDual Mass Flowの基礎方程式/);
 });
 
 test('the unpublished Cosmology series papers link to the page top in both languages', () => {
