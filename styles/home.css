@@ -963,6 +963,12 @@
     }
     details.fold .fold-body{ margin-top: 10px; }
 
+    #essays a[id^="essay"]:focus{
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
     /* Cosmology: second-level study groups */
     .cosmos-fold-body{
       display: grid;
