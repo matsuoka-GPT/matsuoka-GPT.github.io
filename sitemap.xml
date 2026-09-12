@@ -594,7 +594,7 @@
   </url>
   <url>
     <loc>https://matsuoka-gpt.github.io/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/" />
@@ -602,7 +602,7 @@
   </url>
   <url>
     <loc>https://matsuoka-gpt.github.io/jp/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/" />
@@ -817,5 +817,23 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-en.html" />
     <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-jp.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/essays/why-income-statistics-feel-wrong-en.html" />
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/essays/researchers-and-explorers-en.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/researchers-and-explorers-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/researchers-and-explorers-jp.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/essays/researchers-and-explorers-en.html" />
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/essays/researchers-and-explorers-jp.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/essays/researchers-and-explorers-en.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/researchers-and-explorers-jp.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/essays/researchers-and-explorers-en.html" />
   </url>
 </urlset>
