@@ -1,50 +1,50 @@
 # Zenodo statistics for Matsuoka, Takafumi
 
-Generated at: 2026-09-13T18:12:50+00:00
+Generated at: 2026-09-14T19:50:51+00:00
 
 Statistics scope: Zenodo default record statistics: aggregated across all versions of each concept record
 
 ## Totals
 
 - Records: 45
-- Views: 7263 (+1)
-- Unique views: 5632 (+1)
-- Downloads: 5721 (+10)
-- Unique downloads: 4653 (+10)
+- Views: 7264 (+1)
+- Unique views: 5633 (+1)
+- Downloads: 5733 (+12)
+- Unique downloads: 4665 (+12)
 
 ## Download ranking
 
 | Rank | Category | Title | DOI | Publication date | Views | Δ Views | Downloads | Δ Downloads |
 | ---: | --- | --- | --- | --- | ---: | ---: | ---: | ---: |
-| 1 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady-State Universe(BFSSU)  / ブラックホール・フラクタル定常宇宙論(BFSSU) | [10.5281/zenodo.17720251](https://doi.org/10.5281/zenodo.17720251) | 2025-11-26 | 1846 | 0 | 1530 | 3 |
-| 2 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe detailed version / ブラックホール・フラクタル定常宇宙論 詳細版 | [10.5281/zenodo.17948058](https://doi.org/10.5281/zenodo.17948058) | 2025-12-16 | 704 | 0 | 631 | 1 |
+| 1 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady-State Universe(BFSSU)  / ブラックホール・フラクタル定常宇宙論(BFSSU) | [10.5281/zenodo.17720251](https://doi.org/10.5281/zenodo.17720251) | 2025-11-26 | 1846 | 0 | 1530 | 0 |
+| 2 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe detailed version / ブラックホール・フラクタル定常宇宙論 詳細版 | [10.5281/zenodo.17948058](https://doi.org/10.5281/zenodo.17948058) | 2025-12-16 | 704 | 0 | 631 | 0 |
 | 3 | Social Design / Institutional Structures | A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0 | [10.5281/zenodo.18850250](https://doi.org/10.5281/zenodo.18850250) | 2026-03-03 | 441 | 0 | 303 | 0 |
 | 4 | Thought Experiments / Structural Theory | New aviation safety model / 新航空安全モデル | [10.5281/zenodo.18186447](https://doi.org/10.5281/zenodo.18186447) | 2026-01-08 | 218 | 0 | 270 | 0 |
-| 5 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe Unified Field Theory / ブラックホール・フラクタル定常宇宙論 統一場理論 | [10.5281/zenodo.18150465](https://doi.org/10.5281/zenodo.18150465) | 2026-01-05 | 308 | 0 | 265 | 0 |
-| 6 | Social Design / Institutional Structures | Selective Tax System / 選択税制 | [10.5281/zenodo.19363781](https://doi.org/10.5281/zenodo.19363781) | 2026-04-01 | 290 | 0 | 220 | 1 |
-| 7 | Social Design / Institutional Structures | A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル | [10.5281/zenodo.18160163](https://doi.org/10.5281/zenodo.18160163) | 2026-01-06 | 226 | 0 | 199 | 0 |
-| 8 | Thought Experiments / Structural Theory | Why does civilization build huge structures? / 文明はなぜ巨大建造物を造るのか? | [10.5281/zenodo.18271759](https://doi.org/10.5281/zenodo.18271759) | 2026-01-16 | 170 | 0 | 188 | 1 |
-| 9 | Co-Intelligence / Methodology | Co-Intelligence / 協働知性 | [10.5281/zenodo.18159902](https://doi.org/10.5281/zenodo.18159902) | 2026-01-06 | 191 | 0 | 182 | 1 |
-| 10 | Cognitive Science / Structural Cognition | Where Does Extreme Value Come From? / 極端な価値はどこから生まれるのか? | [10.5281/zenodo.18377656](https://doi.org/10.5281/zenodo.18377656) | 2026-01-26 | 221 | 0 | 164 | 0 |
+| 5 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe Unified Field Theory / ブラックホール・フラクタル定常宇宙論 統一場理論 | [10.5281/zenodo.18150465](https://doi.org/10.5281/zenodo.18150465) | 2026-01-05 | 308 | 0 | 266 | 1 |
+| 6 | Social Design / Institutional Structures | Selective Tax System / 選択税制 | [10.5281/zenodo.19363781](https://doi.org/10.5281/zenodo.19363781) | 2026-04-01 | 290 | 0 | 220 | 0 |
+| 7 | Social Design / Institutional Structures | A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル | [10.5281/zenodo.18160163](https://doi.org/10.5281/zenodo.18160163) | 2026-01-06 | 226 | 0 | 200 | 1 |
+| 8 | Thought Experiments / Structural Theory | Why does civilization build huge structures? / 文明はなぜ巨大建造物を造るのか? | [10.5281/zenodo.18271759](https://doi.org/10.5281/zenodo.18271759) | 2026-01-16 | 170 | 0 | 191 | 3 |
+| 9 | Co-Intelligence / Methodology | Co-Intelligence / 協働知性 | [10.5281/zenodo.18159902](https://doi.org/10.5281/zenodo.18159902) | 2026-01-06 | 191 | 0 | 182 | 0 |
+| 10 | Cognitive Science / Structural Cognition | Where Does Extreme Value Come From? / 極端な価値はどこから生まれるのか? | [10.5281/zenodo.18377656](https://doi.org/10.5281/zenodo.18377656) | 2026-01-26 | 221 | 0 | 165 | 1 |
 | 11 | Co-Intelligence / Methodology | Matsuoka x GPT Thought Experiment Lab / 松岡×GPT思考実験ラボ | [10.5281/zenodo.18160426](https://doi.org/10.5281/zenodo.18160426) | 2026-01-06 | 234 | 0 | 164 | 0 |
-| 12 | Cognitive Science / Structural Cognition | Constraint Dominance and the Contraction of Structural Space with Increasing Scale / スケール拡大に伴う制約支配と構造空間の縮退 | [10.5281/zenodo.18483656](https://doi.org/10.5281/zenodo.18483656) | 2026-02-04 | 162 | 0 | 132 | 1 |
+| 12 | Cognitive Science / Structural Cognition | Constraint Dominance and the Contraction of Structural Space with Increasing Scale / スケール拡大に伴う制約支配と構造空間の縮退 | [10.5281/zenodo.18483656](https://doi.org/10.5281/zenodo.18483656) | 2026-02-04 | 162 | 0 | 132 | 0 |
 | 13 | Cognitive Science / Structural Cognition | Cognitive Structure and the Emergence of Collaborative Intelligence in Democratic Societies / 民主主義社会における認知構造と協働知性の出現 | [10.5281/zenodo.19583310](https://doi.org/10.5281/zenodo.19583310) | 2026-04-15 | 156 | 0 | 129 | 0 |
 | 14 | Thought Experiments / Structural Theory | Biodiversity brought about by the high-energy environment of the early Earth / 初期地球の高エネルギー環境がもたらした生物多様性 | [10.5281/zenodo.18327352](https://doi.org/10.5281/zenodo.18327352) | 2026-01-21 | 172 | 0 | 126 | 0 |
 | 15 | Cosmology / BFSSU & DMF | DMF as an unobservable ground flow and a unified interpretation / 観測不能な基底流としてのDMFと宇宙構造形成の統一的解釈 | [10.5281/zenodo.18194511](https://doi.org/10.5281/zenodo.18194511) | 2026-01-09 | 143 | 0 | 119 | 0 |
-| 16 | Cosmology / BFSSU & DMF | Stellar Formation Theory in the DMF Universe / DMF宇宙における恒星生成理論 | [10.5281/zenodo.18230187](https://doi.org/10.5281/zenodo.18230187) | 2026-01-13 | 132 | 0 | 100 | 0 |
-| 17 | Cosmology / BFSSU & DMF | Dual Mass Flow and the Redefi nition of Gravity in a Hierarchical Universe / 階層宇宙におけるDual Mass Flowと重力の再定義 | [10.5281/zenodo.18204127](https://doi.org/10.5281/zenodo.18204127) | 2026-01-10 | 131 | 0 | 98 | 0 |
+| 16 | Cosmology / BFSSU & DMF | Stellar Formation Theory in the DMF Universe / DMF宇宙における恒星生成理論 | [10.5281/zenodo.18230187](https://doi.org/10.5281/zenodo.18230187) | 2026-01-13 | 132 | 0 | 102 | 2 |
+| 17 | Cosmology / BFSSU & DMF | Dual Mass Flow and the Redefi nition of Gravity in a Hierarchical Universe / 階層宇宙におけるDual Mass Flowと重力の再定義 | [10.5281/zenodo.18204127](https://doi.org/10.5281/zenodo.18204127) | 2026-01-10 | 131 | 0 | 99 | 1 |
 | 18 | Cognitive Science / Structural Cognition | The Asymmetry of Cognitive Hierarchies and the Self-Amplifying Structure of Conflict / 思考階層の非対称性と対立の自己増殖構造 | [10.5281/zenodo.18512529](https://doi.org/10.5281/zenodo.18512529) | 2026-02-07 | 119 | 0 | 96 | 0 |
 | 19 | Cosmology / BFSSU & DMF | Redefinition of the Photon and a Unified Understanding of Electromagnetic Waves / フォトンの再定義と電磁波の統一的理解 | [10.5281/zenodo.19722130](https://doi.org/10.5281/zenodo.19722130) | 2026-04-24 | 120 | 0 | 90 | 0 |
-| 20 | Co-Intelligence / Methodology | Co-Intelligence Version 2.0 / 協働知性  Version 2.0 | [10.5281/zenodo.19053422](https://doi.org/10.5281/zenodo.19053422) | 2026-03-16 | 114 | 0 | 89 | 1 |
+| 20 | Co-Intelligence / Methodology | Co-Intelligence Version 2.0 / 協働知性  Version 2.0 | [10.5281/zenodo.19053422](https://doi.org/10.5281/zenodo.19053422) | 2026-03-16 | 114 | 0 | 89 | 0 |
 | 21 | Social Design / Institutional Structures | Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性 | [10.5281/zenodo.18665550](https://doi.org/10.5281/zenodo.18665550) | 2026-02-17 | 117 | 0 | 83 | 0 |
-| 22 | Social Design / Institutional Structures | Redesigning Evaluation Structures by Separating Judgment and Outcome / 判断と結果を分離する評価構造の再設計 | [10.5281/zenodo.20040209](https://doi.org/10.5281/zenodo.20040209) | 2026-05-05 | 99 | 0 | 74 | 0 |
+| 22 | Social Design / Institutional Structures | Redesigning Evaluation Structures by Separating Judgment and Outcome / 判断と結果を分離する評価構造の再設計 | [10.5281/zenodo.20040209](https://doi.org/10.5281/zenodo.20040209) | 2026-05-05 | 99 | 0 | 75 | 1 |
 | 23 | Cosmology / BFSSU & DMF | Ontological Redefinition of Photons and Gravity on a DMF Basis / DMF 基底におけるフォトンおよび重力の存在論的再定義 | [10.5281/zenodo.19229126](https://doi.org/10.5281/zenodo.19229126) | 2026-03-26 | 75 | 0 | 67 | 0 |
 | 24 | Cosmology / BFSSU & DMF | Ontological Reframing of the Photon / フォトンの存在論的再構成 | [10.5281/zenodo.18618545](https://doi.org/10.5281/zenodo.18618545) | 2026-02-12 | 100 | 0 | 66 | 0 |
-| 25 | Cosmology / BFSSU & DMF | Hierarchical reinterpretation of solar system objects based on DMF cosmology / DMF 宇宙論に基づく太陽系天体の階層的再解釈 | [10.5281/zenodo.19066989](https://doi.org/10.5281/zenodo.19066989) | 2026-03-17 | 59 | 0 | 56 | 0 |
+| 25 | Cosmology / BFSSU & DMF | Hierarchical reinterpretation of solar system objects based on DMF cosmology / DMF 宇宙論に基づく太陽系天体の階層的再解釈 | [10.5281/zenodo.19066989](https://doi.org/10.5281/zenodo.19066989) | 2026-03-17 | 59 | 0 | 58 | 2 |
 | 26 | Cosmology / BFSSU & DMF | An Extended Ontology of Photons on a DMF Basis / DMF  基底におけるフォトン存在論の拡張 | [10.5281/zenodo.19187201](https://doi.org/10.5281/zenodo.19187201) | 2026-03-23 | 79 | 0 | 53 | 0 |
 | 27 | Cosmology / BFSSU & DMF | Non-Stationary Structures Revealed by Gravitational Fluctuations / 重力ゆらぎが示す非定常構造 | [10.5281/zenodo.19059117](https://doi.org/10.5281/zenodo.19059117) | 2026-03-17 | 71 | 0 | 52 | 0 |
 | 28 | Thought Experiments / Structural Theory | What Is Personality? / 人格とは何か | [10.5281/zenodo.20151731](https://doi.org/10.5281/zenodo.20151731) | 2026-05-13 | 76 | 0 | 52 | 0 |
-| 29 | Thought Experiments / Structural Theory | Unified Interpretation of Low-Energy Anomalous Heat Phenomena via the DMF Local Phase Transition Model / DMF局所相転移モデルによる低エネルギー異常熱の統一解釈 | [10.5281/zenodo.20551471](https://doi.org/10.5281/zenodo.20551471) | 2026-06-05 | 86 | 0 | 38 | 1 |
+| 29 | Thought Experiments / Structural Theory | Unified Interpretation of Low-Energy Anomalous Heat Phenomena via the DMF Local Phase Transition Model / DMF局所相転移モデルによる低エネルギー異常熱の統一解釈 | [10.5281/zenodo.20551471](https://doi.org/10.5281/zenodo.20551471) | 2026-06-05 | 86 | 0 | 38 | 0 |
 | 30 | Co-Intelligence / Methodology | Matsuoka x GPT Thought Experiment Lab 2.0 / 松岡×GPT 思考実験ラボ  2.0 | [10.5281/zenodo.20110638](https://doi.org/10.5281/zenodo.20110638) | 2026-05-10 | 47 | 0 | 23 | 0 |
 | 31 | Cosmology / BFSSU & DMF | A Thought Experiment on the Generation Process of DMF / DMFの生成プロセス思考実験 | [10.5281/zenodo.20714010](https://doi.org/10.5281/zenodo.20714010) | 2026-06-16 | 36 | 0 | 14 | 0 |
 | 32 | Cosmology / BFSSU & DMF | Redefining Nebula Formation within the DMF Ontology / DMF存在論による星雲生成の再定義 | [10.5281/zenodo.21347370](https://doi.org/10.5281/zenodo.21347370) | 2026-07-14 | 17 | 0 | 6 | 0 |
@@ -54,80 +54,80 @@ Statistics scope: Zenodo default record statistics: aggregated across all versio
 | 36 | Cosmology / BFSSU & DMF | Elemental Physics in DMF Ontology / DMF存在論における元素物理 | [10.5281/zenodo.21059910](https://doi.org/10.5281/zenodo.21059910) | 2026-06-30 | 25 | 0 | 5 | 0 |
 | 37 | Cosmology / BFSSU & DMF | Reformulating the Solar Coronal Heating Problem / 太陽コロナ加熱問題の再定式化 | [10.5281/zenodo.21897171](https://doi.org/10.5281/zenodo.21897171) | 2026-08-12 | 34 | 0 | 4 | 0 |
 | 38 | Cosmology / BFSSU & DMF | Introduction of the Energy Discrepancy Index χ in a Hierarchical Universe and Multi-Scale Verification / 階層宇宙におけるエネルギー不整合指標 χ の導入と多スケール検証 | [10.5281/zenodo.22135767](https://doi.org/10.5281/zenodo.22135767) | 2026-08-28 | 7 | 0 | 3 | 0 |
-| 39 | Thought Experiments / Structural Theory | What Is Personality? 2.0 / 人格とは何か 2.0 | [10.5281/zenodo.22699226](https://doi.org/10.5281/zenodo.22699226) | 2026-09-11 | 4 | 0 | 2 | 0 |
+| 39 | Thought Experiments / Structural Theory | What Is Personality? 2.0 / 人格とは何か 2.0 | [10.5281/zenodo.22699226](https://doi.org/10.5281/zenodo.22699226) | 2026-09-11 | 5 | 1 | 2 | 0 |
 | 40 | Social Design / Institutional Structures | The Structure of Foolish Acts / 愚行の正体 | [10.5281/zenodo.22670067](https://doi.org/10.5281/zenodo.22670067) | 2026-09-09 | 6 | 0 | 2 | 0 |
 | 41 | Co-Intelligence / Methodology | Co-Intelligence Version 0.0 / 協働知性 Version 0.0 | [10.5281/zenodo.22651149](https://doi.org/10.5281/zenodo.22651149) | 2026-09-08 | 7 | 0 | 2 | 0 |
 | 42 | Cosmology / BFSSU & DMF | The Determination Principle of the Maximum Cosmic Scale in Hierarchical Universes / 階層宇宙における最大スケールの決定原理 | [10.5281/zenodo.22036921](https://doi.org/10.5281/zenodo.22036921) | 2026-08-21 | 10 | 0 | 2 | 0 |
 | 43 | Thought Experiments / Structural Theory | Structural Isomorphism Between Living Systems and the Universe / 生命体と宇宙の構造的同型性 | [10.5281/zenodo.21522012](https://doi.org/10.5281/zenodo.21522012) | 2026-07-24 | 15 | 0 | 2 | 0 |
-| 44 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 73 | 1 | 2 | 0 |
+| 44 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 73 | 0 | 2 | 0 |
 | 45 | Co-Intelligence / Methodology | Co-Intelligence Version 3.0 / 協働知性 Version 3.0 | [10.5281/zenodo.22288840](https://doi.org/10.5281/zenodo.22288840) | 2026-09-04 | 6 | 0 | 1 | 0 |
 
 ## Recent growth ranking
 
 | Rank | Category | Title | DOI | Publication date | Views | Δ Views | Downloads | Δ Downloads |
 | ---: | --- | --- | --- | --- | ---: | ---: | ---: | ---: |
-| 1 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady-State Universe(BFSSU)  / ブラックホール・フラクタル定常宇宙論(BFSSU) | [10.5281/zenodo.17720251](https://doi.org/10.5281/zenodo.17720251) | 2025-11-26 | 1846 | 0 | 1530 | 3 |
-| 2 | Thought Experiments / Structural Theory | Unified Interpretation of Low-Energy Anomalous Heat Phenomena via the DMF Local Phase Transition Model / DMF局所相転移モデルによる低エネルギー異常熱の統一解釈 | [10.5281/zenodo.20551471](https://doi.org/10.5281/zenodo.20551471) | 2026-06-05 | 86 | 0 | 38 | 1 |
-| 3 | Social Design / Institutional Structures | Selective Tax System / 選択税制 | [10.5281/zenodo.19363781](https://doi.org/10.5281/zenodo.19363781) | 2026-04-01 | 290 | 0 | 220 | 1 |
-| 4 | Co-Intelligence / Methodology | Co-Intelligence Version 2.0 / 協働知性  Version 2.0 | [10.5281/zenodo.19053422](https://doi.org/10.5281/zenodo.19053422) | 2026-03-16 | 114 | 0 | 89 | 1 |
-| 5 | Cognitive Science / Structural Cognition | Constraint Dominance and the Contraction of Structural Space with Increasing Scale / スケール拡大に伴う制約支配と構造空間の縮退 | [10.5281/zenodo.18483656](https://doi.org/10.5281/zenodo.18483656) | 2026-02-04 | 162 | 0 | 132 | 1 |
-| 6 | Thought Experiments / Structural Theory | Why does civilization build huge structures? / 文明はなぜ巨大建造物を造るのか? | [10.5281/zenodo.18271759](https://doi.org/10.5281/zenodo.18271759) | 2026-01-16 | 170 | 0 | 188 | 1 |
-| 7 | Co-Intelligence / Methodology | Co-Intelligence / 協働知性 | [10.5281/zenodo.18159902](https://doi.org/10.5281/zenodo.18159902) | 2026-01-06 | 191 | 0 | 182 | 1 |
-| 8 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe detailed version / ブラックホール・フラクタル定常宇宙論 詳細版 | [10.5281/zenodo.17948058](https://doi.org/10.5281/zenodo.17948058) | 2025-12-16 | 704 | 0 | 631 | 1 |
-| 9 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 73 | 1 | 2 | 0 |
-| 10 | Thought Experiments / Structural Theory | What Is Personality? 2.0 / 人格とは何か 2.0 | [10.5281/zenodo.22699226](https://doi.org/10.5281/zenodo.22699226) | 2026-09-11 | 4 | 0 | 2 | 0 |
-| 11 | Social Design / Institutional Structures | The Structure of Foolish Acts / 愚行の正体 | [10.5281/zenodo.22670067](https://doi.org/10.5281/zenodo.22670067) | 2026-09-09 | 6 | 0 | 2 | 0 |
-| 12 | Co-Intelligence / Methodology | Co-Intelligence Version 0.0 / 協働知性 Version 0.0 | [10.5281/zenodo.22651149](https://doi.org/10.5281/zenodo.22651149) | 2026-09-08 | 7 | 0 | 2 | 0 |
-| 13 | Co-Intelligence / Methodology | Co-Intelligence Version 3.0 / 協働知性 Version 3.0 | [10.5281/zenodo.22288840](https://doi.org/10.5281/zenodo.22288840) | 2026-09-04 | 6 | 0 | 1 | 0 |
-| 14 | Cosmology / BFSSU & DMF | Introduction of the Energy Discrepancy Index χ in a Hierarchical Universe and Multi-Scale Verification / 階層宇宙におけるエネルギー不整合指標 χ の導入と多スケール検証 | [10.5281/zenodo.22135767](https://doi.org/10.5281/zenodo.22135767) | 2026-08-28 | 7 | 0 | 3 | 0 |
-| 15 | Cosmology / BFSSU & DMF | The Determination Principle of the Maximum Cosmic Scale in Hierarchical Universes / 階層宇宙における最大スケールの決定原理 | [10.5281/zenodo.22036921](https://doi.org/10.5281/zenodo.22036921) | 2026-08-21 | 10 | 0 | 2 | 0 |
-| 16 | Cosmology / BFSSU & DMF | Reformulating the Solar Coronal Heating Problem / 太陽コロナ加熱問題の再定式化 | [10.5281/zenodo.21897171](https://doi.org/10.5281/zenodo.21897171) | 2026-08-12 | 34 | 0 | 4 | 0 |
-| 17 | Thought Experiments / Structural Theory | Structural Isomorphism Between Living Systems and the Universe / 生命体と宇宙の構造的同型性 | [10.5281/zenodo.21522012](https://doi.org/10.5281/zenodo.21522012) | 2026-07-24 | 15 | 0 | 2 | 0 |
-| 18 | Cosmology / BFSSU & DMF | Redefining Nebula Formation within the DMF Ontology / DMF存在論による星雲生成の再定義 | [10.5281/zenodo.21347370](https://doi.org/10.5281/zenodo.21347370) | 2026-07-14 | 17 | 0 | 6 | 0 |
-| 19 | Cosmology / BFSSU & DMF | A Structural Reconfiguration of Modern Physics Based on DMF Ontology / DMF存在論による現代物理学の構造的再配置 | [10.5281/zenodo.21214497](https://doi.org/10.5281/zenodo.21214497) | 2026-07-06 | 24 | 0 | 5 | 0 |
-| 20 | Cosmology / BFSSU & DMF | Elemental Physics in DMF Ontology / DMF存在論における元素物理 | [10.5281/zenodo.21059910](https://doi.org/10.5281/zenodo.21059910) | 2026-06-30 | 25 | 0 | 5 | 0 |
-| 21 | Cosmology / BFSSU & DMF | Reinterpreting the Big Bang in BFSSU Cosmology / BFSSU宇宙論におけるビッグバンの再解釈 | [10.5281/zenodo.20838574](https://doi.org/10.5281/zenodo.20838574) | 2026-06-25 | 58 | 0 | 6 | 0 |
-| 22 | Cognitive Science / Structural Cognition | How Competition and Concentration Generate Stability / 競争と集中はどのように安定を生むのか | [10.5281/zenodo.20789930](https://doi.org/10.5281/zenodo.20789930) | 2026-06-22 | 34 | 0 | 6 | 0 |
-| 23 | Cosmology / BFSSU & DMF | A Thought Experiment on the Generation Process of DMF / DMFの生成プロセス思考実験 | [10.5281/zenodo.20714010](https://doi.org/10.5281/zenodo.20714010) | 2026-06-16 | 36 | 0 | 14 | 0 |
+| 1 | Thought Experiments / Structural Theory | Why does civilization build huge structures? / 文明はなぜ巨大建造物を造るのか? | [10.5281/zenodo.18271759](https://doi.org/10.5281/zenodo.18271759) | 2026-01-16 | 170 | 0 | 191 | 3 |
+| 2 | Cosmology / BFSSU & DMF | Hierarchical reinterpretation of solar system objects based on DMF cosmology / DMF 宇宙論に基づく太陽系天体の階層的再解釈 | [10.5281/zenodo.19066989](https://doi.org/10.5281/zenodo.19066989) | 2026-03-17 | 59 | 0 | 58 | 2 |
+| 3 | Cosmology / BFSSU & DMF | Stellar Formation Theory in the DMF Universe / DMF宇宙における恒星生成理論 | [10.5281/zenodo.18230187](https://doi.org/10.5281/zenodo.18230187) | 2026-01-13 | 132 | 0 | 102 | 2 |
+| 4 | Social Design / Institutional Structures | Redesigning Evaluation Structures by Separating Judgment and Outcome / 判断と結果を分離する評価構造の再設計 | [10.5281/zenodo.20040209](https://doi.org/10.5281/zenodo.20040209) | 2026-05-05 | 99 | 0 | 75 | 1 |
+| 5 | Cognitive Science / Structural Cognition | Where Does Extreme Value Come From? / 極端な価値はどこから生まれるのか? | [10.5281/zenodo.18377656](https://doi.org/10.5281/zenodo.18377656) | 2026-01-26 | 221 | 0 | 165 | 1 |
+| 6 | Cosmology / BFSSU & DMF | Dual Mass Flow and the Redefi nition of Gravity in a Hierarchical Universe / 階層宇宙におけるDual Mass Flowと重力の再定義 | [10.5281/zenodo.18204127](https://doi.org/10.5281/zenodo.18204127) | 2026-01-10 | 131 | 0 | 99 | 1 |
+| 7 | Social Design / Institutional Structures | A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル | [10.5281/zenodo.18160163](https://doi.org/10.5281/zenodo.18160163) | 2026-01-06 | 226 | 0 | 200 | 1 |
+| 8 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe Unified Field Theory / ブラックホール・フラクタル定常宇宙論 統一場理論 | [10.5281/zenodo.18150465](https://doi.org/10.5281/zenodo.18150465) | 2026-01-05 | 308 | 0 | 266 | 1 |
+| 9 | Thought Experiments / Structural Theory | What Is Personality? 2.0 / 人格とは何か 2.0 | [10.5281/zenodo.22699226](https://doi.org/10.5281/zenodo.22699226) | 2026-09-11 | 5 | 1 | 2 | 0 |
+| 10 | Social Design / Institutional Structures | The Structure of Foolish Acts / 愚行の正体 | [10.5281/zenodo.22670067](https://doi.org/10.5281/zenodo.22670067) | 2026-09-09 | 6 | 0 | 2 | 0 |
+| 11 | Co-Intelligence / Methodology | Co-Intelligence Version 0.0 / 協働知性 Version 0.0 | [10.5281/zenodo.22651149](https://doi.org/10.5281/zenodo.22651149) | 2026-09-08 | 7 | 0 | 2 | 0 |
+| 12 | Co-Intelligence / Methodology | Co-Intelligence Version 3.0 / 協働知性 Version 3.0 | [10.5281/zenodo.22288840](https://doi.org/10.5281/zenodo.22288840) | 2026-09-04 | 6 | 0 | 1 | 0 |
+| 13 | Cosmology / BFSSU & DMF | Introduction of the Energy Discrepancy Index χ in a Hierarchical Universe and Multi-Scale Verification / 階層宇宙におけるエネルギー不整合指標 χ の導入と多スケール検証 | [10.5281/zenodo.22135767](https://doi.org/10.5281/zenodo.22135767) | 2026-08-28 | 7 | 0 | 3 | 0 |
+| 14 | Cosmology / BFSSU & DMF | The Determination Principle of the Maximum Cosmic Scale in Hierarchical Universes / 階層宇宙における最大スケールの決定原理 | [10.5281/zenodo.22036921](https://doi.org/10.5281/zenodo.22036921) | 2026-08-21 | 10 | 0 | 2 | 0 |
+| 15 | Cosmology / BFSSU & DMF | Reformulating the Solar Coronal Heating Problem / 太陽コロナ加熱問題の再定式化 | [10.5281/zenodo.21897171](https://doi.org/10.5281/zenodo.21897171) | 2026-08-12 | 34 | 0 | 4 | 0 |
+| 16 | Thought Experiments / Structural Theory | Structural Isomorphism Between Living Systems and the Universe / 生命体と宇宙の構造的同型性 | [10.5281/zenodo.21522012](https://doi.org/10.5281/zenodo.21522012) | 2026-07-24 | 15 | 0 | 2 | 0 |
+| 17 | Cosmology / BFSSU & DMF | Redefining Nebula Formation within the DMF Ontology / DMF存在論による星雲生成の再定義 | [10.5281/zenodo.21347370](https://doi.org/10.5281/zenodo.21347370) | 2026-07-14 | 17 | 0 | 6 | 0 |
+| 18 | Cosmology / BFSSU & DMF | A Structural Reconfiguration of Modern Physics Based on DMF Ontology / DMF存在論による現代物理学の構造的再配置 | [10.5281/zenodo.21214497](https://doi.org/10.5281/zenodo.21214497) | 2026-07-06 | 24 | 0 | 5 | 0 |
+| 19 | Cosmology / BFSSU & DMF | Elemental Physics in DMF Ontology / DMF存在論における元素物理 | [10.5281/zenodo.21059910](https://doi.org/10.5281/zenodo.21059910) | 2026-06-30 | 25 | 0 | 5 | 0 |
+| 20 | Cosmology / BFSSU & DMF | Reinterpreting the Big Bang in BFSSU Cosmology / BFSSU宇宙論におけるビッグバンの再解釈 | [10.5281/zenodo.20838574](https://doi.org/10.5281/zenodo.20838574) | 2026-06-25 | 58 | 0 | 6 | 0 |
+| 21 | Cognitive Science / Structural Cognition | How Competition and Concentration Generate Stability / 競争と集中はどのように安定を生むのか | [10.5281/zenodo.20789930](https://doi.org/10.5281/zenodo.20789930) | 2026-06-22 | 34 | 0 | 6 | 0 |
+| 22 | Cosmology / BFSSU & DMF | A Thought Experiment on the Generation Process of DMF / DMFの生成プロセス思考実験 | [10.5281/zenodo.20714010](https://doi.org/10.5281/zenodo.20714010) | 2026-06-16 | 36 | 0 | 14 | 0 |
+| 23 | Thought Experiments / Structural Theory | Unified Interpretation of Low-Energy Anomalous Heat Phenomena via the DMF Local Phase Transition Model / DMF局所相転移モデルによる低エネルギー異常熱の統一解釈 | [10.5281/zenodo.20551471](https://doi.org/10.5281/zenodo.20551471) | 2026-06-05 | 86 | 0 | 38 | 0 |
 | 24 | Thought Experiments / Structural Theory | What Is Personality? / 人格とは何か | [10.5281/zenodo.20151731](https://doi.org/10.5281/zenodo.20151731) | 2026-05-13 | 76 | 0 | 52 | 0 |
 | 25 | Co-Intelligence / Methodology | Matsuoka x GPT Thought Experiment Lab 2.0 / 松岡×GPT 思考実験ラボ  2.0 | [10.5281/zenodo.20110638](https://doi.org/10.5281/zenodo.20110638) | 2026-05-10 | 47 | 0 | 23 | 0 |
-| 26 | Social Design / Institutional Structures | Redesigning Evaluation Structures by Separating Judgment and Outcome / 判断と結果を分離する評価構造の再設計 | [10.5281/zenodo.20040209](https://doi.org/10.5281/zenodo.20040209) | 2026-05-05 | 99 | 0 | 74 | 0 |
-| 27 | Cosmology / BFSSU & DMF | Redefinition of the Photon and a Unified Understanding of Electromagnetic Waves / フォトンの再定義と電磁波の統一的理解 | [10.5281/zenodo.19722130](https://doi.org/10.5281/zenodo.19722130) | 2026-04-24 | 120 | 0 | 90 | 0 |
-| 28 | Cognitive Science / Structural Cognition | Cognitive Structure and the Emergence of Collaborative Intelligence in Democratic Societies / 民主主義社会における認知構造と協働知性の出現 | [10.5281/zenodo.19583310](https://doi.org/10.5281/zenodo.19583310) | 2026-04-15 | 156 | 0 | 129 | 0 |
+| 26 | Cosmology / BFSSU & DMF | Redefinition of the Photon and a Unified Understanding of Electromagnetic Waves / フォトンの再定義と電磁波の統一的理解 | [10.5281/zenodo.19722130](https://doi.org/10.5281/zenodo.19722130) | 2026-04-24 | 120 | 0 | 90 | 0 |
+| 27 | Cognitive Science / Structural Cognition | Cognitive Structure and the Emergence of Collaborative Intelligence in Democratic Societies / 民主主義社会における認知構造と協働知性の出現 | [10.5281/zenodo.19583310](https://doi.org/10.5281/zenodo.19583310) | 2026-04-15 | 156 | 0 | 129 | 0 |
+| 28 | Social Design / Institutional Structures | Selective Tax System / 選択税制 | [10.5281/zenodo.19363781](https://doi.org/10.5281/zenodo.19363781) | 2026-04-01 | 290 | 0 | 220 | 0 |
 | 29 | Cosmology / BFSSU & DMF | Ontological Redefinition of Photons and Gravity on a DMF Basis / DMF 基底におけるフォトンおよび重力の存在論的再定義 | [10.5281/zenodo.19229126](https://doi.org/10.5281/zenodo.19229126) | 2026-03-26 | 75 | 0 | 67 | 0 |
 | 30 | Cosmology / BFSSU & DMF | An Extended Ontology of Photons on a DMF Basis / DMF  基底におけるフォトン存在論の拡張 | [10.5281/zenodo.19187201](https://doi.org/10.5281/zenodo.19187201) | 2026-03-23 | 79 | 0 | 53 | 0 |
-| 31 | Cosmology / BFSSU & DMF | Hierarchical reinterpretation of solar system objects based on DMF cosmology / DMF 宇宙論に基づく太陽系天体の階層的再解釈 | [10.5281/zenodo.19066989](https://doi.org/10.5281/zenodo.19066989) | 2026-03-17 | 59 | 0 | 56 | 0 |
-| 32 | Cosmology / BFSSU & DMF | Non-Stationary Structures Revealed by Gravitational Fluctuations / 重力ゆらぎが示す非定常構造 | [10.5281/zenodo.19059117](https://doi.org/10.5281/zenodo.19059117) | 2026-03-17 | 71 | 0 | 52 | 0 |
+| 31 | Cosmology / BFSSU & DMF | Non-Stationary Structures Revealed by Gravitational Fluctuations / 重力ゆらぎが示す非定常構造 | [10.5281/zenodo.19059117](https://doi.org/10.5281/zenodo.19059117) | 2026-03-17 | 71 | 0 | 52 | 0 |
+| 32 | Co-Intelligence / Methodology | Co-Intelligence Version 2.0 / 協働知性  Version 2.0 | [10.5281/zenodo.19053422](https://doi.org/10.5281/zenodo.19053422) | 2026-03-16 | 114 | 0 | 89 | 0 |
 | 33 | Social Design / Institutional Structures | A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0 | [10.5281/zenodo.18850250](https://doi.org/10.5281/zenodo.18850250) | 2026-03-03 | 441 | 0 | 303 | 0 |
-| 34 | Social Design / Institutional Structures | Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性 | [10.5281/zenodo.18665550](https://doi.org/10.5281/zenodo.18665550) | 2026-02-17 | 117 | 0 | 83 | 0 |
-| 35 | Cosmology / BFSSU & DMF | Ontological Reframing of the Photon / フォトンの存在論的再構成 | [10.5281/zenodo.18618545](https://doi.org/10.5281/zenodo.18618545) | 2026-02-12 | 100 | 0 | 66 | 0 |
-| 36 | Cognitive Science / Structural Cognition | The Asymmetry of Cognitive Hierarchies and the Self-Amplifying Structure of Conflict / 思考階層の非対称性と対立の自己増殖構造 | [10.5281/zenodo.18512529](https://doi.org/10.5281/zenodo.18512529) | 2026-02-07 | 119 | 0 | 96 | 0 |
-| 37 | Cognitive Science / Structural Cognition | Where Does Extreme Value Come From? / 極端な価値はどこから生まれるのか? | [10.5281/zenodo.18377656](https://doi.org/10.5281/zenodo.18377656) | 2026-01-26 | 221 | 0 | 164 | 0 |
-| 38 | Thought Experiments / Structural Theory | Biodiversity brought about by the high-energy environment of the early Earth / 初期地球の高エネルギー環境がもたらした生物多様性 | [10.5281/zenodo.18327352](https://doi.org/10.5281/zenodo.18327352) | 2026-01-21 | 172 | 0 | 126 | 0 |
-| 39 | Cosmology / BFSSU & DMF | Stellar Formation Theory in the DMF Universe / DMF宇宙における恒星生成理論 | [10.5281/zenodo.18230187](https://doi.org/10.5281/zenodo.18230187) | 2026-01-13 | 132 | 0 | 100 | 0 |
-| 40 | Cosmology / BFSSU & DMF | Dual Mass Flow and the Redefi nition of Gravity in a Hierarchical Universe / 階層宇宙におけるDual Mass Flowと重力の再定義 | [10.5281/zenodo.18204127](https://doi.org/10.5281/zenodo.18204127) | 2026-01-10 | 131 | 0 | 98 | 0 |
-| 41 | Cosmology / BFSSU & DMF | DMF as an unobservable ground flow and a unified interpretation / 観測不能な基底流としてのDMFと宇宙構造形成の統一的解釈 | [10.5281/zenodo.18194511](https://doi.org/10.5281/zenodo.18194511) | 2026-01-09 | 143 | 0 | 119 | 0 |
-| 42 | Thought Experiments / Structural Theory | New aviation safety model / 新航空安全モデル | [10.5281/zenodo.18186447](https://doi.org/10.5281/zenodo.18186447) | 2026-01-08 | 218 | 0 | 270 | 0 |
-| 43 | Co-Intelligence / Methodology | Matsuoka x GPT Thought Experiment Lab / 松岡×GPT思考実験ラボ | [10.5281/zenodo.18160426](https://doi.org/10.5281/zenodo.18160426) | 2026-01-06 | 234 | 0 | 164 | 0 |
-| 44 | Social Design / Institutional Structures | A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル | [10.5281/zenodo.18160163](https://doi.org/10.5281/zenodo.18160163) | 2026-01-06 | 226 | 0 | 199 | 0 |
-| 45 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe Unified Field Theory / ブラックホール・フラクタル定常宇宙論 統一場理論 | [10.5281/zenodo.18150465](https://doi.org/10.5281/zenodo.18150465) | 2026-01-05 | 308 | 0 | 265 | 0 |
+| 34 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 73 | 0 | 2 | 0 |
+| 35 | Social Design / Institutional Structures | Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性 | [10.5281/zenodo.18665550](https://doi.org/10.5281/zenodo.18665550) | 2026-02-17 | 117 | 0 | 83 | 0 |
+| 36 | Cosmology / BFSSU & DMF | Ontological Reframing of the Photon / フォトンの存在論的再構成 | [10.5281/zenodo.18618545](https://doi.org/10.5281/zenodo.18618545) | 2026-02-12 | 100 | 0 | 66 | 0 |
+| 37 | Cognitive Science / Structural Cognition | The Asymmetry of Cognitive Hierarchies and the Self-Amplifying Structure of Conflict / 思考階層の非対称性と対立の自己増殖構造 | [10.5281/zenodo.18512529](https://doi.org/10.5281/zenodo.18512529) | 2026-02-07 | 119 | 0 | 96 | 0 |
+| 38 | Cognitive Science / Structural Cognition | Constraint Dominance and the Contraction of Structural Space with Increasing Scale / スケール拡大に伴う制約支配と構造空間の縮退 | [10.5281/zenodo.18483656](https://doi.org/10.5281/zenodo.18483656) | 2026-02-04 | 162 | 0 | 132 | 0 |
+| 39 | Thought Experiments / Structural Theory | Biodiversity brought about by the high-energy environment of the early Earth / 初期地球の高エネルギー環境がもたらした生物多様性 | [10.5281/zenodo.18327352](https://doi.org/10.5281/zenodo.18327352) | 2026-01-21 | 172 | 0 | 126 | 0 |
+| 40 | Cosmology / BFSSU & DMF | DMF as an unobservable ground flow and a unified interpretation / 観測不能な基底流としてのDMFと宇宙構造形成の統一的解釈 | [10.5281/zenodo.18194511](https://doi.org/10.5281/zenodo.18194511) | 2026-01-09 | 143 | 0 | 119 | 0 |
+| 41 | Thought Experiments / Structural Theory | New aviation safety model / 新航空安全モデル | [10.5281/zenodo.18186447](https://doi.org/10.5281/zenodo.18186447) | 2026-01-08 | 218 | 0 | 270 | 0 |
+| 42 | Co-Intelligence / Methodology | Matsuoka x GPT Thought Experiment Lab / 松岡×GPT思考実験ラボ | [10.5281/zenodo.18160426](https://doi.org/10.5281/zenodo.18160426) | 2026-01-06 | 234 | 0 | 164 | 0 |
+| 43 | Co-Intelligence / Methodology | Co-Intelligence / 協働知性 | [10.5281/zenodo.18159902](https://doi.org/10.5281/zenodo.18159902) | 2026-01-06 | 191 | 0 | 182 | 0 |
+| 44 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe detailed version / ブラックホール・フラクタル定常宇宙論 詳細版 | [10.5281/zenodo.17948058](https://doi.org/10.5281/zenodo.17948058) | 2025-12-16 | 704 | 0 | 631 | 0 |
+| 45 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady-State Universe(BFSSU)  / ブラックホール・フラクタル定常宇宙論(BFSSU) | [10.5281/zenodo.17720251](https://doi.org/10.5281/zenodo.17720251) | 2025-11-26 | 1846 | 0 | 1530 | 0 |
 
 ## Categories
 
 | Category | Records | Views | Unique views | Downloads | Unique downloads |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Cosmology / BFSSU & DMF | 20 | 3979 | 2996 | 3172 | 2477 |
-| Social Design / Institutional Structures | 6 | 1179 | 1010 | 881 | 781 |
+| Cosmology / BFSSU & DMF | 20 | 3979 | 2996 | 3178 | 2483 |
+| Social Design / Institutional Structures | 6 | 1179 | 1010 | 883 | 783 |
 | Co-Intelligence / Methodology | 6 | 599 | 426 | 461 | 387 |
-| Cognitive Science / Structural Cognition | 5 | 692 | 548 | 527 | 441 |
-| Thought Experiments / Structural Theory | 7 | 741 | 596 | 678 | 565 |
+| Cognitive Science / Structural Cognition | 5 | 692 | 548 | 528 | 442 |
+| Thought Experiments / Structural Theory | 7 | 742 | 597 | 681 | 568 |
 | Archive / Legacy | 1 | 73 | 56 | 2 | 2 |
 
 ## Records
 
 | Rank | Category | Title | DOI | Publication date | Views | Δ Views | Downloads | Δ Downloads |
 | ---: | --- | --- | --- | --- | ---: | ---: | ---: | ---: |
-| 1 | Thought Experiments / Structural Theory | What Is Personality? 2.0 / 人格とは何か 2.0 | [10.5281/zenodo.22699226](https://doi.org/10.5281/zenodo.22699226) | 2026-09-11 | 4 | 0 | 2 | 0 |
+| 1 | Thought Experiments / Structural Theory | What Is Personality? 2.0 / 人格とは何か 2.0 | [10.5281/zenodo.22699226](https://doi.org/10.5281/zenodo.22699226) | 2026-09-11 | 5 | 1 | 2 | 0 |
 | 2 | Social Design / Institutional Structures | The Structure of Foolish Acts / 愚行の正体 | [10.5281/zenodo.22670067](https://doi.org/10.5281/zenodo.22670067) | 2026-09-09 | 6 | 0 | 2 | 0 |
 | 3 | Co-Intelligence / Methodology | Co-Intelligence Version 0.0 / 協働知性 Version 0.0 | [10.5281/zenodo.22651149](https://doi.org/10.5281/zenodo.22651149) | 2026-09-08 | 7 | 0 | 2 | 0 |
 | 4 | Co-Intelligence / Methodology | Co-Intelligence Version 3.0 / 協働知性 Version 3.0 | [10.5281/zenodo.22288840](https://doi.org/10.5281/zenodo.22288840) | 2026-09-04 | 6 | 0 | 1 | 0 |
@@ -141,34 +141,34 @@ Statistics scope: Zenodo default record statistics: aggregated across all versio
 | 12 | Cosmology / BFSSU & DMF | Reinterpreting the Big Bang in BFSSU Cosmology / BFSSU宇宙論におけるビッグバンの再解釈 | [10.5281/zenodo.20838574](https://doi.org/10.5281/zenodo.20838574) | 2026-06-25 | 58 | 0 | 6 | 0 |
 | 13 | Cognitive Science / Structural Cognition | How Competition and Concentration Generate Stability / 競争と集中はどのように安定を生むのか | [10.5281/zenodo.20789930](https://doi.org/10.5281/zenodo.20789930) | 2026-06-22 | 34 | 0 | 6 | 0 |
 | 14 | Cosmology / BFSSU & DMF | A Thought Experiment on the Generation Process of DMF / DMFの生成プロセス思考実験 | [10.5281/zenodo.20714010](https://doi.org/10.5281/zenodo.20714010) | 2026-06-16 | 36 | 0 | 14 | 0 |
-| 15 | Thought Experiments / Structural Theory | Unified Interpretation of Low-Energy Anomalous Heat Phenomena via the DMF Local Phase Transition Model / DMF局所相転移モデルによる低エネルギー異常熱の統一解釈 | [10.5281/zenodo.20551471](https://doi.org/10.5281/zenodo.20551471) | 2026-06-05 | 86 | 0 | 38 | 1 |
+| 15 | Thought Experiments / Structural Theory | Unified Interpretation of Low-Energy Anomalous Heat Phenomena via the DMF Local Phase Transition Model / DMF局所相転移モデルによる低エネルギー異常熱の統一解釈 | [10.5281/zenodo.20551471](https://doi.org/10.5281/zenodo.20551471) | 2026-06-05 | 86 | 0 | 38 | 0 |
 | 16 | Thought Experiments / Structural Theory | What Is Personality? / 人格とは何か | [10.5281/zenodo.20151731](https://doi.org/10.5281/zenodo.20151731) | 2026-05-13 | 76 | 0 | 52 | 0 |
 | 17 | Co-Intelligence / Methodology | Matsuoka x GPT Thought Experiment Lab 2.0 / 松岡×GPT 思考実験ラボ  2.0 | [10.5281/zenodo.20110638](https://doi.org/10.5281/zenodo.20110638) | 2026-05-10 | 47 | 0 | 23 | 0 |
-| 18 | Social Design / Institutional Structures | Redesigning Evaluation Structures by Separating Judgment and Outcome / 判断と結果を分離する評価構造の再設計 | [10.5281/zenodo.20040209](https://doi.org/10.5281/zenodo.20040209) | 2026-05-05 | 99 | 0 | 74 | 0 |
+| 18 | Social Design / Institutional Structures | Redesigning Evaluation Structures by Separating Judgment and Outcome / 判断と結果を分離する評価構造の再設計 | [10.5281/zenodo.20040209](https://doi.org/10.5281/zenodo.20040209) | 2026-05-05 | 99 | 0 | 75 | 1 |
 | 19 | Cosmology / BFSSU & DMF | Redefinition of the Photon and a Unified Understanding of Electromagnetic Waves / フォトンの再定義と電磁波の統一的理解 | [10.5281/zenodo.19722130](https://doi.org/10.5281/zenodo.19722130) | 2026-04-24 | 120 | 0 | 90 | 0 |
 | 20 | Cognitive Science / Structural Cognition | Cognitive Structure and the Emergence of Collaborative Intelligence in Democratic Societies / 民主主義社会における認知構造と協働知性の出現 | [10.5281/zenodo.19583310](https://doi.org/10.5281/zenodo.19583310) | 2026-04-15 | 156 | 0 | 129 | 0 |
-| 21 | Social Design / Institutional Structures | Selective Tax System / 選択税制 | [10.5281/zenodo.19363781](https://doi.org/10.5281/zenodo.19363781) | 2026-04-01 | 290 | 0 | 220 | 1 |
+| 21 | Social Design / Institutional Structures | Selective Tax System / 選択税制 | [10.5281/zenodo.19363781](https://doi.org/10.5281/zenodo.19363781) | 2026-04-01 | 290 | 0 | 220 | 0 |
 | 22 | Cosmology / BFSSU & DMF | Ontological Redefinition of Photons and Gravity on a DMF Basis / DMF 基底におけるフォトンおよび重力の存在論的再定義 | [10.5281/zenodo.19229126](https://doi.org/10.5281/zenodo.19229126) | 2026-03-26 | 75 | 0 | 67 | 0 |
 | 23 | Cosmology / BFSSU & DMF | An Extended Ontology of Photons on a DMF Basis / DMF  基底におけるフォトン存在論の拡張 | [10.5281/zenodo.19187201](https://doi.org/10.5281/zenodo.19187201) | 2026-03-23 | 79 | 0 | 53 | 0 |
-| 24 | Cosmology / BFSSU & DMF | Hierarchical reinterpretation of solar system objects based on DMF cosmology / DMF 宇宙論に基づく太陽系天体の階層的再解釈 | [10.5281/zenodo.19066989](https://doi.org/10.5281/zenodo.19066989) | 2026-03-17 | 59 | 0 | 56 | 0 |
+| 24 | Cosmology / BFSSU & DMF | Hierarchical reinterpretation of solar system objects based on DMF cosmology / DMF 宇宙論に基づく太陽系天体の階層的再解釈 | [10.5281/zenodo.19066989](https://doi.org/10.5281/zenodo.19066989) | 2026-03-17 | 59 | 0 | 58 | 2 |
 | 25 | Cosmology / BFSSU & DMF | Non-Stationary Structures Revealed by Gravitational Fluctuations / 重力ゆらぎが示す非定常構造 | [10.5281/zenodo.19059117](https://doi.org/10.5281/zenodo.19059117) | 2026-03-17 | 71 | 0 | 52 | 0 |
-| 26 | Co-Intelligence / Methodology | Co-Intelligence Version 2.0 / 協働知性  Version 2.0 | [10.5281/zenodo.19053422](https://doi.org/10.5281/zenodo.19053422) | 2026-03-16 | 114 | 0 | 89 | 1 |
+| 26 | Co-Intelligence / Methodology | Co-Intelligence Version 2.0 / 協働知性  Version 2.0 | [10.5281/zenodo.19053422](https://doi.org/10.5281/zenodo.19053422) | 2026-03-16 | 114 | 0 | 89 | 0 |
 | 27 | Social Design / Institutional Structures | A Security-Centered National Model 2.0 / 安心醸成国家モデル 2.0 | [10.5281/zenodo.18850250](https://doi.org/10.5281/zenodo.18850250) | 2026-03-03 | 441 | 0 | 303 | 0 |
-| 28 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 73 | 1 | 2 | 0 |
+| 28 | Archive / Legacy | Matsuoka×GPT Thought Experiment Lab – Initial Release (v1.0) | [10.5281/zenodo.18739136](https://doi.org/10.5281/zenodo.18739136) | 2026-02-23 | 73 | 0 | 2 | 0 |
 | 29 | Social Design / Institutional Structures | Directions for Tax System Redesign in Shrinking Societies / 人口減少社会における税制再設計の方向性 | [10.5281/zenodo.18665550](https://doi.org/10.5281/zenodo.18665550) | 2026-02-17 | 117 | 0 | 83 | 0 |
 | 30 | Cosmology / BFSSU & DMF | Ontological Reframing of the Photon / フォトンの存在論的再構成 | [10.5281/zenodo.18618545](https://doi.org/10.5281/zenodo.18618545) | 2026-02-12 | 100 | 0 | 66 | 0 |
 | 31 | Cognitive Science / Structural Cognition | The Asymmetry of Cognitive Hierarchies and the Self-Amplifying Structure of Conflict / 思考階層の非対称性と対立の自己増殖構造 | [10.5281/zenodo.18512529](https://doi.org/10.5281/zenodo.18512529) | 2026-02-07 | 119 | 0 | 96 | 0 |
-| 32 | Cognitive Science / Structural Cognition | Constraint Dominance and the Contraction of Structural Space with Increasing Scale / スケール拡大に伴う制約支配と構造空間の縮退 | [10.5281/zenodo.18483656](https://doi.org/10.5281/zenodo.18483656) | 2026-02-04 | 162 | 0 | 132 | 1 |
-| 33 | Cognitive Science / Structural Cognition | Where Does Extreme Value Come From? / 極端な価値はどこから生まれるのか? | [10.5281/zenodo.18377656](https://doi.org/10.5281/zenodo.18377656) | 2026-01-26 | 221 | 0 | 164 | 0 |
+| 32 | Cognitive Science / Structural Cognition | Constraint Dominance and the Contraction of Structural Space with Increasing Scale / スケール拡大に伴う制約支配と構造空間の縮退 | [10.5281/zenodo.18483656](https://doi.org/10.5281/zenodo.18483656) | 2026-02-04 | 162 | 0 | 132 | 0 |
+| 33 | Cognitive Science / Structural Cognition | Where Does Extreme Value Come From? / 極端な価値はどこから生まれるのか? | [10.5281/zenodo.18377656](https://doi.org/10.5281/zenodo.18377656) | 2026-01-26 | 221 | 0 | 165 | 1 |
 | 34 | Thought Experiments / Structural Theory | Biodiversity brought about by the high-energy environment of the early Earth / 初期地球の高エネルギー環境がもたらした生物多様性 | [10.5281/zenodo.18327352](https://doi.org/10.5281/zenodo.18327352) | 2026-01-21 | 172 | 0 | 126 | 0 |
-| 35 | Thought Experiments / Structural Theory | Why does civilization build huge structures? / 文明はなぜ巨大建造物を造るのか? | [10.5281/zenodo.18271759](https://doi.org/10.5281/zenodo.18271759) | 2026-01-16 | 170 | 0 | 188 | 1 |
-| 36 | Cosmology / BFSSU & DMF | Stellar Formation Theory in the DMF Universe / DMF宇宙における恒星生成理論 | [10.5281/zenodo.18230187](https://doi.org/10.5281/zenodo.18230187) | 2026-01-13 | 132 | 0 | 100 | 0 |
-| 37 | Cosmology / BFSSU & DMF | Dual Mass Flow and the Redefi nition of Gravity in a Hierarchical Universe / 階層宇宙におけるDual Mass Flowと重力の再定義 | [10.5281/zenodo.18204127](https://doi.org/10.5281/zenodo.18204127) | 2026-01-10 | 131 | 0 | 98 | 0 |
+| 35 | Thought Experiments / Structural Theory | Why does civilization build huge structures? / 文明はなぜ巨大建造物を造るのか? | [10.5281/zenodo.18271759](https://doi.org/10.5281/zenodo.18271759) | 2026-01-16 | 170 | 0 | 191 | 3 |
+| 36 | Cosmology / BFSSU & DMF | Stellar Formation Theory in the DMF Universe / DMF宇宙における恒星生成理論 | [10.5281/zenodo.18230187](https://doi.org/10.5281/zenodo.18230187) | 2026-01-13 | 132 | 0 | 102 | 2 |
+| 37 | Cosmology / BFSSU & DMF | Dual Mass Flow and the Redefi nition of Gravity in a Hierarchical Universe / 階層宇宙におけるDual Mass Flowと重力の再定義 | [10.5281/zenodo.18204127](https://doi.org/10.5281/zenodo.18204127) | 2026-01-10 | 131 | 0 | 99 | 1 |
 | 38 | Cosmology / BFSSU & DMF | DMF as an unobservable ground flow and a unified interpretation / 観測不能な基底流としてのDMFと宇宙構造形成の統一的解釈 | [10.5281/zenodo.18194511](https://doi.org/10.5281/zenodo.18194511) | 2026-01-09 | 143 | 0 | 119 | 0 |
 | 39 | Thought Experiments / Structural Theory | New aviation safety model / 新航空安全モデル | [10.5281/zenodo.18186447](https://doi.org/10.5281/zenodo.18186447) | 2026-01-08 | 218 | 0 | 270 | 0 |
 | 40 | Co-Intelligence / Methodology | Matsuoka x GPT Thought Experiment Lab / 松岡×GPT思考実験ラボ | [10.5281/zenodo.18160426](https://doi.org/10.5281/zenodo.18160426) | 2026-01-06 | 234 | 0 | 164 | 0 |
-| 41 | Social Design / Institutional Structures | A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル | [10.5281/zenodo.18160163](https://doi.org/10.5281/zenodo.18160163) | 2026-01-06 | 226 | 0 | 199 | 0 |
-| 42 | Co-Intelligence / Methodology | Co-Intelligence / 協働知性 | [10.5281/zenodo.18159902](https://doi.org/10.5281/zenodo.18159902) | 2026-01-06 | 191 | 0 | 182 | 1 |
-| 43 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe Unified Field Theory / ブラックホール・フラクタル定常宇宙論 統一場理論 | [10.5281/zenodo.18150465](https://doi.org/10.5281/zenodo.18150465) | 2026-01-05 | 308 | 0 | 265 | 0 |
-| 44 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe detailed version / ブラックホール・フラクタル定常宇宙論 詳細版 | [10.5281/zenodo.17948058](https://doi.org/10.5281/zenodo.17948058) | 2025-12-16 | 704 | 0 | 631 | 1 |
-| 45 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady-State Universe(BFSSU)  / ブラックホール・フラクタル定常宇宙論(BFSSU) | [10.5281/zenodo.17720251](https://doi.org/10.5281/zenodo.17720251) | 2025-11-26 | 1846 | 0 | 1530 | 3 |
+| 41 | Social Design / Institutional Structures | A national model for fostering peace of mind through a selective tax system / 選択税制による安心醸成国家モデル | [10.5281/zenodo.18160163](https://doi.org/10.5281/zenodo.18160163) | 2026-01-06 | 226 | 0 | 200 | 1 |
+| 42 | Co-Intelligence / Methodology | Co-Intelligence / 協働知性 | [10.5281/zenodo.18159902](https://doi.org/10.5281/zenodo.18159902) | 2026-01-06 | 191 | 0 | 182 | 0 |
+| 43 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe Unified Field Theory / ブラックホール・フラクタル定常宇宙論 統一場理論 | [10.5281/zenodo.18150465](https://doi.org/10.5281/zenodo.18150465) | 2026-01-05 | 308 | 0 | 266 | 1 |
+| 44 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady - State Universe detailed version / ブラックホール・フラクタル定常宇宙論 詳細版 | [10.5281/zenodo.17948058](https://doi.org/10.5281/zenodo.17948058) | 2025-12-16 | 704 | 0 | 631 | 0 |
+| 45 | Cosmology / BFSSU & DMF | Black Hole Fractal Steady-State Universe(BFSSU)  / ブラックホール・フラクタル定常宇宙論(BFSSU) | [10.5281/zenodo.17720251](https://doi.org/10.5281/zenodo.17720251) | 2025-11-26 | 1846 | 0 | 1530 | 0 |
