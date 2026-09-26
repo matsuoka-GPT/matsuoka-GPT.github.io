@@ -21,7 +21,7 @@ function cosmologyGroups(file) {
 
 test('English and Japanese Cosmology outputs use the same two-level classification', () => {
   const expected = [
-    { kind: 'conceptual', papers: 22 },
+    { kind: 'conceptual', papers: 23 },
     { kind: 'modeling', papers: 20 },
     { kind: 'observational', papers: 6 },
   ];
@@ -43,6 +43,7 @@ test('the unpublished Cosmology series papers link to the page top in both langu
     'index.html': [
       'The Grand Circulation Hypothesis in BFSSU/DMF Cosmology',
       'A Unified Interpretation of Stellar Evolution through DMF–Matter Positive Feedback',
+      'BFSSU/DMF Cosmology Ver. 2',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part I: Foundations of DMF Kinematics',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part II: DMF Conservation Laws and Open-System Flow',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part III: DMF Gravitational Response and Equations of Motion',
@@ -59,6 +60,7 @@ test('the unpublished Cosmology series papers link to the page top in both langu
     'jp/index.html': [
       'BFSSU/DMF宇宙論における大循環仮説',
       'DMF–物質正帰還による恒星進化の統一的解釈',
+      'BFSSU/DMF宇宙論 Ver.2',
       'BFSSU/DMF動力学・重力理論 第1部　DMF運動学の基礎',
       'BFSSU/DMF動力学・重力理論 第2部　DMF保存則と開放系流動',
       'BFSSU/DMF動力学・重力理論 第3部　DMF重力応答と運動方程式',
