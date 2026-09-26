@@ -22,7 +22,7 @@ function cosmologyGroups(file) {
 test('English and Japanese Cosmology outputs use the same two-level classification', () => {
   const expected = [
     { kind: 'conceptual', papers: 22 },
-    { kind: 'modeling', papers: 17 },
+    { kind: 'modeling', papers: 20 },
     { kind: 'observational', papers: 6 },
   ];
 
@@ -52,6 +52,9 @@ test('the unpublished Cosmology series papers link to the page top in both langu
       'BFSSU/DMF Dynamics and Gravitational Theory, Part VII: Relativistic DMF Gravitational Theory',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part VIII: Critical DMF States and Ordinary Matter Emergence',
       'BFSSU/DMF Dynamics and Gravitational Theory, Part IX: DMF–Matter Conversion Laws and Conservation Structure',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part X: Cosmological Evolution of the Ordinary Matter Emergence Rate',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part XI: Black Hole Formation, DMF Reversion, and Inter-Hierarchical Connection',
+      'BFSSU/DMF Dynamics and Gravitational Theory, Part XII: Integrated Predictions and Observational Tests of BFSSU/DMF Cosmology',
     ],
     'jp/index.html': [
       'BFSSU/DMF宇宙論における大循環仮説',
@@ -65,6 +68,9 @@ test('the unpublished Cosmology series papers link to the page top in both langu
       'BFSSU/DMF動力学・重力理論 第7部　相対論的DMF重力理論',
       'BFSSU/DMF動力学・重力理論 第8部　臨界DMF状態と通常物質顕現',
       'BFSSU/DMF動力学・重力理論 第9部　DMF–物質変換則と保存構造',
+      'BFSSU/DMF動力学・重力理論 第10部　通常物質顕現率の宇宙進化',
+      'BFSSU/DMF動力学・重力理論 第11部　ブラックホール形成・DMF還元・階層間接続',
+      'BFSSU/DMF動力学・重力理論 第12部　BFSSU/DMF宇宙論の統合的予測と観測検証',
     ],
   };
 
