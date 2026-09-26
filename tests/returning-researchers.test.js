@@ -81,7 +81,7 @@ test('both languages include the independent collapsible research message after 
   ]) {
     assert.match(source, new RegExp(heading));
     assert.match(source, new RegExp(note.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
-    assert.match(source, /<details class="research-message">/);
+    assert.match(source, /<details class="research-message(?: [^"]*)?"/);
     assert.ok(source.indexOf('returning-grid') < source.indexOf('research-message-section'), `${language} message follows the primary routes`);
   }
 });
@@ -98,6 +98,35 @@ test('the first research message is a dated permanent record in both languages',
     assert.match(source, /official record published in August 2026|2026年8月公開時点の公式記録/);
     assert.ok(source.indexOf('research-message-meta') < source.indexOf('research-message-body'), `${language} metadata precedes the archived message body`);
   }
+});
+
+test('the second research message is the open latest record above the archived first message', () => {
+  for (const [language, source, title, date, archiveLabel] of [
+    ['English', englishPage, 'From Conceptual Cosmology to Dynamics — The Second Stage of BFSSU/DMF Cosmology', 'September 2026', 'Archived Research Message'],
+    ['Japanese', japanesePage, '概念宇宙論から動力学へ ― BFSSU/DMF宇宙論の第二段階', '2026年9月', '過去の研究メッセージ']
+  ]) {
+    assert.match(source, /<details class="research-message research-message-latest" open>/);
+    assert.match(source, /Research Message No\. 2/);
+    assert.match(source, new RegExp(title));
+    assert.match(source, new RegExp(date));
+    assert.match(source, /<time datetime="2026-09">/);
+    assert.match(source, new RegExp(archiveLabel));
+    assert.ok(source.indexOf('Research Message No. 2') < source.indexOf('Research Message No. 1'), `${language} latest message precedes the archive`);
+  }
+});
+
+test('the latest research message preserves uncertainty, revision, and observational testing', () => {
+  assert.match(japanesePage, /完成した理論とは考えていません/);
+  assert.match(japanesePage, /仮説の撤回/);
+  assert.match(japanesePage, /最終的にそれを決めるのは、数理と観測です/);
+  assert.match(englishPage, /do not regard BFSSU\/DMF Cosmology as a completed theory/);
+  assert.match(englishPage, /withdrawal of hypotheses/);
+  assert.match(englishPage, /Ultimately, mathematics and observation will decide/);
+});
+
+test('latest update descriptions accurately identify the cosmology category', () => {
+  assert.match(japanesePage, /宇宙論カテゴリーの最新3件/);
+  assert.match(englishPage, /three most recent Cosmology records/);
 });
 
 test('research message styles cover dark theme and phone layout', () => {
