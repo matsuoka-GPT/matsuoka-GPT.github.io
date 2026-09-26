@@ -680,6 +680,9 @@
       background:rgba(255,255,255,.76);
       box-shadow:var(--shadow);
     }
+    .research-message + .research-message{ margin-top:12px; }
+    .research-message-archived{ border-color:var(--line2); }
+    .research-message-archived .research-message-label{ color:var(--muted); }
     .research-message > summary{
       display:grid;
       grid-template-columns:1fr auto;
@@ -770,6 +773,7 @@
       border-color:#375878;
       background:rgba(18,34,54,.84);
     }
+    [data-theme="dark"] .research-message-archived{ border-color:#31475f; }
     [data-theme="dark"] .research-message-label{ color:#8de0da; }
     [data-theme="dark"] .research-message-section-label{ color:#8de0da; }
     [data-theme="dark"] .research-message-section-heading h2,
