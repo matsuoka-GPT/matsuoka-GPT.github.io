@@ -18,7 +18,7 @@ for (const [language, source] of [['English', english], ['Japanese', japanese]])
   });
 
   test(`${language} returning-researchers section exposes verified routes`, () => {
-    assert.match(source, /https:\/\/doi\.org\/10\.5281\/zenodo\.22135767/);
+    assert.match(source, /https:\/\/doi\.org\/10\.5281\/zenodo\.23272955/);
     assert.match(source, /https:\/\/doi\.org\/10\.5281\/zenodo\.23092225/);
     assert.match(source, /https:\/\/doi\.org\/10\.5281\/zenodo\.22976862/);
     assert.match(source, /href="#cosmology-modeling"/);
@@ -40,8 +40,8 @@ for (const [language, source] of [['English', english], ['Japanese', japanese]])
 for (const [language, source] of [['English', englishPage], ['Japanese', japanesePage]]) {
   test(`${language} separate page contains the returning researcher content`, () => {
     assert.match(source, /id="returning-researchers-title"/);
+    assert.match(source, /zenodo\.23272955/);
     assert.match(source, /zenodo\.23092225/);
-    assert.match(source, /zenodo\.22135767/);
     assert.match(source, /zenodo\.22976862/);
     assert.match(source, /#cosmology-modeling/);
     assert.match(source, /mailto:matsuoka-gpt@technocratnet\.jp/);
@@ -130,20 +130,20 @@ test('latest update descriptions accurately identify the cosmology category', ()
   assert.match(englishPage, /three most recent Cosmology records/);
 });
 
-test('latest cosmology routes point to the planetary internal structure paper in both languages', () => {
+test('latest cosmology routes point to the astrophysical lifetime paper in both languages', () => {
   for (const [language, source, date] of [
-    ['English', englishPage, 'Oct 2, 2026'],
-    ['Japanese', japanesePage, '2026年10月2日']
+    ['English', englishPage, 'Oct 10, 2026'],
+    ['Japanese', japanesePage, '2026年10月10日']
   ]) {
     const updates = source.match(/<ol class="returning-update-list">[\s\S]*?<\/ol>/)?.[0];
     const pathway = source.match(/<ol class="research-path-list">[\s\S]*?<\/ol>/)?.[0];
     assert.ok(updates, `${language} updates list`);
     assert.ok(pathway, `${language} pathway list`);
     assert.match(updates, new RegExp(date));
-    assert.match(updates, /zenodo\.23092225/);
+    assert.match(updates, /zenodo\.23272955/);
     assert.equal((updates.match(/<li>/g) || []).length, 3);
-    assert.ok(updates.indexOf('zenodo.23092225') < updates.indexOf('zenodo.22976862'), `${language} newest paper is first`);
-    assert.match(pathway, /zenodo\.23092225/);
+    assert.ok(updates.indexOf('zenodo.23272955') < updates.indexOf('zenodo.23092225'), `${language} newest paper is first`);
+    assert.match(pathway, /zenodo\.23272955/);
   }
 });
 
