@@ -190,6 +190,9 @@ body {
   color: var(--heading-color) !important;
   letter-spacing: .01em;
 }
+[data-theme="dark"] .outputs-grid a strong {
+  color: inherit !important;
+}
 [data-theme="dark"] :is(.topnav a, .tag, .pill, .profile-links a, .btn, .assistant-button) {
   border-color: var(--control-border-color) !important;
   background: var(--control-surface-color) !important;

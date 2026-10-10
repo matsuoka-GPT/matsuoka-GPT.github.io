@@ -24,5 +24,6 @@ test('dark mode gives linked and non-linked output titles the same light blue', 
   const css = fs.readFileSync(path.join(root, 'styles/theme.css'), 'utf8');
   assert.match(css, /\[data-theme="dark"\] a\s*{\s*color:\s*var\(--link-color\)\s*!important;/);
   assert.match(css, /\[data-theme="dark"\] \.outputs-grid \.output-draft\s*{\s*color:\s*var\(--link-color\)\s*!important;/);
+  assert.match(css, /\[data-theme="dark"\] \.outputs-grid a strong\s*\{\s*color:\s*inherit\s*!important;/);
   assert.match(css, /--link-color:\s*#6ea8fe;/);
 });
