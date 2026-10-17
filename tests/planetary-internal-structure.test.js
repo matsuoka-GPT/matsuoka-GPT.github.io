@@ -31,7 +31,7 @@ test('planetary internal structure paper remains in the latest returning-researc
     const updates = html.match(/<ol class="returning-update-list">[\s\S]*?<\/ol>/)?.[0];
     assert.ok(updates, `${file} updates list`);
     assert.equal((updates.match(/<li>/g) || []).length, 3);
+    assert.ok(updates.indexOf('zenodo.23427988') < updates.indexOf('zenodo.23272955'));
     assert.ok(updates.indexOf('zenodo.23272955') < updates.indexOf('zenodo.23092225'));
-    assert.ok(updates.indexOf('zenodo.23092225') < updates.indexOf('zenodo.22976862'));
   }
 });
