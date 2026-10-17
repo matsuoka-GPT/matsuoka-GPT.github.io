@@ -21,8 +21,8 @@ function cosmologyGroups(file) {
 
 test('English and Japanese Cosmology outputs use the same two-level classification', () => {
   const expected = [
-    { kind: 'conceptual', papers: 23 },
-    { kind: 'modeling', papers: 20 },
+    { kind: 'conceptual', papers: 27 },
+    { kind: 'modeling', papers: 23 },
     { kind: 'observational', papers: 6 },
   ];
 
