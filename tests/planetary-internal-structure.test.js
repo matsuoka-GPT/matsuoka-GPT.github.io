@@ -25,13 +25,14 @@ test('planetary internal structure paper is classified under BFSSU and DMF cosmo
   assert.equal(categories.papers['10.5281/zenodo.23092225'], 'Cosmology / BFSSU & DMF');
 });
 
-test('planetary internal structure paper remains in the latest returning-researcher updates', () => {
+test('latest returning-researcher updates roll forward beyond the planetary paper', () => {
   for (const file of ['returning-researchers.html', 'jp/returning-researchers.html']) {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     const updates = html.match(/<ol class="returning-update-list">[\s\S]*?<\/ol>/)?.[0];
     assert.ok(updates, `${file} updates list`);
     assert.equal((updates.match(/<li>/g) || []).length, 3);
+    assert.ok(updates.indexOf('zenodo.23826325') < updates.indexOf('zenodo.23427988'));
     assert.ok(updates.indexOf('zenodo.23427988') < updates.indexOf('zenodo.23272955'));
-    assert.ok(updates.indexOf('zenodo.23272955') < updates.indexOf('zenodo.23092225'));
+    assert.doesNotMatch(updates, /zenodo\.23092225/);
   }
 });

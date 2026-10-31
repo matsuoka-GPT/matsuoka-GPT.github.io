@@ -34,7 +34,8 @@ test('astrophysical lifetime paper remains in the latest returning-researcher re
     assert.ok(updates, `${file} updates list`);
     assert.ok(pathway, `${file} pathway list`);
     assert.equal((updates.match(/<li>/g) || []).length, 3);
+    assert.ok(updates.indexOf('zenodo.23826325') < updates.indexOf('zenodo.23427988'));
     assert.ok(updates.indexOf('zenodo.23427988') < updates.indexOf('zenodo.23272955'));
-    assert.match(pathway, /zenodo\.23427988/);
+    assert.match(pathway, /zenodo\.23826325/);
   }
 });
