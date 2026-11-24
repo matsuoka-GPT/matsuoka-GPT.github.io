@@ -42,7 +42,7 @@ for (const [language, source] of [['English', englishPage], ['Japanese', japanes
     assert.match(source, /id="returning-researchers-title"/);
     assert.match(source, /zenodo\.23826325/);
     assert.match(source, /zenodo\.23427988/);
-    assert.match(source, /zenodo\.23272955/);
+    assert.match(source, /zenodo\.org\/records\/24488500/);
     assert.match(source, /#cosmology-modeling/);
     assert.match(source, /mailto:matsuoka-gpt@technocratnet\.jp/);
   });
@@ -131,21 +131,24 @@ test('latest update descriptions accurately identify the cosmology category', ()
   assert.match(englishPage, /three most recent Cosmology records/);
 });
 
-test('latest cosmology routes point to the temperature-theory paper in both languages', () => {
+test('latest cosmology routes point to the new phase transition paper in both languages', () => {
   for (const [language, source, date] of [
-    ['English', englishPage, 'Oct 31, 2026'],
-    ['Japanese', japanesePage, '2026年10月31日']
+    ['English home', english, 'Nov 24, 2026'],
+    ['English page', englishPage, 'Nov 24, 2026'],
+    ['Japanese home', japanese, '2026年11月24日'],
+    ['Japanese page', japanesePage, '2026年11月24日']
   ]) {
     const updates = source.match(/<ol class="returning-update-list">[\s\S]*?<\/ol>/)?.[0];
     const pathway = source.match(/<ol class="research-path-list">[\s\S]*?<\/ol>/)?.[0];
     assert.ok(updates, `${language} updates list`);
     assert.ok(pathway, `${language} pathway list`);
-    assert.match(updates, new RegExp(date));
-    assert.match(updates, /zenodo\.23826325/);
-    assert.match(updates, /zenodo\.23427988/);
-    assert.equal((updates.match(/<li>/g) || []).length, 3);
-    assert.ok(updates.indexOf('zenodo.23826325') < updates.indexOf('zenodo.23427988'), `${language} newest paper is first`);
-    assert.match(pathway, /zenodo\.23826325/);
+    assert.ok(updates.split('<li>')[1].includes(date), `${language} newest paper date`);
+    assert.deepEqual([...updates.matchAll(/href="([^"]+)"/g)].map(match => match[1]), [
+      'https://zenodo.org/records/24488500',
+      'https://doi.org/10.5281/zenodo.23826325',
+      'https://doi.org/10.5281/zenodo.23427988',
+    ]);
+    assert.match(pathway, /zenodo\.org\/records\/24488500/);
   }
 });
 

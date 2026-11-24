@@ -38,6 +38,6 @@ test('particle-generation paper remains in the latest returning-researcher recor
     assert.equal((updates.match(/<li>/g) || []).length, 3);
     assert.ok(updates.indexOf('zenodo.23826325') < updates.indexOf('zenodo.23427988'));
     assert.match(updates, /zenodo\.23427988/);
-    assert.match(pathway, /zenodo\.23826325/);
+    assert.match(pathway, /zenodo\.org\/records\/24488500/);
   }
 });

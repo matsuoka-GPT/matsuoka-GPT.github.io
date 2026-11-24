@@ -27,7 +27,7 @@ test('temperature theory is classified under BFSSU and DMF cosmology', () => {
   assert.equal(categories.papers[doi], 'Cosmology / BFSSU & DMF');
 });
 
-test('temperature theory is the latest returning-researcher route', () => {
+test('temperature theory remains among the latest returning-researcher records', () => {
   for (const file of ['index.html', 'jp/index.html', 'returning-researchers.html', 'jp/returning-researchers.html']) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     const updates = html.match(/<ol class="returning-update-list">[\s\S]*?<\/ol>/)?.[0];
@@ -36,6 +36,6 @@ test('temperature theory is the latest returning-researcher route', () => {
     assert.ok(pathway, `${file} pathway list`);
     assert.equal((updates.match(/<li>/g) || []).length, 3);
     assert.ok(updates.indexOf('zenodo.23826325') < updates.indexOf('zenodo.23427988'));
-    assert.match(pathway, /zenodo\.23826325/);
+    assert.match(pathway, /zenodo\.org\/records\/24488500/);
   }
 });

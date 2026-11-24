@@ -26,7 +26,7 @@ test('astrophysical lifetime paper is classified under BFSSU and DMF cosmology',
   assert.equal(categories.papers[doi], 'Cosmology / BFSSU & DMF');
 });
 
-test('astrophysical lifetime paper remains in the latest returning-researcher records', () => {
+test('astrophysical lifetime paper leaves the latest returning-researcher records', () => {
   for (const file of ['returning-researchers.html', 'jp/returning-researchers.html']) {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     const updates = html.match(/<ol class="returning-update-list">[\s\S]*?<\/ol>/)?.[0];
@@ -35,7 +35,7 @@ test('astrophysical lifetime paper remains in the latest returning-researcher re
     assert.ok(pathway, `${file} pathway list`);
     assert.equal((updates.match(/<li>/g) || []).length, 3);
     assert.ok(updates.indexOf('zenodo.23826325') < updates.indexOf('zenodo.23427988'));
-    assert.ok(updates.indexOf('zenodo.23427988') < updates.indexOf('zenodo.23272955'));
-    assert.match(pathway, /zenodo\.23826325/);
+    assert.ok(updates.indexOf('zenodo.org/records/24488500') < updates.indexOf('zenodo.23826325'));
+    assert.match(pathway, /zenodo\.org\/records\/24488500/);
   }
 });

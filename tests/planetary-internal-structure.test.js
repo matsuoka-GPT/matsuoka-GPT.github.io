@@ -32,7 +32,7 @@ test('latest returning-researcher updates roll forward beyond the planetary pape
     assert.ok(updates, `${file} updates list`);
     assert.equal((updates.match(/<li>/g) || []).length, 3);
     assert.ok(updates.indexOf('zenodo.23826325') < updates.indexOf('zenodo.23427988'));
-    assert.ok(updates.indexOf('zenodo.23427988') < updates.indexOf('zenodo.23272955'));
+    assert.ok(updates.indexOf('zenodo.org/records/24488500') < updates.indexOf('zenodo.23826325'));
     assert.doesNotMatch(updates, /zenodo\.23092225/);
   }
 });
