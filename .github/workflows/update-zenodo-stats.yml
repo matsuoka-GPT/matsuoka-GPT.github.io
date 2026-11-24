@@ -2,10 +2,10 @@ name: Update Zenodo statistics
 
 on:
   schedule:
-    # Three off-peak attempts in JST. Later attempts skip when today's data exists.
-    - cron: "17 15 * * *"
-    - cron: "37 16 * * *"
-    - cron: "53 18 * * *"
+    # Daily at 07:17, 08:37, and 09:53 JST. Skip if today's data already exists.
+    - cron: "17 22 * * *"
+    - cron: "37 23 * * *"
+    - cron: "53 0 * * *"
   workflow_dispatch:
 
 permissions:

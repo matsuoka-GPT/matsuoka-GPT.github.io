@@ -5,9 +5,9 @@ const fs = require('node:fs');
 const workflow = fs.readFileSync(new URL('../.github/workflows/update-zenodo-stats.yml', `file://${__filename}`), 'utf8');
 
 test('Zenodo statistics workflow provides three staggered daily attempts', () => {
-  assert.match(workflow, /cron: "17 15 \* \* \*"/);
-  assert.match(workflow, /cron: "37 16 \* \* \*"/);
-  assert.match(workflow, /cron: "53 18 \* \* \*"/);
+  assert.match(workflow, /cron: "17 22 \* \* \*"/);
+  assert.match(workflow, /cron: "37 23 \* \* \*"/);
+  assert.match(workflow, /cron: "53 0 \* \* \*"/);
 });
 
 test('scheduled retries share one freshness gate while manual runs remain unconditional', () => {
