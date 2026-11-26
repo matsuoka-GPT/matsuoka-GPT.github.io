@@ -1,5 +1,5 @@
 (() => {
-  const essayLinkSelector = '#essays a[id^="essay"]';
+  const publicationLinkSelector = '#essays a[id^="essay"], #lvtm a[id^="lvtm-report-"]';
   let activeTargetId = '';
 
   const targetFromHash = () => {
@@ -37,14 +37,14 @@
     window.history.replaceState(window.history.state, document.title, `${window.location.pathname}${window.location.search}`);
   };
 
-  const rememberEssayBeforeNavigation = (event) => {
+  const rememberPublicationBeforeNavigation = (event) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const link = event.target.closest(essayLinkSelector);
+    const link = event.target.closest(publicationLinkSelector);
     if (!link || link.target === '_blank') return;
     window.history.replaceState(window.history.state, document.title, `${window.location.pathname}${window.location.search}#${encodeURIComponent(link.id)}`);
   };
 
-  document.addEventListener('click', rememberEssayBeforeNavigation);
+  document.addEventListener('click', rememberPublicationBeforeNavigation);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', restoreHashTarget, { once: true });

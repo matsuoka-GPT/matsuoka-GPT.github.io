@@ -39,6 +39,7 @@
 
 
   <link rel="stylesheet" href="styles/home.css" />
+  <link rel="stylesheet" href="/styles/site-modal.css" />
   <link rel="stylesheet" href="styles/home-en.css" />
   <link rel="stylesheet" href="styles/layout.css" />
 
@@ -210,6 +211,7 @@
         <a href="#method">Method</a>
         <a href="#outputs">Outputs</a>
         <a href="#collab">Contact</a>
+        <a href="#lvtm">Exploring Questions with LVTM</a>
         <a href="#essays">Essays・Great Minds AI</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -813,6 +815,40 @@
         </div>
       </details>
     </section>
+
+<section id="lvtm" aria-labelledby="lvtm-heading">
+  <h2 id="lvtm-heading">🔍Exploring Questions with LVTM</h2>
+<details class="fold">
+    <summary>List of reports</summary>
+    <div class="box">
+      <a class="lvtm-intro-trigger" href="/lvtm/">About the series</a>
+      <dialog class="site-modal lvtm-intro-panel" id="lvtm-intro" aria-labelledby="lvtm-intro-title">
+        <div class="dialog-inner lvtm-intro-panel-inner">
+          <div class="dialog-header">
+            <div>
+              <h3 class="dialog-title" id="lvtm-intro-title" tabindex="-1" autofocus>Exploring Questions with LVTM</h3>
+              <span class="lvtm-intro-panel-label">About the series</span>
+            </div>
+            <form method="dialog"><button class="dialog-close" aria-label="Close series introduction">&times;</button></form>
+          </div>
+          <p class="lvtm-intro-panel-lead">The world is full of scientific mysteries, unexplained phenomena, widely accepted beliefs, and intriguing questions.</p>
+          <div class="lvtm-intro-panel-copy">
+            <p>In this series, the Matsuoka × GPT Co-Intelligence Lab explores these topics through collaborative intelligence using LVTM, the laboratory’s own LLM-based theory construction and verification method.</p>
+            <p>Each report starts with a structural hypothesis proposed by a human. An LLM helps examine the hypothesis against existing knowledge, test its logic, and consider evidence that could challenge it.</p>
+            <p>The series uses a consistent hypothesis-evaluation format of its own, distinct from formal academic papers and reflective essays.</p>
+            <p>We start with questions and examine what can reasonably be explained and what remains unresolved.</p>
+          </div>
+          <p class="lvtm-intro-panel-note"><strong>Explore freely. Keep the titles approachable. Think rigorously.</strong></p>
+        </div>
+      </dialog>
+      <script src="/scripts/lvtm-intro.js" defer></script>
+      <p class="muted">In this series, the Matsuoka × GPT Co-Intelligence Lab explores these topics through collaborative intelligence using LVTM, the laboratory’s own LLM-based theory construction and verification method.</p>
+      <ul class="outputs-grid">
+        <li><a id="lvtm-report-001" href="/lvtm/001-spiritual-healing.html"><strong>No.001 What Happens When We Examine Spiritual Healing with LVTM?</strong><br><span class="muted small">Collaborative Intelligence Hypothesis Evaluation Report</span></a></li>
+      </ul>
+    </div>
+  </details>
+</section>
 
 <!-- Great Minds AI Series -->
 <section id="great-minds" aria-label="great minds">

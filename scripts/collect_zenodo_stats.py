@@ -575,6 +575,7 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
   <title>Zenodo Analytics Dashboard | Matsuoka x GPT Thought Experiment Lab</title>
   <meta name=\"description\" content=\"Daily Zenodo analytics for {safe(author)}.\" />
   <link rel=\"stylesheet\" href=\"styles/theme.css\" />
+  <link rel=\"stylesheet\" href=\"styles/site-modal.css\" />
   <link rel=\"stylesheet\" href=\"styles/back-to-top.css\" />
   <script src=\"scripts/theme.js\"></script>
   <script src=\"scripts/back-to-top.js\" defer></script>
@@ -608,13 +609,8 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     .paper-title:focus-visible {{ outline:2px solid var(--accent); outline-offset:2px; border-radius:2px; }}
     .download-rankings summary {{ color:var(--accent); cursor:pointer; font-weight:700; margin-top:10px; transition: color .15s ease; }}
     .download-rankings summary:hover {{ color:var(--accent2); }}
-    .record-dialog {{ width:min(520px, calc(100% - 136px)); max-height:calc(100vh - 32px); padding:0; overflow:visible; border:1px solid var(--border-color); border-radius:var(--radius); color:var(--text-color); background:var(--card-color); box-shadow:var(--shadow2); }}
-    .record-dialog::backdrop, .dialog-fallback-backdrop {{ background:rgba(18,26,40,.46); }}
-    .record-dialog[open] {{ position:fixed; inset:0; margin:auto; }}
+    dialog.record-dialog {{ width:min(520px, calc(100% - 136px)); overflow:visible; }}
     .dialog-fallback-backdrop {{ position:fixed; inset:0; z-index:9; }} .record-dialog.dialog-fallback {{ z-index:10; }}
-    .dialog-inner {{ padding:18px; max-height:calc(100vh - 32px); overflow:auto; border-radius:inherit; }} .dialog-header {{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }}
-    .dialog-title {{ margin:0; color:var(--heading-color); font-size:19px; line-height:1.35; overflow-wrap:anywhere; }}
-    .dialog-close {{ flex:0 0 auto; border:0; border-radius:999px; background:var(--control-surface-color); color:var(--link-color); font:inherit; font-size:20px; line-height:1; cursor:pointer; padding:7px 10px; }}
     .dialog-nav {{ position:absolute; top:50%; width:40px; height:48px; border:1px solid var(--border-color); border-radius:10px; transform:translateY(-50%); background:var(--control-surface-color); color:var(--link-color); font:inherit; font-size:22px; line-height:1; cursor:pointer; }}
     .dialog-nav:hover:not(:disabled) {{ color:var(--heading-color); border-color:var(--link-color); }}
     .dialog-nav:focus-visible {{ outline:2px solid var(--link-color); outline-offset:2px; }}
@@ -630,7 +626,7 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     @media (max-width: 980px) {{ .metrics {{ grid-template-columns:repeat(2, 1fr); }} }}
     @media (max-width: 820px) {{ header {{ padding-right:96px; }} .hero {{ padding:16px; }} .card {{ padding:14px; }} table {{ min-width:720px; }} th,td {{ padding:7px 6px; }} }}
     @media (max-width: 420px) {{ header {{ padding-top:48px; padding-right:0; }} }}
-    @media (max-width: 560px) {{ .record-dialog {{ width:calc(100% - 104px); max-height:calc(100vh - 24px); }} .dialog-inner {{ padding:16px; }} .dialog-nav {{ position:fixed; width:36px; height:44px; }} .dialog-prev {{ left:8px; }} .dialog-next {{ right:8px; }} }}
+    @media (max-width: 560px) {{ dialog.record-dialog {{ width:calc(100% - 104px); max-height:calc(100vh - 24px); }} .dialog-nav {{ position:fixed; width:36px; height:44px; }} .dialog-prev {{ left:8px; }} .dialog-next {{ right:8px; }} }}
     @media (max-width: 360px) {{ .dialog-stats {{ grid-template-columns:1fr; }} }}
   </style>
 </head>
@@ -656,7 +652,7 @@ def write_dashboard(path: Path, author: str, records: list[ZenodoRecord], genera
     <section class=\"card\"><h2>Category Totals</h2><div class=\"table-wrap\"><table><thead><tr><th>Category</th><th>Records</th><th>Views</th><th>Unique Views</th><th>Downloads</th><th>Unique Downloads</th></tr></thead><tbody>{category_rows(categories)}</tbody></table></div></section>
     <footer>Generated automatically from Zenodo public records. DOI category mappings are maintained in <code>data/zenodo/paper_categories.json</code>; fallback rules are maintained in <code>data/zenodo/categories.json</code>.</footer>
   </main>
-  <dialog class="record-dialog" id="record-dialog" aria-labelledby="record-dialog-title">
+  <dialog class="record-dialog site-modal" id="record-dialog" aria-labelledby="record-dialog-title">
     <button class="dialog-nav dialog-prev" type="button" aria-label="Previous paper in download ranking" title="Previous paper">&#9664;</button>
     <button class="dialog-nav dialog-next" type="button" aria-label="Next paper in download ranking" title="Next paper">&#9654;</button>
     <div class="dialog-inner">

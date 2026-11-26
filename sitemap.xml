@@ -962,4 +962,24 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/essays/happiness-and-income-structure-part-1-jp.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matsuoka-gpt.github.io/essays/happiness-and-income-structure-part-1-en.html" />
   </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/lvtm/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/lvtm/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/lvtm/" />
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/jp/lvtm/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/lvtm/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/lvtm/" />
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/lvtm/001-spiritual-healing.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/lvtm/001-spiritual-healing.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/lvtm/001-spiritual-healing.html" />
+  </url>
+  <url>
+    <loc>https://matsuoka-gpt.github.io/jp/lvtm/001-spiritual-healing.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matsuoka-gpt.github.io/lvtm/001-spiritual-healing.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://matsuoka-gpt.github.io/jp/lvtm/001-spiritual-healing.html" />
+  </url>
 </urlset>

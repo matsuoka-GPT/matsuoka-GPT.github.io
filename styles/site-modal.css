@@ -1,0 +1,83 @@
+/* Shared by the Zenodo record details and LVTM series introduction. */
+dialog.site-modal {
+  appearance: none;
+  box-sizing: border-box;
+  width: min(520px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-color, #2b4055);
+  border-radius: 16px;
+  background: var(--card-color, #111a2b);
+  color: var(--text-color, #e6edf7);
+  box-shadow: var(--shadow2, 0 12px 34px rgba(18, 26, 40, .09));
+}
+
+dialog.site-modal[open] {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+}
+
+.site-modal::backdrop,
+.dialog-fallback-backdrop {
+  background: rgba(18, 26, 40, .46);
+}
+
+.site-modal .dialog-inner {
+  box-sizing: border-box;
+  max-height: calc(100vh - 34px);
+  max-height: calc(100dvh - 34px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 18px;
+  border-radius: inherit;
+}
+
+.site-modal .dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.site-modal .dialog-title {
+  margin: 0;
+  color: var(--heading-color);
+  font-size: 19px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* The title can receive initial focus for reading without a decorative ring. */
+dialog.site-modal:focus-visible,
+dialog.site-modal .dialog-title:focus-visible {
+  outline: none !important;
+}
+
+.site-modal .dialog-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--control-surface-color);
+  color: var(--link-color);
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+dialog.site-modal .dialog-close:focus-visible {
+  outline: 1px solid var(--focus-color) !important;
+  outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+  .site-modal .dialog-inner { padding: 16px; }
+}

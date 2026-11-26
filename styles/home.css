@@ -107,13 +107,12 @@
       transition: all .12s ease;
     }
 
-    /* Automatically mark the newest essay (the first item in the essay list). */
-    #essays .outputs-grid > li:first-child{
+    #lvtm .outputs-grid > li:has(> #lvtm-report-001){
       position: relative;
       padding-top: 42px;
     }
 
-    #essays .outputs-grid > li:first-child::before{
+    #lvtm .outputs-grid > li:has(> #lvtm-report-001)::before{
       content: "NEW UP!";
       position: absolute;
       top: 9px;
@@ -991,11 +990,14 @@
     }
     details.fold .fold-body{ margin-top: 10px; }
 
+    #lvtm a[id^="lvtm-report-"]:focus,
     #essays a[id^="essay"]:focus{
       outline: 3px solid var(--accent);
       outline-offset: 4px;
       border-radius: 8px;
     }
+
+    #lvtm a[id^="lvtm-report-"]:focus{ border-radius: 12px; }
 
     /* Cosmology: second-level study groups */
     .cosmos-fold-body{
@@ -1452,4 +1454,31 @@
   .orientation-hint.is-dismissing {
     transform: none;
   }
+}
+.lvtm-intro-trigger { color: var(--link-color); }
+
+.lvtm-intro-panel .dialog-header form { margin: 0; }
+
+.lvtm-intro-panel-label {
+  display: inline-block;
+  margin-top: .35rem;
+  color: var(--muted-color);
+  font-size: .875rem;
+}
+
+.lvtm-intro-panel-lead {
+  margin: .85rem 0;
+  color: var(--heading-color);
+}
+
+.lvtm-intro-panel-copy {
+  border-block: 1px solid var(--border-color);
+  padding-block: .8rem;
+}
+
+.lvtm-intro-panel-copy p { margin: 0; }
+.lvtm-intro-panel-copy p + p { margin-top: .65rem; }
+.lvtm-intro-panel-note {
+  margin: .8rem 0 0;
+  color: var(--heading-color);
 }

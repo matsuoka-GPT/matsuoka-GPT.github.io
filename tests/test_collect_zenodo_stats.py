@@ -191,8 +191,12 @@ def test_generated_dashboard_keeps_shared_theme_support(tmp_path: Path):
 
     assert '<link rel="stylesheet" href="styles/theme.css" />' in html
     assert '<script src="scripts/theme.js"></script>' in html
-    assert 'color:var(--text-color); background:var(--card-color)' in html
-    assert '.dialog-title { margin:0; color:var(--heading-color)' in html
+    assert '<link rel="stylesheet" href="styles/site-modal.css" />' in html
+    assert 'class="record-dialog site-modal"' in html
+    modal_css = (ROOT / "styles" / "site-modal.css").read_text(encoding="utf-8")
+    assert 'border: 1px solid var(--border-color,' in modal_css
+    assert 'background: var(--card-color,' in modal_css
+    assert 'color: var(--text-color,' in modal_css
     assert '.dialog-stats dd { margin:0; color:var(--text-color)' in html
     assert '.dialog-stats dd[data-detail$="_delta"] { color:var(--link-color); }' in html
     assert 'background:var(--control-surface-color); color:var(--link-color)' in html

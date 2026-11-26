@@ -30,3 +30,10 @@ test('plain essay navigation preserves its target for browser back', () => {
   assert.match(script, /replaceState[\s\S]*encodeURIComponent\(link\.id\)/);
   assert.match(script, /event\.metaKey \|\| event\.ctrlKey \|\| event\.shiftKey \|\| event\.altKey/);
 });
+
+test('LVTM No.001 carries the NEW UP badge on both homepages', () => {
+  assert.match(english, /id="lvtm-report-001"/);
+  assert.match(japanese, /id="lvtm-report-001"/);
+  assert.match(styles, /#lvtm \.outputs-grid > li:has\(> #lvtm-report-001\)::before\s*\{[^}]*content:\s*"NEW UP!"/);
+  assert.doesNotMatch(styles, /#essays \.outputs-grid > li:first-child::before/);
+});
